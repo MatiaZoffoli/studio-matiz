@@ -26,6 +26,8 @@ Consulenza per piccole e medie imprese italiane: siti web, menu digitali, assist
 | [docs/MODELLO-CHECKUP.md](docs/MODELLO-CHECKUP.md) | Procedura e modello del rapporto di check-up |
 | [docs/BRAND.md](docs/BRAND.md) | Brief del brand, personalita', direzioni di nome (incluso ZOMA), domini, direzione visiva |
 | [docs/SUPABASE-CONTATTI.md](docs/SUPABASE-CONTATTI.md) | Archivio dei contatti dello stimatore su Supabase (Francoforte): tabella, funzione, protezioni, cosa resta da fare |
+| [docs/PREVENTIVO-E-CONTRATTO.md](docs/PREVENTIVO-E-CONTRATTO.md) | Bozza del modello di preventivo, dell'accordo di servizio (con cura continua e GDPR) e del resoconto mensile |
+| [docs/LOGO-PROMPT.md](docs/LOGO-PROMPT.md) | Prompt per generare alternative di logo (brief comune e cinque opzioni) |
 | [docs/STIMATORE.md](docs/STIMATORE.md) | Come funziona lo stimatore a fasce del sito, come calcola, cosa manca per collegarlo ai contatti |
 | [docs/LISTINO-E-TEMPI.md](docs/LISTINO-E-TEMPI.md) | Proposta di listino a fasce, tempi di consegna, forfait del primo mese, proprieta' di dominio e contenuti |
 | [prova/privacy.html](prova/privacy.html) | Bozza dell'informativa privacy (da completare e far controllare) |
