@@ -51,7 +51,7 @@ I due prospetti **non si contattano ancora** (decisione di Matia). Si contattano
 - [ ] Parlare con un commercialista: partita IVA, regime, compatibilita' con il lavoro dipendente
 - [ ] Informativa privacy e GDPR: per il sito della societa' sportiva (450 iscritti) e come servizio da offrire
 - [ ] Pagamento del primo cliente: decidere cifra e forma con l'amico
-- [x] Modello di preventivo e di contratto: **bozza fatta in `docs/PREVENTIVO-E-CONTRATTO.md`** (2026-10-08). Versione grafica fatta (2026-10-08): `modelli/preventivo.pdf` e `modelli/accordo-di-servizio.pdf`, da compilare. Da fare: Matia risponde alle otto decisioni in fondo a `docs/PREVENTIVO-E-CONTRATTO.md`, un professionista controlla i testi (articoli 6, 7, 8, 11 e nomina GDPR), si completano i dati dello Studio dopo la partita IVA, si prepara il modello del resoconto mensile in PDF
+- [x] Modello di preventivo e di contratto: **bozza fatta in `docs/PREVENTIVO-E-CONTRATTO.md`** (2026-10-08). Versione grafica fatta (2026-10-08): `modelli/preventivo.pdf` e `modelli/accordo-di-servizio.pdf`, da compilare. Da fare: Matia risponde alle otto decisioni in fondo a `docs/PREVENTIVO-E-CONTRATTO.md`, un professionista controlla i testi (articoli 6, 7, 8, 11 e nomina GDPR), si completano i dati dello Studio dopo la partita IVA, resoconto mensile fatto in `modelli/resoconto-mensile.pdf` (2026-10-09)
 - [ ] Definire cosa e' "illimitato" nel mese di rodaggio (ad esempio: solo modifiche sul sito esistente, non nuove funzioni)
 - [ ] Mappare altri freelance minori di Cesenatico, Cervia e Ravenna
 - [ ] Approfondire Spiagge.it: concorrente, partner o canale?

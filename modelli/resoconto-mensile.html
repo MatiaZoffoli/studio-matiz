@@ -1,0 +1,140 @@
+<!doctype html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<title>Resoconto mensile - Studio Matiz</title>
+<link rel="stylesheet" href="modelli.css">
+<style>
+  .sheet { padding-top: 13mm; padding-bottom: 16mm; }
+  .kpi { display: grid; grid-template-columns: repeat(3, 1fr); border-top: .3mm solid var(--ink); border-bottom: .2mm solid var(--line); margin: 1mm 0 6mm; }
+  .kpi div { padding: 3.2mm 4mm 3.4mm 0; }
+  .kpi div + div { padding-left: 4mm; border-left: .2mm solid var(--line); }
+  .kpi .v { font: 450 24pt/1 "Bodoni Moda", serif; font-variation-settings: "opsz" 28; display: block; }
+  .kpi .v .f { display: inline-block; line-height: 1.15; } .kpi .l { display: block; margin-top: 2.4mm !important; margin-top: 1.4mm; font: 600 6.6pt/1.4 "Manrope", sans-serif; letter-spacing: .14em; text-transform: uppercase; color: var(--soft); }
+  .kpi .d { font-size: 8pt; color: var(--gold-deep); font-weight: 600; }
+  .ore { display: grid; grid-template-columns: 1fr auto; gap: 1.6mm 6mm; align-items: baseline; margin-top: 1mm; }
+  .ore .barra { grid-column: 1 / -1; height: 2.4mm; background: var(--tint); position: relative; }
+  .ore .barra i { position: absolute; left: 0; top: 0; bottom: 0; background: var(--ink); }
+  .ore .barra i.extra { background: var(--gold); }
+  .ore b { font: 450 17pt/1 "Bodoni Moda", serif; font-variation-settings: "opsz" 20; }
+  .voce { display: grid; grid-template-columns: 17mm 1fr; gap: 0 3mm; padding: 1.3mm 0; border-bottom: .2mm solid var(--line); }
+  .voce:last-child { border-bottom: 0; }
+  .voce .dt { font: 600 7.4pt/1.6 "Manrope", sans-serif; letter-spacing: .08em; color: var(--gold-text); }
+  .auto li::before { background: none; width: auto; height: auto; top: 0; content: "✓"; color: var(--gold-text); font-weight: 600; font-size: 8.5pt; }
+  .consiglio { margin-top: 1mm; padding: 4mm 5mm; background: var(--tint); border-left: 1.2mm solid var(--gold); }
+  .consiglio ul { margin: 1.4mm 0 0; }
+  .rodaggio { margin-top: 5mm; padding: 4.5mm 5mm; border: .3mm solid var(--ink); }
+  .rodaggio .grid3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 4mm; margin: 2.4mm 0 2.6mm; }
+  .rodaggio .grid3 b .f { display: inline-block; line-height: 1.2; } .rodaggio .grid3 b { display: block; font: 450 17pt/1 "Bodoni Moda", serif; font-variation-settings: "opsz" 20; }
+  .rodaggio .grid3 > div > span:last-child { display: block; margin-top: 1mm; font: 600 6.6pt/1.4 "Manrope", sans-serif; letter-spacing: .14em; text-transform: uppercase; color: var(--soft); }
+  .nb { margin-top: 3mm; font-size: 7.8pt; color: var(--soft); }
+</style>
+</head>
+<body>
+
+<section class="sheet">
+  <header class="top">
+    <img src="../prova/assets/logo-lockup.png" alt="Studio Matiz">
+    <div class="meta"><b>Studio Matiz</b>, di Matia Zoffoli<br>matiazoffoli@gmail.com · +39 333 958 0381</div>
+  </header>
+
+  <div class="titolo">
+    <div><span class="eyebrow">Resoconto mensile</span><h1 style="margin-top:3mm">Resoconto di <em><span class="f" style="font-size:22pt">mese anno</span></em></h1></div>
+    <div class="num">Per <b><span class="f">cliente</span></b><br>Inviato il <b><span class="f">gg/mm/aaaa</span></b></div>
+  </div>
+
+  <div class="sez"><span class="n">01</span><div>
+    <h2>Le ore</h2>
+    <div class="ore">
+      <p>Ore usate in <span class="f">mese</span>, su <span class="f">2</span> incluse nel canone</p><b><span class="f">x</span> / <span class="f">2</span></b>
+      <div class="barra"><i style="width:50%"></i></div>
+    </div>
+    <p class="nota" style="margin-top:1.6mm">Ore extra fatturate: <span class="f">y</span> (a 50 euro l'ora). Le ore non usate non si accumulano. Aggiornamenti, sicurezza e backup non consumano ore.</p>
+  </div></div>
+
+  <div class="sez"><span class="n">02</span><div>
+    <h2>Cosa è stato fatto</h2>
+    <div class="voce"><span class="dt"><span class="f">gg/mm</span></span><p><span class="f">Voce in linguaggio semplice, per esempio: aggiornato il menu estivo</span></p></div>
+    <div class="voce"><span class="dt"><span class="f">gg/mm</span></span><p><span class="f">Voce 2, per esempio: corretto l'orario nella scheda Google</span></p></div>
+    <div class="voce"><span class="dt"><span class="f">gg/mm</span></span><p><span class="f">Voce 3 (da tre a sei voci in tutto)</span></p></div>
+  </div></div>
+
+  <div class="sez"><span class="n">03</span><div>
+    <h2>Fatto in automatico, senza consumare ore</h2>
+    <ul class="auto">
+      <li>Aggiornamenti tecnici del sito eseguiti</li>
+      <li>Backup completati e verificati</li>
+      <li>Controlli di sicurezza e di funzionamento: <span class="f">nessun problema / segnalazioni</span></li>
+    </ul>
+  </div></div>
+
+  <div class="sez"><span class="n">04</span><div>
+    <h2>Come sta andando</h2>
+    <div class="kpi">
+      <div><span class="v"><span class="f">000</span></span><span class="l">Visite al sito</span><span class="d"><span class="f">+/- %</span> sul mese scorso</span></div>
+      <div><span class="v"><span class="f">00</span></span><span class="l">Richieste ricevute</span><span class="d"><span class="f">+/- %</span> sul mese scorso</span></div>
+      <div><span class="v"><span class="f">00</span></span><span class="l">Prenotazioni dal sito</span><span class="d"><span class="f">+/- %</span> sul mese scorso</span></div>
+    </div>
+    <p class="nota">Tre numeri semplici, sempre gli stessi, dal sito, dal menu e dalla scheda Google. Se un numero non è disponibile lo dico, non lo invento.</p>
+  </div></div>
+
+  <div class="sez"><span class="n">05</span><div>
+    <h2>Cosa consiglio per il mese prossimo</h2>
+    <div class="consiglio">
+      <ul style="margin-top:0">
+        <li><span class="f">Consiglio 1, con il costo, per esempio: aggiungere la prenotazione del tavolo, circa x ore</span></li>
+        <li><span class="f">Consiglio 2 (al massimo due)</span></li>
+      </ul>
+    </div>
+  </div></div>
+
+  <div class="piede"><span>Studio Matiz · Resoconto di <span class="f">mese anno</span></span><span>Modello · <span class="bozza">Da compilare ogni mese</span></span></div>
+</section>
+
+<section class="sheet">
+  <header class="top">
+    <img src="../prova/assets/logo-lockup.png" alt="Studio Matiz">
+    <div class="meta"><b>Resoconto di fine rodaggio</b><br>solo il primo mese, per <span class="f">cliente</span></div>
+  </header>
+
+  <div class="titolo">
+    <div><span class="eyebrow">Solo nel resoconto del primo mese</span><h1 style="margin-top:3mm">Cosa abbiamo <em>imparato</em></h1></div>
+  </div>
+
+  <p style="margin-bottom:5mm">Il primo mese non ho contato le ore. Ora guardiamo insieme quanto è servito davvero, e decidiamo un budget giusto per te per il resto dell'anno.</p>
+
+  <div class="rodaggio">
+    <span class="eyebrow">Il mese di rodaggio in numeri</span>
+    <div class="grid3">
+      <div><b><span class="f">x</span> ore</b><span>Ore reali usate</span></div>
+      <div><b><span class="f">y</span></b><span>Richieste gestite</span></div>
+      <div><b><span class="f">z</span> ore</b><span>Ore al mese previste d'ora in poi</span></div>
+    </div>
+    <p class="nota">Il forfait del rodaggio era di <span class="f">250</span> euro. Le ore usate, a 50 euro l'ora, sarebbero <span class="f">w</span> euro: <span class="f">una frase onesta sul confronto</span>.</p>
+  </div>
+
+  <div class="sez" style="margin-top:6mm"><span class="n">01</span><div>
+    <h2>Il livello che ti consiglio</h2>
+    <table>
+      <tr><th>Livello</th><th>Cosa comprende</th><th>Al mese</th></tr>
+      <tr><td><b>Base</b> <span class="f">consigliato / alternativa</span></td><td><span class="f">2</span> ore incluse, aggiornamenti, sicurezza, backup, resoconto, risposta in un giorno lavorativo</td><td style="white-space:nowrap"><span class="f">100-150</span> €</td></tr>
+      <tr><td><b>Su misura</b> <span class="f">consigliato / alternativa</span></td><td>Tutto il Base più un numero di nuove funzioni all'anno</td><td style="white-space:nowrap"><span class="f">300-500</span> €</td></tr>
+    </table>
+    <p class="nota">Ore extra a 50 euro l'ora, a blocchi di 30 minuti, sempre comunicate prima. Preavviso di 30 giorni per cambiare o interrompere. IVA se dovuta.</p>
+  </div></div>
+
+  <div class="sez"><span class="n">02</span><div>
+    <h2>Cosa decidiamo adesso</h2>
+    <ul>
+      <li>Livello scelto: <span class="f">Base / Su misura / solo a ore / fermo qui</span></li>
+      <li>Ore incluse: <span class="f">numero</span> al mese, dal <span class="f">data</span></li>
+      <li>Prossimo lavoro, se c'è: <span class="f">descrizione e preventivo a parte</span></li>
+    </ul>
+    <div class="firme"><div>Per il cliente, <span class="f">nome</span> · data</div><div>Matia Zoffoli · data</div></div>
+  </div></div>
+
+  <div class="piede"><span>Studio Matiz · Resoconto di fine rodaggio</span><span>Modello · <span class="bozza">Da compilare a fine primo mese</span></span></div>
+</section>
+
+</body>
+</html>

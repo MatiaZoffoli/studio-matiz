@@ -1,0 +1,144 @@
+<!doctype html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<title>Esempio di resoconto mensile - Studio Matiz</title>
+<link rel="stylesheet" href="modelli.css">
+<style>
+  .sheet { padding-top: 12mm; padding-bottom: 16mm; }
+  body { font-size: 9.2pt; line-height: 1.5; }
+  .esempio { margin: 0 0 4mm; padding: 1.8mm 3.5mm; background: #FBF1DE; border-left: 1.2mm solid var(--gold); font-size: 8.2pt; color: var(--gold-deep); }
+  .esempio b { letter-spacing: .12em; text-transform: uppercase; font-size: 7pt; }
+  .titolo { margin: 5mm 0 3.5mm; }
+  .sez { margin-bottom: 3.6mm; }
+  .kpi { display: grid; grid-template-columns: repeat(3, 1fr); border-top: .3mm solid var(--ink); border-bottom: .2mm solid var(--line); margin: 1mm 0 2mm; }
+  .kpi div { padding: 2.6mm 4mm 2.8mm 0; }
+  .kpi div + div { padding-left: 4mm; border-left: .2mm solid var(--line); }
+  .kpi .v { font: 450 24pt/1 "Bodoni Moda", serif; font-variation-settings: "opsz" 28; display: block; }
+  .kpi .l { display: block; margin-top: 1.4mm; font: 600 6.6pt/1.4 "Manrope", sans-serif; letter-spacing: .14em; text-transform: uppercase; color: var(--soft); }
+  .kpi .d { font-size: 8pt; color: var(--gold-deep); font-weight: 600; }
+  .ore { display: grid; grid-template-columns: 1fr auto; gap: 1.6mm 6mm; align-items: baseline; margin-top: 1mm; }
+  .ore .barra { grid-column: 1 / -1; height: 2.4mm; background: var(--tint); position: relative; }
+  .ore .barra i { position: absolute; left: 0; top: 0; bottom: 0; background: var(--ink); }
+  .ore b { font: 450 17pt/1 "Bodoni Moda", serif; font-variation-settings: "opsz" 20; }
+  .voce { display: grid; grid-template-columns: 17mm 1fr; gap: 0 3mm; padding: 1.1mm 0; border-bottom: .2mm solid var(--line); }
+  .voce:last-child { border-bottom: 0; }
+  .voce .dt { font: 600 7.4pt/1.6 "Manrope", sans-serif; letter-spacing: .08em; color: var(--gold-text); }
+  .auto li::before { background: none; width: auto; height: auto; top: 0; content: "✓"; color: var(--gold-text); font-weight: 600; font-size: 8.5pt; }
+  .consiglio { margin-top: 1mm; padding: 3.2mm 5mm; background: var(--tint); border-left: 1.2mm solid var(--gold); }
+  .consiglio ul { margin: 0; }
+  .rodaggio { margin-top: 3mm; padding: 3.6mm 5mm; border: .3mm solid var(--ink); }
+  .rodaggio .grid3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 4mm; margin: 2mm 0 2mm; }
+  .rodaggio .grid3 b { display: block; font: 450 17pt/1 "Bodoni Moda", serif; font-variation-settings: "opsz" 20; }
+  .rodaggio .grid3 span { display: block; margin-top: 1mm; font: 600 6.6pt/1.4 "Manrope", sans-serif; letter-spacing: .14em; text-transform: uppercase; color: var(--soft); }
+</style>
+</head>
+<body>
+
+<section class="sheet">
+  <header class="top">
+    <img src="../prova/assets/logo-lockup.png" alt="Studio Matiz">
+    <div class="meta"><b>Studio Matiz</b>, di Matia Zoffoli<br>matiazoffoli@gmail.com · +39 333 958 0381</div>
+  </header>
+
+  <div class="titolo">
+    <div><span class="eyebrow">Resoconto mensile · mese di rodaggio</span><h1 style="margin-top:3mm">Resoconto di <em>novembre</em></h1></div>
+    <div class="num">Per <b>Bagno Esempio</b><br>Inviato il <b>01/12/2026</b></div>
+  </div>
+
+  <p class="esempio"><b>Esempio compilato.</b> Cliente e numeri sono di fantasia. Serve a mostrare come si presenta un resoconto vero, a fine del primo mese.</p>
+
+  <div class="sez"><span class="n">01</span><div>
+    <h2>Le ore</h2>
+    <div class="ore">
+      <p>Ore usate a novembre (mese di rodaggio, senza limite di ore)</p><b>6,5 ore</b>
+      <div class="barra"><i style="width:65%"></i></div>
+    </div>
+    <p class="nota" style="margin-top:1.4mm">Dal mese prossimo, con il livello Base, le ore incluse sarebbero 2: più avanti ti spiego come tarare il budget. Aggiornamenti, sicurezza e backup non consumano ore.</p>
+  </div></div>
+
+  <div class="sez"><span class="n">02</span><div>
+    <h2>Cosa è stato fatto</h2>
+    <div class="voce"><span class="dt">04/11</span><p>Aggiornato il menu invernale e la carta dei vini, in italiano e in inglese</p></div>
+    <div class="voce"><span class="dt">09/11</span><p>Corretto l'orario di apertura nella scheda Google e aggiunte quattro foto</p></div>
+    <div class="voce"><span class="dt">14/11</span><p>Sostituito il QR code del tavolo con uno più grande, leggibile anche con poca luce</p></div>
+    <div class="voce"><span class="dt">22/11</span><p>Aggiunto il menu speciale per le feste, con versione stampabile</p></div>
+  </div></div>
+
+  <div class="sez"><span class="n">03</span><div>
+    <h2>Fatto in automatico, senza consumare ore</h2>
+    <ul class="auto">
+      <li>Aggiornamenti tecnici del sito eseguiti</li>
+      <li>Backup completati e verificati ogni settimana</li>
+      <li>Controlli di sicurezza e di funzionamento: nessun problema</li>
+    </ul>
+  </div></div>
+
+  <div class="sez"><span class="n">04</span><div>
+    <h2>Come sta andando</h2>
+    <div class="kpi">
+      <div><span class="v">842</span><span class="l">Visite al sito</span><span class="d">+38% su ottobre</span></div>
+      <div><span class="v">19</span><span class="l">Richieste ricevute</span><span class="d">+6 su ottobre</span></div>
+      <div><span class="v">11</span><span class="l">Prenotazioni dal sito</span><span class="d">primo mese di misura</span></div>
+    </div>
+    <p class="nota">Tre numeri semplici, sempre gli stessi, dal sito, dal menu e dalla scheda Google.</p>
+  </div></div>
+
+  <div class="sez"><span class="n">05</span><div>
+    <h2>Cosa consiglio per il mese prossimo</h2>
+    <div class="consiglio"><ul>
+      <li>Aggiungere la prenotazione del tavolo dal menu: circa 6 ore, preventivo a parte. Ora 11 persone su 19 prenotano scrivendo.</li>
+      <li>Rispondere alle recensioni su Google: lo facciamo insieme in mezz'ora al mese, rientra nelle ore incluse.</li>
+    </ul></div>
+  </div></div>
+
+  <div class="piede"><span>Studio Matiz · Resoconto di novembre · Bagno Esempio</span><span>Pagina 1 di 2 · <span class="bozza">Esempio, non valido</span></span></div>
+</section>
+
+<section class="sheet">
+  <header class="top">
+    <img src="../prova/assets/logo-lockup.png" alt="Studio Matiz">
+    <div class="meta"><b>Resoconto di fine rodaggio</b><br>Bagno Esempio</div>
+  </header>
+
+  <div class="titolo">
+    <div><span class="eyebrow">Solo nel resoconto del primo mese</span><h1 style="margin-top:3mm">Cosa abbiamo <em>imparato</em></h1></div>
+  </div>
+
+  <p style="margin-bottom:5mm">Il primo mese non ho contato le ore. Ora guardiamo insieme quanto è servito davvero, e decidiamo un budget giusto per te per il resto dell'anno.</p>
+
+  <div class="rodaggio">
+    <span class="eyebrow">Il mese di rodaggio in numeri</span>
+    <div class="grid3">
+      <div><b>6,5 ore</b><span>Ore reali usate</span></div>
+      <div><b>9</b><span>Richieste gestite</span></div>
+      <div><b>3 ore</b><span>Ore al mese previste d'ora in poi</span></div>
+    </div>
+    <p class="nota">Il forfait del rodaggio era di 250 euro. Le ore usate, a 50 euro l'ora, sarebbero 325 euro: il forfait ti è costato meno, e ora sappiamo cosa serve davvero. In stagione le richieste crescono: conviene tenere un po' di margine.</p>
+  </div>
+
+  <div class="sez" style="margin-top:6mm"><span class="n">01</span><div>
+    <h2>Il livello che ti consiglio</h2>
+    <table>
+      <tr><th>Livello</th><th>Cosa comprende</th><th>Al mese</th></tr>
+      <tr><td><b>Base</b> (consigliato)</td><td>3 ore incluse, aggiornamenti, sicurezza, backup, resoconto, risposta in un giorno lavorativo</td><td>140 €</td></tr>
+      <tr><td><b>Su misura</b></td><td>Tutto il Base più un numero di nuove funzioni all'anno (per esempio la prenotazione del tavolo)</td><td>380 €</td></tr>
+    </table>
+    <p class="nota">Ore extra a 50 euro l'ora, a blocchi di 30 minuti, sempre comunicate prima. Preavviso di 30 giorni per cambiare o interrompere. IVA se dovuta.</p>
+  </div></div>
+
+  <div class="sez"><span class="n">02</span><div>
+    <h2>Cosa decidiamo adesso</h2>
+    <ul>
+      <li>Livello scelto: Base</li>
+      <li>Ore incluse: 3 al mese, dal 01/12/2026</li>
+      <li>Prossimo lavoro: prenotazione del tavolo dal menu, preventivo a parte</li>
+    </ul>
+    <div class="firme"><div>Per il cliente, Anna Rossi · data</div><div>Matia Zoffoli · data</div></div>
+  </div></div>
+
+  <div class="piede"><span>Studio Matiz · Resoconto di fine rodaggio · Bagno Esempio</span><span>Pagina 2 di 2 · <span class="bozza">Esempio, non valido</span></span></div>
+</section>
+
+</body>
+</html>
