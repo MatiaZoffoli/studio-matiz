@@ -73,6 +73,14 @@ Matia lo ha chiesto così (2026-10-08): ispirazione da atelier, ma **capibile su
 - [ ] Solo trattino corto, nessun punto esclamativo?
 - [ ] Letto a voce alta, suona come Matia che parla a un cliente a un tavolo?
 
+## Cosa ha insegnato Matia finora
+
+- **Scelta mista, non estrema.** Davanti a tre varianti (sobria, con un'immagine, diretta) preferisce un punto d'incontro tra la sobria e la diretta. L'immagine di mestiere funziona nelle etichette (menu: "Il mestiere", "Il metodo"), meno nelle frasi lunghe. Per le prossime sezioni: varianti sobria e diretta con un tocco di mestiere, e una sola più immaginosa.
+- **Una frase che presenta lo studio deve dire cosa si fa**: cosa si costruisce, per chi, cosa succede dopo la consegna. Non il metodo ("prima ascolto, poi costruisco") e non l'atmosfera.
+- **L'intelligenza artificiale non entra nelle frasi principali** del sito, per ora. Si descrive per ciò che toglie di mezzo, solo dove serve.
+- **Il pulsante principale resta chiaro**: "Prenota il primo incontro" va bene perché dice cosa succede. Si cambia ciò che gli sta intorno.
+- Si lavora **pezzo per pezzo**, almeno tre varianti per ciascuno, e le scelte si annotano in `esempi.md`.
+
 ## Esempi
 
 In `esempi.md`: i testi del sito che Matia ha giudicato sbagliati, perché non funzionano e le alternative nella voce giusta. Si aggiorna ogni volta che una scelta di Matia chiarisce un punto.

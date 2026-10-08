@@ -66,4 +66,10 @@ Le voci del menu ("Servizi", "Percorso", "Condizioni", "Domande"), il pulsante "
 
 ## Decisioni di Matia
 
-*(vuoto: si compila dopo le sue scelte)*
+**Hero e testata (2026-10-08)**
+
+- Il titolo "Soluzioni su misura." e la scritta "Progettazione digitale per piccole imprese" restano.
+- **Frase sotto il titolo, scelta: "Elenco ragionato".** Dice cosa si costruisce, per chi e che poi si segue: "Costruisco siti, menu digitali e automazioni per stabilimenti, ristoranti e piccole attività, e li seguo nel tempo: aggiornamenti, modifiche e una persona che risponde." Scartate: la versione "mestiere" (troppo immaginosa) e quella con l'intelligenza artificiale (per ora non si cita nell'hero). Matia aveva bocciato la prima bozza perché "non diceva cosa faccio": la frase sotto il titolo deve fare lo snapshot della specializzazione.
+- **Menu, scelto: "Il mestiere · Il metodo · Le regole · Il prezzo · Chi sono".** "Domande" esce dal menu (resta la sezione in fondo alla pagina).
+- **Pulsanti, scelta mista sobria/diretta:** principale "Prenota il primo incontro", nella testata "Prenota un incontro", link "Il mestiere, in quattro parti", nota "Mezz'ora, a volte tre quarti, offerta da me. Di persona o in video."
+- **Le tre righe in basso, mista:** "Studio a Cesenatico, con clienti in Romagna e a distanza" / "Siti, menu digitali, automazioni e assistenza continua" / "Rispondo io, entro un giorno lavorativo".
