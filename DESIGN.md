@@ -332,3 +332,9 @@ Feedback di Matia: il sito era "flat", il corsivo difficile da leggere, servono 
 - **Pulsanti:** nessuna penna. Un filo dorato (conic-gradient mascherato, proprieta' CSS `--a`) disegna il contorno in un secondo, l'inchiostro sale da sinistra e un riflesso attraversa il pulsante. Solo CSS, vale per ogni `.btn`; variante `.btn--light` sulle sezioni scure.
 - **Stimatore:** scheda con spessore (dieci ombre a gradino), riflesso, filo dorato in alto, inclinazione `perspective` che segue il puntatore, sfondo con luce calda.
 - **Chiusura:** sezione scura con gli stessi anelli 3D dell'hero, continua nel piede scuro; la testata resta scura fino in fondo.
+
+### Rifinitura v2.3 (2026-10-08)
+
+- **Leggibilita' dei titoli:** Bodoni Moda con asse ottico scelto a mano (`font-optical-sizing: none`, `opsz` 40 sul titolo grande, 22 sui h2, 14 su h3 e titoli piccoli) e peso 450-500: i fili non spariscono. Oro del testo `--gold-text: #735522`, oro profondo `--gold-deep: #66491A` sui fondi chiari.
+- **Stimatore:** sezione scura. Domanda in Bodoni grande, risposte a righe (numero 01-06, filo sottile, cerchio a destra); al passaggio la riga prende una sfumatura dorata e si sposta; selezionata diventa crema con testo scuro e segno di spunta. Filo di avanzamento dorato.
+- **Righe scure che si accendono (regole, numeri):** al passaggio diventano crema con testo scuro, oro profondo e pesi maggiori.

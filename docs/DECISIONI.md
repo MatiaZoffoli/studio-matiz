@@ -98,4 +98,7 @@ Ogni scelta presa da Matia, con la data e il motivo. Si aggiorna nel momento in 
 | 2026-10-08 | Anelli d'ottone in 3D anche nella chiusura (sezione scura 'Parliamone'), che prosegue nel piede scuro | Matia
 | 2026-10-08 | Stimatore con spessore: scheda con bordo estruso, riflesso, filo dorato in alto e leggera inclinazione che segue il puntatore, su sfondo con luce calda | Matia
 | 2026-10-08 | Logo del piede corretto (proporzioni) | Matia
+| 2026-10-08 | Bodoni Moda resta, ma si sceglie a mano il disegno per misura: fili piu' robusti sui titoli piccoli e medi (opsz 14-22), solo il titolo grande resta fine (opsz 40); peso 450-500; oro del testo piu' scuro per il contrasto. Se non bastasse, sostituto elegante ma piu' leggibile | Matia (difficile da leggere, non perderlo)
+| 2026-10-08 | Stimatore ridisegnato: sezione scura, domande grandi in Bodoni, risposte a righe numerate con filo sottile, riga che si accende al passaggio e diventa crema con segno di spunta alla scelta; niente scheda inclinata ne' spessore | Matia (l'effetto scheda 3D non piaceva)
+| 2026-10-08 | Righe scure che diventano crema al passaggio: testo scuro e pieno, oro profondo (#66491A) al posto dell'oro chiaro | Matia (poca leggibilita' dell'oro sul bianco)
 | 2026-10-07 | La struttura del progetto vive nei file `.md` della cartella (CLAUDE.md, README, docs/) e va tenuta aggiornata quando emerge un'informazione | Matia: il contesto crescera' molto e serve ordine |
