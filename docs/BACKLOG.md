@@ -78,6 +78,8 @@ I due prospetti **non si contattano ancora** (decisione di Matia). Si contattano
 - [ ] **Logo suite:** scegliere se l'opzione 1 e' quella definitiva e farla vettorializzare (SVG) con versioni chiara e scura
 - [ ] **Cancellare la vecchia cartella in OneDrive** (`Documents\MZ Business Consultancy`) dopo che Matia ha controllato la nuova
 - [ ] **Archivio remoto privato** del repository (per esempio GitHub) come copia di sicurezza fuori dal computer
+- [ ] **Dashboard dei tre numeri per il resoconto mensile** (visite, richieste ricevute, prenotazioni dal sito): scegliere la fonte (Google Analytics, Plausible o simile, piu' i contatti dello stimatore e le prenotazioni del calendario), raccogliere i dati ogni mese in automatico e compilare il resoconto (bozza che Matia rivede, vedi modelli/resoconto-mensile.html). Decidere se e' una pagina riservata per cliente. Da fare quando c'e' il primo cliente (2026-10-09)
+
 ## Idee da tenere
 
 - Mini-analisi di un solo aspetto (ad esempio il menu da telefono) come assaggio dopo il primo incontro
