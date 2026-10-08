@@ -1,0 +1,51 @@
+/* Documenti dello studio (preventivo, accordo): stile del sito, pensato per la stampa su A4 */
+@import url("https://fonts.googleapis.com/css2?family=Bodoni+Moda:opsz,wght@6..96,400..700&family=Manrope:wght@300;400;500;600&display=swap");
+:root { --paper: #F7F3EC; --card: #FBF9F4; --ink: #241E1A; --soft: #6B6057; --line: rgba(36, 30, 26, .18); --gold: #A8854F; --gold-text: #735522; --gold-deep: #66491A; --night: #161210; --tint: #F1E9DA; }
+@page { size: A4; margin: 0; }
+* { box-sizing: border-box; }
+html { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+body { margin: 0; background: #d9d2c5; color: var(--ink); font: 300 9.6pt/1.55 "Manrope", system-ui, sans-serif; }
+.sheet { width: 210mm; min-height: 297mm; margin: 0 auto 8mm; padding: 17mm 18mm 20mm; background: #fff; position: relative; page-break-after: always; break-after: page; }
+.sheet:last-child { margin-bottom: 0; page-break-after: auto; break-after: auto; }
+@media print { body { background: none; } .sheet { margin: 0; } }
+h1, h2, h3 { font-family: "Bodoni Moda", Georgia, serif; font-optical-sizing: none; font-weight: 450; margin: 0; letter-spacing: -.01em; }
+h1 { font-variation-settings: "opsz" 40; font-size: 30pt; line-height: 1; }
+h2 { font-variation-settings: "opsz" 18; font-size: 14pt; font-weight: 500; line-height: 1.15; }
+h3 { font-variation-settings: "opsz" 14; font-size: 11pt; font-weight: 600; }
+p { margin: 0; }
+.top { display: flex; justify-content: space-between; align-items: flex-start; padding-bottom: 6mm; border-bottom: .3mm solid var(--ink); }
+.top img { height: 14mm; width: auto; }
+.top .meta { text-align: right; font-size: 8.4pt; line-height: 1.6; color: var(--soft); }
+.top .meta b { color: var(--ink); font-weight: 600; }
+.eyebrow { font: 600 6.8pt/1 "Manrope", sans-serif; letter-spacing: .2em; text-transform: uppercase; color: var(--gold-text); }
+.titolo { margin: 8mm 0 6mm; display: flex; justify-content: space-between; align-items: flex-end; gap: 10mm; }
+.titolo h1 em { font-style: normal; color: var(--gold-text); }
+.titolo .num { text-align: right; font-size: 8.6pt; color: var(--soft); line-height: 1.6; }
+.titolo .num b { color: var(--ink); font-weight: 600; }
+.due { display: grid; grid-template-columns: 1fr 1fr; gap: 8mm; padding: 4.5mm 0; border-top: .2mm solid var(--line); border-bottom: .2mm solid var(--line); margin-bottom: 6mm; }
+.due .eyebrow { display: block; margin-bottom: 1.6mm; }
+.sez { display: grid; grid-template-columns: 11mm 1fr; gap: 0 4mm; margin-bottom: 5mm; break-inside: avoid; }
+.sez .n { font: 600 7pt/1.2 "Manrope", sans-serif; letter-spacing: .14em; color: var(--gold-text); padding-top: 1.4mm; }
+.sez h2 { margin-bottom: 1.6mm; }
+.sez ul { margin: 1.2mm 0 0; padding: 0; list-style: none; }
+.sez li { position: relative; padding-left: 4.2mm; margin: .6mm 0; }
+.sez li::before { content: ""; position: absolute; left: 0; top: 2.3mm; width: 2.2mm; height: .25mm; background: var(--gold); }
+.sez p + p { margin-top: 1.4mm; }
+.f { background: var(--tint); border-bottom: .25mm solid var(--gold); padding: 0 1mm; -webkit-box-decoration-break: clone; box-decoration-break: clone; }
+.nota { color: var(--soft); font-size: 8.4pt; }
+table { width: 100%; border-collapse: collapse; margin: 1mm 0 1.5mm; }
+th { font: 600 6.8pt/1 "Manrope", sans-serif; letter-spacing: .16em; text-transform: uppercase; text-align: left; color: var(--soft); padding: 1.6mm 0; border-bottom: .3mm solid var(--ink); }
+td { padding: 2mm 0; border-bottom: .2mm solid var(--line); }
+td:last-child, th:last-child { text-align: right; }
+tr.tot td { border-bottom: 0; border-top: .3mm solid var(--ink); font-weight: 600; padding-top: 2.6mm; }
+tr.tot td:last-child { font-family: "Bodoni Moda", serif; font-variation-settings: "opsz" 14; font-size: 14pt; }
+.firme { display: grid; grid-template-columns: 1fr 1fr; gap: 14mm; margin-top: 9mm; }
+.firme div { border-top: .25mm solid var(--ink); padding-top: 1.6mm; font-size: 8pt; color: var(--soft); }
+.piede { position: absolute; left: 18mm; right: 18mm; bottom: 9mm; display: flex; justify-content: space-between; font-size: 7pt; color: var(--soft); border-top: .2mm solid var(--line); padding-top: 2mm; }
+.bozza { color: #8C2F1B; font-weight: 600; letter-spacing: .1em; text-transform: uppercase; }
+.art { margin-bottom: 4.2mm; break-inside: avoid; }
+.art h3 { margin-bottom: 1mm; }
+.art p, .art li { font-size: 9.2pt; }
+.art ul { margin: 1mm 0 0; padding-left: 4.5mm; }
+.art li { margin: .5mm 0; }
+.parti { padding: 4mm 0; border-top: .2mm solid var(--line); border-bottom: .2mm solid var(--line); margin-bottom: 5mm; }
