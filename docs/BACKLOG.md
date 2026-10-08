@@ -71,6 +71,13 @@ I due prospetti **non si contattano ancora** (decisione di Matia). Si contattano
 - [ ] **Font e librerie in locale** (Bodoni Moda, Manrope, GSAP) prima di pubblicare
 - [ ] **Accessibilita':** controllare i contrasti dell'oro sul chiaro, il comportamento con tastiera nelle pagine dei servizi, "riduci movimento"
 - [ ] Idee: una seconda immagine sovrapposta nell'"Chi sono" come nei riferimenti, sezione "lavori" quando ci saranno i primi clienti, scorrimento morbido della pagina
+- [ ] (P) **Immagini vere al posto dei segnaposto:** fotografia di Cesenatico per la fascia `#costa` (ora `assets/coast.svg`), ritratto di Matia, schermate o mockup di siti reali
+- [ ] **Prestazioni del 3D** su un telefono vero e su un portatile medio (Three.js, pixel ratio limitato a 2). Se pesa, versione piu' leggera o immagine fissa su telefono
+- [ ] **Ospitare Three.js in locale** insieme a font e GSAP (ora da jsDelivr; la versione 0.160 e' l'ultima con il file "classico", poi serve il formato a moduli)
+- [ ] **Colore e luce nei blocchi scuri** ("casi" e "regole"): oggi sono piu' piatti dell'hero. Possibile secondo oggetto 3D o luce calda animata
+- [ ] **Logo suite:** scegliere se l'opzione 1 e' quella definitiva e farla vettorializzare (SVG) con versioni chiara e scura
+- [ ] **Cancellare la vecchia cartella in OneDrive** (`Documents\MZ Business Consultancy`) dopo che Matia ha controllato la nuova
+- [ ] **Archivio remoto privato** del repository (per esempio GitHub) come copia di sicurezza fuori dal computer
 ## Idee da tenere
 
 - Mini-analisi di un solo aspetto (ad esempio il menu da telefono) come assaggio dopo il primo incontro

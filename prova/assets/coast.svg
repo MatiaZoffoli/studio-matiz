@@ -1,0 +1,69 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" preserveAspectRatio="xMidYMid slice">
+  <!-- Segnaposto: tramonto sulla costa romagnola, da sostituire con una fotografia vera -->
+  <defs>
+    <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#150F1A"/>
+      <stop offset=".28" stop-color="#3A1F36"/>
+      <stop offset=".5" stop-color="#8E3A4A"/>
+      <stop offset=".64" stop-color="#D8603F"/>
+      <stop offset=".76" stop-color="#F29A48"/>
+      <stop offset=".84" stop-color="#FFD08A"/>
+    </linearGradient>
+    <radialGradient id="sun" cx=".5" cy=".5" r=".5">
+      <stop offset="0" stop-color="#FFF6DC"/>
+      <stop offset=".35" stop-color="#FFDB92"/>
+      <stop offset="1" stop-color="#FFB45A" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="halo" cx=".5" cy=".5" r=".5">
+      <stop offset="0" stop-color="#FFC774" stop-opacity=".75"/>
+      <stop offset="1" stop-color="#FF8E4A" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="sea" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#6B3A52"/>
+      <stop offset=".25" stop-color="#2F2842"/>
+      <stop offset="1" stop-color="#0D0E1B"/>
+    </linearGradient>
+    <linearGradient id="cloud" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#FF9C6B" stop-opacity="0"/>
+      <stop offset=".5" stop-color="#FFB27E" stop-opacity=".55"/>
+      <stop offset="1" stop-color="#FF9C6B" stop-opacity="0"/>
+    </linearGradient>
+    <linearGradient id="glint" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#FFD08A" stop-opacity="0"/>
+      <stop offset=".5" stop-color="#FFE3B0" stop-opacity=".9"/>
+      <stop offset="1" stop-color="#FFD08A" stop-opacity="0"/>
+    </linearGradient>
+  </defs>
+  <rect width="1600" height="900" fill="url(#sky)"/>
+  <g fill="#FFEFD0" opacity=".7">
+    <circle cx="180" cy="90" r="1.6"/><circle cx="420" cy="140" r="1.2"/><circle cx="640" cy="60" r="1.4"/><circle cx="900" cy="110" r="1"/><circle cx="1180" cy="70" r="1.5"/><circle cx="1420" cy="150" r="1.2"/><circle cx="1530" cy="60" r="1"/><circle cx="90" cy="210" r="1"/>
+  </g>
+  <g>
+    <ellipse cx="420" cy="430" rx="360" ry="9" fill="url(#cloud)"/>
+    <ellipse cx="1180" cy="380" rx="420" ry="11" fill="url(#cloud)"/>
+    <ellipse cx="760" cy="500" rx="300" ry="7" fill="url(#cloud)"/>
+    <ellipse cx="1360" cy="520" rx="260" ry="6" fill="url(#cloud)"/>
+    <ellipse cx="200" cy="560" rx="230" ry="6" fill="url(#cloud)"/>
+  </g>
+  <circle cx="1020" cy="650" r="340" fill="url(#halo)"/>
+  <circle cx="1020" cy="650" r="92" fill="url(#sun)"/>
+  <rect y="660" width="1600" height="240" fill="url(#sea)"/>
+  <rect y="659" width="1600" height="2" fill="#FFD9A0" opacity=".85"/>
+  <g fill="url(#glint)">
+    <rect x="930" y="668" width="180" height="3"/><rect x="900" y="680" width="240" height="3"/><rect x="940" y="693" width="150" height="3"/>
+    <rect x="880" y="708" width="270" height="3"/><rect x="930" y="725" width="170" height="3"/><rect x="860" y="744" width="300" height="3"/>
+    <rect x="920" y="765" width="190" height="3"/><rect x="840" y="788" width="330" height="3"/>
+  </g>
+  <g fill="#ffffff" opacity=".07">
+    <rect x="60" y="690" width="260" height="2"/><rect x="1300" y="700" width="240" height="2"/><rect x="420" y="730" width="300" height="2"/><rect x="1250" y="760" width="280" height="2"/><rect x="90" y="790" width="220" height="2"/>
+  </g>
+  <!-- spiaggia in primo piano con ombrelloni -->
+  <path d="M0 850 C300 830 700 842 1100 836 C1350 832 1500 840 1600 836 V900 H0Z" fill="#0B0809"/>
+  <g fill="#0B0809" stroke="#0B0809">
+    <g transform="translate(180 835)"><path d="M-62 0 Q0 -58 62 0 Q31 -10 0 0 Q-31 -10 -62 0Z"/><rect x="-1.6" y="-4" width="3.2" height="46" stroke="none"/></g>
+    <g transform="translate(420 842) scale(.82)"><path d="M-62 0 Q0 -58 62 0 Q31 -10 0 0 Q-31 -10 -62 0Z"/><rect x="-1.6" y="-4" width="3.2" height="46" stroke="none"/></g>
+    <g transform="translate(1260 838)"><path d="M-62 0 Q0 -58 62 0 Q31 -10 0 0 Q-31 -10 -62 0Z"/><rect x="-1.6" y="-4" width="3.2" height="46" stroke="none"/></g>
+    <g transform="translate(1480 846) scale(.9)"><path d="M-62 0 Q0 -58 62 0 Q31 -10 0 0 Q-31 -10 -62 0Z"/><rect x="-1.6" y="-4" width="3.2" height="46" stroke="none"/></g>
+    <g transform="translate(700 850) scale(.7)"><path d="M-62 0 Q0 -58 62 0 Q31 -10 0 0 Q-31 -10 -62 0Z"/><rect x="-1.6" y="-4" width="3.2" height="46" stroke="none"/></g>
+  </g>
+</svg>

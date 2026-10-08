@@ -314,3 +314,15 @@ Il resto di questo file descrive il sistema v1 (righello, ottone e petrolio, amb
 **Componenti:** pulsante a pillola con contorno, disegnato da una penna stilografica a pennino largo e poi riempito d'inchiostro (variante chiara sulle sezioni scure); link con sottolineatura; pagine dei servizi (arte su sabbia a sinistra, pannello scuro a destra con "Il problema" e "Cosa faccio") che scorrono da destra a sinistra con prospettiva; righe del percorso che si accendono; sezione scura con luce calda; stimatore su scheda chiara con campi a filo.
 
 **Regole:** niente ombre pesanti ne' bagliori; un solo accento (champagne) usato con parsimonia; i titoli sono sempre Bodoni, mai grassetto; il movimento serve a mostrare (disegno che si traccia, pagine che scorrono, numero che sale), mai a decorare; con "riduci movimento" la sezione dei servizi diventa una pila di card.
+
+### Rifinitura v2.1 (2026-10-08, sera): contrasto, volume, colore
+
+Feedback di Matia: il sito era "flat", il corsivo difficile da leggere, servono immagini e colori "crispy" ma eleganti (riferimento: Renova in `design-ideas/`).
+
+- **Corsivo tolto dai titoli:** la parola chiave resta in tondo e diventa dorata (`--gold-text` su chiaro, `--gold-light` su scuro). Il corsivo non si usa piu' nei titoli ne' nei numeri.
+- **Hero scuro con anelli d'ottone in 3D** (Three.js, `#heroGl`): tre fasce di ottone con riflessi veri e una linea di luce interna, che ruotano piano e seguono il mouse e lo scroll. Ambiente generato da un canvas con pannelli di luce calda. Alternativa senza WebGL: due anelli in CSS. Con "riduci movimento" il disegno e' fermo.
+- **Fascia fotografica** (`#costa`, `prova/assets/coast.svg`): tramonto sulla costa con cielo prugna, corallo e ambra. E' un **segnaposto**, da sostituire con una fotografia vera di Cesenatico. Scorre piu' piano della pagina.
+- **Pagine dei servizi:** arte su fondo scuro con alone caldo e linee chiare con tratti dorati luminosi; scheda a destra chiara. Piu' contrasto tra i due lati.
+- **Logo:** si usa il logo vero della suite (`logo/logo-suite-opt-1`): `prova/assets/logo-lockup.png` (scuro) e `logo-lockup-light.png` (chiaro), `logo-seal.png` e `logo-seal-light.png`. La testata passa da una versione all'altra secondo lo sfondo.
+- **Ritmo:** hero scuro, fascia a colori, pagine chiare, blocco scuro caldo.
+- **Da fare:** colori dei blocchi scuri piu' ricchi (luce calda anche nel blocco "casi" e "regole"), un possibile secondo colore profondo, immagini vere.

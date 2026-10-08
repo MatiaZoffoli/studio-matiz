@@ -1,4 +1,6 @@
-# MZ Business Consultancy
+# Studio Matiz
+
+**Posizione del progetto (dal 2026-10-08):** `C:\Users\gisel\dev\studio-matiz`, un repository git. Prima stava in OneDrive (`Documents\MZ Business Consultancy`): quella cartella e' una vecchia copia, da non usare e da cancellare quando Matia ha controllato che tutto sia a posto. Il nome "MZ Business Consultancy" era provvisorio.
 
 Questo file e' la memoria permanente del progetto. Si legge all'apertura di ogni sessione e si aggiorna nel momento in cui emerge un'informazione nuova, non a fine lavoro. Le parti marcate **[DA DEFINIRE]** sono domande aperte, non fatti.
 
@@ -155,7 +157,7 @@ Ipotesi di Matia, da validare, per i progetti web:
 
 ## 7. Marketing e acquisizione clienti **[DA DEFINIRE]**
 
-- Nome e identita' del brand (il nome di cartella "MZ Business Consultancy" e' provvisorio, non e' una decisione). Nessun nome ufficiale ancora. **Brief, personalita', direzioni di nome, direzione visiva e verifica dei domini in `docs/BRAND.md`.**
+- Nome e identita' del brand (il nome provvisorio "MZ Business Consultancy" e' superato: il nome e' Studio Matiz). **Brief, personalita', direzioni di nome, direzione visiva e verifica dei domini in `docs/BRAND.md`.**
 - **Decisioni di brand gia' prese da Matia (2026-10-08):** il nome puo' essere legato alla sua persona; l'AI non va nel nome; il messaggio e' "consulenza per le piccole imprese, su misura"; colori caldi (marroni, crema, bianchi, grigi), equilibrio, geometria e numeri ma accogliente; l'AI si presenta con attenzione, senza spaventare.
 - **Feedback di Matia (2026-10-08):** "Studio Zoffoli" non e' male. La frase "Consulenza su misura per le piccole imprese" e' troppo generica: deve parlare di automazione e di design e sviluppo di soluzioni. La palette era troppo flat e pesante (serve brillantezza, vita, un tocco di lusso) e il carattere con le grazie e' noioso (vuole moderno, tagliente, alternativo, ma leggibile). Gli aggettivi preciso, accogliente e concreto vanno bene come tono delle pagine ma **non fanno parte del brand**.
 - **Decisioni di brand prese (2026-10-08, dettagli in `docs/BRAND.md`):** payoff "Soluzioni su misura." e descrittore "Progettazione e sviluppo di siti, automazioni e strumenti digitali per piccole imprese."; direzione grafica A (ottone e petrolio, Instrument Serif + Manrope, titoli e numeri in JetBrains Mono) con un tocco di ambra, da valutare in una sezione scura separata.

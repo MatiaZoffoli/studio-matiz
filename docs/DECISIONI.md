@@ -92,4 +92,6 @@ Ogni scelta presa da Matia, con la data e il motivo. Si aggiorna nel momento in 
 | 2026-10-08 | Tariffa oraria extra confermata: 50 euro l'ora | Matia |
 | 2026-10-08 | Primo cliente (societa' sportiva): lavoro gia' fatto a una tantum 500-800 euro, canone da decidere dopo. Cifra esatta e forma ancora da fissare con l'amico | Matia |
 | 2026-10-08 | Il caso 115 -> 450 iscritti puo' restare sul sito: il cliente e' d'accordo | Matia |
+| 2026-10-08 | Progetto spostato fuori da OneDrive, in `C:\Users\gisel\dev\studio-matiz` (con la cronologia git). La cartella in OneDrive e' una vecchia copia da cancellare dopo verifica | Matia |
+| 2026-10-08 | Grafica v2.1: hero scuro con anelli d'ottone in 3D, corsivo tolto dai titoli (parola chiave dorata in tondo), fascia a colori sulla costa (segnaposto), pagine dei servizi con arte scura e scheda chiara, logo vero della suite `logo-suite-opt-1` | Matia ("seguiamo le tue indicazioni") |
 | 2026-10-07 | La struttura del progetto vive nei file `.md` della cartella (CLAUDE.md, README, docs/) e va tenuta aggiornata quando emerge un'informazione | Matia: il contesto crescera' molto e serve ordine |

@@ -1,6 +1,6 @@
-# MZ Business Consultancy
+# Studio Matiz
 
-Il nome della cartella e' provvisorio: il brand non e' ancora scelto.
+Cartella del progetto: `C:\Users\gisel\dev\studio-matiz` (repository git, spostata da OneDrive il 2026-10-08). Il nome era "MZ Business Consultancy", provvisorio: il brand e' Studio Matiz.
 
 Consulenza per piccole e medie imprese italiane: siti web, menu digitali, assistenza continuativa e, dove serve, automazione e AI. Si parte dagli stabilimenti balneari e dai ristoranti della costa romagnola. Fondatore: Matia Zoffoli.
 
