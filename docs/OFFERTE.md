@@ -16,7 +16,7 @@ Data: 2026-10-07. Stato: **proposta di Claude, non decisa**. Ogni prezzo e' un'i
 Aggiunto su richiesta di Matia (2026-10-07). Una chiacchierata informale, di persona se serve, per conoscersi e capire la situazione del cliente. Qui il cliente vede che Matia e' una persona prima di essere un tecnico: ascolta, capisce il mestiere, parla in modo chiaro. E' il punto di forza dichiarato e va protetto.
 
 - **Costo per il cliente:** zero.
-- **Durata consigliata:** 30-45 minuti, con una fine chiara. Il tempo e' il tuo costo vero.
+- **Durata (decisa da Matia, 2026-10-09):** 1 ora, con una fine chiara. Il tempo e' il tuo costo vero.
 - **Esito:** il cliente decide se vuole il check-up. Nessun lavoro di analisi viene consegnato a questo stadio.
 - **Per non regalare lavoro:** durante l'incontro si ascolta e si fanno domande. Le soluzioni concrete si danno nel check-up, non al bar.
 
@@ -48,7 +48,7 @@ Una visita e una conversazione sul locale. Si guardano sito, menu, scheda Google
 **Precisazioni di Matia (2026-10-08):**
 - **"Qualche giorno" = 2-3 giorni lavorativi**, giudicato da Matia caso per caso.
 - **Prezzo del check-up: 200 euro**, scontabili dagli sviluppi successivi se il cliente firma qualcosa. Matia ha valutato anche 199 (consiglio di Claude: 200 tondo, un prezzo "da negozio" stona con un marchio curato e umano).
-- **Il primo incontro e' gratuito**, 30-45 minuti, per capire. Il check-up, se si prosegue, costa 200.
+- **Il primo incontro e' gratuito**, 1 ora, per capire. Il check-up, se si prosegue, costa 200.
 
 **Check-up gratuito di lancio (formula D), versione decisa il 2026-10-08:**
 - **Gratuito per amici e conoscenti, per ora**, in cambio di aiuto a costruire il brand e il business. Poi si valuta come va.

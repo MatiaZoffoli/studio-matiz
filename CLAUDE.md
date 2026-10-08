@@ -138,7 +138,7 @@ Ipotesi di Matia, da validare, per i progetti web:
 
 **Principio:** il canone mensile si giustifica per cio' che include in modo esplicito e per la disponibilita' reale. Va definito cosa comprende (aggiornamenti tecnici, backup, sicurezza, ore di modifiche contenuti, tempi di risposta) in modo che non sia un altro "50 euro per nulla".
 
-**Regole del check-up decise da Matia (2026-10-07 e 2026-10-08):** primo incontro gratuito di 30-45 minuti. Il check-up costa 200 euro, scontati dagli sviluppi successivi: sconto pieno se il cliente conferma sul momento o entro 2-3 giorni lavorativi, meta' entro 30 giorni, nulla oltre. **Per ora gratuito per amici e conoscenti** (in cambio di aiuto a costruire il brand), **a pagamento per chi arriva da un cliente gia' servito**. Il rapporto riporta sempre il valore. Dettagli in `docs/OFFERTE.md`.
+**Regole del check-up decise da Matia (2026-10-07 e 2026-10-08):** primo incontro offerto di 1 ora (durata cambiata il 2026-10-09, era 30-45 minuti). Il check-up costa 200 euro, scontati dagli sviluppi successivi: sconto pieno se il cliente conferma sul momento o entro 2-3 giorni lavorativi, meta' entro 30 giorni, nulla oltre. **Per ora gratuito per amici e conoscenti** (in cambio di aiuto a costruire il brand), **a pagamento per chi arriva da un cliente gia' servito**. Il rapporto riporta sempre il valore. Dettagli in `docs/OFFERTE.md`.
 
 **Regole del canone decise da Matia (2026-10-07):** poche ore incluse, salvo diversa definizione iniziale; **primo mese a ore illimitate** (rodaggio) per misurare l'uso e stimare il budget del resto dell'anno; le ore non usate si perdono; ore extra a tariffa oraria trasparente; risposta entro un giorno lavorativo. Dettagli e cifre in `docs/OFFERTE.md`.
 

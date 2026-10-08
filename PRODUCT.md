@@ -16,7 +16,7 @@ Titolari di piccole attività della costa romagnola, in particolare stabilimenti
 
 ## Product Purpose
 
-Matia Zoffoli progetta e sviluppa siti, automazioni e strumenti digitali su misura per piccole imprese, e li tiene aggiornati nel tempo. Successo per questa pagina: un titolare capisce chi è Matia e prenota il primo incontro gratuito di 30-45 minuti.
+Matia Zoffoli progetta e sviluppa siti, automazioni e strumenti digitali su misura per piccole imprese, e li tiene aggiornati nel tempo. Successo per questa pagina: un titolare capisce chi è Matia e prenota il primo incontro offerto di un'ora.
 
 ## Positioning
 
@@ -24,7 +24,7 @@ Un rapporto umano e una persona raggiungibile, non un'agenzia: il cliente non è
 
 ## Operating Context
 
-Percorso del cliente: primo incontro gratuito (30-45 min), check-up (200 euro, scalati dal lavoro successivo), presenza online su misura (sito/menu), cura continua (canone mensile). Il primo mese di cura continua è a ore illimitate (rodaggio). Risposta entro un giorno lavorativo.
+Percorso del cliente: primo incontro offerto (1 ora), check-up (200 euro, scalati dal lavoro successivo), presenza online su misura (sito/menu), cura continua (canone mensile). Il primo mese di cura continua è a ore illimitate (rodaggio). Risposta entro un giorno lavorativo.
 
 ## Capabilities and Constraints
 

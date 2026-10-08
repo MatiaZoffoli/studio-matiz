@@ -20,7 +20,7 @@ L'incontro **non e' una consulenza gratuita.** Si ascolta e si fanno domande. Le
 - Scegliere luogo e orario **adatti al loro lavoro**: per uno stabilimento fuori stagione e' semplice, in stagione e' meglio prima dell'apertura o a meta' pomeriggio. Per un ristorante, tra il servizio di pranzo e quello di cena.
 - Portare poco: un quaderno, il telefono, un esempio di lavoro fatto (il caso della societa' sportiva con i numeri).
 
-## Durata e struttura (30-45 minuti)
+## Durata e struttura (1 ora, decisa il 2026-10-09)
 
 | Minuti | Fase | Cosa si fa |
 |---|---|---|
@@ -56,7 +56,7 @@ L'incontro **non e' una consulenza gratuita.** Si ascolta e si fanno domande. Le
 - **Non parlare di tecnologia o di AI** se il titolare non ci arriva da solo. Si parla di menu aggiornato, di meno telefonate, di piu' prenotazioni.
 - **Non fare preventivi al volo.** Si dice cosa serve per darne uno serio.
 - **Non promettere** tempi o risultati che non si controllano.
-- **Non andare oltre 45 minuti.** Se il titolare vuole continuare, e' un buon segno: si fissa il check-up.
+- **Non andare oltre l'ora.** Se il titolare vuole continuare, e' un buon segno: si fissa il check-up.
 
 ## Segnali da annotare
 
