@@ -1254,12 +1254,13 @@ h3, .goals .lab, .terms .fig, .meter__row b, .faq summary, .est__step legend, .e
     if (!cv || !hero || !window.THREE) return;
     var T = window.THREE, renderer;
     try { renderer = new T.WebGLRenderer({ canvas: cv, antialias: true, alpha: true, powerPreference: 'low-power' }); } catch (e) { return; }
-    renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, 2));
+    var coarse = !fine;
+    renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, coarse ? 1.5 : 2));
     renderer.outputColorSpace = T.SRGBColorSpace;
     renderer.toneMapping = T.ACESFilmicToneMapping; renderer.toneMappingExposure = 1.15;
     var scene = new T.Scene(), camera = new T.PerspectiveCamera(32, 1, .1, 60); camera.position.set(0, 0, 10);
 
-    /* l'ambiente e' una stanza buia con pannelli di luce calda: e' quello che fa brillare l'ottone */
+    /* ambiente: una stanza buia con pannelli di luce calda, per far brillare l'ottone */
     var ec = document.createElement('canvas'); ec.width = 1024; ec.height = 512;
     var g = ec.getContext('2d'), gr = g.createLinearGradient(0, 0, 0, 512);
     gr.addColorStop(0, '#1a130e'); gr.addColorStop(.5, '#0b0807'); gr.addColorStop(1, '#241a12');
@@ -1272,53 +1273,165 @@ h3, .goals .lab, .terms .fig, .meter__row b, .faq summary, .est__step legend, .e
     var tex = new T.CanvasTexture(ec); tex.mapping = T.EquirectangularReflectionMapping; tex.colorSpace = T.SRGBColorSpace;
     var pm = new T.PMREMGenerator(renderer);
     scene.environment = pm.fromEquirectangular(tex).texture; tex.dispose(); pm.dispose();
-    var key = new T.DirectionalLight(0xffe2b0, 1.4); key.position.set(-4, 5, 6); scene.add(key);
+    var dl = new T.DirectionalLight(0xffe2b0, 1.1); dl.position.set(-4, 5, 6); scene.add(dl);
+    /* la luce che segue il puntatore */
+    var pl = new T.PointLight(0xffc27a, 0, 0, 1.5); scene.add(pl);
 
     var brass = new T.MeshStandardMaterial({ color: 0xd2a85f, metalness: 1, roughness: .2, envMapIntensity: 1.5, side: T.DoubleSide });
-    var glow = new T.MeshBasicMaterial({ color: 0xfff1d4 });
-    var group = new T.Group(); scene.add(group);
-    function band(r, h, tilt, speed) {
-      var inner = new T.Group();
-      inner.add(new T.Mesh(new T.CylinderGeometry(r, r, h, 160, 1, true), brass));
-      var top = new T.Mesh(new T.TorusGeometry(r, .022, 16, 200), brass); top.rotation.x = Math.PI / 2; top.position.y = h / 2; inner.add(top);
-      var bot = new T.Mesh(new T.TorusGeometry(r, .022, 16, 200), brass); bot.rotation.x = Math.PI / 2; bot.position.y = -h / 2; inner.add(bot);
-      var led = new T.Mesh(new T.TorusGeometry(r - .03, .013, 12, 200), glow); led.rotation.x = Math.PI / 2; led.position.y = -h / 2 + .02; inner.add(led);
-      var wrap = new T.Group(); wrap.add(inner); wrap.rotation.set(tilt[0], tilt[1], tilt[2]); wrap.userData = { speed: speed, base: tilt.slice() };
-      group.add(wrap); return wrap;
-    }
-    var rings = [band(2.55, .24, [.6, 0, .35], .11), band(1.7, .16, [-.5, .4, -.6], -.15), band(3.4, .09, [1.15, 0, -.25], .07)];
+    var brassSoft = new T.MeshStandardMaterial({ color: 0xe0b76c, metalness: 1, roughness: .12, envMapIntensity: 1.8 });
+    var ledMat = new T.MeshBasicMaterial({ color: 0xfff1d4 });
+    var root = new T.Group(); scene.add(root);
 
-    var W = 1, H = 1, mx = 0, my = 0, tx = 0, ty = 0, visible = true, t0 = performance.now(), wide = true;
+    /* tre anelli collegati da perni, come uno strumento d'astronomia: ruotano uno dentro l'altro */
+    function band(r, h) {
+      var m = new T.Group();
+      m.add(new T.Mesh(new T.CylinderGeometry(r, r, h, 160, 1, true), brass));
+      [h / 2, -h / 2].forEach(function (y) { var t = new T.Mesh(new T.TorusGeometry(r, .022, 16, 220), brass); t.rotation.x = Math.PI / 2; t.position.y = y; m.add(t); });
+      var led = new T.Mesh(new T.TorusGeometry(r - .03, .012, 12, 220), ledMat); led.rotation.x = Math.PI / 2; led.position.y = -h / 2 + .02; m.add(led);
+      return m;
+    }
+    function pivot(parent, x, y, z, r) { var s = new T.Mesh(new T.SphereGeometry(r || .085, 24, 24), brassSoft); s.position.set(x, y, z); parent.add(s); return s; }
+    function rod(parent, a, b) {
+      var A = new T.Vector3(a[0], a[1], a[2]), B = new T.Vector3(b[0], b[1], b[2]), len = A.distanceTo(B);
+      var m = new T.Mesh(new T.CylinderGeometry(.03, .03, len, 12), brassSoft);
+      m.position.copy(A).add(B).multiplyScalar(.5); m.quaternion.setFromUnitVectors(new T.Vector3(0, 1, 0), B.clone().sub(A).normalize()); parent.add(m);
+    }
+    var RA = 3.0, RB = 2.55, RC = 2.1;
+    var gA = new T.Group(); root.add(gA); gA.add(band(RA, .22));
+    var gB = new T.Group(); gA.add(gB); gB.add(band(RB, .17));
+    var gC = new T.Group(); gB.add(gC); gC.add(band(RC, .13));
+    [1, -1].forEach(function (s) {
+      pivot(gA, 0, 0, s * RA); rod(gA, [0, 0, s * RA], [0, 0, s * RB]); pivot(gB, 0, 0, s * RB, .07);
+      pivot(gB, s * RB, 0, 0); rod(gB, [s * RB, 0, 0], [s * RC, 0, 0]); pivot(gC, s * RC, 0, 0, .07);
+    });
+
+    /* al centro una rete neurale d'ottone: quattro strati di nodi, collegamenti sottili, impulsi che li percorrono */
+    var core = new T.Group(); root.add(core);
+    var layers = [[6, .55], [14, 1.05], [24, 1.52], [32, 1.92]], nodes = [], layerOf = [];
+    layers.forEach(function (L, li) {
+      var n = L[0], rad = L[1], off = Math.random() * 6.28;
+      for (var i = 0; i < n; i++) {
+        var yy = 1 - (i + .5) / n * 2, rr = Math.sqrt(1 - yy * yy), th = i * 2.399963 + off;
+        nodes.push(new T.Vector3(Math.cos(th) * rr * rad, yy * rad, Math.sin(th) * rr * rad)); layerOf.push(li);
+      }
+    });
+    var N = nodes.length, edges = [], seen = {};
+    function addEdge(a, b) { var k = a < b ? a + '_' + b : b + '_' + a; if (seen[k] || a === b) return; seen[k] = 1; edges.push([a, b]); }
+    function nearest(a, pred, k) {
+      var c = []; for (var j = 0; j < N; j++) if (j !== a && pred(j)) c.push([nodes[a].distanceTo(nodes[j]), j]);
+      c.sort(function (x, y) { return x[0] - y[0]; }); return c.slice(0, k).map(function (x) { return x[1]; });
+    }
+    for (var a = 0; a < N; a++) {
+      var li = layerOf[a];
+      if (li < 3) nearest(a, function (j) { return layerOf[j] === li + 1; }, li === 0 ? 4 : 2).forEach(function (j) { addEdge(a, j); });
+      nearest(a, function (j) { return layerOf[j] === li; }, 1).forEach(function (j) { addEdge(a, j); });
+    }
+    var E = edges.length;
+
+    /* nodi: sfere d'ottone */
+    var nodeMesh = new T.InstancedMesh(new T.SphereGeometry(1, 16, 16), brassSoft, N); core.add(nodeMesh);
+    var base = [], dummy = new T.Object3D();
+    for (var i = 0; i < N; i++) base.push(.045 + .028 * (layerOf[i] === 0 ? 1.4 : layerOf[i] === 3 ? .6 : 1) * Math.random());
+    /* collegamenti e luce dei nodi */
+    var ePos = new Float32Array(E * 6), eCol = new Float32Array(E * 6);
+    edges.forEach(function (e, i) { nodes[e[0]].toArray(ePos, i * 6); nodes[e[1]].toArray(ePos, i * 6 + 3); });
+    var eGeo = new T.BufferGeometry(); eGeo.setAttribute('position', new T.BufferAttribute(ePos, 3)); eGeo.setAttribute('color', new T.BufferAttribute(eCol, 3));
+    core.add(new T.LineSegments(eGeo, new T.LineBasicMaterial({ vertexColors: true, transparent: true, blending: T.AdditiveBlending, depthWrite: false })));
+    var spriteVS = 'attribute float aSize;attribute float aGlow;varying float vG;uniform float uScale;void main(){vG=aGlow;vec4 mv=modelViewMatrix*vec4(position,1.);gl_PointSize=aSize*uScale/(-mv.z);gl_Position=projectionMatrix*mv;}';
+    var spriteFS = 'varying float vG;uniform vec3 uColor;void main(){float d=length(gl_PointCoord-.5)*2.;float a=exp(-d*d*4.2)*vG;if(a<.01)discard;gl_FragColor=vec4(uColor*a,a);}';
+    function sprites(count, color) {
+      var geo = new T.BufferGeometry(), pos = new Float32Array(count * 3), sz = new Float32Array(count), gl = new Float32Array(count);
+      geo.setAttribute('position', new T.BufferAttribute(pos, 3)); geo.setAttribute('aSize', new T.BufferAttribute(sz, 1)); geo.setAttribute('aGlow', new T.BufferAttribute(gl, 1));
+      var mat = new T.ShaderMaterial({ vertexShader: spriteVS, fragmentShader: spriteFS, uniforms: { uScale: { value: 400 }, uColor: { value: new T.Color(color) } }, transparent: true, depthWrite: false, blending: T.AdditiveBlending });
+      var pts = new T.Points(geo, mat); pts.frustumCulled = false; core.add(pts); return { pts: pts, pos: pos, sz: sz, gl: gl, geo: geo, mat: mat };
+    }
+    var halo = sprites(N, 0xffc878);
+    for (i = 0; i < N; i++) { nodes[i].toArray(halo.pos, i * 3); halo.sz[i] = .5; }
+    var PN = 26, pulse = sprites(PN, 0xfff0cf), pulses = [];
+    for (i = 0; i < PN; i++) pulses.push({ e: (Math.random() * E) | 0, t: Math.random(), s: .25 + Math.random() * .4, rev: Math.random() < .5 });
+    pulse.mat.uniforms.uColor.value.set(0xfff0cf);
+    for (i = 0; i < PN; i++) pulse.sz[i] = .26;
+
+    var W = 1, H = 1, ptr = { x: 9, y: 9, on: false }, sm = { x: 9, y: 9 }, mx = 0, my = 0, visible = true, t0 = performance.now(), wide = true, glowAmt = 0;
+    var tmp = new T.Vector3(), c0 = new T.Color(0xd2a85f), c1 = new T.Color(0xfff2cf), col = new T.Color();
     function size() {
       W = hero.clientWidth; H = hero.clientHeight;
       renderer.setSize(W, H, false); camera.aspect = W / H; camera.updateProjectionMatrix();
       wide = W > 900;
-      group.position.set(wide ? o.x : 0, wide ? 0 : 2.1, 0); group.scale.setScalar(wide ? o.scale : .62);
-      draw(performance.now());
+      root.position.set(wide ? o.x : 0, wide ? 0 : 2.1, 0); root.scale.setScalar(wide ? o.scale : .56);
+      var u = renderer.domElement.height / (2 * Math.tan(camera.fov * Math.PI / 360));
+      halo.mat.uniforms.uScale.value = u; pulse.mat.uniforms.uScale.value = u;
+      draw(performance.now(), 0);
     }
+    var last = performance.now();
     function draw(now) {
+      var dt = Math.min(.05, (now - last) / 1000); last = now;
       var t = (now - t0) / 1000, off = Math.max(-1400, Math.min(1400, -hero.getBoundingClientRect().top));
-      mx += (tx - mx) * .06; my += (ty - my) * .06;
-      rings.forEach(function (r, i) {
-        r.rotation.y = r.userData.base[1] + (reduce ? .6 : t * r.userData.speed);
-        r.rotation.x = r.userData.base[0] + Math.sin(t * .35 + i) * .05;
-      });
-      group.rotation.y = mx * .35; group.rotation.x = my * .2 + off * .0007;
-      group.position.y += ((wide ? 0 : 2.1) - off * .004 - group.position.y) * .15;
+      /* puntatore: se non c'e' un mouse la luce vaga da sola */
+      var px = ptr.x, py = ptr.y;
+      if (!ptr.on) { px = Math.sin(t * .5) * .5; py = Math.cos(t * .37) * .35; }
+      glowAmt += ((ptr.on ? 1 : .45) - glowAmt) * .06;
+      sm.x += (px - sm.x) * .09; sm.y += (py - sm.y) * .09;
+      mx += (ptr.on ? ptr.x : 0) * .06 - mx * .06; my += (ptr.on ? ptr.y : 0) * .06 - my * .06;
+      /* movimento: anelli e rete ruotano, il blocco segue il puntatore */
+      gA.rotation.y = t * .09 + (reduce ? .5 : 0);
+      gB.rotation.z = t * .21;
+      gC.rotation.x = -t * .29;
+      core.rotation.y = -t * .12; core.rotation.x = Math.sin(t * .3) * .25;
+      root.rotation.y = mx * .55; root.rotation.x = -my * .3 + off * .0007;
+      root.position.y += ((wide ? 0 : 2.1) - off * .004 - root.position.y) * .15;
+      root.updateMatrixWorld(true);
+      /* luce del puntatore, nello spazio */
+      tmp.set(sm.x, sm.y, .5).unproject(camera).sub(camera.position).normalize();
+      pl.position.copy(camera.position).addScaledVector(tmp, (camera.position.z - 1.6) / -tmp.z);
+      pl.intensity = 70 * glowAmt;
+      /* vicinanza del puntatore a ogni nodo (in schermo) */
+      var asp = camera.aspect, k = 2 * .2 * .2;
+      var prox = new Float32Array(N);
+      for (var i = 0; i < N; i++) {
+        tmp.copy(nodes[i]).applyMatrix4(core.matrixWorld).project(camera);
+        var dx = (tmp.x - sm.x) * asp, dy = tmp.y - sm.y, d2 = dx * dx + dy * dy;
+        prox[i] = Math.exp(-d2 / k) * glowAmt;
+        var br = .55 + .25 * Math.sin(t * 1.6 + i * 1.7);
+        halo.gl[i] = Math.min(1.6, br * .5 + prox[i] * 1.3); halo.sz[i] = .42 + prox[i] * .9;
+        var sc = base[i] * (1 + prox[i] * .9 + .08 * Math.sin(t * 2 + i));
+        dummy.position.copy(nodes[i]).addScaledVector(nodes[i].clone().normalize(), .02 * Math.sin(t * .9 + i * 2.1));
+        dummy.scale.setScalar(sc); dummy.updateMatrix(); nodeMesh.setMatrixAt(i, dummy.matrix);
+        col.copy(c0).lerp(c1, Math.min(1, prox[i] * 1.2)); nodeMesh.setColorAt(i, col);
+      }
+      nodeMesh.instanceMatrix.needsUpdate = true; if (nodeMesh.instanceColor) nodeMesh.instanceColor.needsUpdate = true;
+      halo.geo.attributes.aGlow.needsUpdate = true; halo.geo.attributes.aSize.needsUpdate = true;
+      for (var e = 0; e < E; e++) {
+        var ia = edges[e][0], ib = edges[e][1], v = .1 + .08 * (layerOf[ia] === 0 ? 1 : 0) + Math.max(prox[ia], prox[ib]) * .9;
+        eCol[e * 6] = eCol[e * 6 + 3] = v * 1; eCol[e * 6 + 1] = eCol[e * 6 + 4] = v * .78; eCol[e * 6 + 2] = eCol[e * 6 + 5] = v * .42;
+      }
+      eGeo.attributes.color.needsUpdate = true;
+      /* impulsi di luce lungo i collegamenti */
+      for (i = 0; i < PN; i++) {
+        var p = pulses[i]; p.t += dt * p.s;
+        if (p.t >= 1) { p.t = 0; p.e = (Math.random() * E) | 0; p.rev = Math.random() < .5; p.s = .25 + Math.random() * .45; }
+        var A = nodes[edges[p.e][p.rev ? 1 : 0]], B = nodes[edges[p.e][p.rev ? 0 : 1]], f = p.t;
+        pulse.pos[i * 3] = A.x + (B.x - A.x) * f; pulse.pos[i * 3 + 1] = A.y + (B.y - A.y) * f; pulse.pos[i * 3 + 2] = A.z + (B.z - A.z) * f;
+        pulse.gl[i] = Math.sin(Math.PI * f) * 1.4;
+      }
+      pulse.geo.attributes.position.needsUpdate = true; pulse.geo.attributes.aGlow.needsUpdate = true;
       renderer.render(scene, camera);
     }
-    hero.addEventListener('pointermove', function (e) { var r = hero.getBoundingClientRect(); tx = (e.clientX - r.left) / r.width - .5; ty = (e.clientY - r.top) / r.height - .5; });
+    hero.addEventListener('pointermove', function (e) {
+      var r = hero.getBoundingClientRect(); ptr.x = ((e.clientX - r.left) / r.width) * 2 - 1; ptr.y = -(((e.clientY - r.top) / r.height) * 2 - 1); ptr.on = e.pointerType !== 'touch';
+    });
+    hero.addEventListener('pointerleave', function () { ptr.on = false; });
     if ('IntersectionObserver' in window) new IntersectionObserver(function (es) { visible = es[0].isIntersecting; }).observe(hero);
     window.addEventListener('resize', size);
     hero.classList.add('is-gl');
     size();
-    if (!reduce) (function loop(now) { requestAnimationFrame(loop); if (visible && !document.hidden) draw(now); })(performance.now());
+    if (!reduce) (function loop(now) { requestAnimationFrame(loop); if (visible && !document.hidden) draw(now); else last = now; })(performance.now());
     cv.addEventListener('webglcontextlost', function (e) { e.preventDefault(); hero.classList.remove('is-gl'); });
   }
 
   function initHero() {
-    makeRings($('#hero'), $('#heroGl'), { x: 3.5, scale: .86 });
-    makeRings($('#chiusura'), $('#closeGl'), { x: 4.3, scale: .7 });
+    makeRings($('#hero'), $('#heroGl'), { x: 2.1, scale: .76 });
+    makeRings($('#chiusura'), $('#closeGl'), { x: 4.2, scale: .62 });
 
   }
 

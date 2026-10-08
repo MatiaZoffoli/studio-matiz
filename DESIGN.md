@@ -338,3 +338,9 @@ Feedback di Matia: il sito era "flat", il corsivo difficile da leggere, servono 
 - **Leggibilita' dei titoli:** Bodoni Moda con asse ottico scelto a mano (`font-optical-sizing: none`, `opsz` 40 sul titolo grande, 22 sui h2, 14 su h3 e titoli piccoli) e peso 450-500: i fili non spariscono. Oro del testo `--gold-text: #735522`, oro profondo `--gold-deep: #66491A` sui fondi chiari.
 - **Stimatore:** sezione scura. Domanda in Bodoni grande, risposte a righe (numero 01-06, filo sottile, cerchio a destra); al passaggio la riga prende una sfumatura dorata e si sposta; selezionata diventa crema con testo scuro e segno di spunta. Filo di avanzamento dorato.
 - **Righe scure che si accendono (regole, numeri):** al passaggio diventano crema con testo scuro, oro profondo e pesi maggiori.
+
+### Oggetto 3D v2 (2026-10-08, sera)
+
+- **Struttura:** tre anelli annidati (raggi 3.0, 2.55, 2.1) collegati da perni e aste d'ottone, ognuno ruota attorno al proprio asse; al centro una rete neurale (nodi a sfere d'ottone su 4 strati, 76 nodi, circa 120 collegamenti sottili luminosi).
+- **Luce:** ambiente con pannelli caldi, luce direzionale, e una luce puntiforme calda che segue il puntatore. I nodi vicini al puntatore ingrandiscono, si accendono e hanno un alone; i collegamenti vicini si illuminano; 26 impulsi luminosi percorrono la rete. Senza mouse la luce vaga da sola.
+- **Movimento:** anelli e rete in rotazione continua e piu' marcata, il blocco si inclina seguendo il puntatore e lo scroll. Con `riduci movimento` resta un'immagine ferma.
