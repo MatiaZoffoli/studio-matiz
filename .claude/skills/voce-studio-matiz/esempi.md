@@ -60,6 +60,17 @@ Data: 2026-10-08. Matia ha giudicato sbagliati questi testi del sito ("non colpi
 - Lavoro da Cesenatico. Se sei in Romagna passo a trovarti, altrimenti ci vediamo a distanza.
 - Un tavolo a Cesenatico, oppure uno schermo: scegli tu.
 
+## Sezione "Quello che succede dopo la consegna" (2026-10-09)
+
+Scelte di Matia: titolo e apertura nella variante sobria; problema 3 sobria; problemi 1 e 2 dopo un secondo giro, perché l'immagine dell'abito non andava ("meglio una situazione o un meccanismo che andava bene e ora va curato").
+
+- **Titolo:** Quello che succede dopo la consegna. (prima: "Dove si ferma, di solito.")
+- **Apertura:** Costruire un sito richiede qualche settimana. Tenerlo vivo richiede attenzione per anni, e di solito è quella che manca.
+- **1. Va bene, poi non più.** Il giorno della consegna tutto funziona. Poi l'attività cambia, e un sito fermo a quel giorno smette piano piano di servire. *(prima: "Si ferma.")*
+- **2. Nessuno lo prende in carico.** Dopo la consegna il sito non è più di nessuno: le modifiche aspettano, e nel canone non è scritto cosa spetta a te. *(prima: "Nessuno risponde.")*
+- **3. Non rende.** Le visite arrivano, le richieste molto meno, e nessuno ha mai guardato i numeri per capire in quale punto si perdono.
+- **Bocciato:** "Perde la forma" e "calza sempre meno" (abito letterale), "Un sito è un lavoro che non finisce con la consegna" (titolo-slogan).
+
 ## Altre cose da riscrivere, per lo stesso metodo
 
 Le voci del menu ("Servizi", "Percorso", "Condizioni", "Domande"), il pulsante "Prenota il primo incontro", le tre righe del piede della testata, i titoli di sezione, i testi dei quattro servizi, le condizioni, la FAQ, "Chi sono", la chiusura "Parliamone." e tutti i microtesti dello stimatore. Si procede per sezione: tre varianti dei testi forti, scelta di Matia, poi applicazione alla pagina.

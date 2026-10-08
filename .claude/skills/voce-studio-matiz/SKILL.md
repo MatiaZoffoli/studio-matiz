@@ -81,6 +81,8 @@ Matia lo ha chiesto così (2026-10-08): ispirazione da atelier, ma **capibile su
 - **Il pulsante principale resta chiaro**: "Prenota il primo incontro" va bene perché dice cosa succede. Si cambia ciò che gli sta intorno.
 - **Forma impersonale nei blocchi descrittivi.** Le frasi che presentano lo studio e i suoi servizi (frase dell'hero, righe informative, etichette) non dicono "io": "Costruzione di siti, menu digitali e automazioni...", "Risposte rapide e dirette". L'"io" resta dove si parla di metodo, impegni, Chi sono, email e messaggi.
 - **"Supporto continuo", "assistenza continua"** al posto di "una persona che risponde". Rapidità e contatto diretto si dicono con parole sul servizio, non sulla persona.
+- **Niente abiti, cuciture, taglio.** Matia ha bocciato l'immagine dell'abito che "calza" per descrivere i problemi: troppo letterale. Per spiegare un problema preferisce la **situazione** o il **meccanismo**: una cosa che andava bene e che ora va curata e regolata per continuare ad andare bene. "Misura" e "mestiere" restano nel lessico, ma come parole, non come scena da sartoria.
+- **Titoli che raccontano un momento o una situazione** ("Quello che succede dopo la consegna", "Va bene, poi non più", "Nessuno lo prende in carico"): frasi vere, con un verbo, scelte nella variante sobria.
 - **Il primo incontro dura un'ora**, "tra chiacchiere e caffè": il tempo suona più disteso e vero.
 - Si lavora **pezzo per pezzo**, almeno tre varianti per ciascuno, e le scelte si annotano in `esempi.md`.
 
