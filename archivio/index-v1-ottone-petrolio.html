@@ -1,0 +1,1816 @@
+<!doctype html>
+<html lang="it" class="pending">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>MATIZ Studio - Soluzioni su misura</title>
+<meta name="description" content="Progettazione e sviluppo di siti, automazioni e strumenti digitali per piccole imprese. Prenota un primo incontro gratuito.">
+<meta name="robots" content="noindex">
+<meta name="theme-color" content="#FAF6EE">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%231F4D4A'/%3E%3Cpath d='M6 24h20M6 24v-6M11 24v-3M16 24v-6M21 24v-3M26 24v-6' stroke='%23E9A23B' stroke-width='2' fill='none'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@400;500&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
+<noscript><style>html.pending .hero h1, html.pending .hero__act, html.pending .hero__foot > *, html.pending .ruler__scale, html.pending .ruler__labels { visibility: visible; }</style></noscript>
+<script>
+/* Rete di sicurezza: se gli script non partono entro 3,5 secondi la pagina si mostra comunque. */
+setTimeout(function () { document.documentElement.classList.remove('pending'); }, 3500);
+</script>
+<style>
+:root {
+  --ivory: #FAF6EE;
+  --ivory-deep: #F2EBDD;
+  --espresso: #2B1D16;
+  --ink-soft: #5E4C40;
+  --petrol: #1F4D4A;
+  --petrol-deep: #173B39;
+  --brass: #B8913A;
+  --brass-line: rgba(184, 145, 58, .85);
+  --amber: #E9A23B;
+  --amber-light: #F0B657;
+  --amber-glow: #FFD58A;
+  --night: #221712;
+  --night-text: #F6EEDF;
+  --night-soft: #D9CCB6;
+  --night-line: rgba(205, 191, 168, .22);
+
+  --serif: "Instrument Serif", "Iowan Old Style", Georgia, serif;
+  --sans: "Manrope", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --mono: "JetBrains Mono", ui-monospace, Consolas, monospace;
+
+  --gutter: clamp(1.25rem, 5vw, 4rem);
+  --section: clamp(4.5rem, 9vw, 8.5rem);
+  --ease: cubic-bezier(.16, 1, .3, 1);
+  --spine: var(--brass);
+  --spine-mark: var(--petrol);
+  color-scheme: light;
+}
+body.on-dark { --spine: rgba(240, 182, 87, .75); --spine-mark: var(--amber); }
+
+*, *::before, *::after { box-sizing: border-box; }
+html { scroll-behavior: smooth; scroll-padding-top: 6rem; -webkit-text-size-adjust: 100%; scrollbar-color: var(--brass) var(--ivory-deep); }
+body {
+  margin: 0;
+  background: var(--ivory);
+  color: var(--espresso);
+  font-family: var(--sans);
+  font-size: 1.0625rem;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+::selection { background: var(--amber-light); color: var(--espresso); }
+:focus-visible { outline: 2px solid var(--petrol); outline-offset: 3px; border-radius: 2px; }
+.band :focus-visible, .site.on-dark :focus-visible { outline-color: var(--amber); }
+h1, h2, h3, p, ul, ol { margin: 0; }
+ul, ol { padding: 0; list-style: none; }
+a { color: inherit; }
+
+.wrap { width: 100%; max-width: 1360px; margin-inline: auto; padding-inline: var(--gutter); }
+.mono { font-family: var(--mono); font-variant-numeric: tabular-nums; }
+
+/* ---------- Grana di carta ---------- */
+.grain {
+  position: fixed; inset: 0; z-index: 40; pointer-events: none; opacity: .5;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='240' height='240'%3E%3Cfilter id='n' x='0' y='0' width='100%25' height='100%25'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 .17 0 0 0 0 .11 0 0 0 0 .08 0 0 0 .9 -.35'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  background-size: 240px 240px;
+}
+
+/* ---------- Righello laterale e avanzamento ---------- */
+.spine { position: fixed; left: 0; top: 0; bottom: 0; width: 26px; z-index: 5; pointer-events: none; display: none; }
+.spine__tape {
+  position: absolute; inset: 0; --sy: 0px;
+  background:
+    linear-gradient(180deg, var(--spine) 0 1px, transparent 1px) 0 var(--sy) / 8px 8px repeat-y,
+    linear-gradient(180deg, var(--spine) 0 1px, transparent 1px) 0 var(--sy) / 16px 40px repeat-y,
+    linear-gradient(180deg, var(--spine) 0 2px, transparent 2px) 0 var(--sy) / 26px 80px repeat-y;
+  -webkit-mask-image: linear-gradient(180deg, transparent 0, #000 12%, #000 88%, transparent 100%);
+  mask-image: linear-gradient(180deg, transparent 0, #000 12%, #000 88%, transparent 100%);
+}
+.spine__mark { position: absolute; left: 0; top: 38%; width: 26px; }
+.spine__mark i { display: block; height: 2px; width: 26px; background: var(--spine-mark); transition: background-color .4s var(--ease); }
+.spine__mark span {
+  position: absolute; top: 8px; left: 5px; writing-mode: vertical-rl; transform: rotate(180deg);
+  font: 500 .6875rem/1 var(--mono); color: var(--spine-mark); letter-spacing: .02em; white-space: nowrap;
+  transition: color .4s var(--ease);
+}
+.progress { position: fixed; left: 0; top: 0; right: 0; height: 3px; z-index: 12; pointer-events: none; transform-origin: left; transform: scaleX(0); background: var(--amber); }
+@media (min-width: 1100px) { .spine { display: block; } .progress { display: none; } }
+
+/* ---------- Pulsanti ---------- */
+.btn {
+  --fill: var(--petrol);
+  display: inline-flex; align-items: center; gap: .6rem;
+  padding: .95rem 1.5rem;
+  font: 600 .9375rem/1 var(--sans);
+  letter-spacing: .01em;
+  text-decoration: none;
+  color: var(--ivory);
+  --bgf: linear-gradient(180deg, #2A6360 0%, var(--fill) 55%);
+  position: relative; isolation: isolate;
+  --sk: var(--espresso); --sk-text: var(--espresso);
+  background: var(--bgf);
+  border: 1.5px solid var(--fill);
+  border-radius: 2px;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, .22), 0 10px 22px -10px rgba(23, 59, 57, .6);
+  white-space: nowrap;
+  transition: transform .5s var(--ease), box-shadow .5s var(--ease), background-color .35s var(--ease), color .35s var(--ease), border-color .35s var(--ease);
+}
+.btn:hover { transform: translateY(-2px); box-shadow: inset 0 1px 0 rgba(255, 255, 255, .26), 0 16px 28px -10px rgba(23, 59, 57, .7); }
+.btn.has-fill { background: transparent; }
+.btn__fill { position: absolute; inset: -1px; z-index: -1; background: var(--bgf); transition: opacity .5s var(--ease); pointer-events: none; }
+.btn__sk { position: absolute; left: 0; top: 0; z-index: 2; overflow: visible; pointer-events: none; opacity: 0; transition: opacity .5s var(--ease); }
+.btn__sk path { fill: none; stroke: var(--sk); stroke-linecap: round; stroke-linejoin: round; }
+.btn__sk .p1 { stroke-width: 1.3; opacity: .85; }
+.btn__sk .p2 { stroke-width: .9; opacity: .55; }
+.btn__sk .ph { stroke-width: .8; opacity: .5; }
+.btn.is-sketch, .btn.is-sketch:hover { color: var(--sk-text); border-color: transparent; box-shadow: none; transform: none; }
+.btn.is-sketch .btn__fill { opacity: 0; }
+.btn.is-sketch .btn__sk { opacity: 1; transition: none; }
+.btn--amber { --sk: var(--amber-light); --sk-text: var(--night-text); }
+.site.on-dark .nav .btn { --sk: var(--amber-light); --sk-text: var(--night-text); }.btn[data-magnet] { transition: box-shadow .5s var(--ease), background-color .35s var(--ease), color .35s var(--ease), border-color .35s var(--ease); }
+.btn[data-magnet]:hover { transform: none; }
+.btn:active { transform: translateY(0) scale(.985); }
+.btn--amber {
+  color: var(--night);
+  --bgf: linear-gradient(180deg, var(--amber-glow) 0%, var(--amber) 60%);
+  background: var(--bgf);
+  border-color: var(--amber);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, .5), 0 12px 30px -10px rgba(233, 162, 59, .65);
+}
+.btn--amber:hover { box-shadow: inset 0 1px 0 rgba(255, 255, 255, .6), 0 18px 38px -10px rgba(233, 162, 59, .85); }
+.btn > svg:not(.btn__sk) { width: 1em; height: 1em; flex: none; transition: transform .35s var(--ease); }
+.btn:hover > svg:not(.btn__sk) { transform: translateX(3px); }
+
+/* ---------- Testata ---------- */
+.site { position: sticky; top: 0; z-index: 10; background: var(--ivory); border-bottom: 1px solid transparent; transition: border-color .4s var(--ease), background-color .5s var(--ease), color .5s var(--ease); }
+.site.is-stuck { border-bottom-color: var(--brass-line); }
+.site.on-dark { background: var(--night); color: var(--night-text); border-bottom-color: var(--night-line); }
+.top {
+  display: flex; align-items: center; justify-content: space-between; gap: 1.5rem;
+  padding-block: 1.4rem;
+}
+.brand { text-decoration: none; display: flex; align-items: baseline; gap: .7rem; }
+.brand__name { font-family: var(--serif); font-size: 1.65rem; line-height: 1; letter-spacing: -.01em; }
+.brand__m { font-size: 1.4rem; letter-spacing: .13em; }
+.brand__name i { font-size: 1.25rem; letter-spacing: 0; }
+.brand__by { font-size: .8125rem; color: var(--ink-soft); transition: color .5s var(--ease); }
+.site.on-dark .brand__by { color: var(--night-soft); }
+.nav { display: flex; align-items: center; gap: clamp(1rem, 3vw, 2.25rem); }
+.nav a:not(.btn) { font-size: .9375rem; font-weight: 500; text-decoration: none; padding-block: .4rem; background: linear-gradient(var(--brass), var(--brass)) left bottom / 0% 1.5px no-repeat; transition: background-size .4s var(--ease); }
+.nav a:not(.btn):hover { background-size: 100% 1.5px; }
+.nav .btn { padding: .7rem 1.1rem; font-size: .875rem; }
+.site.on-dark .nav .btn { color: var(--night); --bgf: linear-gradient(180deg, var(--amber-glow) 0%, var(--amber) 60%); background: var(--bgf); border-color: var(--amber); box-shadow: inset 0 1px 0 rgba(255, 255, 255, .5), 0 10px 24px -10px rgba(233, 162, 59, .7); }
+
+/* ---------- Hero ---------- */
+.hero { position: relative; isolation: isolate; padding-top: clamp(2rem, 6vh, 4.5rem); overflow-x: clip; background: linear-gradient(180deg, #FFFCF6 0%, var(--ivory) 70%); }
+.hero::before { /* luce d'ambra ferma, in alto a destra, come sole basso */
+  content: ""; position: absolute; z-index: -1; right: -12vw; top: -18vw; width: 62vw; height: 62vw; max-width: 900px; max-height: 900px;
+  background: radial-gradient(closest-side, rgba(255, 213, 138, .55), rgba(240, 182, 87, .18) 55%, transparent 75%);
+  pointer-events: none;
+}
+.hero::after { /* luce che segue il puntatore */
+  content: ""; position: absolute; inset: 0; z-index: -1; pointer-events: none; opacity: 0; transition: opacity .8s var(--ease);
+  background: radial-gradient(440px circle at var(--cx, 70%) var(--cy, 25%), rgba(255, 213, 138, .42), transparent 65%);
+}
+.hero.is-live::after { opacity: 1; }
+.hero__top { display: grid; grid-template-columns: repeat(12, 1fr); gap: 1.5rem 2rem; align-items: end; }
+.hero__top h1 { grid-column: 1 / span 8; }
+.hero__top .hero__act { grid-column: 9 / span 4; padding-bottom: .9rem; }
+.hero h1 {
+  position: relative; isolation: isolate;
+  font-family: var(--serif); font-weight: 400;
+  font-size: clamp(3.4rem, 11.4vw, 6rem);
+  line-height: .98; letter-spacing: -.025em;
+  text-wrap: balance;
+}
+.hero h1 em { position: relative; font-style: italic; padding-inline: .06em; --hl: 1; }
+.hero h1 em::after { /* evidenziatore: si traccia e poi riluce */
+  content: ""; position: absolute; z-index: -1; left: 0; right: 0; bottom: .09em; height: .27em;
+  background: linear-gradient(100deg, var(--amber-light) 0 38%, var(--amber-glow) 50%, var(--amber-light) 62% 100%) 0 0 / 260% 100%;
+  transform-origin: left; transform: scaleX(var(--hl)); border-radius: 1px;
+}
+
+.ruler { position: relative; height: 4.75rem; margin-top: clamp(2.5rem, 6vh, 4rem); touch-action: pan-y; }
+.ruler__scale {
+  position: absolute; inset: 0; border-top: 1px solid var(--brass);
+  background:
+    repeating-linear-gradient(90deg, var(--brass) 0 1px, transparent 1px 8px) 0 0 / 100% 8px no-repeat,
+    repeating-linear-gradient(90deg, var(--brass) 0 1px, transparent 1px 40px) 0 0 / 100% 16px no-repeat,
+    repeating-linear-gradient(90deg, var(--brass) 0 2px, transparent 2px 80px) 0 0 / 100% 28px no-repeat;
+}
+.ruler__scale::after { /* riflesso che scorre sull'ottone */
+  content: ""; position: absolute; inset: 0; pointer-events: none;
+  background: linear-gradient(100deg, transparent 35%, rgba(255, 233, 180, .9) 50%, transparent 65%) -60% 0 / 60% 100% no-repeat;
+  mix-blend-mode: soft-light;
+}
+@media (prefers-reduced-motion: no-preference) {
+  .ruler__scale::after { animation: sheen 7s var(--ease) 2.2s infinite; }
+}
+@keyframes sheen { 0% { background-position: -60% 0; } 40%, 100% { background-position: 170% 0; } }
+.ruler__labels { position: absolute; inset: 0; pointer-events: none; }
+.ruler__labels span {
+  position: absolute; top: 2.2rem; margin-left: 5px;
+  font: 500 .75rem/1 var(--mono); color: var(--ink-soft);
+}
+.ruler__marker {
+  position: absolute; top: -.75rem; left: 0; height: 3.5rem; width: 1px;
+  background: var(--petrol); opacity: 0; pointer-events: none;
+  transform: translateX(var(--mx, 0px));
+  transition: opacity .3s var(--ease);
+}
+.ruler__marker::after { content: ""; position: absolute; left: -3px; top: .75rem; width: 7px; height: 7px; background: var(--petrol); border-radius: 50%; }
+.ruler__read {
+  position: absolute; bottom: calc(100% + .35rem); left: 0; transform: translateX(-50%);
+  padding: .3rem .5rem; background: var(--petrol); color: var(--ivory);
+  font: 500 .75rem/1 var(--mono); white-space: nowrap; border-radius: 2px;
+}
+.hero.is-live .ruler__marker { opacity: 1; }
+
+.hero__foot {
+  display: grid; grid-template-columns: repeat(12, 1fr); gap: 1.5rem 2rem;
+  padding-block: clamp(1.75rem, 4vh, 3rem) var(--section);
+  align-items: end;
+}
+.hero__lede { grid-column: 1 / span 7; }
+.hero__lede .descr { font-size: clamp(1.25rem, 2.2vw, 1.625rem); line-height: 1.4; max-width: 34ch; font-weight: 500; }
+.hero__sub { grid-column: 9 / span 4; color: var(--ink-soft); align-self: start; padding-top: .35rem; }
+.hero__act { display: flex; flex-direction: column; align-items: flex-start; gap: .9rem; }
+.hero__act small { font-size: .875rem; color: var(--ink-soft); }
+html.pending .hero h1, html.pending .hero__act, html.pending .hero__foot > *, html.pending .ruler__scale, html.pending .ruler__labels { visibility: hidden; }
+
+/* ---------- Sezioni ---------- */
+section { padding-block: var(--section); }
+.grid { display: grid; grid-template-columns: repeat(12, 1fr); gap: 2rem; }
+h2 {
+  font-family: var(--serif); font-weight: 400;
+  font-size: clamp(2.4rem, 5.2vw, 4rem); line-height: 1.02; letter-spacing: -.02em;
+  text-wrap: balance;
+}
+h2 { color: var(--petrol); }
+.num { font-weight: 700; color: var(--espresso); }
+h3 { font-family: var(--serif); font-weight: 400; font-size: clamp(1.6rem, 2.6vw, 2.05rem); line-height: 1.2; letter-spacing: -.01em; }
+.copy { max-width: 62ch; }
+.copy p + p { margin-top: 1rem; }
+.muted { color: var(--ink-soft); }
+[data-split] { perspective: 700px; }
+[data-split] .w, [data-split] .c { display: inline-block; }
+
+/* Problemi */
+.problems { padding-top: 0; }
+.problems__head { grid-column: 1 / span 7; margin-bottom: clamp(2.5rem, 5vw, 4rem); }
+.problems__head p { margin-top: 1.25rem; color: var(--ink-soft); max-width: 46ch; }
+.problems__list { grid-column: 1 / -1; display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem; }
+.problems__list li { position: relative; padding-block: 1.75rem 0; --line: 1; }
+.problems__list li::before { content: ""; position: absolute; left: 0; right: 0; top: 0; height: 3px; background: var(--brass); transform-origin: left; transform: scaleX(var(--line)); }
+.problems__list h3 { margin-bottom: .75rem; text-wrap: balance; }
+.problems__list p { color: var(--ink-soft); max-width: 36ch; }
+
+/* Percorso */
+.path { background: var(--ivory-deep); }
+.path__head { grid-column: 1 / span 7; margin-bottom: clamp(2.5rem, 5vw, 4rem); }
+.path__head p { margin-top: 1.25rem; color: var(--ink-soft); max-width: 48ch; }
+.steps li {
+  position: relative; --on: .05;
+  display: grid; grid-template-columns: repeat(12, 1fr); gap: 1rem 2rem; align-items: baseline;
+  padding-block: 2rem; border-top: 1px solid var(--brass-line);
+}
+.steps li::before { content: ""; position: absolute; top: -1px; left: 0; right: 0; height: 3px; background: var(--brass); transform-origin: left; transform: scaleX(var(--on)); }
+.steps li.is-on::before { background: var(--petrol); }
+.steps li:last-child { border-bottom: 1px solid var(--brass-line); }
+.steps .n { grid-column: 1 / span 1; font: 500 1rem/1 var(--mono); color: var(--petrol); }
+.steps h3 { grid-column: 2 / span 4; }
+.steps p { grid-column: 7 / span 6; max-width: 56ch; }
+.steps p b { font-weight: 700; }
+
+/* Servizi */
+.services { padding-top: 0; }
+.services__head { grid-column: 1 / span 7; margin-bottom: clamp(2.5rem, 5vw, 4rem); }
+.services__head p { margin-top: 1.25rem; color: var(--ink-soft); max-width: 46ch; }
+.services { overflow-x: clip; }
+.services__list, .cyl { grid-column: 1 / -1; }
+.cyl { position: relative; --strip: 5.6rem; }
+.cyl__ring { margin: 0; padding: 0; list-style: none; display: grid; grid-template-columns: repeat(auto-fit, minmax(17rem, 1fr)); gap: 1.25rem; }
+.face { position: relative; list-style: none; }
+.face__back, .edge { display: none; }
+
+/* Una faccia: la card vera e propria, con titolo, copertura e contenuto */
+.svc {
+  position: relative; display: grid; min-height: 25rem; overflow: hidden; border-radius: 2px;
+  background: var(--petrol-deep); color: var(--ivory); user-select: none; -webkit-user-select: none;
+  box-shadow: 0 1px 1px rgba(23, 59, 57, .2), 0 22px 40px -22px rgba(23, 59, 57, .65);
+}
+.svc > * { grid-area: 1 / 1; }
+.svc__cover {
+  position: relative; z-index: 1; display: flex; align-items: flex-end; padding: 1.4rem 1.6rem;
+  background: linear-gradient(180deg, #2A6360 0%, var(--petrol) 62%);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, .22);
+  clip-path: inset(0 0 0 0); transition: clip-path .8s var(--ease);
+}
+.svc__cover::before {
+  content: ""; position: absolute; left: 0; right: 0; top: calc(var(--strip) - 18px); height: 18px; opacity: 0; transition: opacity .5s var(--ease) .2s;
+  background:
+    repeating-linear-gradient(90deg, rgba(240, 182, 87, .55) 0 1px, transparent 1px 8px) 0 100% / 100% 9px no-repeat,
+    repeating-linear-gradient(90deg, rgba(240, 182, 87, .9) 0 1px, transparent 1px 40px) 0 100% / 100% 18px no-repeat;
+}
+.svc__title { position: relative; z-index: 3; align-self: start; margin: 0; padding: 1.35rem 1.6rem 0; height: var(--strip); font-size: clamp(1.9rem, 2.6vw, 2.4rem); line-height: 1.05; color: var(--ivory); pointer-events: none; }
+.svc__hint { display: inline-flex; align-items: center; gap: .7rem; font: 500 .75rem/1 var(--mono); letter-spacing: .06em; text-transform: lowercase; color: var(--amber-light); }
+.svc__hint::after { content: ""; width: 12px; height: 12px; background: linear-gradient(var(--amber-light), var(--amber-light)) center / 100% 1.5px no-repeat, linear-gradient(var(--amber-light), var(--amber-light)) center / 1.5px 100% no-repeat; }
+.svc__body { position: relative; z-index: 0; display: flex; flex-direction: column; gap: .9rem; padding: calc(var(--strip) + 1.1rem) 1.6rem 1.5rem; }
+.svc__body > * { opacity: 0; transform: translateY(12px); transition: opacity .5s var(--ease), transform .7s var(--ease); }
+.svc__body p { margin: 0; color: var(--ivory); font-size: 1rem; line-height: 1.55; }
+.svc__body ul { display: grid; gap: .3rem; font-size: .9375rem; color: var(--night-soft); }
+.svc__body ul li { position: relative; padding-left: 1.2rem; }
+.svc__body ul li::before { content: ""; position: absolute; left: 0; top: .8em; width: .65rem; height: 1px; background: var(--amber-light); }
+.svc__go { align-self: flex-start; margin-top: auto; padding-bottom: .15rem; font: 600 .9375rem/1.2 var(--sans); color: var(--amber-glow); text-decoration: none; background: linear-gradient(var(--amber-light), var(--amber-light)) left bottom / 100% 1px no-repeat; }
+.svc__go:hover { background-size: 100% 2px; }
+.svc__shade, .svc__gloss { display: none; }
+.svc:focus-visible { outline: 2px solid var(--petrol); outline-offset: 4px; }
+.svc.is-open .svc__cover, .svc:focus-within .svc__cover { clip-path: inset(0 0 calc(100% - var(--strip)) 0); }
+.svc.is-open .svc__cover::before, .svc:focus-within .svc__cover::before { opacity: 1; }
+.svc.is-open .svc__body > *, .svc:focus-within .svc__body > * { opacity: 1; transform: none; }
+.svc.is-open .svc__body > *:nth-child(1), .svc:focus-within .svc__body > *:nth-child(1) { transition-delay: .02s; }
+.svc.is-open .svc__body > *:nth-child(2), .svc:focus-within .svc__body > *:nth-child(2) { transition-delay: .08s; }
+.svc.is-open .svc__body > *:nth-child(3), .svc:focus-within .svc__body > *:nth-child(3) { transition-delay: .16s; }
+@media (hover: hover) {
+  .svc:hover .svc__cover { clip-path: inset(0 0 calc(100% - var(--strip)) 0); }
+  .svc:hover .svc__cover::before { opacity: 1; }
+  .svc:hover .svc__body > * { opacity: 1; transform: none; }
+  .svc:hover .svc__body > *:nth-child(1) { transition-delay: .02s; }
+  .svc:hover .svc__body > *:nth-child(2) { transition-delay: .08s; }
+  .svc:hover .svc__body > *:nth-child(3) { transition-delay: .16s; }
+}
+@media (prefers-reduced-motion: reduce) { .svc__cover, .svc__body > *, .svc__cover::before { transition: none; } }
+
+/* Il cilindro: quattro facce, a 90 gradi una dall'altra, che girano davanti a chi guarda */
+.cyl.is-cyl {
+  --W: clamp(17rem, 30vw, 23rem); --H: 29rem; --t: 18px; --r: calc(var(--W) / 2 + 9px);
+  height: calc(var(--H) + 5.5rem); touch-action: pan-y; cursor: grab; outline-offset: 6px;
+}
+.cyl.is-drag { cursor: grabbing; }
+.cyl.is-cyl .cyl__stage { position: absolute; left: 50%; top: 1rem; width: var(--W); height: var(--H); margin-left: calc(var(--W) / -2); perspective: 1700px; perspective-origin: 50% 32%; }
+.cyl.is-cyl .cyl__ring { position: absolute; inset: 0; display: block; transform-style: preserve-3d; transform: translateZ(calc(var(--r) * -1)) rotateY(var(--a, 0deg)); will-change: transform; }
+.cyl.is-cyl .face { position: absolute; inset: 0; transform-style: preserve-3d; transform: rotateY(calc(var(--i) * 90deg)) translateZ(var(--r)); }
+.cyl.is-cyl .face:not(.is-front) { pointer-events: none; }
+.cyl.is-cyl .svc { position: absolute; inset: 0; min-height: 0; transform: translateZ(calc(var(--t) / 2)); backface-visibility: hidden; -webkit-backface-visibility: hidden; box-shadow: none; }
+.cyl.is-cyl .face__back, .cyl.is-cyl .edge { display: block; position: absolute; }
+.cyl.is-cyl .face__back {
+  inset: 0; transform: rotateY(180deg) translateZ(calc(var(--t) / 2)); backface-visibility: hidden; -webkit-backface-visibility: hidden; border-radius: 2px;
+  background:
+    repeating-linear-gradient(90deg, rgba(240, 182, 87, .35) 0 1px, transparent 1px 8px) 0 100% / 100% 9px no-repeat,
+    repeating-linear-gradient(90deg, rgba(240, 182, 87, .6) 0 1px, transparent 1px 40px) 0 100% / 100% 18px no-repeat,
+    linear-gradient(180deg, #1d4745, #102a28);
+}
+/* Lo spessore: un bordo in ottone, piu' chiaro sopra dove prende la luce, piu' scuro sotto */
+.cyl.is-cyl .edge { background: linear-gradient(90deg, #7d5f24, #dcb862 48%, #8f6f2b); }
+.cyl.is-cyl .e-l { top: 0; bottom: 0; left: calc(var(--t) / -2); width: var(--t); transform: rotateY(-90deg); }
+.cyl.is-cyl .e-r { top: 0; bottom: 0; left: calc(100% - var(--t) / 2); width: var(--t); transform: rotateY(90deg); background: linear-gradient(90deg, #6b5120, #c9a24f 50%, #7d5f24); }
+.cyl.is-cyl .e-t { left: 0; right: 0; top: calc(var(--t) / -2); height: var(--t); transform: rotateX(90deg); background: linear-gradient(180deg, #f1d58a, #c9a24f); }
+.cyl.is-cyl .e-b { left: 0; right: 0; top: calc(100% - var(--t) / 2); height: var(--t); transform: rotateX(-90deg); background: linear-gradient(180deg, #7d5f24, #5a4318); }
+/* Luce: ogni faccia si scurisce quando si gira di lato e riceve un riflesso che scorre mentre ruota */
+.cyl.is-cyl .svc__shade, .cyl.is-cyl .svc__gloss { display: block; position: absolute; inset: 0; pointer-events: none; }
+.cyl.is-cyl .svc__shade { z-index: 6; background: #07201e; opacity: var(--dark, 0); }
+.cyl.is-cyl .svc__gloss { z-index: 5; mix-blend-mode: soft-light; opacity: .95; background: linear-gradient(100deg, transparent 18%, rgba(255, 236, 190, .42) 48%, transparent 78%) 0 0 / 280% 100% no-repeat; background-position: calc(var(--g, .5) * 100%) 0; }
+.cyl.is-cyl .cyl__floor { position: absolute; left: 50%; bottom: 2.6rem; width: calc(var(--W) * 1.2); height: 2.6rem; margin-left: calc(var(--W) * -.6); background: radial-gradient(closest-side, rgba(23, 59, 57, .42), transparent 74%); filter: blur(5px); pointer-events: none; }
+.cyl:not(.is-cyl) .cyl__floor { display: none; }
+
+/* Comandi: i quattro nomi come righello, e le frecce */
+.cyl__ctl { grid-column: 1 / -1; display: none; align-items: center; justify-content: center; gap: 1.25rem 1.5rem; flex-wrap: wrap; margin-top: .25rem; }
+.has-cyl .cyl__ctl { display: flex; }
+.cyl__tabs { display: flex; flex-wrap: wrap; justify-content: center; gap: .25rem 1.4rem; }
+.cyl__tab { position: relative; padding: .6rem 0 .75rem; border: 0; background: none; font: 500 .8125rem/1 var(--mono); letter-spacing: .02em; color: var(--ink-soft); cursor: pointer; transition: color .3s var(--ease); }
+.cyl__tab::after { content: ""; position: absolute; left: 0; right: 0; bottom: 0; height: 2px; background: var(--amber); transform: scaleX(0); transform-origin: left; transition: transform .6s var(--ease); }
+.cyl__tab.on { color: var(--petrol); }
+.cyl__tab.on::after { transform: scaleX(1); }
+.cyl__btn { display: grid; place-items: center; width: 2.9rem; height: 2.9rem; padding: 0; border: 1.5px solid var(--petrol); background: transparent; color: var(--petrol); border-radius: 2px; cursor: pointer; transition: background-color .3s var(--ease), color .3s var(--ease); }
+.cyl__btn svg { width: 1.1rem; height: 1.1rem; }
+.cyl__btn:hover { background: var(--petrol); color: var(--ivory); }
+@media (max-width: 600px) { .cyl.is-cyl { --W: min(82vw, 20rem); --H: 31rem; } }
+
+/* Domande frequenti */
+.faq__head { grid-column: 1 / span 5; }
+.faq__list { grid-column: 6 / -1; }
+.faq details { border-top: 1px solid var(--brass-line); }
+.faq details:last-child { border-bottom: 1px solid var(--brass-line); }
+.faq summary { list-style: none; cursor: pointer; display: flex; justify-content: space-between; align-items: baseline; gap: 1.25rem; padding-block: 1.3rem; font: 400 clamp(1.3rem, 2vw, 1.6rem)/1.25 var(--serif); letter-spacing: -.01em; }
+.faq summary::-webkit-details-marker { display: none; }
+.faq summary::after { content: ""; flex: none; width: 12px; height: 12px; background: linear-gradient(var(--petrol), var(--petrol)) center / 100% 1.5px no-repeat, linear-gradient(var(--petrol), var(--petrol)) center / 1.5px 100% no-repeat; transition: transform .4s var(--ease); }
+.faq details[open] summary::after { transform: rotate(45deg); }
+.faq details p { padding-bottom: 1.5rem; color: var(--ink-soft); max-width: 56ch; }
+.faq details a { color: var(--petrol); text-underline-offset: .2em; }
+.close__lead { color: var(--ink-soft); max-width: 36ch; }
+
+/* Stimatore */
+.est__head { grid-column: 1 / span 5; }
+.est__head p { margin-top: 1.25rem; color: var(--ink-soft); max-width: 44ch; }
+.est__box { grid-column: 7 / -1; padding-top: 1.5rem; border-top: 3px solid var(--brass); }
+.est__prog { display: flex; gap: .4rem; margin-bottom: 1.75rem; }
+.est__prog i { flex: 1; height: 3px; background: rgba(184, 145, 58, .35); transition: background-color .5s var(--ease); }
+.est__prog i.on { background: var(--petrol); }
+.est__prog i.off { display: none; }
+.est__step { display: none; border: 0; padding: 0; margin: 0; min-width: 0; }
+.est__step.is-on { display: block; animation: estIn .6s var(--ease); }
+@keyframes estIn { from { opacity: 0; transform: translateY(10px); } }
+.est__step legend { padding: 0; margin-bottom: 1.25rem; font: 400 clamp(1.5rem, 2.4vw, 2rem)/1.2 var(--serif); letter-spacing: -.01em; color: var(--petrol); }
+.est__step legend small { display: block; margin-top: .4rem; font: 400 .9375rem/1.4 var(--sans); letter-spacing: 0; color: var(--ink-soft); }
+.est__opts { display: grid; grid-template-columns: repeat(2, 1fr); gap: .6rem; }
+.est__opts.one { grid-template-columns: 1fr; }
+.opt { position: relative; display: block; cursor: pointer; }
+.opt input { position: absolute; inset: 0; width: 100%; height: 100%; margin: 0; opacity: 0; cursor: pointer; }
+.opt span { display: block; padding: .85rem 1rem; border: 1px solid var(--brass-line); border-radius: 2px; font-size: .9375rem; font-weight: 500; line-height: 1.35; transition: background-color .3s var(--ease), color .3s var(--ease), border-color .3s var(--ease); }
+.opt small { display: block; margin-top: .15rem; font-weight: 400; font-size: .8125rem; color: var(--ink-soft); }
+.opt:hover span { border-color: var(--petrol); }
+.opt input:checked + span { background: var(--petrol); border-color: var(--petrol); color: var(--ivory); }
+.opt input:checked + span small { color: var(--night-soft); }
+.opt input:focus-visible + span { outline: 2px solid var(--petrol); outline-offset: 3px; }
+.est__fields { display: grid; gap: .9rem; }
+.field span { display: block; margin-bottom: .25rem; font-size: .8125rem; color: var(--ink-soft); }
+.field input { width: 100%; padding: .8rem .9rem; border: 1px solid var(--brass-line); border-radius: 2px; background: rgba(255, 255, 255, .55); font: inherit; color: inherit; }
+.field input:focus-visible { outline: 2px solid var(--petrol); outline-offset: 2px; }
+.chk { display: flex; gap: .7rem; align-items: flex-start; font-size: .875rem; line-height: 1.45; color: var(--ink-soft); }
+.chk input { flex: none; margin-top: .2rem; accent-color: var(--petrol); }
+.chk a { color: var(--petrol); }
+.est__err { min-height: 1.4rem; margin: .9rem 0 0; font-size: .875rem; color: #8C2F1B; }
+.est__nav { display: flex; align-items: center; justify-content: space-between; gap: 1rem; margin-top: .75rem; }
+.est__nav .btn { margin-left: auto; }
+.est__back { padding: .4rem 0; border: 0; background: none; font: 500 .9375rem var(--sans); color: var(--petrol); text-decoration: underline; text-underline-offset: .25em; cursor: pointer; }
+.est__label { margin: 0; font: 500 .75rem/1 var(--mono); letter-spacing: .06em; color: var(--ink-soft); }
+.est__range { margin: .6rem 0 1.25rem; font: 400 clamp(2rem, 4.2vw, 3.1rem)/1.05 var(--serif); letter-spacing: -.02em; color: var(--petrol); }
+.est__lines { margin-bottom: 1.25rem; }
+.est__lines li { display: flex; justify-content: space-between; gap: 1rem; padding-block: .7rem; border-top: 1px solid var(--brass-line); font-size: .9375rem; }
+.est__lines li:last-child { border-bottom: 1px solid var(--brass-line); }
+.est__lines .m { font: 500 .875rem var(--mono); white-space: nowrap; }
+.est__time { margin: 0 0 .75rem; font-weight: 500; }
+.est__note { margin: 0; max-width: 50ch; font-size: .875rem; color: var(--ink-soft); }
+.est__cta { display: flex; flex-wrap: wrap; align-items: center; gap: 1.25rem; margin-top: 1.5rem; }
+.est__again { margin-top: 1.25rem; }
+.hp { position: absolute; left: -9999px; width: 1px; height: 1px; overflow: hidden; }
+.est__status { margin: 1rem 0 0; min-height: 1.4rem; font-size: .875rem; color: var(--ink-soft); }
+.est__dev { margin: 1rem 0 0; padding: .55rem .75rem; background: var(--ivory-deep); font: 500 .75rem/1.4 var(--mono); color: var(--ink-soft); }
+@media (max-width: 900px) {
+  .est__head, .est__box { grid-column: 1 / -1; }
+  .est__opts { grid-template-columns: 1fr; }
+}
+
+[hidden] { display: none !important; }
+
+/* Fascia scura: condizioni e caso */
+.goals-sec { padding-block: calc(var(--section) * .6) calc(var(--section) * .5); }
+.goals__head { grid-column: 1 / span 7; margin-bottom: clamp(2rem, 4vw, 3rem); }
+.goals__head p { margin-top: 1.25rem; color: var(--night-soft); max-width: 46ch; }
+.goals li { display: grid; grid-template-columns: repeat(12, 1fr); gap: .75rem 2rem; align-items: baseline; padding-block: 1.6rem; border-top: 1px solid var(--night-line); }
+.goals li:last-child { border-bottom: 1px solid var(--night-line); }
+.goals .lab { grid-column: 1 / span 3; font-family: var(--serif); font-size: clamp(1.5rem, 2.2vw, 1.8rem); line-height: 1.2; }
+.goals .txt { grid-column: 4 / span 6; color: var(--night-soft); max-width: 52ch; }
+.goals .st { grid-column: 10 / span 3; text-align: right; font: 500 .75rem/1.3 var(--mono); color: var(--amber); }
+.band { position: relative; background: var(--night); color: var(--night-text); }
+.band::before { /* bordo a zig zag, come tessuto tagliato con le forbici dentate */
+  content: ""; position: absolute; left: 0; right: 0; top: -11px; height: 12px; z-index: 2; pointer-events: none;
+  background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='12' viewBox='0 0 24 12'%3E%3Cpath d='M0 12 12 0 24 12Z' fill='%23221712'/%3E%3C/svg%3E") 0 0 / 24px 12px repeat-x;
+}
+.band__clip { position: absolute; inset: 0; z-index: 0; clip-path: inset(0); pointer-events: none; }
+.band__fx { position: fixed; left: 0; top: 0; width: 100%; height: 100vh; height: 100svh; overflow: hidden; pointer-events: none; }
+.band__fx canvas { position: absolute; inset: 0; width: 100%; height: 100%; display: none; }
+.band__fx.is-gl canvas { display: block; }
+.band__fx::before { /* alternativa leggera: luce d'ambra in CSS, senza WebGL */
+  content: ""; position: absolute; inset: -20%; will-change: transform;
+  background:
+    radial-gradient(closest-side at 24% 30%, rgba(233, 162, 59, .26), transparent 70%),
+    radial-gradient(closest-side at 78% 70%, rgba(240, 182, 87, .16), transparent 70%);
+}
+.band__fx.is-gl::before { display: none; }
+@media (prefers-reduced-motion: no-preference) {
+  .band__fx:not(.is-gl)::before { animation: drift 22s ease-in-out infinite alternate; }
+}
+@keyframes drift { to { transform: translate3d(8%, -6%, 0) scale(1.08); } }
+.band__ticks { /* tacche d'ottone che si accendono dove passa la luce */
+  position: absolute; inset: 0;
+  background: repeating-linear-gradient(90deg, rgba(240, 182, 87, .9) 0 1px, transparent 1px 40px);
+  opacity: .9;
+  -webkit-mask-image: radial-gradient(300px circle at var(--cx, 50%) var(--cy, 40%), #000 0, transparent 72%);
+  mask-image: radial-gradient(300px circle at var(--cx, 50%) var(--cy, 40%), #000 0, transparent 72%);
+}
+.band__ticks::before { content: ""; position: absolute; inset: 0; background: repeating-linear-gradient(90deg, rgba(240, 182, 87, .07) 0 1px, transparent 1px 40px); }
+.band > section { position: relative; z-index: 1; }
+.band h2 { color: var(--night-text); }
+.band__head { grid-column: 1 / span 7; margin-bottom: clamp(2.5rem, 5vw, 4rem); }
+.band__head p { margin-top: 1.25rem; color: var(--night-soft); max-width: 46ch; }
+.terms li {
+  display: grid; grid-template-columns: repeat(12, 1fr); gap: .75rem 2rem; align-items: baseline;
+  padding-block: 1.6rem; border-top: 1px solid var(--night-line);
+}
+.terms li:last-child { border-bottom: 1px solid var(--night-line); }
+.terms .fig { grid-column: 1 / span 3; font: 500 clamp(1.6rem, 2.6vw, 2.1rem)/1.3 var(--mono); color: var(--amber); letter-spacing: -.02em; }
+.terms .lab { grid-column: 4 / span 3; font-family: var(--serif); font-size: clamp(1.5rem, 2.2vw, 1.8rem); line-height: 1.2; }
+.terms .txt { grid-column: 8 / span 5; color: var(--night-soft); max-width: 46ch; }
+.band__cta { margin-top: clamp(2.5rem, 5vw, 3.5rem); }
+.terms-sec { padding-bottom: calc(var(--section) * .6); }
+
+/* Caso: il metro che cresce */
+.case { height: 280vh; padding-block: 0; }
+.case__pin {
+  position: sticky; top: 0; height: 100vh; height: 100svh; padding-block: 5.25rem 1.5rem;
+  display: flex; flex-direction: column; justify-content: center; gap: clamp(2rem, 5vh, 3.5rem);
+}
+.case h2 { max-width: 24ch; font-size: clamp(2.1rem, 4.4vw, 3.6rem); }
+.case .wrap { text-align: center; }
+.case h2 { margin-inline: auto; }
+.case__lead { margin: 1.25rem auto 0; max-width: 46ch; color: var(--night-soft); }
+.case__txt { margin-inline: auto; }
+.stage { position: relative; height: clamp(13.5rem, 34vh, 17rem); margin-top: .5rem; text-align: left; }
+.tape { position: absolute; left: 0; right: 0; bottom: 0; height: 7.5rem; }
+.chart { position: absolute; inset: 0; opacity: 0; pointer-events: none; display: flex; justify-content: center; align-items: flex-end; gap: clamp(2rem, 6vw, 4.5rem); padding-bottom: 2.4rem; --H: clamp(6rem, 19vh, 10.5rem); }
+.chart__base { position: absolute; left: 0; right: 0; bottom: 2.4rem; height: 1px; background: rgba(205, 191, 168, .5); }
+.bar { position: relative; flex: none; width: clamp(5rem, 10vw, 7.5rem); --g: 0; --h: calc(var(--H) * var(--k)); height: var(--h); }
+.bar--a { --k: .2556; }
+.bar--b { --k: 1; }
+.bar__x { position: absolute; left: calc(100% + 1.4rem); bottom: calc(var(--h) * .42); margin: 0; font: italic 400 clamp(1.4rem, 2.6vw, 2rem)/1.15 var(--serif); color: var(--night-text); width: 9ch; text-align: left; }
+.bar__body { position: absolute; left: 0; right: 0; bottom: 0; height: calc(var(--h) * var(--g)); }
+.bar--a .bar__body { background: linear-gradient(180deg, rgba(217, 204, 182, .55), rgba(184, 145, 58, .45)); }
+.bar--b .bar__body { background: linear-gradient(180deg, var(--amber-glow), var(--amber) 55%, rgba(233, 162, 59, .6)); filter: drop-shadow(0 10px 18px rgba(233, 162, 59, .4)); }
+.bar__v { position: absolute; left: 0; right: 0; text-align: center; bottom: calc(var(--h) * var(--g) + .5rem); font: 500 clamp(1.5rem, 3vw, 2.4rem)/1 var(--mono); letter-spacing: -.03em; color: var(--night-text); opacity: var(--g); }
+.bar--b .bar__v { color: var(--amber-glow); }
+.bar__l { position: absolute; left: 50%; top: calc(100% + .7rem); transform: translateX(-50%); width: max-content; max-width: 8rem; text-align: center; font: 500 .75rem/1.35 var(--mono); color: var(--night-soft); opacity: var(--g); }
+
+/* Quotatura: linea di quota sul titolo e sugli elementi chiave */
+.qline { position: absolute; left: 0; right: 0; top: -34px; height: 26px; pointer-events: none; font: 500 12px/1 var(--mono); font-style: normal; letter-spacing: 0; color: var(--petrol); font-variant-numeric: tabular-nums; }
+.qline i { position: absolute; display: block; }
+.qline .e1, .qline .e2 { top: 0; bottom: -4px; width: 0; border-left: 1px dashed var(--brass); opacity: .9; }
+.qline .e1 { left: 0; } .qline .e2 { right: 0; }
+.qline .b1, .qline .b2 { top: 4px; height: 1px; background: var(--petrol); width: calc(50% - 40px); }
+.qline .b1 { left: 8px; transform-origin: 100% 50%; } .qline .b2 { right: 8px; transform-origin: 0 50%; }
+.qline .a1, .qline .a2 { top: 0; width: 8px; height: 9px; background: var(--petrol); }
+.qline .a1 { left: 0; clip-path: polygon(0 50%, 100% 0, 100% 100%); } .qline .a2 { right: 0; clip-path: polygon(100% 50%, 0 0, 0 100%); }
+.qline .n { position: absolute; left: 50%; top: -2px; transform: translateX(-50%); white-space: nowrap; }
+.dims { position: fixed; inset: 0; z-index: 30; pointer-events: none; font: 500 12px var(--mono); }
+.dims svg { width: 100%; height: 100%; overflow: visible; display: block; }
+.dims g.q { opacity: 0; transition: opacity .35s var(--ease); }
+.dims.on g.q { opacity: 1; }
+.dims text { font-family: var(--mono); font-size: 12px; font-weight: 500; fill: currentColor; }
+@media (max-width: 900px) { .qline { display: none; } }
+@media (prefers-reduced-motion: reduce) { .dims g.q { transition: none; } }
+.tape__scale {
+  position: absolute; left: 0; right: 0; bottom: 2.4rem; height: 1.6rem;
+  border-bottom: 1px solid rgba(205, 191, 168, .5);
+  background:
+    repeating-linear-gradient(90deg, rgba(205, 191, 168, .55) 0 1px, transparent 1px 1.25%) 0 100% / 100% 10px no-repeat,
+    repeating-linear-gradient(90deg, rgba(205, 191, 168, .85) 0 1px, transparent 1px 2.5%) 0 100% / 100% 18px no-repeat,
+    repeating-linear-gradient(90deg, rgba(240, 182, 87, .9) 0 2px, transparent 2px 25%) 0 100% / 100% 26px no-repeat;
+}
+.tape__scale::after { content: ""; position: absolute; right: 0; bottom: 0; width: 2px; height: 26px; background: rgba(240, 182, 87, .9); }
+.tape__bar {
+  position: absolute; left: 3.75%; width: 83.75%; bottom: 2.4rem; height: 10px; margin-bottom: -5px;
+  transform-origin: left; transform: scaleX(1);
+  background: linear-gradient(90deg, rgba(233, 162, 59, .55), var(--amber) 70%, var(--amber-glow));
+  filter: drop-shadow(0 8px 14px rgba(233, 162, 59, .45)); border-radius: 1px;
+}
+.tape__head { position: absolute; left: 0; bottom: 3.6rem; will-change: transform; }
+.tape__num { display: block; font: 500 clamp(2.4rem, 5vw, 4rem)/1 var(--mono); color: var(--amber-glow); letter-spacing: -.03em; }
+.tape__labels { position: absolute; left: 0; right: 0; bottom: 0; height: 1.4rem; }
+.tape__labels span { position: absolute; bottom: 0; font: 500 .75rem/1 var(--mono); color: var(--night-soft); transform: translateX(-50%); }
+.tape__labels span:first-child { transform: none; }
+.tape__labels span:last-child { transform: translateX(-100%); }
+.case__txt { color: var(--night-soft); max-width: 52ch; }
+
+/* Chi sono */
+.about { position: relative; }
+.about__head { grid-column: 1 / span 5; }
+.portrait {
+  position: relative; margin-top: 2.5rem; max-width: 20rem; aspect-ratio: 4 / 5;
+  display: grid; place-items: end start; padding: 1rem;
+  border: 1px solid var(--brass); background-color: var(--ivory-deep);
+  font: 500 .75rem/1.4 var(--mono); color: var(--ink-soft);
+  background-image: repeating-linear-gradient(90deg, var(--brass-line) 0 1px, transparent 1px 16px);
+  background-size: 100% 12px; background-repeat: no-repeat;
+  box-shadow: 0 1px 1px rgba(43, 29, 22, .14), 0 22px 44px -20px rgba(43, 29, 22, .5);
+  transform: rotate(-1.2deg); will-change: transform;
+}
+.portrait::after { content: ""; position: absolute; inset: 0; pointer-events: none; background: radial-gradient(260px circle at var(--gx, 30%) var(--gy, 20%), rgba(255, 233, 180, .5), transparent 60%); opacity: 0; transition: opacity .5s var(--ease); }
+.portrait.is-tilt::after { opacity: 1; }
+.about__body { grid-column: 7 / span 6; }
+
+/* Chiusura */
+.close { position: relative; isolation: isolate; background: var(--ivory-deep); overflow-x: clip; }
+.close::after { content: ""; position: absolute; inset: 0; z-index: -1; pointer-events: none; opacity: 0; transition: opacity .8s var(--ease); background: radial-gradient(480px circle at var(--cx, 70%) var(--cy, 50%), rgba(255, 213, 138, .5), transparent 65%); }
+.close.is-live::after { opacity: 1; }
+.close .grid { align-items: end; }
+.close h2 { grid-column: 1 / span 7; font-size: clamp(2.8rem, 7vw, 5.25rem); }
+.close__act { grid-column: 9 / span 4; display: flex; flex-direction: column; gap: 1rem; align-items: flex-start; }
+.close__act .mail { font: 500 .9375rem/1.3 var(--mono); color: var(--petrol); text-underline-offset: .25em; text-decoration-thickness: 1px; word-break: break-all; }
+
+footer { padding-block: 2rem; font-size: .8125rem; color: var(--ink-soft); }
+footer .wrap { display: flex; flex-wrap: wrap; justify-content: space-between; gap: .5rem 2rem; }
+
+/* ---------- Telefono e tablet ---------- */
+@media (max-width: 900px) {
+  .nav a:not(.btn) { display: none; }
+  .brand__by { display: none; }
+  .hero__lede, .hero__sub, .hero__top h1, .hero__top .hero__act { grid-column: 1 / -1; }
+  .hero__top .hero__act { padding-bottom: 0; }
+  .problems__list { grid-template-columns: 1fr; gap: 0; }
+  .problems__list li { padding-bottom: 2rem; }
+  .problems__list h3, .problems__list p { max-width: none; }
+  .portrait { max-width: 14rem; }
+  .problems__head, .problems__list, .path__head, .band__head, .about__head, .about__body, .close h2, .close__act { grid-column: 1 / -1; }
+  .steps li { gap: .5rem 1rem; }
+  .steps .n { grid-column: 1 / span 1; }
+  .steps h3 { grid-column: 2 / -1; }
+  .steps p { grid-column: 2 / -1; }
+  .terms .fig, .terms .lab, .terms .txt { grid-column: 1 / -1; }
+  .terms li { gap: .35rem; }
+  .services__head, .services__list, .faq__head, .faq__list, .goals__head { grid-column: 1 / -1; }
+  .services__list { grid-template-columns: 1fr; gap: 2rem; }
+  .goals .lab, .goals .txt, .goals .st { grid-column: 1 / -1; text-align: left; }
+  .goals li { gap: .35rem; }
+  .ruler__labels span:nth-child(even) { display: none; }
+  .case { height: 240vh; }
+  .case__pin { padding-block: 5.5rem 2rem; }
+  .tape { height: 6.5rem; }
+}
+@media (max-height: 700px) {
+  .case { height: auto; }
+  .case__pin { position: static; height: auto; padding-block: var(--section); }
+}
+@media (pointer: coarse) { .ruler__marker { display: none; } }
+@media (max-width: 480px) {
+  .top { gap: .75rem; }
+  .nav .btn { padding: .65rem .9rem; font-size: .8125rem; }
+  .brand__name { font-size: 1.4rem; }
+}
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .case { height: auto; }
+  .case__pin { position: static; height: auto; padding-block: var(--section); }
+}
+</style>
+</head>
+<body>
+
+<div class="grain" aria-hidden="true"></div>
+<div class="progress" id="progress" aria-hidden="true"></div>
+<div class="spine" aria-hidden="true">
+  <div class="spine__tape" id="spineTape"></div>
+  <div class="spine__mark"><i></i><span id="spineRead">0,0 cm</span></div>
+</div>
+
+<header class="site" id="site">
+ <div class="wrap top">
+  <a class="brand" href="#" aria-label="MATIZ Studio, inizio pagina">
+    <span class="brand__name"><span class="brand__m">MATIZ</span> <i>Studio</i></span>
+    <span class="brand__by">di Matia Zoffoli</span>
+  </a>
+  <nav class="nav" aria-label="Principale">
+    <a href="#servizi">Servizi</a>
+    <a href="#percorso">Il percorso</a>
+    <a href="#condizioni">Condizioni</a>
+    <a href="#stima">Quanto costa</a>
+    <a href="#faq">Domande</a>
+    <a class="btn" href="https://calendar.app.google/NUp3xit8MwxWQWkK6" target="_blank" rel="noopener">Prenota il primo incontro</a>
+  </nav>
+ </div>
+</header>
+
+<main>
+  <div class="hero" id="hero" data-light>
+    <div class="wrap hero__top">
+      <h1>Soluzioni <em>su misura</em>.</h1>
+      <div class="hero__act">
+        <a class="btn" data-magnet href="https://calendar.app.google/NUp3xit8MwxWQWkK6" target="_blank" rel="noopener">
+          Prenota il primo incontro
+          <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M2 8h11M9 3.5 13.5 8 9 12.5"/></svg>
+        </a>
+        <small>Gratuito, <span class="num">30-45</span> minuti, anche di persona.</small>
+      </div>
+    </div>
+    <div class="ruler" id="ruler" aria-hidden="true">
+      <div class="ruler__scale"></div>
+      <div class="ruler__labels" id="rulerLabels"></div>
+      <div class="ruler__marker" id="rulerMarker"><span class="ruler__read mono" id="rulerRead">0,0</span></div>
+    </div>
+    <div class="wrap hero__foot">
+      <div class="hero__lede">
+        <p class="descr">Progettazione e sviluppo di siti, automazioni e strumenti digitali per piccole imprese.</p>
+      </div>
+      <p class="hero__sub">Un sito che racconta la tua attività com'è oggi, strumenti che tolgono il lavoro ripetitivo e una persona che risponde. Prima ascolto, poi costruisco.</p>
+    </div>
+  </div>
+
+  <section class="problems" id="problemi" aria-labelledby="h-problemi">
+    <div class="wrap grid">
+      <div class="problems__head">
+        <h2 id="h-problemi" data-split="lines">Dove si ferma, di solito.</h2>
+        <p>Costruire un sito è la parte semplice. Tenerlo vivo è il lavoro.</p>
+      </div>
+      <ul class="problems__list">
+        <li>
+          <h3>Si ferma.</h3>
+          <p>La tua attività cambia a ogni stagione. Quello che hai online resta com'era il giorno della consegna.</p>
+        </li>
+        <li>
+          <h3>Nessuno risponde.</h3>
+          <p>Alla prima modifica il fornitore è irraggiungibile, e non è chiaro cosa copra il canone che paghi ogni mese.</p>
+        </li>
+        <li>
+          <h3>Non rende.</h3>
+          <p>Le visite arrivano, le richieste no, e nessuno ha mai guardato i numeri per capire dove si perdono.</p>
+        </li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="services" id="servizi" aria-labelledby="h-servizi">
+    <div class="wrap grid">
+      <div class="services__head">
+        <h2 id="h-servizi" data-split="lines">Cosa faccio.</h2>
+        <p>Quattro servizi. Puoi sceglierne uno, o partire dal primo e vedere come va.</p>
+      </div>
+      <div class="cyl" id="cyl" tabindex="0" role="group" aria-roledescription="carosello" aria-label="I quattro servizi. Ruota con le frecce della tastiera, trascinando o con i pulsanti.">
+        <div class="cyl__stage">
+          <ul class="cyl__ring" id="cylRing">
+          <li class="face" style="--i:0">
+            <div class="svc" tabindex="0">
+              <h3 class="svc__title">Presenza online</h3>
+              <div class="svc__cover" aria-hidden="true"><span class="svc__hint">Scopri</span></div>
+              <div class="svc__body">
+                <p>Un sito chiaro e veloce, un menu che si aggiorna in un minuto, una scheda Google in ordine. In italiano e in inglese scritto da madrelingua.</p>
+                <ul>
+                <li>Sito e menu digitale</li>
+                <li>Scheda Google e informazioni sempre allineate</li>
+                <li>Testi in inglese scritti bene, non tradotti a macchina</li>
+                </ul>
+                <a class="svc__go" href="https://wa.me/393339580381?text=Ciao%20Matia%2C%20vorrei%20saperne%20di%20pi%C3%B9%20su%3A%20Presenza%20online">Parliamone su WhatsApp</a>
+              </div>
+              <span class="svc__gloss" aria-hidden="true"></span><span class="svc__shade" aria-hidden="true"></span>
+            </div>
+            <i class="face__back" aria-hidden="true"></i><i class="edge e-l" aria-hidden="true"></i><i class="edge e-r" aria-hidden="true"></i><i class="edge e-t" aria-hidden="true"></i><i class="edge e-b" aria-hidden="true"></i>
+          </li>
+          <li class="face" style="--i:1">
+            <div class="svc" tabindex="0">
+              <h3 class="svc__title">Automazioni</h3>
+              <div class="svc__cover" aria-hidden="true"><span class="svc__hint">Scopri</span></div>
+              <div class="svc__body">
+                <p>Il lavoro ripetitivo lo fanno gli strumenti: risposte alle domande più comuni, promemoria, richieste che arrivano già ordinate.</p>
+                <ul>
+                <li>Risposte automatiche alle domande frequenti</li>
+                <li>Raccolta e riordino delle richieste</li>
+                <li>Piccoli strumenti interni, costruiti attorno a come lavori</li>
+                </ul>
+                <a class="svc__go" href="https://wa.me/393339580381?text=Ciao%20Matia%2C%20vorrei%20saperne%20di%20pi%C3%B9%20su%3A%20Automazioni">Parliamone su WhatsApp</a>
+              </div>
+              <span class="svc__gloss" aria-hidden="true"></span><span class="svc__shade" aria-hidden="true"></span>
+            </div>
+            <i class="face__back" aria-hidden="true"></i><i class="edge e-l" aria-hidden="true"></i><i class="edge e-r" aria-hidden="true"></i><i class="edge e-t" aria-hidden="true"></i><i class="edge e-b" aria-hidden="true"></i>
+          </li>
+          <li class="face" style="--i:2">
+            <div class="svc" tabindex="0">
+              <h3 class="svc__title">Cura continua</h3>
+              <div class="svc__cover" aria-hidden="true"><span class="svc__hint">Scopri</span></div>
+              <div class="svc__body">
+                <p>Aggiornamenti, sicurezza, backup e modifiche. Sai cosa è incluso, quanto tempo hai a disposizione e chi chiamare.</p>
+                <ul>
+                <li>Ore di assistenza incluse ogni mese</li>
+                <li>Risposta entro un giorno lavorativo</li>
+                <li>Un resoconto mensile di ciò che è stato fatto</li>
+                </ul>
+                <a class="svc__go" href="https://wa.me/393339580381?text=Ciao%20Matia%2C%20vorrei%20saperne%20di%20pi%C3%B9%20su%3A%20Cura%20continua">Parliamone su WhatsApp</a>
+              </div>
+              <span class="svc__gloss" aria-hidden="true"></span><span class="svc__shade" aria-hidden="true"></span>
+            </div>
+            <i class="face__back" aria-hidden="true"></i><i class="edge e-l" aria-hidden="true"></i><i class="edge e-r" aria-hidden="true"></i><i class="edge e-t" aria-hidden="true"></i><i class="edge e-b" aria-hidden="true"></i>
+          </li>
+          <li class="face" style="--i:3">
+            <div class="svc" tabindex="0">
+              <h3 class="svc__title">Check-up</h3>
+              <div class="svc__cover" aria-hidden="true"><span class="svc__hint">Scopri</span></div>
+              <div class="svc__body">
+                <p>Uno sguardo onesto a quello che hai: cosa funziona, dove si perde il lavoro, da dove conviene cominciare.</p>
+                <ul>
+                <li>Sito, scheda Google, menu, prenotazioni, social</li>
+                <li>Un rapporto breve, in PDF e in pagina riservata</li>
+                <li>Il costo si scala dal lavoro che segue</li>
+                </ul>
+                <a class="svc__go" href="https://wa.me/393339580381?text=Ciao%20Matia%2C%20vorrei%20saperne%20di%20pi%C3%B9%20su%3A%20Check-up">Parliamone su WhatsApp</a>
+              </div>
+              <span class="svc__gloss" aria-hidden="true"></span><span class="svc__shade" aria-hidden="true"></span>
+            </div>
+            <i class="face__back" aria-hidden="true"></i><i class="edge e-l" aria-hidden="true"></i><i class="edge e-r" aria-hidden="true"></i><i class="edge e-t" aria-hidden="true"></i><i class="edge e-b" aria-hidden="true"></i>
+          </li>
+          </ul>
+        </div>
+        <div class="cyl__floor" aria-hidden="true"></div>
+      </div>
+      <div class="cyl__ctl" id="cylCtl">
+        <button type="button" class="cyl__btn" id="cylPrev" aria-label="Servizio precedente"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M14 8H3M7 3.5 2.5 8 7 12.5"/></svg></button>
+        <div class="cyl__tabs"><button type="button" class="cyl__tab on" aria-current="true">Presenza online</button><button type="button" class="cyl__tab">Automazioni</button><button type="button" class="cyl__tab">Cura continua</button><button type="button" class="cyl__tab">Check-up</button></div>
+        <button type="button" class="cyl__btn" id="cylNext" aria-label="Servizio successivo"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M2 8h11M9 3.5 13.5 8 9 12.5"/></svg></button>
+      </div>    </div>
+  </section>
+
+  <section class="path" id="percorso" aria-labelledby="h-percorso">
+    <div class="wrap">
+      <div class="grid"><div class="path__head">
+        <h2 id="h-percorso" data-split="flip">Si comincia con una chiacchierata.</h2>
+        <p>Quattro passi, ognuno con una portata chiusa. Puoi fermarti a quello che ti serve.</p>
+      </div></div>
+      <ol class="steps">
+        <li>
+          <span class="n">1</span>
+          <h3>Primo incontro</h3>
+          <p>Mezz'ora, forse tre quarti, di persona o in video. Racconti come lavori, io faccio domande. Nessun compito per casa, nessuna proposta improvvisata. <b>Gratuito.</b></p>
+        </li>
+        <li>
+          <span class="n">2</span>
+          <h3>Check-up</h3>
+          <p>Guardo ciò che hai oggi: sito, scheda Google, menu, prenotazioni. Ricevi un rapporto breve con le tre cose da fare per prime.</p>
+        </li>
+        <li>
+          <span class="n">3</span>
+          <h3>Costruzione</h3>
+          <p>Progetto e realizzo, con due giri di correzioni e un prezzo concordato prima di cominciare.</p>
+        </li>
+        <li>
+          <span class="n">4</span>
+          <h3>Cura</h3>
+          <p>Resto a disposizione. Aggiorno, correggo, e ogni mese ti mostro cosa è stato fatto e come sta andando.</p>
+        </li>
+      </ol>
+    </div>
+  </section>
+
+  <div class="band" id="band">
+    <div class="band__clip" aria-hidden="true">
+      <div class="band__fx" id="bandFx">
+        <canvas id="fx"></canvas>
+        <div class="band__ticks"></div>
+      </div>
+    </div>
+
+    <section class="case" id="caso" aria-labelledby="h-caso">
+      <div class="case__pin">
+        <div class="wrap">
+          <h2 id="h-caso" data-split="blur">Ogni obiettivo ha un numero. Si parte da lì.</h2>
+          <p class="case__lead">Iscritti, prenotazioni, richieste, ordini: qualunque cosa tu voglia far crescere, la misuro prima, la costruisco, la misuro di nuovo.</p>
+          <div class="stage" id="stage">
+          <div class="tape" aria-hidden="true" id="tape">
+            <div class="tape__scale"></div>
+            <div class="tape__bar" id="tapeBar"></div>
+            <div class="tape__head" id="tapeHead"><span class="tape__num" id="tapeNum">450</span></div>
+            <div class="tape__labels"><span style="left:0">100</span><span style="left:25%">200</span><span style="left:50%">300</span><span style="left:75%">400</span><span style="left:100%">500</span></div>
+          </div>
+          <div class="chart" id="chart" aria-hidden="true">
+            <div class="chart__base"></div>
+            <div class="bar bar--a" id="barA"><div class="bar__body"></div><span class="bar__v">115</span><span class="bar__l">primi due anni</span></div>
+            <div class="bar bar--b" id="barB"><div class="bar__body"></div><span class="bar__v">450</span><span class="bar__l">dopo una settimana</span><p class="bar__x" id="chartX">quasi quattro volte</p></div>
+          </div>
+          </div>
+          <p class="case__txt" style="margin-top:1rem;max-width:56ch">Il primo caso: una società sportiva, da 115 a 450 iscritti in una settimana, con un sito rifatto, una campagna sulle nuove card e un ingresso alle partite legato alla card. Un solo caso, reale e misurato. Altri sono in arrivo.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="goals-sec" id="obiettivi" aria-labelledby="h-obiettivi">
+      <div class="wrap">
+        <div class="grid"><div class="goals__head">
+          <h2 id="h-obiettivi" data-split="blur">I numeri su cui lavoro.</h2>
+          <p>Tre obiettivi che le piccole attività inseguono più spesso, e cosa misuro per ciascuno.</p>
+        </div></div>
+        <ul class="goals">
+          <li>
+            <span class="lab">Iscritti</span>
+            <span class="txt">Quanti si iscrivono, e quanti tornano. Da 115 a 450 in una settimana.</span>
+            <span class="st">Caso reale</span>
+          </li>
+          <li>
+            <span class="lab">Prenotazioni</span>
+            <span class="txt">Le richieste di tavolo o di ombrellone arrivate dal sito e dal menu, prima e dopo il lavoro.</span>
+            <span class="st">Per i primi clienti</span>
+          </li>
+          <li>
+            <span class="lab">Richieste</span>
+            <span class="txt">I messaggi e i preventivi ricevuti, e quanto tempo passa prima di una risposta.</span>
+            <span class="st">Per i primi clienti</span>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="terms-sec" id="condizioni" aria-labelledby="h-condizioni">
+      <div class="wrap">
+        <div class="grid"><div class="band__head">
+          <h2 id="h-condizioni" data-split="blur">Condizioni chiare, scritte prima.</h2>
+          <p>Quello che è incluso si sa dall'inizio.</p>
+        </div></div>
+        <ul class="terms">
+          <li>
+            <span class="fig">30-45 min</span>
+            <span class="lab">Primo incontro</span>
+            <span class="txt">Racconti come lavori, io ascolto e faccio domande. Nessuna proposta improvvisata.</span>
+          </li>
+          <li>
+            <span class="fig">Per iscritto</span>
+            <span class="lab">Preventivo</span>
+            <span class="txt">Cosa include, quanto costa e quando consegno, scritto prima di cominciare. Non cambia in corsa.</span>
+          </li>
+          <li>
+            <span class="fig">Scalato</span>
+            <span class="lab">Check-up</span>
+            <span class="txt">Quello che spendi per il check-up viene scalato dal lavoro, se decidi di proseguire.</span>
+          </li>
+          <li>
+            <span class="fig">1 giorno</span>
+            <span class="lab">Risposta</span>
+            <span class="txt">Lavorativo. Scrivi, e entro un giorno ti risponde una persona.</span>
+          </li>
+          <li>
+            <span class="fig">Pochi</span>
+            <span class="lab">Progetti per volta</span>
+            <span class="txt">Ne seguo pochi insieme, per dare a ciascuno tutta la dedizione che serve. Il tempo di consegna è scritto nel preventivo e lo rispetto.</span>
+          </li>
+          <li>
+            <span class="fig">1 mese</span>
+            <span class="lab">Rodaggio</span>
+            <span class="txt">Il primo mese è a forfait e senza limite di ore, per assistenza, ricerca e idee. Poi si decide insieme quanto serve.</span>
+          </li>
+        </ul>
+        <div class="band__cta">
+          <a class="btn btn--amber" data-magnet href="https://calendar.app.google/NUp3xit8MwxWQWkK6" target="_blank" rel="noopener">Prenota il primo incontro</a>
+        </div>
+      </div>
+    </section>
+  </div>
+
+    <section class="est" id="stima" aria-labelledby="h-stima">
+    <div class="wrap grid">
+      <div class="est__head">
+        <h2 id="h-stima" data-split="lines">Quanto costa, in concreto.</h2>
+        <p>Lavoro da solo e uso strumenti che automatizzano le parti ripetitive: è il motivo per cui i costi restano contenuti senza toccare la cura. Il prezzo lo vedi per iscritto, prima di decidere.</p>
+        <p>Vuoi un'idea adesso? Rispondi a quattro domande e ricevi subito un prezzo di partenza, senza telefonate.</p>
+      </div>
+      <div class="est__box" id="est">
+        <div class="est__prog" id="estProg" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></div>
+        <form id="estForm" novalidate>
+          <fieldset class="est__step is-on" data-i="0">
+            <legend>Che tipo di attività hai?</legend>
+            <div class="est__opts">
+              <label class="opt"><input type="radio" name="tipo" value="Stabilimento balneare"><span>Stabilimento balneare</span></label>
+              <label class="opt"><input type="radio" name="tipo" value="Ristorante o bar"><span>Ristorante o bar</span></label>
+              <label class="opt"><input type="radio" name="tipo" value="Hotel o struttura ricettiva"><span>Hotel o struttura ricettiva</span></label>
+              <label class="opt"><input type="radio" name="tipo" value="Negozio o artigiano"><span>Negozio o artigiano</span></label>
+              <label class="opt"><input type="radio" name="tipo" value="Studio professionale"><span>Studio professionale</span></label>
+              <label class="opt"><input type="radio" name="tipo" value="Altro"><span>Altro</span></label>
+            </div>
+          </fieldset>
+          <fieldset class="est__step" data-i="1">
+            <legend>Cosa ti serve? <small>Puoi sceglierne più di uno.</small></legend>
+            <div class="est__opts one">
+              <label class="opt"><input type="checkbox" name="servizi" value="sito"><span>Un sito</span></label>
+              <label class="opt"><input type="checkbox" name="servizi" value="menu"><span>Un menu digitale</span></label>
+              <label class="opt"><input type="checkbox" name="servizi" value="auto"><span>Automatizzare una parte del lavoro</span></label>
+              <label class="opt"><input type="checkbox" name="servizi" value="assistenza"><span>Assistenza continua</span></label>
+              <label class="opt"><input type="checkbox" name="servizi" value="nonso"><span>Non lo so, voglio capire da dove partire</span></label>
+            </div>
+          </fieldset>
+          <fieldset class="est__step" data-i="2">
+            <legend>Com'è oggi la tua presenza online?</legend>
+            <div class="est__opts one">
+              <label class="opt"><input type="radio" name="presenza" value="Non ho niente online"><span>Non ho niente online</span></label>
+              <label class="opt"><input type="radio" name="presenza" value="Ho un sito vecchio"><span>Ho un sito vecchio</span></label>
+              <label class="opt"><input type="radio" name="presenza" value="Ho un sito che nessuno segue"><span>Ho un sito, ma nessuno lo segue</span></label>
+              <label class="opt"><input type="radio" name="presenza" value="Ho un sito che funziona"><span>Ho un sito che funziona, mi serve altro</span></label>
+            </div>
+          </fieldset>
+          <fieldset class="est__step" data-i="3">
+            <legend>Quanto è grande il lavoro?</legend>
+            <div class="est__opts one">
+              <label class="opt"><input type="radio" name="size" value="piccola"><span>Essenziale<small>Poche cose, chiare e ben fatte.</small></span></label>
+              <label class="opt"><input type="radio" name="size" value="media"><span>Completo<small>Più pagine o più passaggi.</small></span></label>
+              <label class="opt"><input type="radio" name="size" value="grande"><span>Su misura, con funzioni<small>Iscrizioni, prenotazioni, area riservata o un processo articolato.</small></span></label>
+            </div>
+          </fieldset>
+          <fieldset class="est__step" data-i="4">
+            <legend>Ultimo passo: dove ti rispondo? <small>Lasciami nome ed email e vedi subito il prezzo di partenza.</small></legend>
+            <div class="est__fields">
+              <label class="field"><span>Nome</span><input type="text" name="nome" autocomplete="name"></label>
+              <label class="field"><span>Email</span><input type="email" name="email" autocomplete="email"></label>
+              <label class="field"><span>Telefono (facoltativo)</span><input type="tel" name="tel" autocomplete="tel"></label>
+              <label class="hp" aria-hidden="true">Non compilare <input type="text" name="sito_web" tabindex="-1" autocomplete="off"></label>
+              <label class="chk"><input type="checkbox" name="privacy"><span>Ho letto l'<a href="privacy.html">informativa privacy</a>.</span></label>
+              <label class="chk"><input type="checkbox" name="comunicazioni"><span>Acconsento a ricevere da MATIZ Studio comunicazioni su questo progetto (facoltativo).</span></label>
+            </div>
+          </fieldset>
+          <p class="est__err" id="estErr" role="alert"></p>
+          <div class="est__nav">
+            <button type="button" class="est__back" id="estBack" hidden>Indietro</button>
+            <button type="button" class="btn" id="estNext">Avanti</button>
+            <button type="button" class="btn" id="estGo" hidden>Vedi il prezzo</button>
+          </div>
+        </form>
+        <div class="est__result" id="estResult" hidden tabindex="-1" aria-live="polite">
+          <p class="est__label">Prezzo di partenza</p>
+          <p class="est__range" id="estRange"></p>
+          <ul class="est__lines" id="estLines"></ul>
+          <p class="est__time" id="estTime"></p>
+          <p class="est__note" id="estNote"></p>
+          <div class="est__cta">
+            <a class="btn" id="estBook" href="https://calendar.app.google/NUp3xit8MwxWQWkK6" target="_blank" rel="noopener">Prenota il primo incontro</a>
+            <a class="mail" id="estWa" href="https://wa.me/393339580381">Scrivimi su WhatsApp</a>
+          </div>
+          <button type="button" class="est__back est__again" id="estAgain">Ricomincia</button>
+          <p class="est__status" id="estStatus" role="status"></p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+<section class="about" id="chi-sono" aria-labelledby="h-chi">
+    <div class="wrap grid">
+      <div class="about__head">
+        <h2 id="h-chi" data-split="lines">Chi trovi dall'altra parte.</h2>
+        <div class="portrait" id="portrait" role="img" aria-label="Spazio riservato alla foto di Matia"><span>Foto di Matia<br>da inserire</span></div>
+      </div>
+      <div class="about__body">
+        <div class="copy" id="aboutCopy">
+          <p>Mi chiamo Matia Zoffoli. Per nove anni ho diretto locali in Australia, fino a quattro sedi e centoventi persone: so cosa significa lavorare con margini stretti e poco tempo per i problemi degli altri.</p>
+          <p>Poi mi sono occupato di dati. Oggi progetto sistemi di intelligenza artificiale per organizzazioni molto più grandi di una piccola attività, tra cui il Dipartimento dell'Istruzione del governo australiano, e porto lo stesso metodo a chi ha un'attività propria. Qui la uso solo dove toglie fatica a te.</p>
+          <p>Ho vissuto tredici anni in Australia. Parlo e scrivo italiano e inglese allo stesso livello.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="faq" id="faq" aria-labelledby="h-faq">
+    <div class="wrap grid">
+      <div class="faq__head">
+        <h2 id="h-faq" data-split="lines">Domande frequenti.</h2>
+      </div>
+      <div class="faq__list">
+        <details>
+          <summary>Quanto costa?</summary>
+          <p>Dipende da cosa ti serve. Dopo il primo incontro ricevi un prezzo scritto e chiuso, che non cambia in corsa. Il check-up viene scalato dal lavoro, se decidi di proseguire.</p>
+        </details>
+        <details>
+          <summary>Cosa succede dopo la consegna?</summary>
+          <p>Resto. Con la cura continua aggiorno, correggo e rispondo entro un giorno lavorativo. Ogni mese ricevi un breve resoconto di ciò che è stato fatto.</p>
+        </details>
+        <details>
+          <summary>Quanto tempo serve?</summary>
+          <p>Dipende dal lavoro: da pochi giorni per un menu a qualche settimana per un sito completo. Il tempo di consegna è scritto nel preventivo e lo rispetto: seguo pochi progetti per volta, per dare a ciascuno tutta l'attenzione che serve.</p>
+        </details>
+        <details>
+          <summary>Il sito e il dominio restano miei?</summary>
+          <p>Sì. Dominio, contenuti e accessi restano a te. Li intesto a te e, se vuoi, li gestisco per tuo conto.</p>
+        </details>
+        <details>
+          <summary>Cosa sono le ore incluse nella cura continua?</summary>
+          <p>Il tempo che dedico alle tue richieste ogni mese. Aggiornamenti tecnici, sicurezza e backup non lo consumano. Il primo mese è a forfait e senza limite di ore, esclusi i lavori nuovi di sviluppo.</p>
+        </details>
+        <details>
+          <summary>Lavori solo in Romagna?</summary>
+          <p>Sono di Cesenatico e mi fa piacere incontrarti di persona se sei in zona. Lavoro anche a distanza con attività di tutta Italia.</p>
+        </details>
+        <details>
+          <summary>Scrivi anche in inglese?</summary>
+          <p>Sì. Ho vissuto tredici anni in Australia e scrivo in inglese come in italiano: siti, menu e carta dei vini.</p>
+        </details>
+        <details>
+          <summary>Che dati raccogli e come li usi?</summary>
+          <p>Solo quelli che mi lasci scrivendomi o prenotando. Li uso per risponderti. Il dettaglio è nell'<a href="privacy.html">informativa privacy</a>.</p>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <section class="close" id="chiusura" data-light aria-labelledby="h-chiusura">
+    <div class="wrap grid">
+      <h2 id="h-chiusura" data-split="scale">Parliamone.</h2>
+      <div class="close__act">
+        <p class="close__lead">Scegli un momento per il primo incontro, oppure scrivimi. Rispondo entro un giorno lavorativo.</p>
+        <a class="btn" data-magnet href="https://calendar.app.google/NUp3xit8MwxWQWkK6" target="_blank" rel="noopener">
+          Prenota il primo incontro
+          <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M2 8h11M9 3.5 13.5 8 9 12.5"/></svg>
+        </a>
+        <a class="mail" href="https://wa.me/393339580381?text=Ciao%20Matia%2C%20vorrei%20fissare%20un%20primo%20incontro.">Scrivimi su WhatsApp</a>
+        <a class="mail" href="mailto:matiazoffoli@gmail.com">matiazoffoli@gmail.com</a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <span>MATIZ Studio - di Matia Zoffoli - Cesenatico</span>
+    <span><a href="privacy.html">Privacy</a> - Pagina di prova: nome, testi e condizioni sono in bozza. Il caso 115 e 450 va confermato con il cliente prima di pubblicare.</span>
+  </div>
+</footer>
+
+<script defer src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/gsap.min.js"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/ScrollTrigger.min.js"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/SplitText.min.js"></script>
+<script>
+(function () {
+  var root = document.documentElement;
+  var reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var fine = matchMedia('(hover: hover) and (pointer: fine)').matches;
+  var small = matchMedia('(max-width: 760px)').matches;
+  var $ = function (s, c) { return (c || document).querySelector(s); };
+  var $$ = function (s, c) { return Array.prototype.slice.call((c || document).querySelectorAll(s)); };
+
+  /* ---------- Righello dell'hero ---------- */
+  var hero = $('#hero'), ruler = $('#ruler'), labels = $('#rulerLabels'), marker = $('#rulerMarker'), read = $('#rulerRead');
+  var STEP = 160, UNIT = 40;
+  function buildLabels() {
+    var n = Math.floor((ruler.clientWidth - 24) / STEP) + 1, out = '';
+    for (var i = 0; i < n; i++) out += '<span style="left:' + (i * STEP) + 'px">' + (i * STEP / UNIT) + (i === 0 ? ' cm' : '') + '</span>';
+    labels.innerHTML = out;
+  }
+  buildLabels();
+  window.addEventListener('resize', buildLabels);
+  hero.addEventListener('pointermove', function (e) {
+    if (e.pointerType === 'touch') return;
+    var r = ruler.getBoundingClientRect();
+    var x = Math.max(0, Math.min(r.width - 1, e.clientX - r.left));
+    marker.style.setProperty('--mx', x + 'px');
+    read.textContent = (x / UNIT).toFixed(1).replace('.', ',') + ' cm';
+    read.style.transform = x < 32 ? 'translateX(0)' : (x > r.width - 40 ? 'translateX(-100%)' : 'translateX(-50%)');
+  });
+
+  /* ---------- Puntatore e luce d'ambra ---------- */
+  var ptr = { x: innerWidth * .6, y: innerHeight * .4, tx: innerWidth * .6, ty: innerHeight * .4, last: 0 };
+  function setT(e) { ptr.tx = e.clientX; ptr.ty = e.clientY; ptr.last = performance.now(); }
+  window.addEventListener('pointermove', setT, { passive: true });
+  window.addEventListener('pointerdown', setT, { passive: true });
+  var lightEls = $$('[data-light]');
+  var bandFx = $('#bandFx');
+  var seen = new Set();
+  var io = new IntersectionObserver(function (es) { es.forEach(function (e) { e.isIntersecting ? seen.add(e.target) : seen.delete(e.target); }); }, { rootMargin: '10%' });
+  lightEls.forEach(function (el) {
+    io.observe(el);
+    el.addEventListener('pointerenter', function (e) { if (e.pointerType !== 'touch') el.classList.add('is-live'); });
+    el.addEventListener('pointerleave', function () { el.classList.remove('is-live'); });
+  });
+
+  /* ---------- Righello laterale, avanzamento, testata ---------- */
+  var tape = $('#spineTape'), sread = $('#spineRead'), prog = $('#progress'), site = $('#site');
+  var ticking = false;
+  function onScroll() {
+    if (ticking) return; ticking = true;
+    requestAnimationFrame(function () {
+      ticking = false;
+      var y = window.scrollY || window.pageYOffset;
+      tape.style.setProperty('--sy', (-y) + 'px');
+      sread.textContent = ((y + innerHeight * .38) / UNIT).toFixed(1).replace('.', ',') + ' cm';
+      var max = document.documentElement.scrollHeight - innerHeight;
+      prog.style.transform = 'scaleX(' + (max > 0 ? Math.min(1, y / max) : 0) + ')';
+      site.classList.toggle('is-stuck', y > 8);
+    });
+  }
+  window.addEventListener('scroll', onScroll, { passive: true });
+  window.addEventListener('resize', onScroll);
+  onScroll();
+
+  /* ---------- WebGL: luce d'ambra nella fascia scura ---------- */
+  var gl = null, glOn = false, bandVisible = false;
+  var bandIO = new IntersectionObserver(function (es) { bandVisible = es[0].isIntersecting; }, { rootMargin: '5%' });
+  bandIO.observe($('#band'));
+  var fx = { boost: 0 };
+
+  function initGL() {
+    var cv = $('#fx');
+    if (!cv || small || !fine) return false;
+    gl = cv.getContext('webgl', { antialias: false, alpha: false, powerPreference: 'low-power' });
+    if (!gl) return false;
+    var vs = 'attribute vec2 a;void main(){gl_Position=vec4(a,0.,1.);}';
+    var fs = [
+      '#ifdef GL_FRAGMENT_PRECISION_HIGH', 'precision highp float;', '#else', 'precision mediump float;', '#endif',
+      'uniform vec2 uRes;uniform vec2 uMouse;uniform float uTime;uniform float uBoost;',
+      'float hash(vec2 p){return fract(sin(dot(p,vec2(127.1,311.7)))*43758.5453);}',
+      'float noise(vec2 p){vec2 i=floor(p),f=fract(p);f=f*f*(3.-2.*f);',
+      ' return mix(mix(hash(i),hash(i+vec2(1.,0.)),f.x),mix(hash(i+vec2(0.,1.)),hash(i+vec2(1.,1.)),f.x),f.y);}',
+      'float fbm(vec2 p){float v=0.,a=.5;for(int i=0;i<4;i++){v+=a*noise(p);p=p*2.02+vec2(3.1,1.7);a*=.5;}return v;}',
+      'void main(){',
+      ' vec2 uv=gl_FragCoord.xy/uRes;float asp=uRes.x/uRes.y;vec2 p=uv*vec2(asp,1.);vec2 m=uMouse*vec2(asp,1.);',
+      ' float t=uTime*.07;',
+      ' vec2 q=vec2(fbm(p*1.3+t),fbm(p*1.3+vec2(5.2,1.3)-t));',
+      ' float d=distance(p,m);',
+      ' vec2 warp=(p-m)/(d+.25)*exp(-d*2.2)*.3;',
+      ' float n=fbm(p*1.6+1.9*q+warp+t);',
+      ' float light=smoothstep(.36,.86,n);light*=light;',
+      ' float spot=exp(-d*d*5.5);',
+      ' float k=light*(.22+.1*uBoost)+spot*.2+light*spot*.14;',
+      ' k=clamp(k,0.,.34);',
+      ' vec3 night=vec3(.133,.090,.071);vec3 amber=vec3(.914,.635,.231);',
+      ' vec3 col=mix(night,amber,k);',
+      ' col*=1.-.28*length(uv-.5);',
+      ' col+=(hash(gl_FragCoord.xy+uTime)-.5)*.016;',
+      ' gl_FragColor=vec4(col,1.);',
+      '}'
+    ].join('\n');
+    function sh(type, src) {
+      var s = gl.createShader(type); gl.shaderSource(s, src); gl.compileShader(s);
+      if (!gl.getShaderParameter(s, gl.COMPILE_STATUS)) { console.warn(gl.getShaderInfoLog(s)); return null; }
+      return s;
+    }
+    var v = sh(gl.VERTEX_SHADER, vs), f = sh(gl.FRAGMENT_SHADER, fs);
+    if (!v || !f) return false;
+    var pr = gl.createProgram(); gl.attachShader(pr, v); gl.attachShader(pr, f); gl.linkProgram(pr);
+    if (!gl.getProgramParameter(pr, gl.LINK_STATUS)) return false;
+    gl.useProgram(pr);
+    var buf = gl.createBuffer(); gl.bindBuffer(gl.ARRAY_BUFFER, buf);
+    gl.bufferData(gl.ARRAY_BUFFER, new Float32Array([-1, -1, 3, -1, -1, 3]), gl.STATIC_DRAW);
+    var loc = gl.getAttribLocation(pr, 'a'); gl.enableVertexAttribArray(loc); gl.vertexAttribPointer(loc, 2, gl.FLOAT, false, 0, 0);
+    var uRes = gl.getUniformLocation(pr, 'uRes'), uMouse = gl.getUniformLocation(pr, 'uMouse'),
+        uTime = gl.getUniformLocation(pr, 'uTime'), uBoost = gl.getUniformLocation(pr, 'uBoost');
+
+    function size() {
+      var s = .5;
+      cv.width = Math.max(2, Math.round(cv.clientWidth * s));
+      cv.height = Math.max(2, Math.round(cv.clientHeight * s));
+      gl.viewport(0, 0, cv.width, cv.height);
+      draw(performance.now());
+    }
+    function draw(ts) {
+      if (!glOn) return;
+      gl.uniform2f(uRes, cv.width, cv.height);
+      gl.uniform2f(uMouse, ptr.x / Math.max(1, innerWidth), 1 - ptr.y / Math.max(1, innerHeight));
+      gl.uniform1f(uTime, reduce ? 4 : ts / 1000);
+      gl.uniform1f(uBoost, fx.boost);
+      gl.drawArrays(gl.TRIANGLES, 0, 3);
+    }
+    var last = 0;
+    function frame(ts) {
+      requestAnimationFrame(frame);
+      if (!bandVisible || document.hidden || reduce) return;
+      if (ts - last < 24) return;
+      last = ts; draw(ts);
+    }
+    cv.addEventListener('webglcontextlost', function (e) { e.preventDefault(); glOn = false; bandFx.classList.remove('is-gl'); });
+    window.addEventListener('resize', size);
+    bandFx.classList.add('is-gl');
+    glOn = true;
+    size();
+    if (!reduce) requestAnimationFrame(frame);
+    return true;
+  }
+  try { glOn = initGL(); } catch (err) { glOn = false; bandFx.classList.remove('is-gl'); }
+
+  /* ---------- Ciclo della luce ---------- */
+  function loop(ts) {
+    requestAnimationFrame(loop);
+    if (!fine && !reduce && ts - ptr.last > 2500) { /* su touch la luce vive da sola */
+      ptr.tx = innerWidth * (.5 + .32 * Math.sin(ts / 3800)); ptr.ty = innerHeight * (.42 + .22 * Math.cos(ts / 5100));
+    }
+    var dx = ptr.tx - ptr.x, dy = ptr.ty - ptr.y;
+    var sy = window.scrollY;
+    if (Math.abs(dx) < .2 && Math.abs(dy) < .2 && fine && sy === loop.sy) return;
+    loop.sy = sy;
+    ptr.x += dx * .1; ptr.y += dy * .1;
+    var rects = [];
+    seen.forEach(function (el) { rects.push([el, el.getBoundingClientRect()]); });
+    rects.forEach(function (p) {
+      p[0].style.setProperty('--cx', (ptr.x - p[1].left).toFixed(1) + 'px');
+      p[0].style.setProperty('--cy', (ptr.y - p[1].top).toFixed(1) + 'px');
+    });
+    if (bandVisible) {
+      bandFx.style.setProperty('--cx', ptr.x.toFixed(1) + 'px');
+      bandFx.style.setProperty('--cy', ptr.y.toFixed(1) + 'px');
+    }
+  }
+  requestAnimationFrame(loop);
+
+  /* ---------- Quotatura: linea di quota sul titolo ---------- */
+  function mountQuote(animate) {
+    var em = $('.hero h1 em');
+    if (!em || $('.qline', em)) return;
+    var q = document.createElement('span');
+    q.className = 'qline'; q.setAttribute('aria-hidden', 'true');
+    q.innerHTML = '<i class="e1"></i><i class="e2"></i><i class="b1"></i><i class="b2"></i><i class="a1"></i><i class="a2"></i><span class="n"></span>';
+    em.appendChild(q);
+    var n = $('.n', q);
+    function val() { return (em.getBoundingClientRect().width / UNIT).toFixed(1).replace('.', ','); }
+    n.textContent = val() + ' cm';
+    window.addEventListener('resize', function () { n.textContent = val() + ' cm'; });
+    if (animate && window.gsap) {
+      var o = { v: 0 }, to = parseFloat(val().replace(',', '.'));
+      gsap.from($$('.e1, .e2', q), { scaleY: 0, transformOrigin: '50% 0', duration: .7, ease: 'expo.out' });
+      gsap.from($('.b1', q), { scaleX: 0, duration: 1, ease: 'expo.out', delay: .15 });
+      gsap.from($('.b2', q), { scaleX: 0, duration: 1, ease: 'expo.out', delay: .15 });
+      gsap.from($$('.a1, .a2', q), { opacity: 0, duration: .5, delay: .6 });
+      gsap.to(o, { v: to, duration: 1.2, ease: 'power2.out', delay: .1, onUpdate: function () { n.textContent = o.v.toFixed(1).replace('.', ',') + ' cm'; } });
+    }
+  }
+
+  /* ---------- Quotatura sui titoli principali e sul ritratto (mouse; tocco su telefono) ---------- */
+  (function initDims() {
+    var NS = 'http://www.w3.org/2000/svg';
+    var layer = document.createElement('div');
+    layer.className = 'dims'; layer.setAttribute('aria-hidden', 'true');
+    layer.innerHTML = '<svg><g class="q"></g></svg>';
+    document.body.appendChild(layer);
+    var g = $('g', layer);
+    function mk(tag, attrs) { var e = document.createElementNS(NS, tag); for (var k in attrs) e.setAttribute(k, attrs[k]); g.appendChild(e); return e; }
+    var st = { stroke: 'currentColor', 'stroke-width': 1, fill: 'none' };
+    var dash = { stroke: 'currentColor', 'stroke-width': 1, 'stroke-dasharray': '3 3', opacity: .7 };
+    var hx1 = mk('line', dash), hx2 = mk('line', dash), hb1 = mk('line', st), hb2 = mk('line', st),
+        ha1 = mk('path', { fill: 'currentColor' }), ha2 = mk('path', { fill: 'currentColor' }), ht = mk('text', { 'text-anchor': 'middle' });
+    var vx1 = mk('line', dash), vx2 = mk('line', dash), vb1 = mk('line', st), vb2 = mk('line', st),
+        va1 = mk('path', { fill: 'currentColor' }), va2 = mk('path', { fill: 'currentColor' }), vt = mk('text', {});
+    var cur = null, plan = null, raf = 0, hideT = 0;
+    var CONTENT = 'h1,h2,h3,p,a,li,button,small,.btn,.portrait,.tape,.chart,.ruler,.hero__sub,.descr';
+    function cm(px) { return (px / UNIT).toFixed(1).replace('.', ',') + ' cm'; }
+    function set(el, a) { for (var k in a) el.setAttribute(k, a[k]); }
+    function show(v) { var d = v ? '' : 'none'; for (var i = 1; i < arguments.length; i++) arguments[i].style.display = d; }
+    /* misura il testo vero del titolo, non la larghezza del blocco */
+    function box(el) {
+      if (el.id === 'portrait') return el.getBoundingClientRect();
+      var rg = document.createRange(); rg.selectNodeContents(el);
+      var r = rg.getBoundingClientRect();
+      return r.width ? r : el.getBoundingClientRect();
+    }
+    /* la fascia dove andrebbe la quota e' libera, o ci passa sopra un altro elemento? */
+    function busy(x1, y1, x2, y2) {
+      if (x1 < 4 || y1 < 4 || x2 > innerWidth - 4 || y2 > innerHeight - 4) return true;
+      var els = document.querySelectorAll(CONTENT + ',.bar__v,.bar__l,.bar__x,.tape__num,.tape__labels span');
+      for (var i = 0; i < els.length; i++) {
+        var el = els[i];
+        if (el === cur || cur.contains(el) || el.contains(cur)) continue;
+        var cs = getComputedStyle(el);
+        if (cs.display === 'none' || cs.visibility === 'hidden' || parseFloat(cs.opacity) < .05) continue;
+        var r = el.getBoundingClientRect();
+        if (!r.width || !r.height) continue;
+        if (r.right > x1 && r.left < x2 && r.bottom > y1 && r.top < y2) return true;
+      }
+      return false;
+    }
+    function decide(r) {
+      var p = { h: null, v: null };
+      if (!busy(r.left, r.bottom + 14, r.right, r.bottom + 38)) p.h = 'below';
+      else if (!busy(r.left, r.top - 38, r.right, r.top - 14)) p.h = 'above';
+      if (cur.id === 'portrait') {
+        if (!busy(r.right + 14, r.top, r.right + 110, r.bottom)) p.v = 'right';
+        else if (!busy(r.left - 110, r.top, r.left - 14, r.bottom)) p.v = 'left';
+      }
+      return p;
+    }
+    function draw() {
+      if (!cur) return;
+      var r = box(cur);
+      layer.style.color = cur.closest('.band') ? '#F0B657' : '#1F4D4A';
+      if (plan.h) {
+        var below = plan.h === 'below', y = below ? r.bottom + 26 : r.top - 26, dir = below ? 1 : -1;
+        var l = r.left, rr = r.right, mid = (l + rr) / 2, gap = r.width > 150 ? 40 : 0;
+        show(true, hx1, hx2, hb1, hb2, ha1, ha2, ht);
+        set(hx1, { x1: l, y1: y - dir * 22, x2: l, y2: y + dir * 6 }); set(hx2, { x1: rr, y1: y - dir * 22, x2: rr, y2: y + dir * 6 });
+        set(hb1, { x1: l + 8, y1: y, x2: gap ? mid - gap : rr - 8, y2: y }); set(hb2, { x1: gap ? mid + gap : l + 8, y1: y, x2: rr - 8, y2: y });
+        set(ha1, { d: 'M' + l + ' ' + y + 'l8 -3.5v7z' }); set(ha2, { d: 'M' + rr + ' ' + y + 'l-8 -3.5v7z' });
+        set(ht, { x: mid, y: gap ? y + 4 : y - 8 }); ht.textContent = cm(r.width);
+      } else show(false, hx1, hx2, hb1, hb2, ha1, ha2, ht);
+      if (plan.v) {
+        var right = plan.v === 'right', x = right ? r.right + 26 : r.left - 26, d2 = right ? 1 : -1;
+        var t = r.top, b = r.bottom, my = (t + b) / 2, vg = r.height > 70 ? 10 : 0;
+        show(true, vx1, vx2, vb1, vb2, va1, va2, vt);
+        set(vx1, { x1: x - d2 * 22, y1: t, x2: x + d2 * 6, y2: t }); set(vx2, { x1: x - d2 * 22, y1: b, x2: x + d2 * 6, y2: b });
+        set(vb1, { x1: x, y1: t + 8, x2: x, y2: vg ? my - vg : b - 8 }); set(vb2, { x1: x, y1: vg ? my + vg : t + 8, x2: x, y2: b - 8 });
+        set(va1, { d: 'M' + x + ' ' + t + 'l-3.5 8h7z' }); set(va2, { d: 'M' + x + ' ' + b + 'l-3.5 -8h7z' });
+        set(vt, { x: x + d2 * 9, y: my + 4, 'text-anchor': right ? 'start' : 'end' }); vt.textContent = cm(r.height);
+      } else show(false, vx1, vx2, vb1, vb2, va1, va2, vt);
+      raf = requestAnimationFrame(draw);
+    }
+    function on(el) {
+      clearTimeout(hideT); cancelAnimationFrame(raf);
+      cur = el; plan = decide(box(el));
+      if (!plan.h && !plan.v) { layer.classList.remove('on'); return; }
+      draw(); layer.classList.add('on');
+    }
+    function off(el) { if (cur !== el) return; layer.classList.remove('on'); cancelAnimationFrame(raf); hideT = setTimeout(function () { cur = null; }, 400); }
+    ['#h-problemi', '#h-servizi', '#h-percorso', '#h-condizioni', '#h-stima', '#h-obiettivi', '#h-caso', '#h-chi', '#h-faq', '#h-chiusura', '#portrait'].forEach(function (sel) {
+      var el = $(sel); if (!el) return;
+      el.addEventListener('pointerenter', function (e) { if (e.pointerType !== 'touch') on(el); });
+      el.addEventListener('pointerleave', function (e) { if (e.pointerType !== 'touch') off(el); });
+      el.addEventListener('pointerdown', function (e) { if (e.pointerType === 'touch') { on(el); setTimeout(function () { off(el); }, 2200); } });
+    });
+  })();
+
+  /* ---------- Pulsanti: al passaggio vengono ridisegnati a matita, poi si riempiono ---------- */
+  var SVGNS = 'http://www.w3.org/2000/svg';
+  $$('.btn').forEach(function (b) {
+    var f = document.createElement('span');
+    f.className = 'btn__fill'; f.setAttribute('aria-hidden', 'true');
+    b.insertBefore(f, b.firstChild);
+    var sk = document.createElementNS(SVGNS, 'svg');
+    sk.setAttribute('class', 'btn__sk'); sk.setAttribute('aria-hidden', 'true');
+    b.appendChild(sk);
+    b.classList.add('has-fill');
+  });
+  function jit(a) { return (Math.random() - .5) * a; }
+  function edge(x1, y1, x2, y2, n, j) {
+    var p = [], i, t;
+    for (i = 0; i <= n; i++) { t = i / n; p.push([x1 + (x2 - x1) * t + jit(j), y1 + (y2 - y1) * t + jit(j)]); }
+    return p;
+  }
+  function toPath(p) { return 'M' + p.map(function (q) { return q[0].toFixed(1) + ' ' + q[1].toFixed(1); }).join(' L'); }
+  /* contorno a mano: lati che non sono perfetti e qualche sbavatura agli angoli */
+  function outline(w, h) {
+    var o = 5, r = Math.random;
+    var p = [].concat(
+      edge(-o * r(), jit(1.6), w + o * r(), jit(1.6), 9, .9),
+      edge(w + jit(1.6), -o * r(), w + jit(1.6), h + o * r(), 4, .9),
+      edge(w + o * r(), h + jit(1.6), -o * r(), h + jit(1.6), 9, .9),
+      edge(jit(1.6), h + o * r(), jit(1.6), -o * r(), 4, .9));
+    return toPath(p);
+  }
+  /* tratteggio a zig zag, come quando si campisce un'ombra con la matita */
+  function hatch(w, h) {
+    var step = 6 + Math.random() * 2, pts = [], i = 0, c, a, b;
+    for (c = step; c < w + h; c += step, i++) {
+      var xa = Math.max(0, c - h), xb = Math.min(c, w);
+      a = [xa + jit(1.5), c - xa + jit(1.5)]; b = [xb + jit(1.5), c - xb + jit(1.5)];
+      if (i % 2) { var t = a; a = b; b = t; }
+      pts.push(a, b);
+    }
+    return toPath(pts);
+  }
+  function bindButtons() {
+    $$('.btn').forEach(function (b) {
+      var sk = $('.btn__sk', b), busyB = false;
+      b.addEventListener('pointerenter', function (e) {
+        if (e.pointerType === 'touch' || busyB) return;
+        busyB = true;
+        var w = b.offsetWidth, h = b.offsetHeight;
+        sk.setAttribute('viewBox', '0 0 ' + w + ' ' + h); sk.setAttribute('width', w); sk.setAttribute('height', h);
+        sk.innerHTML = '<path class="p1" d="' + outline(w, h) + '"/><path class="p2" d="' + outline(w, h) + '"/><path class="ph" d="' + hatch(w, h) + '"/>';
+        var ps = $$('path', sk);
+        ps.forEach(function (p) { var L = p.getTotalLength(); p.style.strokeDasharray = L; p.style.strokeDashoffset = L; p.__L = L; });
+        b.classList.add('is-sketch');
+        var tl = gsap.timeline({ onComplete: function () { b.classList.remove('is-sketch'); setTimeout(function () { sk.innerHTML = ''; busyB = false; }, 520); } });
+        tl.to(ps[0], { strokeDashoffset: 0, duration: .5, ease: 'power1.inOut' }, .05)
+          .to(ps[1], { strokeDashoffset: 0, duration: .45, ease: 'power1.inOut' }, .22)
+          .to(ps[2], { strokeDashoffset: 0, duration: .75, ease: 'none' }, .4)
+          .to({}, { duration: .12 });
+      });
+    });
+  }
+
+  /* ---------- Servizi: il cilindro che gira ---------- */
+  (function initCyl() {
+    var cyl = $('#cyl'), ring = $('#cylRing'); if (!cyl || !ring) return;
+    var faces = $$('.face', ring), N = faces.length, STEP = 360 / N;
+    var tabs = $$('.cyl__tab'), prev = $('#cylPrev'), next = $('#cylNext'), host = $('#servizi');
+    var state = { a: 0 }, k = 0, tween = null, openT = 0, lock = false, wx = 0, front = -1;
+    cyl.classList.add('is-cyl'); host.classList.add('has-cyl');
+    $$('a', cyl).forEach(function (a) { a.draggable = false; });
+    cyl.addEventListener('dragstart', function (e) { e.preventDefault(); });
+    function idx(kk) { return ((kk % N) + N) % N; }
+    function norm(a) { return ((a % 360) + 540) % 360 - 180; }
+    function render() {
+      ring.style.setProperty('--a', state.a.toFixed(2) + 'deg');
+      var best = 0, bd = 999;
+      faces.forEach(function (f, i) {
+        var rel = norm(i * STEP + state.a), d = Math.min(1, Math.abs(rel) / 90);
+        f.style.setProperty('--dark', (d * d * .78).toFixed(3));
+        f.style.setProperty('--g', (0.5 - rel / 150).toFixed(3));
+        if (Math.abs(rel) < bd) { bd = Math.abs(rel); best = i; }
+      });
+      return best;
+    }
+    function setFront(i) {
+      if (i === front) return; front = i;
+      faces.forEach(function (f, j) {
+        var on = j === i; f.classList.toggle('is-front', on);
+        if (on) f.removeAttribute('inert'); else f.setAttribute('inert', '');
+      });
+      tabs.forEach(function (t, j) {
+        t.classList.toggle('on', j === i);
+        if (j === i) t.setAttribute('aria-current', 'true'); else t.removeAttribute('aria-current');
+      });
+    }
+    function closeAll() { clearTimeout(openT); $$('.svc.is-open', ring).forEach(function (s) { s.classList.remove('is-open'); }); }
+    function settle() {
+      clearTimeout(openT);
+      openT = setTimeout(function () { var f = faces[front]; if (f) $('.svc', f).classList.add('is-open'); }, reduce ? 0 : 350);
+    }
+    function goTo(kk, instant, quiet) {
+      closeAll(); k = kk;
+      var target = -kk * STEP;
+      if (tween) tween.kill();
+      if (instant || reduce || !window.gsap) { state.a = target; setFront(render()); if (!quiet) settle(); return; }
+      tween = gsap.to(state, { a: target, duration: 1.15, ease: 'expo.out', onUpdate: function () { setFront(render()); }, onComplete: settle });
+    }
+    function toIndex(i) {
+      var d = i - idx(k);
+      if (d > 2) d -= N; if (d < -1) d += N;
+      goTo(k + d);
+    }
+    tabs.forEach(function (t, i) { t.addEventListener('click', function () { toIndex(i); }); });
+    prev.addEventListener('click', function () { goTo(k - 1); });
+    next.addEventListener('click', function () { goTo(k + 1); });
+    cyl.addEventListener('keydown', function (e) {
+      if (e.key === 'ArrowRight') { e.preventDefault(); goTo(k + 1); }
+      if (e.key === 'ArrowLeft') { e.preventDefault(); goTo(k - 1); }
+    });
+
+    /* trascinamento (mouse e dito) */
+    var dragging = false, sx = 0, sa = 0, lastX = 0, lastT = 0, vx = 0, moved = 0;
+    cyl.addEventListener('pointerdown', function (e) {
+      if (e.pointerType === 'mouse' && e.button !== 0) return;
+      dragging = true; moved = 0; sx = lastX = e.clientX; sa = state.a; lastT = performance.now(); vx = 0;
+    });
+    window.addEventListener('pointermove', function (e) {
+      if (!dragging) return;
+      var dx = e.clientX - sx; moved = Math.max(moved, Math.abs(dx));
+      if (moved > 6) {
+        if (tween) tween.kill(); closeAll(); cyl.classList.add('is-drag');
+        state.a = sa + dx * .32; setFront(render());
+        var now = performance.now(); vx = (e.clientX - lastX) / Math.max(1, now - lastT); lastX = e.clientX; lastT = now;
+      }
+    });
+    window.addEventListener('pointerup', function () {
+      if (!dragging) return; dragging = false; cyl.classList.remove('is-drag');
+      if (moved > 6) goTo(Math.round(-(state.a + vx * 120 * .32) / STEP));
+    });
+    cyl.addEventListener('click', function (e) { if (moved > 6) { e.preventDefault(); e.stopPropagation(); moved = 0; } }, true);
+
+    /* scorrimento orizzontale del trackpad, o rotella con Maiusc */
+    cyl.addEventListener('wheel', function (e) {
+      var dx = Math.abs(e.deltaX) > Math.abs(e.deltaY) ? e.deltaX : (e.shiftKey ? e.deltaY : 0);
+      if (!dx) return;
+      e.preventDefault(); wx += dx;
+      if (!lock && Math.abs(wx) > 50) { lock = true; goTo(k + (wx > 0 ? 1 : -1)); wx = 0; setTimeout(function () { lock = false; }, 650); }
+    }, { passive: false });
+
+    setFront(render()); goTo(0, true, true);
+    /* la prima card si apre da sola la prima volta che la sezione entra in vista */
+    var seen = new IntersectionObserver(function (es) { if (es[0].isIntersecting) { settle(); seen.disconnect(); } }, { threshold: .5 });
+    seen.observe(cyl);
+  })();
+
+  /* ---------- Stimatore: quattro domande, prezzo di partenza subito ---------- */
+  (function initEstimator() {
+    var form = $('#estForm'); if (!form) return;
+    var ENDPOINT = 'https://mtdfpcwdzjweyqpgpdvp.supabase.co/functions/v1/contatto';
+    var POLICY = 'bozza-2026-10-08';
+    var steps = $$('.est__step', form), ticks = $$('#estProg i'), back = $('#estBack'), nextB = $('#estNext'), go = $('#estGo'),
+        err = $('#estErr'), res = $('#estResult'), pos = 0, t0 = performance.now();
+    var BANDS = {
+      sito: { piccola: [500, 900, 'Pagina singola', 10, 'giorni'], media: [1200, 2500, 'Sito completo', 3, 'settimane'], grande: [2500, 5000, 'Sito con funzioni', 6, 'settimane'] },
+      menu: [300, 700, 'Menu digitale', 5, 'giorni'],
+      auto: { piccola: [500, 900, 'Automazione semplice', 10, 'giorni'], media: [900, 1500, 'Automazione articolata', 10, 'giorni'], grande: [2000, 6000, 'Strumento su misura', 5, 'settimane'] },
+      check: [200, 200, 'Check-up', 3, 'giorni lavorativi']
+    };
+    function vals(name) { return $$('input[name="' + name + '"]:checked', form).map(function (i) { return i.value; }); }
+    function val(name) { return vals(name)[0] || ''; }
+    function fld(name) { return (form.elements[name].value || '').trim(); }
+    function needsSize() { var s = vals('servizi'); return s.indexOf('sito') > -1 || s.indexOf('auto') > -1; }
+    function seq() { return needsSize() ? [0, 1, 2, 3, 4] : [0, 1, 2, 4]; }
+    function eur(n) { return String(n).replace(/\B(?=(\d{3})+(?!\d))/g, '.'); }
+    function days(b) { return b[4] === 'settimane' ? b[3] * 7 : b[3]; }
+
+    /* "Non lo so" esclude le altre scelte, e viceversa */
+    $$('input[name="servizi"]', form).forEach(function (i) {
+      i.addEventListener('change', function () {
+        if (!i.checked) return;
+        $$('input[name="servizi"]', form).forEach(function (o) {
+          if (o !== i && ((i.value === 'nonso') || o.value === 'nonso')) o.checked = false;
+        });
+      });
+    });
+
+    function show(p) {
+      var s = seq(); pos = Math.max(0, Math.min(p, s.length - 1));
+      steps.forEach(function (st) { st.classList.remove('is-on'); });
+      steps[s[pos]].classList.add('is-on');
+      ticks.forEach(function (t, i) { t.classList.toggle('off', i >= s.length); t.classList.toggle('on', i <= pos); });
+      var last = pos === s.length - 1;
+      back.hidden = pos === 0; nextB.hidden = last; go.hidden = !last;
+      err.textContent = '';
+    }
+    function check() {
+      var s = seq()[pos];
+      if (s === 0 && !val('tipo')) return 'Scegli il tipo di attività.';
+      if (s === 1 && !vals('servizi').length) return 'Scegli almeno una cosa.';
+      if (s === 2 && !val('presenza')) return 'Scegli come sei messo oggi.';
+      if (s === 3 && !val('size')) return 'Scegli la dimensione del lavoro.';
+      if (s === 4) {
+        if (!fld('nome')) return 'Scrivi il tuo nome.';
+        if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(fld('email'))) return 'Scrivi un indirizzo email valido.';
+        if (!form.elements.privacy.checked) return 'Per vedere il prezzo serve spuntare l\'informativa privacy.';
+      }
+      return '';
+    }
+    nextB.addEventListener('click', function () { var e = check(); if (e) { err.textContent = e; return; } show(pos + 1); });
+    back.addEventListener('click', function () { show(pos - 1); });
+    form.addEventListener('keydown', function (e) { if (e.key === 'Enter' && e.target.tagName === 'INPUT' && e.target.type !== 'checkbox') { e.preventDefault(); (go.hidden ? nextB : go).click(); } });
+
+    function compute() {
+      var s = vals('servizi'), size = val('size') || 'media', lines = [], lo = 0, hi = 0, longest = null;
+      function add(b) { lines.push(b); lo += b[0]; hi += b[1]; if (!longest || days(b) > days(longest)) longest = b; }
+      if (s.indexOf('nonso') > -1) add(BANDS.check);
+      else {
+        if (s.indexOf('sito') > -1) add(BANDS.sito[size]);
+        if (s.indexOf('menu') > -1) add(BANDS.menu);
+        if (s.indexOf('auto') > -1) add(BANDS.auto[size]);
+      }
+      return { lines: lines, lo: lo, hi: hi, longest: longest, cura: s.indexOf('assistenza') > -1, check: s.indexOf('nonso') > -1 };
+    }
+    /* si mostra solo il prezzo di partenza: il tetto resta nel preventivo */
+    function da(b) { return b[0] === b[1] ? eur(b[0]) + ' euro' : 'da ' + eur(b[0]) + ' euro'; }
+    function status(msg) { $('#estStatus').textContent = msg; }
+
+    go.addEventListener('click', function () {
+      var e = check(); if (e) { err.textContent = e; return; }
+      var r = compute(), listEl = $('#estLines'), notes = [];
+      listEl.innerHTML = '';
+      if (!r.lines.length) {
+        $('#estRange').textContent = 'Cura continua';
+        $('#estTime').textContent = '';
+        notes.push('Il primo mese è a forfait e senza limite di ore, per assistenza, ricerca e idee. Dal secondo mese si decide insieme quanto serve, in base all\'uso reale. La cifra te la indico nel preventivo, dopo il primo incontro.');
+      } else {
+        $('#estRange').textContent = r.check ? 'Il check-up: ' + eur(r.lo) + ' euro' : 'Da ' + eur(r.lo) + ' euro';
+        r.lines.forEach(function (b) { var li = document.createElement('li'); li.innerHTML = '<span></span><span class="m"></span>'; li.firstChild.textContent = b[2]; li.lastChild.textContent = da(b); listEl.appendChild(li); });
+        $('#estTime').textContent = 'Tempo di consegna: circa ' + r.longest[3] + ' ' + r.longest[4] + ', scritto nel preventivo.';
+        if (r.check) notes.push('Non sai da dove partire? Il check-up serve a questo: guardo cosa hai e ti dico cosa conviene fare per primo. Il costo viene scalato dal lavoro, se decidi di proseguire.');
+        else notes.push('È il prezzo di partenza per il lavoro che hai descritto: la cifra finale dipende da quanto è articolato.');
+        if (r.cura) notes.push('A questo si aggiunge la cura continua: il primo mese è a forfait e senza limite di ore, poi si decide insieme.');
+      }
+      notes.push('Non è un preventivo: il prezzo vero lo scrivo io, dopo il primo incontro, e non cambia in corsa. IVA se dovuta.');
+      $('#estNote').textContent = notes.join(' ');
+      var nomi = r.lines.map(function (b) { return b[2]; }).join(', ') || 'cura continua';
+      var riepilogo = 'Ciao Matia, ho visto dal sito un prezzo di partenza (' + $('#estRange').textContent + ') per: ' + nomi + '. Attività: ' + val('tipo') + '. Vorrei parlarne.';
+      $('#estWa').href = 'https://wa.me/393339580381?text=' + encodeURIComponent(riepilogo);
+
+      var payload = {
+        nome: fld('nome'), email: fld('email'), telefono: fld('tel'), tipo_attivita: val('tipo'), servizi: vals('servizi'),
+        presenza: val('presenza'), dimensione: needsSize() ? val('size') : null, prezzo_da: r.lo || null, prezzo_fino_a: r.hi || null,
+        consenso_privacy: true, consenso_comunicazioni: !!form.elements.comunicazioni.checked, versione_informativa: POLICY,
+        sito_web: fld('sito_web'), tempo_compilazione_ms: Math.round(performance.now() - t0)
+      };
+      form.hidden = true; $('#estProg').hidden = true; res.hidden = false; res.focus({ preventScroll: true });
+      status('Sto registrando la tua richiesta...');
+      fetch(ENDPOINT, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(payload), keepalive: true })
+        .then(function (x) { return x.json().catch(function () { return {}; }).then(function (j) { return { ok: x.ok && j.ok, j: j }; }); })
+        .then(function (x) {
+          if (x.ok) status('Ho ricevuto la tua richiesta. Ti rispondo entro un giorno lavorativo.');
+          else status('Non sono riuscito a registrare la richiesta. Scrivimi su WhatsApp o per email e ti rispondo comunque.');
+        })
+        .catch(function () { status('Non sono riuscito a registrare la richiesta. Scrivimi su WhatsApp o per email e ti rispondo comunque.'); });
+    });
+    $('#estAgain').addEventListener('click', function () {
+      form.reset(); form.hidden = false; $('#estProg').hidden = false; res.hidden = true; status(''); show(0);
+    });
+    show(0);
+  })();
+
+  /* ---------- Animazioni (GSAP) ---------- */
+  function ready() { root.classList.remove('pending'); }
+  function start() {
+    if (!window.gsap || !window.ScrollTrigger || !window.SplitText) { ready(); mountQuote(false); return; }
+    gsap.registerPlugin(ScrollTrigger, SplitText);
+
+    /* testata scura sopra la fascia */
+    ScrollTrigger.create({
+      trigger: '#band', start: 'top 70px', end: 'bottom 70px',
+      onToggle: function (s) { site.classList.toggle('on-dark', s.isActive); document.body.classList.toggle('on-dark', s.isActive); }
+    });
+
+    /* pulsanti magnetici */
+    if (fine && !reduce) {
+      $$('[data-magnet]').forEach(function (b) {
+        var qx = gsap.quickTo(b, 'x', { duration: .6, ease: 'power3' }), qy = gsap.quickTo(b, 'y', { duration: .6, ease: 'power3' });
+        b.addEventListener('pointermove', function (e) {
+          var r = b.getBoundingClientRect();
+          qx((e.clientX - (r.left + r.width / 2)) * .22); qy((e.clientY - (r.top + r.height / 2)) * .3);
+        });
+        b.addEventListener('pointerleave', function () { qx(0); qy(0); });
+      });
+    }
+
+    if (reduce) { ready(); mountQuote(false); return; }
+    if (fine) bindButtons();
+
+    /* hero */
+    var h1 = $('.hero h1'), em = $('em', h1);
+    var hs = SplitText.create(h1, { type: 'words,chars', wordsClass: 'w', charsClass: 'c' });
+    gsap.set(em, { '--hl': 0 });
+    gsap.set(['.hero__act', '.hero__lede', '.hero__sub'], { opacity: 0, y: 26 });
+    gsap.set('.ruler__scale, .ruler__labels', { clipPath: 'inset(0 100% 0 0)' });
+    gsap.set(hs.chars, { opacity: 0, yPercent: 120, rotateZ: 7, transformOrigin: '0% 100%' });
+    ready();
+    var tl = gsap.timeline({ defaults: { ease: 'expo.out' } });
+    tl.to(hs.chars, { opacity: 1, yPercent: 0, rotateZ: 0, duration: 1.25, stagger: .035 })
+      .to(em, { '--hl': 1, duration: 1, ease: 'power3.inOut' }, '-=.55')
+      .to('.ruler__scale, .ruler__labels', { clipPath: 'inset(0 0% 0 0)', duration: 1.6, ease: 'expo.inOut' }, '-=1.1')
+      .to(['.hero__act', '.hero__lede', '.hero__sub'], { opacity: 1, y: 0, duration: 1, stagger: .12 }, '-=1.1')
+      .add(function () { hs.revert(); mountQuote(true); });
+    gsap.to(h1, { yPercent: -10, ease: 'none', scrollTrigger: { trigger: '.hero', start: 'top top', end: 'bottom top', scrub: true } });
+
+    /* titoli: ogni sezione entra a modo suo */
+    $$('[data-split]').forEach(function (h) {
+      var kind = h.getAttribute('data-split');
+      var st = { trigger: h, start: 'top 85%' };
+      if (kind === 'lines') {
+        var s1 = SplitText.create(h, { type: 'words', wordsClass: 'w' });
+        gsap.from(s1.words, { yPercent: 110, opacity: 0, duration: 1.1, ease: 'expo.out', stagger: .06, scrollTrigger: st });
+      } else if (kind === 'flip') {
+        var s2 = SplitText.create(h, { type: 'words', wordsClass: 'w' });
+        gsap.from(s2.words, { rotationX: -88, y: 30, opacity: 0, transformOrigin: '50% 100%', duration: 1.2, ease: 'expo.out', stagger: .08, scrollTrigger: st });
+      } else if (kind === 'blur') {
+        var s3 = SplitText.create(h, { type: 'words,chars', wordsClass: 'w', charsClass: 'c' });
+        gsap.from(s3.chars, { opacity: 0, filter: 'blur(12px)', y: 22, duration: 1, ease: 'expo.out', stagger: .018, clearProps: 'filter', scrollTrigger: st });
+      } else {
+        var s4 = SplitText.create(h, { type: 'words', wordsClass: 'w' });
+        gsap.from(s4.words, { scale: 1.35, opacity: 0, filter: 'blur(14px)', duration: 1.3, ease: 'expo.out', stagger: .1, transformOrigin: '50% 60%', clearProps: 'filter', scrollTrigger: st });
+      }
+    });
+
+    /* problemi: linea che si traccia, testo che si mette a fuoco */
+    gsap.from('#cyl', { y: 36, opacity: 0, duration: 1.1, ease: 'expo.out', clearProps: 'transform,opacity', scrollTrigger: { trigger: '#cyl', start: 'top 90%' } });
+    $$('.problems__list li').forEach(function (li, i) {
+      gsap.fromTo(li, { '--line': 0 }, { '--line': 1, duration: 1.3, ease: 'power3.inOut', delay: i * .08, scrollTrigger: { trigger: li, start: 'top 88%' } });
+      gsap.from($$(':scope > h3, :scope > p, :scope > ul', li), { y: 34, opacity: 0, filter: 'blur(10px)', duration: 1.1, ease: 'expo.out', stagger: .12, delay: .15 + i * .08, clearProps: 'filter', scrollTrigger: { trigger: li, start: 'top 88%' } });
+    });
+    gsap.from('.problems__head p', { y: 20, opacity: 0, duration: 1, ease: 'expo.out', scrollTrigger: { trigger: '.problems__head p', start: 'top 90%' } });
+
+    /* percorso: la riga si accende passo per passo */
+    gsap.from('.path__head p', { y: 20, opacity: 0, duration: 1, ease: 'expo.out', scrollTrigger: { trigger: '.path__head p', start: 'top 90%' } });
+    $$('.steps li').forEach(function (li) {
+      var kids = $$('.n, h3, p', li);
+      gsap.set(kids, { opacity: .55 });
+      ScrollTrigger.create({
+        trigger: li, start: 'top 68%',
+        onEnter: function () { li.classList.add('is-on'); gsap.to(li, { '--on': 1, duration: 1.1, ease: 'power3.inOut', overwrite: true }); gsap.to(kids, { opacity: 1, duration: .8, ease: 'expo.out', stagger: .06 }); },
+        onLeaveBack: function () { li.classList.remove('is-on'); gsap.to(li, { '--on': .05, duration: .6, ease: 'power3.out', overwrite: true }); gsap.to(kids, { opacity: .55, duration: .5 }); }
+      });
+    });
+
+    /* fascia scura: righe che entrano, cifra che sale */
+    gsap.from('.band__head p', { y: 20, opacity: 0, duration: 1, ease: 'expo.out', scrollTrigger: { trigger: '.band__head p', start: 'top 90%' } });
+    $$('.terms li, .goals li').forEach(function (li, i) {
+      gsap.from(li, { x: -40, opacity: 0, duration: 1.1, ease: 'expo.out', scrollTrigger: { trigger: li, start: 'top 90%' } });
+    });
+    $$('.count').forEach(function (el) {
+      var o = { v: 0 }, to = +el.getAttribute('data-count');
+      gsap.fromTo(o, { v: 0 }, { v: to, duration: 1.8, ease: 'power2.out', onUpdate: function () { el.textContent = Math.round(o.v); }, scrollTrigger: { trigger: el, start: 'top 90%' } });
+    });
+    gsap.from('.band__cta', { y: 24, opacity: 0, duration: 1, ease: 'expo.out', scrollTrigger: { trigger: '.band__cta', start: 'top 95%' } });
+
+    /* caso: il metro cresce con lo scroll, da 115 a 450 */
+    var bar = $('#tapeBar'), head = $('#tapeHead'), num = $('#tapeNum'), tp = $('#tape');
+    var o = { p: 0 };
+    function renderTape() {
+      var w = tp.clientWidth, half = num.offsetWidth / 2;
+      var xs = w * (.0375 + .8375 * o.p);
+      var x = Math.max(half, Math.min(w - half, xs));
+      gsap.set(bar, { scaleX: o.p });
+      gsap.set(head, { x: x - half });
+      num.textContent = Math.round(115 + 335 * o.p);
+      fx.boost = o.p;
+    }
+    renderTape();
+    /* il metro cresce da 115 a 450, poi si abbassa e le tacche diventano le barre di un grafico */
+    var chart = $('#chart'), barA = $('#barA'), barB = $('#barB'), chartX = $('#chartX');
+    gsap.set(chart, { opacity: 1 });
+    gsap.set([barA, barB], { '--g': 0 });
+    gsap.set(chartX, { opacity: 0, y: 14 });
+    var mtl = gsap.timeline({ defaults: { ease: 'none' }, scrollTrigger: { trigger: '.case', start: 'top top', end: 'bottom 140%', scrub: .6 } });
+    mtl.to(o, { p: 1, duration: .55, onUpdate: renderTape }, 0)
+       .to(tp, { scaleY: 0, opacity: 0, transformOrigin: '50% 68%', duration: .18, ease: 'power2.in' }, .6)
+       .to(barA, { '--g': 1, duration: .2, ease: 'power2.out' }, .68)
+       .to(barB, { '--g': 1, duration: .24, ease: 'power2.out' }, .76)
+       .to(chartX, { opacity: 1, y: 0, duration: .1 }, .94)
+       .to({}, { duration: .06 }, .96);
+    gsap.set(o, { p: 0 }); renderTape();
+    gsap.from('.case__txt', { y: 24, opacity: 0, duration: 1.1, ease: 'expo.out', scrollTrigger: { trigger: '.case', start: 'top 40%' } });
+    window.addEventListener('resize', renderTape);
+
+    /* chi sono: ritratto che si apre e si inclina, testo che si legge scorrendo */
+    var pt = $('#portrait');
+    gsap.set(pt, { rotation: -1.2, transformPerspective: 900 });
+    gsap.fromTo(pt, { clipPath: 'inset(0 0 100% 0)' }, { clipPath: 'inset(0 0 0% 0)', duration: 1.5, ease: 'expo.inOut', clearProps: 'clipPath', scrollTrigger: { trigger: pt, start: 'top 88%' } });
+    if (fine) {
+      var rx = gsap.quickTo(pt, 'rotationX', { duration: .6, ease: 'power3' }), ry = gsap.quickTo(pt, 'rotationY', { duration: .6, ease: 'power3' });
+      pt.addEventListener('pointermove', function (e) {
+        var r = pt.getBoundingClientRect(), px = (e.clientX - r.left) / r.width, py = (e.clientY - r.top) / r.height;
+        ry((px - .5) * 12); rx(-(py - .5) * 12);
+        pt.style.setProperty('--gx', (px * 100) + '%'); pt.style.setProperty('--gy', (py * 100) + '%');
+        pt.classList.add('is-tilt');
+      });
+      pt.addEventListener('pointerleave', function () { rx(0); ry(0); pt.classList.remove('is-tilt'); });
+    }
+    var cs = SplitText.create('#aboutCopy p', { type: 'words', wordsClass: 'w', aria: 'none' });
+    gsap.fromTo(cs.words, { opacity: .35 }, { opacity: 1, ease: 'none', stagger: .05, scrollTrigger: { trigger: '#aboutCopy', start: 'top 82%', end: 'bottom 58%', scrub: true } });
+
+    /* chiusura */
+    gsap.from('.close__act > *', { y: 28, opacity: 0, duration: 1.1, ease: 'expo.out', stagger: .14, scrollTrigger: { trigger: '.close__act', start: 'top 92%' } });
+
+    function refresh() { ScrollTrigger.refresh(); }
+    window.addEventListener('load', refresh);
+    if (document.fonts && document.fonts.ready) document.fonts.ready.then(refresh);
+  }
+
+  document.addEventListener('DOMContentLoaded', function () {
+    var go = function () { try { start(); } catch (err) { console.warn(err); ready(); } };
+    if (document.fonts && document.fonts.ready) document.fonts.ready.then(go); else go();
+  });
+})();
+</script>
+</body>
+</html>

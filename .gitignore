@@ -1,0 +1,11 @@
+# File di lavoro degli strumenti, non fanno parte del progetto
+.claude/settings.local.json
+.playwright-cli/
+.impeccable/live/
+*.log
+
+# Mai nel repository: chiavi e segreti
+.env
+.env.*
+*.key
+secrets*

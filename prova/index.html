@@ -1,0 +1,1210 @@
+<!doctype html>
+<html lang="it" class="pending">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Studio Matiz - Soluzioni su misura</title>
+<meta name="description" content="Progettazione e sviluppo di siti, automazioni e strumenti digitali per piccole imprese. Prenota un primo incontro gratuito.">
+<meta name="robots" content="noindex">
+<meta name="theme-color" content="#F7F3EC">
+<link rel="icon" href="assets/logo-m.png" type="image/png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400;0,6..96,500;1,6..96,400&family=Manrope:wght@300;400;500;600&display=swap" rel="stylesheet">
+<noscript><style>html.pending .hero h1, html.pending .hero [data-in] { visibility: visible; }</style></noscript>
+<script>
+/* Rete di sicurezza: se gli script non partono entro 3,5 secondi la pagina si mostra comunque. */
+setTimeout(function () { document.documentElement.classList.remove('pending'); }, 3500);
+</script>
+<style>
+:root {
+  --paper: #F7F3EC;
+  --paper-2: #EFE8DC;
+  --paper-3: #E3D9C9;
+  --card: #FBF9F4;
+  --ink: #241E1A;
+  --ink-soft: #6B6057;
+  --line: rgba(36, 30, 26, .16);
+  --line-strong: rgba(36, 30, 26, .55);
+  --gold: #A8854F;
+  --gold-text: #86672F;
+  --night: #161210;
+  --night-2: #1E1814;
+  --night-text: #F3ECE0;
+  --night-soft: #BDB1A0;
+  --night-line: rgba(243, 236, 224, .16);
+  --gold-light: #D4B27C;
+
+  --serif: "Bodoni Moda", "Didot", "Bodoni 72", Georgia, serif;
+  --sans: "Manrope", system-ui, -apple-system, "Segoe UI", sans-serif;
+
+  --gutter: clamp(1.25rem, 5vw, 4.5rem);
+  --section: clamp(5rem, 10vw, 9rem);
+  --ease: cubic-bezier(.16, 1, .3, 1);
+  color-scheme: light;
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+html { scroll-padding-top: 5.5rem; -webkit-text-size-adjust: 100%; scrollbar-color: var(--paper-3) var(--paper); }
+body {
+  margin: 0; background: var(--paper); color: var(--ink);
+  font-family: var(--sans); font-weight: 400; font-size: 1.0625rem; line-height: 1.65;
+  -webkit-font-smoothing: antialiased; text-rendering: optimizeLegibility;
+}
+::selection { background: var(--gold-light); color: var(--ink); }
+:focus-visible { outline: 2px solid var(--gold-text); outline-offset: 4px; border-radius: 2px; }
+.night :focus-visible, .site.on-dark :focus-visible, .foot :focus-visible, .page__info :focus-visible { outline-color: var(--gold-light); }
+h1, h2, h3, p, ul, ol, figure { margin: 0; }
+ul, ol { padding: 0; list-style: none; }
+a { color: inherit; }
+img { display: block; max-width: 100%; }
+
+.wrap { width: 100%; max-width: 1360px; margin-inline: auto; padding-inline: var(--gutter); }
+.grid { display: grid; grid-template-columns: repeat(12, 1fr); gap: 2rem; }
+section { padding-block: var(--section); }
+[hidden] { display: none !important; }
+
+/* ---------- Tipografia ---------- */
+h1, h2, h3, .serif { font-family: var(--serif); font-weight: 400; font-optical-sizing: auto; }
+h1 { font-size: clamp(3.4rem, 9.4vw, 8rem); line-height: .94; letter-spacing: -.025em; }
+h1 em { font-style: italic; }
+h2 { font-size: clamp(2.3rem, 4.8vw, 4.1rem); line-height: 1.04; letter-spacing: -.02em; text-wrap: balance; }
+h2 em { font-style: italic; }
+h3 { font-size: clamp(1.6rem, 2.5vw, 2.1rem); line-height: 1.15; letter-spacing: -.01em; }
+.eyebrow {
+  display: inline-flex; align-items: center; gap: .7rem; margin-bottom: 1.75rem;
+  font: 600 .6875rem/1 var(--sans); letter-spacing: .2em; text-transform: uppercase; color: var(--ink-soft);
+}
+.eyebrow::before { content: ""; width: 5px; height: 5px; border-radius: 50%; background: var(--gold); }
+.lede { font-weight: 300; font-size: clamp(1.15rem, 1.6vw, 1.4rem); line-height: 1.55; max-width: 36ch; }
+.muted { color: var(--ink-soft); }
+.num { font-weight: 600; }
+[data-split] .w { display: inline-block; }
+
+/* ---------- Pulsanti: una penna stilografica li disegna ---------- */
+.btn {
+  --pen-body: #2A211C; --pen-gold: #B8935A;
+  position: relative; display: inline-flex; align-items: center; gap: .8rem;
+  padding: 1.05rem 1.9rem; border: 1px solid var(--ink); border-radius: 999px;
+  background: transparent; color: var(--ink); text-decoration: none; white-space: nowrap; cursor: pointer;
+  font: 600 .75rem/1 var(--sans); letter-spacing: .16em; text-transform: uppercase;
+  transition: background-color .6s var(--ease), color .45s var(--ease), border-color .3s var(--ease);
+}
+.btn.is-drawing { border-color: transparent; }
+.btn.is-filled { background: var(--ink); color: var(--paper); border-color: transparent; }
+.btn__ink { position: absolute; left: -1px; top: -1px; z-index: 3; overflow: visible; pointer-events: none; }
+.btn__ink .ink { fill: var(--ink); }
+.btn > svg:not(.btn__ink) { width: 1.1em; height: 1.1em; flex: none; transition: transform .45s var(--ease); }
+.btn:hover > svg:not(.btn__ink) { transform: translateX(3px); }
+.btn:active { transform: scale(.985); }
+.btn--light { --pen-body: #E9DEC9; border-color: rgba(243, 236, 224, .8); color: var(--night-text); }
+.btn--light .btn__ink .ink { fill: var(--night-text); }
+.btn--light.is-filled { background: var(--night-text); color: var(--night); }
+@media (hover: none) { .btn:active { background: var(--ink); color: var(--paper); } .btn--light:active { background: var(--night-text); color: var(--night); } }
+.link {
+  display: inline-flex; align-items: center; gap: .6rem; padding-bottom: .35rem;
+  font: 600 .75rem/1.2 var(--sans); letter-spacing: .16em; text-transform: uppercase; text-decoration: none;
+  background: linear-gradient(currentColor, currentColor) left bottom / 100% 1px no-repeat; transition: background-size .5s var(--ease);
+}
+.link:hover { background-size: 40% 1px; }
+.link svg { width: 1em; height: 1em; }
+
+/* ---------- Testata ---------- */
+.site { position: sticky; top: 0; z-index: 20; background: rgba(247, 243, 236, .88); -webkit-backdrop-filter: blur(14px); backdrop-filter: blur(14px); border-bottom: 1px solid transparent; transition: border-color .4s var(--ease), background-color .5s var(--ease), color .5s var(--ease); }
+.site.is-stuck { border-bottom-color: var(--line); }
+.site.on-dark { background: rgba(22, 18, 16, .86); color: var(--night-text); border-bottom-color: var(--night-line); }
+.top { display: grid; grid-template-columns: 1fr auto 1fr; align-items: center; gap: 1.5rem; padding-block: 1.05rem; }
+.brand { justify-self: start; display: block; line-height: 0; }
+.brand img { height: 1.55rem; width: auto; transition: filter .5s var(--ease); }
+.site.on-dark .brand img { filter: invert(1); }
+.nav { display: flex; align-items: center; gap: clamp(1.25rem, 3vw, 2.5rem); }
+.nav a { font: 500 .6875rem/1 var(--sans); letter-spacing: .18em; text-transform: uppercase; text-decoration: none; padding-block: .5rem; background: linear-gradient(currentColor, currentColor) left bottom / 0% 1px no-repeat; transition: background-size .45s var(--ease); }
+.nav a:hover { background-size: 100% 1px; }
+.top__cta { justify-self: end; }
+.top__cta .btn { padding: .8rem 1.3rem; font-size: .6875rem; }
+.site.on-dark .top__cta .btn { border-color: rgba(243, 236, 224, .8); color: var(--night-text); --pen-body: #E9DEC9; }
+.site.on-dark .top__cta .btn .btn__ink .ink { fill: var(--night-text); }
+.site.on-dark .top__cta .btn.is-filled { background: var(--night-text); color: var(--night); }
+
+/* ---------- Hero ---------- */
+.hero { position: relative; isolation: isolate; overflow: clip; padding-block: clamp(3.5rem, 9vh, 6.5rem) 0; }
+.hero::before { content: ""; position: absolute; z-index: -2; right: -10vw; top: -14vw; width: 60vw; height: 60vw; max-width: 880px; max-height: 880px; background: radial-gradient(closest-side, rgba(212, 178, 124, .38), rgba(212, 178, 124, .1) 55%, transparent 75%); pointer-events: none; }
+.hero__sketch { position: absolute; z-index: -1; right: max(var(--gutter), calc((100vw - 1360px) / 2 + var(--gutter))); top: clamp(1rem, 4vh, 3rem); width: min(44vw, 36rem); pointer-events: none; }
+.hero__sketch svg { width: 100%; height: auto; overflow: visible; }
+.sk { fill: none; stroke: var(--ink); stroke-width: 1.15; stroke-linecap: round; stroke-linejoin: round; opacity: .42; }
+.sk--gold { stroke: var(--gold); opacity: .85; }
+.sk--fill { fill: var(--paper); }
+.hero__main { padding-bottom: clamp(3rem, 8vh, 5.5rem); }
+.hero h1 em { display: inline-block; }
+.hero__row { display: grid; grid-template-columns: repeat(12, 1fr); gap: 1.75rem 2rem; margin-top: clamp(2rem, 5vh, 3.5rem); align-items: start; }
+.hero__row .lede { grid-column: 1 / span 6; }
+.hero__act { grid-column: 1 / span 7; display: flex; flex-wrap: wrap; align-items: center; gap: 1.25rem 2rem; }
+.hero__act small { flex-basis: 100%; font-size: .875rem; color: var(--ink-soft); }
+.hero__meta { display: grid; grid-template-columns: repeat(3, 1fr); border-top: 1px solid var(--line); }
+.hero__meta p { padding: 1.4rem 1.5rem 1.6rem 0; font: 500 .6875rem/1.6 var(--sans); letter-spacing: .16em; text-transform: uppercase; color: var(--ink-soft); }
+.hero__meta p + p { padding-left: 1.5rem; border-left: 1px solid var(--line); }
+html.pending .hero h1, html.pending .hero [data-in] { visibility: hidden; }
+
+/* ---------- Problemi ---------- */
+.problems { padding-top: var(--section); }
+.problems__head { grid-column: 1 / span 7; margin-bottom: clamp(2.5rem, 5vw, 4.5rem); }
+.problems__head p { margin-top: 1.5rem; color: var(--ink-soft); max-width: 44ch; }
+.problems__list { grid-column: 1 / -1; display: grid; grid-template-columns: repeat(3, 1fr); gap: 0; border-top: 1px solid var(--line); }
+.problems__list li { padding: 2rem 2.25rem 2.5rem 0; }
+.problems__list li + li { padding-left: 2.25rem; border-left: 1px solid var(--line); }
+.problems__list .n { display: block; margin-bottom: 2.5rem; font: italic 400 1.1rem/1 var(--serif); color: var(--gold-text); }
+.problems__list h3 { margin-bottom: .9rem; }
+.problems__list p { color: var(--ink-soft); max-width: 34ch; }
+
+/* ---------- Servizi: pagine che scorrono da destra verso sinistra ---------- */
+.gal { padding-block: var(--section) 0; background: var(--paper-2); }
+.gal__head { display: grid; grid-template-columns: repeat(12, 1fr); gap: 1rem 2rem; align-items: end; margin-bottom: clamp(2rem, 4vw, 3.5rem); }
+.gal__head h2 { grid-column: 1 / span 7; }
+.gal__head p { grid-column: 9 / span 4; color: var(--ink-soft); max-width: 36ch; }
+.gal__stage { display: grid; gap: 1.5rem; padding-bottom: var(--section); }
+.page { position: relative; display: grid; grid-template-columns: 1.2fr 1fr; background: var(--card); border: 1px solid var(--line); box-shadow: 0 50px 80px -50px rgba(36, 30, 26, .45); overflow: hidden; }
+.page::after { content: ""; position: absolute; inset: 0; background: var(--night); opacity: var(--dim, 0); pointer-events: none; transition: none; z-index: 5; }
+.page__art { position: relative; display: grid; place-items: center; min-height: 20rem; padding: 3.5rem 2rem 2rem; background: var(--paper-3); background-image: linear-gradient(135deg, rgba(255, 255, 255, .35), transparent 55%); }
+.page__art svg { width: min(100%, 24rem); height: auto; overflow: visible; }
+.page__n { position: absolute; left: 1.5rem; top: 1.5rem; display: grid; place-items: center; width: 2.9rem; height: 2.9rem; background: var(--ink); color: var(--paper); font: 500 .8125rem/1 var(--sans); letter-spacing: .08em; }
+.dr { stroke-dasharray: 1; stroke-dashoffset: calc(1 - var(--d, 1)); }
+.page__info { display: flex; flex-direction: column; padding: clamp(1.75rem, 3vw, 3rem); background: var(--night); color: var(--night-text); }
+.page__meta { font: 500 .6875rem/1.4 var(--sans); letter-spacing: .14em; text-transform: uppercase; color: var(--night-soft); }
+.page__info h3 { margin: .9rem 0 1.5rem; font-size: clamp(2rem, 3.2vw, 2.9rem); color: var(--night-text); }
+.page__blk + .page__blk { margin-top: 1.4rem; padding-top: 1.4rem; border-top: 1px solid var(--night-line); }
+.page__lab { display: block; margin-bottom: .55rem; font: 600 .625rem/1 var(--sans); letter-spacing: .22em; text-transform: uppercase; color: var(--gold-light); }
+.page__info p { font-weight: 300; font-size: 1rem; line-height: 1.6; color: var(--night-text); }
+.page__info p.soft { color: var(--night-soft); }
+.page__tags { margin-top: auto; padding-top: 1.5rem; font: 500 .75rem/1.6 var(--sans); letter-spacing: .04em; color: var(--night-soft); }
+.page__info .link { align-self: flex-start; margin-top: 1.25rem; color: var(--night-text); }
+.gal__ctl { display: none; }
+
+/* modalita' a scorrimento: la sezione resta ferma e le pagine passano */
+.gal.is-pinned { padding-block: 0; }
+.gal.is-pinned .gal__pin { height: 100vh; height: 100svh; display: flex; flex-direction: column; padding-top: 5.75rem; padding-bottom: 1.25rem; overflow: hidden; }
+.gal.is-pinned .gal__head { margin-bottom: clamp(1rem, 3vh, 2rem); }
+.gal.is-pinned .gal__head h2 { font-size: clamp(2.1rem, 4vw, 3.4rem); }
+.gal.is-pinned .gal__stage { position: relative; display: block; flex: 1; min-height: 0; padding: 0; perspective: 2000px; perspective-origin: 50% 45%; }
+.gal.is-pinned .page { position: absolute; top: 0; bottom: 0; left: 50%; width: var(--pw); height: min(100%, 34rem); margin: auto 0 auto calc(var(--pw) / -2); will-change: transform; }
+.gal.is-pinned .page__art { min-height: 0; }
+.gal.is-pinned .gal__ctl { display: flex; align-items: center; justify-content: space-between; gap: 1.5rem; margin-top: 1rem; padding-top: .9rem; border-top: 1px solid var(--line); font: 500 .6875rem/1 var(--sans); letter-spacing: .16em; text-transform: uppercase; color: var(--ink-soft); }
+.gal__count b { font-weight: 600; color: var(--ink); }
+.gal__dots { display: flex; gap: .5rem; }
+.gal__dots button { width: 2.2rem; height: 1.4rem; padding: 0; border: 0; background: none; cursor: pointer; position: relative; }
+.gal__dots button::after { content: ""; position: absolute; left: 0; right: 0; top: 50%; height: 1px; background: var(--line-strong); transition: height .4s var(--ease), background-color .4s; }
+.gal__dots button.on::after { height: 3px; margin-top: -1px; background: var(--ink); }
+
+/* ---------- Percorso ---------- */
+.path__head { grid-column: 1 / span 7; margin-bottom: clamp(2.5rem, 5vw, 4rem); }
+.path__head p { margin-top: 1.5rem; color: var(--ink-soft); max-width: 46ch; }
+.steps { border-top: 1px solid var(--line); }
+.steps li { display: grid; grid-template-columns: repeat(12, 1fr); gap: .75rem 2rem; align-items: baseline; padding: 1.9rem 1.5rem; margin-inline: -1.5rem; border-bottom: 1px solid var(--line); transition: background-color .6s var(--ease), color .5s var(--ease); }
+.steps .n { grid-column: 1 / span 1; font: 500 .75rem/1 var(--sans); letter-spacing: .14em; color: var(--ink-soft); transition: color .5s; }
+.steps h3 { grid-column: 2 / span 4; }
+.steps p { grid-column: 7 / span 6; max-width: 52ch; color: var(--ink-soft); transition: color .5s; }
+.steps p b { font-weight: 600; color: var(--ink); transition: color .5s; }
+.steps li.is-on, .steps li:hover { background: var(--ink); color: var(--paper); }
+.steps li.is-on .n, .steps li:hover .n { color: var(--gold-light); }
+.steps li.is-on p, .steps li:hover p { color: var(--night-soft); }
+.steps li.is-on p b, .steps li:hover p b { color: var(--night-text); }
+
+/* ---------- Sezioni scure ---------- */
+.night { position: relative; isolation: isolate; background: var(--night); color: var(--night-text); overflow: clip; }
+.night::before { content: ""; position: absolute; inset: 0; z-index: -1; pointer-events: none; background: radial-gradient(60vw 40vw at 85% 8%, rgba(176, 141, 87, .2), transparent 70%), radial-gradient(55vw 40vw at 5% 55%, rgba(176, 141, 87, .12), transparent 70%), radial-gradient(60vw 40vw at 90% 92%, rgba(176, 141, 87, .14), transparent 70%); }
+.night .eyebrow { color: var(--night-soft); }
+.night h2 { color: var(--night-text); }
+.night .muted, .night__lead { color: var(--night-soft); }
+.night__lead { margin-top: 1.5rem; max-width: 44ch; }
+
+.case { height: 240vh; padding-block: 0; }
+.case__pin { position: sticky; top: 0; height: 100vh; height: 100svh; padding-block: 6rem 2rem; display: flex; align-items: center; }
+.case__grid { display: grid; grid-template-columns: repeat(12, 1fr); gap: 2rem; align-items: center; width: 100%; }
+.case__left { grid-column: 1 / span 6; }
+.case__left h2 { font-size: clamp(2.2rem, 4.2vw, 3.6rem); }
+.case__right { grid-column: 8 / span 5; }
+.case__fig { font: 400 clamp(5.5rem, 13vw, 11rem)/.9 var(--serif); letter-spacing: -.04em; color: var(--night-text); font-variant-numeric: lining-nums tabular-nums; }
+.case__unit { margin-top: .75rem; font: 600 .6875rem/1.5 var(--sans); letter-spacing: .2em; text-transform: uppercase; color: var(--gold-light); }
+.meter { margin-top: clamp(1.75rem, 4vh, 3rem); display: grid; gap: 1.5rem; }
+.meter__row { display: grid; grid-template-columns: 1fr auto; gap: .55rem 1rem; align-items: baseline; font: 500 .75rem/1 var(--sans); letter-spacing: .12em; text-transform: uppercase; color: var(--night-soft); }
+.meter__row b { font: 400 1.5rem/1 var(--serif); letter-spacing: 0; color: var(--night-text); }
+.meter__bar { grid-column: 1 / -1; display: block; height: 1px; background: var(--night-line); position: relative; }
+.meter__bar::after { content: ""; position: absolute; left: 0; top: -1px; height: 3px; width: 100%; background: var(--gold-light); transform-origin: left; transform: scaleX(var(--s, 0)); }
+.meter__row--a .meter__bar::after { width: 25.6%; background: var(--night-soft); }
+.case__txt { grid-column: 1 / span 6; margin-top: 1rem; color: var(--night-soft); max-width: 50ch; font-size: .9375rem; }
+
+.goals-sec { padding-block: calc(var(--section) * .55) calc(var(--section) * .5); }
+.night__head { grid-column: 1 / span 7; margin-bottom: clamp(2.5rem, 5vw, 4rem); }
+.goals li, .terms li { display: grid; grid-template-columns: repeat(12, 1fr); gap: .75rem 2rem; align-items: baseline; padding-block: 1.75rem; border-top: 1px solid var(--night-line); }
+.goals li:last-child, .terms li:last-child { border-bottom: 1px solid var(--night-line); }
+.goals .lab { grid-column: 1 / span 3; font: 400 clamp(1.5rem, 2.2vw, 1.9rem)/1.2 var(--serif); }
+.goals .txt { grid-column: 4 / span 6; color: var(--night-soft); max-width: 52ch; }
+.goals .st { grid-column: 10 / span 3; text-align: right; font: 600 .625rem/1.4 var(--sans); letter-spacing: .2em; text-transform: uppercase; color: var(--gold-light); }
+.terms .fig { grid-column: 1 / span 3; font: 400 clamp(1.7rem, 2.6vw, 2.3rem)/1.2 var(--serif); font-style: italic; color: var(--gold-light); }
+.terms .lab { grid-column: 4 / span 3; font: 600 .6875rem/1.4 var(--sans); letter-spacing: .18em; text-transform: uppercase; }
+.terms .txt { grid-column: 8 / span 5; color: var(--night-soft); max-width: 46ch; }
+.terms-sec { padding-top: calc(var(--section) * .4); }
+/* al passaggio la riga si accende a contrasto: crema con testo scuro */
+.terms li, .goals li { margin-inline: -1.5rem; padding-inline: 1.5rem; transition: background-color .45s var(--ease), color .35s var(--ease); }
+.terms li .fig, .terms li .lab, .terms li .txt, .goals li .lab, .goals li .txt, .goals li .st { transition: color .35s var(--ease); }
+.terms li:hover, .goals li:hover { background: var(--night-text); color: var(--night); }
+.terms li:hover .fig { color: var(--gold-text); }
+.terms li:hover .txt, .goals li:hover .txt { color: #4A4037; }
+.goals li:hover .st { color: var(--gold-text); }
+@media (max-width: 900px) { .terms li, .goals li { margin-inline: -1rem; padding-inline: 1rem; } }
+.night__cta { margin-top: clamp(2.5rem, 5vw, 3.5rem); }
+
+/* ---------- Stimatore ---------- */
+.est__head { grid-column: 1 / span 5; }
+.est__head p { margin-top: 1.5rem; color: var(--ink-soft); max-width: 44ch; }
+.est__box { grid-column: 7 / -1; padding: clamp(1.5rem, 3vw, 2.5rem); background: var(--card); border: 1px solid var(--line); box-shadow: 0 40px 70px -50px rgba(36, 30, 26, .45); }
+.est__prog { display: flex; gap: .4rem; margin-bottom: 1.75rem; }
+.est__prog i { flex: 1; height: 2px; background: var(--line); transition: background-color .5s var(--ease); }
+.est__prog i.on { background: var(--ink); }
+.est__prog i.off { display: none; }
+.est__step { display: none; border: 0; padding: 0; margin: 0; min-width: 0; }
+.est__step.is-on { display: block; animation: estIn .6s var(--ease); }
+@keyframes estIn { from { opacity: 0; transform: translateY(10px); } }
+.est__step legend { padding: 0; margin-bottom: 1.4rem; font: 400 clamp(1.6rem, 2.4vw, 2.1rem)/1.15 var(--serif); letter-spacing: -.01em; }
+.est__step legend small { display: block; margin-top: .5rem; font: 400 .9375rem/1.4 var(--sans); letter-spacing: 0; color: var(--ink-soft); }
+.est__opts { display: grid; grid-template-columns: repeat(2, 1fr); gap: .6rem; }
+.est__opts.one { grid-template-columns: 1fr; }
+.opt { position: relative; display: block; cursor: pointer; }
+.opt input { position: absolute; inset: 0; width: 100%; height: 100%; margin: 0; opacity: 0; cursor: pointer; }
+.opt span { display: block; padding: .95rem 1.1rem; border: 1px solid var(--line); background: transparent; font-size: .9375rem; font-weight: 500; line-height: 1.35; transition: background-color .35s var(--ease), color .35s var(--ease), border-color .35s var(--ease); }
+.opt small { display: block; margin-top: .2rem; font-weight: 400; font-size: .8125rem; color: var(--ink-soft); }
+.opt:hover span { background: #4A3F37; border-color: #4A3F37; color: var(--paper); }
+.opt:hover span small { color: var(--night-soft); }
+.opt input:checked + span { background: var(--ink); border-color: var(--ink); color: var(--paper); }
+.opt input:checked + span small { color: var(--night-soft); }
+.opt input:focus-visible + span { outline: 2px solid var(--gold-text); outline-offset: 3px; }
+.est__fields { display: grid; gap: 1rem; }
+.field span { display: block; margin-bottom: .3rem; font: 600 .625rem/1 var(--sans); letter-spacing: .18em; text-transform: uppercase; color: var(--ink-soft); }
+.field input { width: 100%; padding: .85rem 0; border: 0; border-bottom: 1px solid var(--line-strong); border-radius: 0; background: transparent; font: inherit; color: inherit; }
+.field input:focus-visible { outline: 0; border-bottom-color: var(--gold-text); box-shadow: 0 1px 0 var(--gold-text); }
+.chk { display: flex; gap: .7rem; align-items: flex-start; font-size: .875rem; line-height: 1.45; color: var(--ink-soft); }
+.chk input { flex: none; margin-top: .2rem; accent-color: var(--ink); }
+.chk a { color: var(--ink); }
+.est__err { min-height: 1.4rem; margin: .9rem 0 0; font-size: .875rem; color: #8C2F1B; }
+.est__nav { display: flex; align-items: center; justify-content: space-between; gap: 1rem; margin-top: .75rem; }
+.est__nav .btn { margin-left: auto; }
+.est__back { padding: .4rem 0; border: 0; background: none; font: 600 .6875rem/1 var(--sans); letter-spacing: .16em; text-transform: uppercase; color: var(--ink); text-decoration: underline; text-underline-offset: .5em; cursor: pointer; }
+.est__label { margin: 0; font: 600 .625rem/1 var(--sans); letter-spacing: .22em; text-transform: uppercase; color: var(--gold-text); }
+.est__range { margin: .75rem 0 1.5rem; font: 400 clamp(2.4rem, 4.6vw, 3.6rem)/1.02 var(--serif); letter-spacing: -.02em; }
+.est__lines { margin-bottom: 1.25rem; }
+.est__lines li { display: flex; justify-content: space-between; gap: 1rem; padding-block: .75rem; border-top: 1px solid var(--line); font-size: .9375rem; }
+.est__lines li:last-child { border-bottom: 1px solid var(--line); }
+.est__lines .m { font-weight: 500; white-space: nowrap; }
+.est__time { margin: 0 0 .75rem; font-weight: 500; }
+.est__note { margin: 0; max-width: 50ch; font-size: .875rem; color: var(--ink-soft); }
+.est__cta { display: flex; flex-wrap: wrap; align-items: center; gap: 1.5rem; margin-top: 1.75rem; }
+.est__cta .mail { font: 600 .6875rem/1.2 var(--sans); letter-spacing: .16em; text-transform: uppercase; color: var(--ink); text-underline-offset: .5em; }
+.est__again { margin-top: 1.5rem; }
+.hp { position: absolute; left: -9999px; width: 1px; height: 1px; overflow: hidden; }
+.est__status { margin: 1rem 0 0; min-height: 1.4rem; font-size: .875rem; color: var(--ink-soft); }
+@media (max-width: 900px) { .est__head, .est__box { grid-column: 1 / -1; } .est__opts { grid-template-columns: 1fr; } }
+
+/* ---------- Chi sono ---------- */
+.about { background: var(--paper-2); }
+.about__head { grid-column: 1 / span 5; }
+.portrait { position: relative; margin-top: 2.5rem; max-width: 22rem; aspect-ratio: 4 / 5; display: grid; place-items: center; padding: 1rem; background: var(--paper-3); border: 1px solid var(--line); box-shadow: 0 40px 70px -50px rgba(36, 30, 26, .5); overflow: hidden; }
+.portrait img { width: 64%; opacity: .1; }
+.portrait span { position: absolute; left: 1.1rem; bottom: 1rem; font: 600 .625rem/1.5 var(--sans); letter-spacing: .18em; text-transform: uppercase; color: var(--ink-soft); }
+.about__body { grid-column: 7 / span 6; }
+.about__body p { font-weight: 300; font-size: clamp(1.15rem, 1.6vw, 1.4rem); line-height: 1.6; }
+.about__body p + p { margin-top: 1.25rem; }
+
+/* ---------- Domande ---------- */
+.faq__head { grid-column: 1 / span 5; }
+.faq__list { grid-column: 6 / -1; border-top: 1px solid var(--line); }
+.faq details { border-bottom: 1px solid var(--line); }
+.faq summary { list-style: none; cursor: pointer; display: flex; justify-content: space-between; align-items: baseline; gap: 1.25rem; padding-block: 1.5rem; font: 400 clamp(1.3rem, 2vw, 1.65rem)/1.25 var(--serif); letter-spacing: -.01em; }
+.faq summary::-webkit-details-marker { display: none; }
+.faq summary::after { content: ""; flex: none; width: 12px; height: 12px; background: linear-gradient(var(--ink), var(--ink)) center / 100% 1px no-repeat, linear-gradient(var(--ink), var(--ink)) center / 1px 100% no-repeat; transition: transform .45s var(--ease); }
+.faq details[open] summary::after { transform: rotate(45deg); }
+.faq details p { padding-bottom: 1.6rem; color: var(--ink-soft); max-width: 56ch; }
+.faq details a { color: var(--ink); text-underline-offset: .2em; }
+
+/* ---------- Chiusura e piede ---------- */
+.close h2 { grid-column: 1 / -1; font-size: clamp(3.6rem, 11vw, 9.5rem); line-height: .92; letter-spacing: -.03em; }
+.close__row { grid-column: 1 / -1; display: grid; grid-template-columns: repeat(12, 1fr); gap: 2rem; margin-top: clamp(2rem, 5vw, 4rem); padding-top: 2rem; border-top: 1px solid var(--line); align-items: start; }
+.close__lead { grid-column: 1 / span 5; color: var(--ink-soft); max-width: 36ch; }
+.close__act { grid-column: 7 / span 6; display: flex; flex-direction: column; gap: 1.25rem; align-items: flex-start; }
+.close__act .mail { font: 600 .75rem/1.3 var(--sans); letter-spacing: .14em; text-transform: uppercase; text-underline-offset: .5em; word-break: break-all; }
+.foot { background: var(--night); color: var(--night-soft); padding-block: clamp(3rem, 6vw, 5rem) 1.75rem; font-size: .875rem; }
+.foot__cols { display: grid; grid-template-columns: repeat(12, 1fr); gap: 2rem; padding-bottom: clamp(2.5rem, 5vw, 4rem); }
+.foot__cols div { grid-column: span 4; }
+.foot__cols h4 { margin: 0 0 1rem; font: 600 .625rem/1 var(--sans); letter-spacing: .22em; text-transform: uppercase; color: var(--gold-light); }
+.foot__cols p { line-height: 1.8; }
+.foot a { color: var(--night-text); text-underline-offset: .3em; }
+.foot__mark { display: block; width: 100%; filter: invert(1); opacity: .94; margin-bottom: 1.75rem; }
+.foot__legal { display: flex; flex-wrap: wrap; justify-content: space-between; gap: .5rem 2rem; padding-top: 1.25rem; border-top: 1px solid var(--night-line); font-size: .8125rem; }
+
+/* ---------- Tablet e telefono ---------- */
+@media (max-width: 900px) {
+  .top { grid-template-columns: 1fr auto; }
+  .nav { display: none; }
+  .hero__sketch { position: relative; right: auto; top: auto; width: min(64vw, 17rem); margin: 0 auto 2.5rem; order: 1; }
+  .hero > .wrap:last-child { order: 2; }
+  .hero { display: flex; flex-direction: column; }
+  .hero h1 { max-width: none; }
+  .hero__row .lede, .hero__act { grid-column: 1 / -1; }
+  .hero__meta { grid-template-columns: 1fr; }
+  .hero__meta p + p { padding-left: 0; border-left: 0; border-top: 1px solid var(--line); }
+  .problems__head, .problems__list, .path__head, .night__head, .about__head, .about__body, .faq__head, .faq__list, .case__left, .case__right, .case__txt, .close__lead, .close__act, .gal__head h2, .gal__head p { grid-column: 1 / -1; }
+  .problems__list { grid-template-columns: 1fr; }
+  .problems__list li, .problems__list li + li { padding: 1.75rem 0 2rem; border-left: 0; border-top: 1px solid var(--line); }
+  .problems__list li:first-child { border-top: 0; }
+  .problems__list .n { margin-bottom: 1.25rem; }
+  .steps li { gap: .5rem 1rem; margin-inline: -1rem; padding-inline: 1rem; }
+  .steps .n { grid-column: 1 / span 1; }
+  .steps h3, .steps p { grid-column: 2 / -1; }
+  .terms .fig, .terms .lab, .terms .txt, .goals .lab, .goals .txt, .goals .st { grid-column: 1 / -1; text-align: left; }
+  .goals li, .terms li { gap: .35rem; }
+  .page { grid-template-columns: 1fr; }
+  .page__art { min-height: 15rem; }
+  .case { height: 200vh; }
+  .case__pin { padding-block: 5.5rem 1.5rem; align-items: flex-start; }
+  .case__grid { gap: 1.25rem; }
+  .case__fig { font-size: clamp(4.5rem, 24vw, 7rem); }
+  .foot__cols div { grid-column: 1 / -1; }
+}
+@media (max-height: 640px) { .case { height: auto; } .case__pin { position: static; height: auto; padding-block: var(--section); } }
+@media (max-width: 480px) { .top__cta .btn { padding: .7rem 1rem; } .brand img { height: 1.3rem; } }
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } .case { height: auto; } .case__pin { position: static; height: auto; padding-block: var(--section); } }
+</style>
+</head>
+<body>
+
+<header class="site" id="site">
+ <div class="wrap top">
+  <a class="brand" href="#" aria-label="Studio Matiz, inizio pagina"><img src="assets/logo-wordmark.png" alt="Studio Matiz" width="995" height="175"></a>
+  <nav class="nav" aria-label="Principale">
+    <a href="#servizi">Servizi</a>
+    <a href="#percorso">Percorso</a>
+    <a href="#condizioni">Condizioni</a>
+    <a href="#stima">Quanto costa</a>
+    <a href="#faq">Domande</a>
+  </nav>
+  <div class="top__cta"><a class="btn" href="https://calendar.app.google/NUp3xit8MwxWQWkK6" target="_blank" rel="noopener">Prenota</a></div>
+ </div>
+</header>
+
+<main>
+  <div class="hero" id="hero">
+    <div class="hero__sketch" aria-hidden="true">
+      <svg viewBox="0 0 560 520" fill="none">
+        <rect class="sk dr" pathLength="1" x="30" y="50" width="390" height="260" rx="10"/>
+        <path class="sk dr" pathLength="1" d="M30 92H420"/>
+        <circle class="sk dr" pathLength="1" cx="54" cy="71" r="4"/><circle class="sk dr" pathLength="1" cx="72" cy="71" r="4"/><circle class="sk dr" pathLength="1" cx="90" cy="71" r="4"/>
+        <path class="sk dr" pathLength="1" d="M56 138H190M56 160H150"/>
+        <rect class="sk dr" pathLength="1" x="56" y="188" width="150" height="92" rx="4"/>
+        <path class="sk dr" pathLength="1" d="M228 144H388M228 166H372M228 188H380M228 210H340"/>
+        <rect class="sk sk--gold dr" pathLength="1" x="228" y="240" width="84" height="26" rx="13"/>
+        <rect class="sk sk--fill dr" pathLength="1" x="320" y="190" width="160" height="300" rx="26"/>
+        <path class="sk dr" pathLength="1" d="M376 208H424"/>
+        <path class="sk dr" pathLength="1" d="M344 252H456M344 272H430M344 316H456M344 336H418M344 380H456M344 400H440"/>
+        <rect class="sk sk--gold dr" pathLength="1" x="344" y="432" width="112" height="28" rx="14"/>
+        <path class="sk sk--gold dr" pathLength="1" d="M468 54l6 16 16 6-16 6-6 16-6-16-16-6 16-6z"/>
+        <path class="sk dr" pathLength="1" d="M90 360c40 26 92 44 150 40M230 392l12 8-14 6"/>
+      </svg>
+    </div>
+    <div class="wrap hero__main">
+      <p class="eyebrow" data-in>Progettazione digitale per piccole imprese</p>
+      <h1>Soluzioni<br><em>su misura.</em></h1>
+      <div class="hero__row">
+        <p class="lede" data-in>Siti, automazioni e strumenti digitali, progettati attorno a come lavori. Prima ascolto, poi costruisco.</p>
+        <div class="hero__act" data-in>
+          <a class="btn" href="https://calendar.app.google/NUp3xit8MwxWQWkK6" target="_blank" rel="noopener">Prenota il primo incontro
+            <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true"><path d="M2 8h11M9 3.5 13.5 8 9 12.5"/></svg>
+          </a>
+          <a class="link" href="#servizi">Scopri cosa faccio</a>
+          <small>Gratuito, <span class="num">30-45</span> minuti, anche di persona.</small>
+        </div>
+      </div>
+    </div>
+    <div class="wrap">
+      <div class="hero__meta" data-in>
+        <p>Cesenatico, Romagna<br>e a distanza in tutta Italia</p>
+        <p>Siti, menu digitali,<br>automazioni, cura continua</p>
+        <p>Una persona che risponde<br>entro un giorno lavorativo</p>
+      </div>
+    </div>
+  </div>
+
+  <section class="problems" id="problemi" aria-labelledby="h-problemi">
+    <div class="wrap grid">
+      <div class="problems__head">
+        <p class="eyebrow">Il punto di partenza</p>
+        <h2 id="h-problemi" data-split>Dove si ferma, <em>di solito.</em></h2>
+        <p>Costruire un sito è la parte semplice. Tenerlo vivo è il lavoro.</p>
+      </div>
+      <ul class="problems__list">
+        <li data-reveal>
+          <span class="n">01</span>
+          <h3>Si ferma.</h3>
+          <p>La tua attività cambia a ogni stagione. Quello che hai online resta com'era il giorno della consegna.</p>
+        </li>
+        <li data-reveal>
+          <span class="n">02</span>
+          <h3>Nessuno risponde.</h3>
+          <p>Alla prima modifica il fornitore è irraggiungibile, e non è chiaro cosa copra il canone che paghi ogni mese.</p>
+        </li>
+        <li data-reveal>
+          <span class="n">03</span>
+          <h3>Non rende.</h3>
+          <p>Le visite arrivano, le richieste no, e nessuno ha mai guardato i numeri per capire dove si perdono.</p>
+        </li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="gal" id="servizi" aria-labelledby="h-servizi">
+    <div class="gal__pin">
+      <div class="wrap">
+        <div class="gal__head">
+          <h2 id="h-servizi" data-split>Cosa <em>faccio.</em></h2>
+          <p>Quattro servizi. Puoi sceglierne uno, o partire dal primo e vedere come va.</p>
+        </div>
+      </div>
+      <div class="wrap gal__stage" id="galStage">
+
+        <article class="page" data-i="0" aria-label="Presenza online">
+          <div class="page__art">
+            <span class="page__n">01</span>
+            <svg viewBox="0 0 360 300" fill="none" aria-hidden="true">
+              <rect class="sk dr" pathLength="1" x="20" y="30" width="250" height="170" rx="8"/>
+              <path class="sk dr" pathLength="1" d="M20 60H270"/>
+              <circle class="sk dr" pathLength="1" cx="38" cy="45" r="3"/><circle class="sk dr" pathLength="1" cx="52" cy="45" r="3"/>
+              <path class="sk dr" pathLength="1" d="M40 88H130M40 106H100"/>
+              <rect class="sk dr" pathLength="1" x="40" y="124" width="92" height="56" rx="3"/>
+              <path class="sk dr" pathLength="1" d="M152 92H248M152 108H236M152 124H244"/>
+              <rect class="sk sk--gold dr" pathLength="1" x="152" y="148" width="58" height="20" rx="10"/>
+              <rect class="sk sk--fill dr" pathLength="1" x="236" y="104" width="100" height="176" rx="18"/>
+              <path class="sk dr" pathLength="1" d="M272 118H300M252 150H322M252 164H308M252 192H322M252 206H300"/>
+              <rect class="sk sk--gold dr" pathLength="1" x="252" y="236" width="70" height="20" rx="10"/>
+            </svg>
+          </div>
+          <div class="page__info">
+            <p class="page__meta">Servizio 01 · Sito, menu, scheda Google</p>
+            <h3>Presenza online</h3>
+            <div class="page__blk"><span class="page__lab">Il problema</span><p class="soft">Un sito fermo a com'era il giorno della consegna, un menu che nessuno aggiorna.</p></div>
+            <div class="page__blk"><span class="page__lab">Cosa faccio</span><p>Un sito chiaro e veloce, un menu che si aggiorna in un minuto, una scheda Google in ordine. In italiano e in inglese scritto da madrelingua.</p></div>
+            <p class="page__tags">Sito e menu digitale · Scheda Google · Testi in inglese</p>
+            <a class="link" href="https://wa.me/393339580381?text=Ciao%20Matia%2C%20vorrei%20saperne%20di%20pi%C3%B9%20su%3A%20Presenza%20online" target="_blank" rel="noopener">Parliamone su WhatsApp
+              <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true"><path d="M3 13 13 3M5.5 3H13v7.5"/></svg></a>
+          </div>
+        </article>
+
+        <article class="page" data-i="1" aria-label="Automazioni">
+          <div class="page__art">
+            <span class="page__n">02</span>
+            <svg viewBox="0 0 360 300" fill="none" aria-hidden="true">
+              <circle class="sk dr" pathLength="1" cx="58" cy="150" r="30"/>
+              <path class="sk sk--gold dr" pathLength="1" d="M44 150l10 10 18-20"/>
+              <path class="sk dr" pathLength="1" d="M92 150C112 150 118 150 128 150M120 142l9 8-9 8"/>
+              <rect class="sk dr" pathLength="1" x="132" y="118" width="64" height="64" rx="10"/>
+              <path class="sk dr" pathLength="1" d="M148 142H180M148 158H172"/>
+              <path class="sk dr" pathLength="1" d="M200 150C216 150 222 150 232 150M224 142l9 8-9 8"/>
+              <circle class="sk dr" pathLength="1" cx="268" cy="150" r="30"/>
+              <path class="sk sk--gold dr" pathLength="1" d="M254 150l10 10 18-20"/>
+              <path class="sk dr" pathLength="1" d="M164 118C164 84 120 70 80 78M80 78l12-8M80 78l8 12"/>
+              <path class="sk dr" pathLength="1" d="M164 182C164 216 210 232 252 224M252 224l-12-8M252 224l-8 12"/>
+              <path class="sk sk--gold dr" pathLength="1" d="M318 60l5 13 13 5-13 5-5 13-5-13-13-5 13-5z"/>
+            </svg>
+          </div>
+          <div class="page__info">
+            <p class="page__meta">Servizio 02 · Risposte, richieste, promemoria</p>
+            <h3>Automazioni</h3>
+            <div class="page__blk"><span class="page__lab">Il problema</span><p class="soft">Messaggi, richieste e promemoria che si accumulano e rubano le ore migliori.</p></div>
+            <div class="page__blk"><span class="page__lab">Cosa faccio</span><p>Il lavoro ripetitivo lo fanno gli strumenti: risposte alle domande più comuni, promemoria, richieste che arrivano già ordinate.</p></div>
+            <p class="page__tags">Risposte automatiche · Richieste ordinate · Strumenti interni su misura</p>
+            <a class="link" href="https://wa.me/393339580381?text=Ciao%20Matia%2C%20vorrei%20saperne%20di%20pi%C3%B9%20su%3A%20Automazioni" target="_blank" rel="noopener">Parliamone su WhatsApp
+              <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true"><path d="M3 13 13 3M5.5 3H13v7.5"/></svg></a>
+          </div>
+        </article>
+
+        <article class="page" data-i="2" aria-label="Cura continua">
+          <div class="page__art">
+            <span class="page__n">03</span>
+            <svg viewBox="0 0 360 300" fill="none" aria-hidden="true">
+              <rect class="sk dr" pathLength="1" x="80" y="50" width="200" height="200" rx="10"/>
+              <path class="sk dr" pathLength="1" d="M80 92H280M120 38v24M240 38v24"/>
+              <path class="sk dr" pathLength="1" d="M104 118h28M148 118h28M192 118h28M236 118h28M104 150h28M148 150h28M192 150h28M236 150h28M104 182h28M148 182h28M192 182h28"/>
+              <path class="sk sk--gold dr" pathLength="1" d="M156 146l8 8 14-16M200 178l8 8 14-16"/>
+              <path class="sk sk--gold dr" pathLength="1" d="M300 190a36 36 0 1 1-12-27M290 150l-2 14 14-1"/>
+            </svg>
+          </div>
+          <div class="page__info">
+            <p class="page__meta">Servizio 03 · Aggiornamenti, sicurezza, backup</p>
+            <h3>Cura continua</h3>
+            <div class="page__blk"><span class="page__lab">Il problema</span><p class="soft">Il fornitore sparisce dopo la consegna e il canone non spiega cosa copra.</p></div>
+            <div class="page__blk"><span class="page__lab">Cosa faccio</span><p>Aggiornamenti, sicurezza, backup e modifiche. Sai cosa è incluso, quanto tempo hai a disposizione e chi chiamare.</p></div>
+            <p class="page__tags">Ore incluse · Risposta in un giorno lavorativo · Resoconto mensile</p>
+            <a class="link" href="https://wa.me/393339580381?text=Ciao%20Matia%2C%20vorrei%20saperne%20di%20pi%C3%B9%20su%3A%20Cura%20continua" target="_blank" rel="noopener">Parliamone su WhatsApp
+              <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true"><path d="M3 13 13 3M5.5 3H13v7.5"/></svg></a>
+          </div>
+        </article>
+
+        <article class="page" data-i="3" aria-label="Check-up">
+          <div class="page__art">
+            <span class="page__n">04</span>
+            <svg viewBox="0 0 360 300" fill="none" aria-hidden="true">
+              <rect class="sk dr" pathLength="1" x="50" y="40" width="160" height="210" rx="8"/>
+              <path class="sk dr" pathLength="1" d="M76 86h30M120 86h64M76 122h30M120 122h56M76 158h30M120 158h64M76 194h30M120 194h44"/>
+              <path class="sk sk--gold dr" pathLength="1" d="M78 84l5 5 9-11M78 120l5 5 9-11M78 156l5 5 9-11"/>
+              <circle class="sk sk--fill dr" pathLength="1" cx="228" cy="170" r="52"/>
+              <path class="sk dr" pathLength="1" d="M265 207l46 46"/>
+              <path class="sk sk--gold dr" pathLength="1" d="M206 168l16 16 28-32"/>
+            </svg>
+          </div>
+          <div class="page__info">
+            <p class="page__meta">Servizio 04 · Da dove cominciare</p>
+            <h3>Check-up</h3>
+            <div class="page__blk"><span class="page__lab">Il problema</span><p class="soft">Non sai da dove cominciare, o dove si perde il lavoro.</p></div>
+            <div class="page__blk"><span class="page__lab">Cosa faccio</span><p>Uno sguardo onesto a quello che hai: cosa funziona, dove si perde il lavoro, da dove conviene cominciare. Il costo si scala dal lavoro che segue.</p></div>
+            <p class="page__tags">Sito · Scheda Google · Menu · Prenotazioni · Social</p>
+            <a class="link" href="https://wa.me/393339580381?text=Ciao%20Matia%2C%20vorrei%20saperne%20di%20pi%C3%B9%20su%3A%20Check-up" target="_blank" rel="noopener">Parliamone su WhatsApp
+              <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true"><path d="M3 13 13 3M5.5 3H13v7.5"/></svg></a>
+          </div>
+        </article>
+      </div>
+      <div class="wrap gal__ctl" id="galCtl">
+        <span class="gal__count"><b id="galNow">01</b> / 04</span>
+        <span class="gal__dots" id="galDots"><button type="button" class="on" aria-label="Presenza online"></button><button type="button" aria-label="Automazioni"></button><button type="button" aria-label="Cura continua"></button><button type="button" aria-label="Check-up"></button></span>
+        <span>Scorri per navigare</span>
+      </div>
+    </div>
+  </section>
+
+  <section class="path" id="percorso" aria-labelledby="h-percorso">
+    <div class="wrap">
+      <div class="grid"><div class="path__head">
+        <p class="eyebrow">Come si lavora</p>
+        <h2 id="h-percorso" data-split>Si comincia con <em>una chiacchierata.</em></h2>
+        <p>Quattro passi, ognuno con una portata chiusa. Puoi fermarti a quello che ti serve.</p>
+      </div></div>
+      <ol class="steps" id="steps">
+        <li>
+          <span class="n">01</span>
+          <h3>Primo incontro</h3>
+          <p>Mezz'ora, forse tre quarti, di persona o in video. Racconti come lavori, io faccio domande. Nessun compito per casa, nessuna proposta improvvisata. <b>Gratuito.</b></p>
+        </li>
+        <li>
+          <span class="n">02</span>
+          <h3>Check-up</h3>
+          <p>Guardo ciò che hai oggi: sito, scheda Google, menu, prenotazioni. Ricevi un rapporto breve con le tre cose da fare per prime.</p>
+        </li>
+        <li>
+          <span class="n">03</span>
+          <h3>Costruzione</h3>
+          <p>Progetto e realizzo, con due giri di correzioni e un prezzo concordato prima di cominciare.</p>
+        </li>
+        <li>
+          <span class="n">04</span>
+          <h3>Cura</h3>
+          <p>Resto a disposizione. Aggiorno, correggo, e ogni mese ti mostro cosa è stato fatto e come sta andando.</p>
+        </li>
+      </ol>
+    </div>
+  </section>
+
+  <div class="night" id="night">
+    <section class="case" id="caso" aria-labelledby="h-caso">
+      <div class="case__pin">
+        <div class="wrap case__grid">
+          <div class="case__left">
+            <p class="eyebrow">Un caso reale</p>
+            <h2 id="h-caso" data-split>Ogni obiettivo ha un numero. <em>Si parte da lì.</em></h2>
+            <p class="night__lead">Iscritti, prenotazioni, richieste, ordini: qualunque cosa tu voglia far crescere, la misuro prima, la costruisco, la misuro di nuovo.</p>
+          </div>
+          <div class="case__right" aria-hidden="true">
+            <p class="case__fig" id="caseNum">115</p>
+            <p class="case__unit">Iscritti a una società sportiva</p>
+            <div class="meter">
+              <div class="meter__row meter__row--a" id="mA"><span>Primi due anni</span><b>115</b><i class="meter__bar"></i></div>
+              <div class="meter__row meter__row--b" id="mB"><span>Dopo una settimana</span><b>450</b><i class="meter__bar"></i></div>
+            </div>
+          </div>
+          <p class="case__txt">Il primo caso: una società sportiva, da 115 a 450 iscritti in una settimana, con un sito rifatto, una campagna sulle nuove card e un ingresso alle partite legato alla card. Un solo caso, reale e misurato. Altri sono in arrivo.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="goals-sec" id="obiettivi" aria-labelledby="h-obiettivi">
+      <div class="wrap">
+        <div class="grid"><div class="night__head">
+          <p class="eyebrow">Cosa misuro</p>
+          <h2 id="h-obiettivi" data-split>I numeri su cui <em>lavoro.</em></h2>
+          <p class="night__lead">Tre obiettivi che le piccole attività inseguono più spesso, e cosa misuro per ciascuno.</p>
+        </div></div>
+        <ul class="goals">
+          <li data-reveal>
+            <span class="lab">Iscritti</span>
+            <span class="txt">Quanti si iscrivono, e quanti tornano. Da 115 a 450 in una settimana.</span>
+            <span class="st">Caso reale</span>
+          </li>
+          <li data-reveal>
+            <span class="lab">Prenotazioni</span>
+            <span class="txt">Le richieste di tavolo o di ombrellone arrivate dal sito e dal menu, prima e dopo il lavoro.</span>
+            <span class="st">Per i primi clienti</span>
+          </li>
+          <li data-reveal>
+            <span class="lab">Richieste</span>
+            <span class="txt">I messaggi e i preventivi ricevuti, e quanto tempo passa prima di una risposta.</span>
+            <span class="st">Per i primi clienti</span>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="terms-sec" id="condizioni" aria-labelledby="h-condizioni">
+      <div class="wrap">
+        <div class="grid"><div class="night__head">
+          <p class="eyebrow">Le regole</p>
+          <h2 id="h-condizioni" data-split>Condizioni chiare, <em>scritte prima.</em></h2>
+          <p class="night__lead">Quello che è incluso si sa dall'inizio.</p>
+        </div></div>
+        <ul class="terms">
+          <li data-reveal>
+            <span class="fig">30-45 min</span>
+            <span class="lab">Primo incontro</span>
+            <span class="txt">Racconti come lavori, io ascolto e faccio domande. Nessuna proposta improvvisata.</span>
+          </li>
+          <li data-reveal>
+            <span class="fig">Per iscritto</span>
+            <span class="lab">Preventivo</span>
+            <span class="txt">Cosa include, quanto costa e quando consegno, scritto prima di cominciare. Non cambia in corsa.</span>
+          </li>
+          <li data-reveal>
+            <span class="fig">Scalato</span>
+            <span class="lab">Check-up</span>
+            <span class="txt">Quello che spendi per il check-up viene scalato dal lavoro, se decidi di proseguire.</span>
+          </li>
+          <li data-reveal>
+            <span class="fig">1 giorno</span>
+            <span class="lab">Risposta</span>
+            <span class="txt">Lavorativo. Scrivi, e entro un giorno ti risponde una persona.</span>
+          </li>
+          <li data-reveal>
+            <span class="fig">Pochi</span>
+            <span class="lab">Progetti per volta</span>
+            <span class="txt">Ne seguo pochi insieme, per dare a ciascuno tutta la dedizione che serve. Il tempo di consegna è scritto nel preventivo e lo rispetto.</span>
+          </li>
+          <li data-reveal>
+            <span class="fig">1 mese</span>
+            <span class="lab">Rodaggio</span>
+            <span class="txt">Il primo mese è a forfait e senza limite di ore, per assistenza, ricerca e idee. Poi si decide insieme quanto serve.</span>
+          </li>
+        </ul>
+        <div class="night__cta">
+          <a class="btn btn--light" href="https://calendar.app.google/NUp3xit8MwxWQWkK6" target="_blank" rel="noopener">Prenota il primo incontro</a>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <section class="est" id="stima" aria-labelledby="h-stima">
+    <div class="wrap grid">
+      <div class="est__head">
+        <p class="eyebrow">Il prezzo di partenza</p>
+        <h2 id="h-stima" data-split>Quanto costa, <em>in concreto.</em></h2>
+        <p>Lavoro da solo e uso strumenti che automatizzano le parti ripetitive: è il motivo per cui i costi restano contenuti senza toccare la cura. Il prezzo lo vedi per iscritto, prima di decidere.</p>
+        <p>Vuoi un'idea adesso? Rispondi a quattro domande e ricevi subito un prezzo di partenza, senza telefonate.</p>
+      </div>
+      <div class="est__box" id="est">
+        <div class="est__prog" id="estProg" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></div>
+        <form id="estForm" novalidate>
+          <fieldset class="est__step is-on" data-i="0">
+            <legend>Che tipo di attività hai?</legend>
+            <div class="est__opts">
+              <label class="opt"><input type="radio" name="tipo" value="Stabilimento balneare"><span>Stabilimento balneare</span></label>
+              <label class="opt"><input type="radio" name="tipo" value="Ristorante o bar"><span>Ristorante o bar</span></label>
+              <label class="opt"><input type="radio" name="tipo" value="Hotel o struttura ricettiva"><span>Hotel o struttura ricettiva</span></label>
+              <label class="opt"><input type="radio" name="tipo" value="Negozio o artigiano"><span>Negozio o artigiano</span></label>
+              <label class="opt"><input type="radio" name="tipo" value="Studio professionale"><span>Studio professionale</span></label>
+              <label class="opt"><input type="radio" name="tipo" value="Altro"><span>Altro</span></label>
+            </div>
+          </fieldset>
+          <fieldset class="est__step" data-i="1">
+            <legend>Cosa ti serve? <small>Puoi sceglierne più di uno.</small></legend>
+            <div class="est__opts one">
+              <label class="opt"><input type="checkbox" name="servizi" value="sito"><span>Un sito</span></label>
+              <label class="opt"><input type="checkbox" name="servizi" value="menu"><span>Un menu digitale</span></label>
+              <label class="opt"><input type="checkbox" name="servizi" value="auto"><span>Automatizzare una parte del lavoro</span></label>
+              <label class="opt"><input type="checkbox" name="servizi" value="assistenza"><span>Assistenza continua</span></label>
+              <label class="opt"><input type="checkbox" name="servizi" value="nonso"><span>Non lo so, voglio capire da dove partire</span></label>
+            </div>
+          </fieldset>
+          <fieldset class="est__step" data-i="2">
+            <legend>Com'è oggi la tua presenza online?</legend>
+            <div class="est__opts one">
+              <label class="opt"><input type="radio" name="presenza" value="Non ho niente online"><span>Non ho niente online</span></label>
+              <label class="opt"><input type="radio" name="presenza" value="Ho un sito vecchio"><span>Ho un sito vecchio</span></label>
+              <label class="opt"><input type="radio" name="presenza" value="Ho un sito che nessuno segue"><span>Ho un sito, ma nessuno lo segue</span></label>
+              <label class="opt"><input type="radio" name="presenza" value="Ho un sito che funziona"><span>Ho un sito che funziona, mi serve altro</span></label>
+            </div>
+          </fieldset>
+          <fieldset class="est__step" data-i="3">
+            <legend>Quanto è grande il lavoro?</legend>
+            <div class="est__opts one">
+              <label class="opt"><input type="radio" name="size" value="piccola"><span>Essenziale<small>Poche cose, chiare e ben fatte.</small></span></label>
+              <label class="opt"><input type="radio" name="size" value="media"><span>Completo<small>Più pagine o più passaggi.</small></span></label>
+              <label class="opt"><input type="radio" name="size" value="grande"><span>Su misura, con funzioni<small>Iscrizioni, prenotazioni, area riservata o un processo articolato.</small></span></label>
+            </div>
+          </fieldset>
+          <fieldset class="est__step" data-i="4">
+            <legend>Ultimo passo: dove ti rispondo? <small>Lasciami nome ed email e vedi subito il prezzo di partenza.</small></legend>
+            <div class="est__fields">
+              <label class="field"><span>Nome</span><input type="text" name="nome" autocomplete="name"></label>
+              <label class="field"><span>Email</span><input type="email" name="email" autocomplete="email"></label>
+              <label class="field"><span>Telefono (facoltativo)</span><input type="tel" name="tel" autocomplete="tel"></label>
+              <label class="hp" aria-hidden="true">Non compilare <input type="text" name="sito_web" tabindex="-1" autocomplete="off"></label>
+              <label class="chk"><input type="checkbox" name="privacy"><span>Ho letto l'<a href="privacy.html">informativa privacy</a>.</span></label>
+              <label class="chk"><input type="checkbox" name="comunicazioni"><span>Acconsento a ricevere da Studio Matiz comunicazioni su questo progetto (facoltativo).</span></label>
+            </div>
+          </fieldset>
+          <p class="est__err" id="estErr" role="alert"></p>
+          <div class="est__nav">
+            <button type="button" class="est__back" id="estBack" hidden>Indietro</button>
+            <button type="button" class="btn" id="estNext">Avanti</button>
+            <button type="button" class="btn" id="estGo" hidden>Vedi il prezzo</button>
+          </div>
+        </form>
+        <div class="est__result" id="estResult" hidden tabindex="-1" aria-live="polite">
+          <p class="est__label">Prezzo di partenza</p>
+          <p class="est__range" id="estRange"></p>
+          <ul class="est__lines" id="estLines"></ul>
+          <p class="est__time" id="estTime"></p>
+          <p class="est__note" id="estNote"></p>
+          <div class="est__cta">
+            <a class="btn" id="estBook" href="https://calendar.app.google/NUp3xit8MwxWQWkK6" target="_blank" rel="noopener">Prenota il primo incontro</a>
+            <a class="mail" id="estWa" href="https://wa.me/393339580381">Scrivimi su WhatsApp</a>
+          </div>
+          <button type="button" class="est__back est__again" id="estAgain">Ricomincia</button>
+          <p class="est__status" id="estStatus" role="status"></p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="about" id="chi-sono" aria-labelledby="h-chi">
+    <div class="wrap grid">
+      <div class="about__head">
+        <p class="eyebrow">Chi sono</p>
+        <h2 id="h-chi" data-split>Chi trovi <em>dall'altra parte.</em></h2>
+        <div class="portrait" role="img" aria-label="Spazio riservato alla foto di Matia"><img src="assets/logo-m.png" alt=""><span>Foto di Matia da inserire</span></div>
+      </div>
+      <div class="about__body">
+        <p>Mi chiamo Matia Zoffoli. Per nove anni ho diretto locali in Australia, fino a quattro sedi e centoventi persone: so cosa significa lavorare con margini stretti e poco tempo per i problemi degli altri.</p>
+        <p>Poi mi sono occupato di dati. Oggi progetto sistemi di intelligenza artificiale per organizzazioni molto più grandi di una piccola attività, tra cui il Dipartimento dell'Istruzione del governo australiano, e porto lo stesso metodo a chi ha un'attività propria. Qui la uso solo dove toglie fatica a te.</p>
+        <p>Ho vissuto tredici anni in Australia. Parlo e scrivo italiano e inglese allo stesso livello.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="faq" id="faq" aria-labelledby="h-faq">
+    <div class="wrap grid">
+      <div class="faq__head">
+        <p class="eyebrow">Prima di scrivermi</p>
+        <h2 id="h-faq" data-split>Domande <em>frequenti.</em></h2>
+      </div>
+      <div class="faq__list">
+        <details>
+          <summary>Quanto costa?</summary>
+          <p>Dipende da cosa ti serve. Dopo il primo incontro ricevi un prezzo scritto e chiuso, che non cambia in corsa. Il check-up viene scalato dal lavoro, se decidi di proseguire.</p>
+        </details>
+        <details>
+          <summary>Cosa succede dopo la consegna?</summary>
+          <p>Resto. Con la cura continua aggiorno, correggo e rispondo entro un giorno lavorativo. Ogni mese ricevi un breve resoconto di ciò che è stato fatto.</p>
+        </details>
+        <details>
+          <summary>Quanto tempo serve?</summary>
+          <p>Dipende dal lavoro: da pochi giorni per un menu a qualche settimana per un sito completo. Il tempo di consegna è scritto nel preventivo e lo rispetto: seguo pochi progetti per volta, per dare a ciascuno tutta l'attenzione che serve.</p>
+        </details>
+        <details>
+          <summary>Il sito e il dominio restano miei?</summary>
+          <p>Sì. Dominio, contenuti e accessi restano a te. Li intesto a te e, se vuoi, li gestisco per tuo conto.</p>
+        </details>
+        <details>
+          <summary>Cosa sono le ore incluse nella cura continua?</summary>
+          <p>Il tempo che dedico alle tue richieste ogni mese. Aggiornamenti tecnici, sicurezza e backup non lo consumano. Il primo mese è a forfait e senza limite di ore, esclusi i lavori nuovi di sviluppo.</p>
+        </details>
+        <details>
+          <summary>Lavori solo in Romagna?</summary>
+          <p>Sono di Cesenatico e mi fa piacere incontrarti di persona se sei in zona. Lavoro anche a distanza con attività di tutta Italia.</p>
+        </details>
+        <details>
+          <summary>Scrivi anche in inglese?</summary>
+          <p>Sì. Ho vissuto tredici anni in Australia e scrivo in inglese come in italiano: siti, menu e carta dei vini.</p>
+        </details>
+        <details>
+          <summary>Che dati raccogli e come li usi?</summary>
+          <p>Solo quelli che mi lasci scrivendomi o prenotando. Li uso per risponderti. Il dettaglio è nell'<a href="privacy.html">informativa privacy</a>.</p>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <section class="close" id="chiusura" aria-labelledby="h-chiusura">
+    <div class="wrap grid">
+      <h2 id="h-chiusura" data-split>Parliamone.</h2>
+      <div class="close__row">
+        <p class="close__lead">Scegli un momento per il primo incontro, oppure scrivimi. Rispondo entro un giorno lavorativo.</p>
+        <div class="close__act">
+          <a class="btn" href="https://calendar.app.google/NUp3xit8MwxWQWkK6" target="_blank" rel="noopener">Prenota il primo incontro
+            <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true"><path d="M2 8h11M9 3.5 13.5 8 9 12.5"/></svg>
+          </a>
+          <a class="mail" href="https://wa.me/393339580381?text=Ciao%20Matia%2C%20vorrei%20fissare%20un%20primo%20incontro.">Scrivimi su WhatsApp</a>
+          <a class="mail" href="mailto:matiazoffoli@gmail.com">matiazoffoli@gmail.com</a>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="foot">
+  <div class="wrap">
+    <div class="foot__cols">
+      <div><h4>Studio</h4><p>Studio Matiz<br>di Matia Zoffoli<br>Cesenatico</p></div>
+      <div><h4>Contatti</h4><p><a href="mailto:matiazoffoli@gmail.com">matiazoffoli@gmail.com</a><br><a href="https://wa.me/393339580381">WhatsApp +39 333 958 0381</a></p></div>
+      <div><h4>Informazioni</h4><p><a href="privacy.html">Privacy</a><br><a href="#faq">Domande frequenti</a></p></div>
+    </div>
+    <img class="foot__mark" src="assets/logo-wordmark.png" alt="" width="995" height="175">
+    <div class="foot__legal">
+      <span>Pagina di prova: nome, testi e condizioni sono in bozza.</span>
+      <span>Il caso 115 e 450 va confermato con il cliente prima di pubblicare.</span>
+    </div>
+  </div>
+</footer>
+
+<script defer src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/gsap.min.js"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/ScrollTrigger.min.js"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/SplitText.min.js"></script>
+<script>
+(function () {
+  var root = document.documentElement;
+  var reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var fine = matchMedia('(hover: hover) and (pointer: fine)').matches;
+  var $ = function (s, c) { return (c || document).querySelector(s); };
+  var $$ = function (s, c) { return Array.prototype.slice.call((c || document).querySelectorAll(s)); };
+  var site = $('#site');
+
+  /* ---------- Testata ---------- */
+  var ticking = false;
+  function onScroll() {
+    if (ticking) return; ticking = true;
+    requestAnimationFrame(function () { ticking = false; site.classList.toggle('is-stuck', (window.scrollY || 0) > 8); });
+  }
+  window.addEventListener('scroll', onScroll, { passive: true });
+  onScroll();
+
+  /* ---------- Pulsanti: una penna stilografica ridisegna il contorno, poi il pulsante si riempie ---------- */
+  var NS = 'http://www.w3.org/2000/svg';
+  function nibPath(w, h) {
+    var inset = .75, W = w - 2 * inset, H = h - 2 * inset, r = H / 2, step = 2.2, pts = [], i;
+    function seg(x1, y1, x2, y2) { var L = Math.hypot(x2 - x1, y2 - y1), n = Math.max(1, Math.round(L / step)); for (i = 0; i < n; i++) pts.push([x1 + (x2 - x1) * i / n, y1 + (y2 - y1) * i / n]); }
+    function arc(cx, cy, a0, a1) { var n = Math.max(2, Math.round(Math.abs(a1 - a0) * r / step)); for (i = 0; i < n; i++) { var a = a0 + (a1 - a0) * i / n; pts.push([cx + r * Math.cos(a), cy + r * Math.sin(a)]); } }
+    seg(r, 0, W - r, 0); arc(W - r, r, -Math.PI / 2, Math.PI / 2); seg(W - r, H, r, H); arc(r, r, Math.PI / 2, Math.PI * 1.5);
+    var ov = Math.min(W * .1, 28), on = Math.round(ov / step);
+    for (i = 0; i < on; i++) { var t = i / on; pts.push([r + ov * t, -3.2 * Math.sin(t * Math.PI * .6)]); }
+    var ph1 = Math.random() * 6, ph2 = Math.random() * 6, n = pts.length, out = [];
+    for (i = 0; i < n; i++) {
+      var a = pts[Math.max(0, i - 1)], b = pts[Math.min(n - 1, i + 1)];
+      var ang = Math.atan2(b[1] - a[1], b[0] - a[0]);
+      var wob = (Math.sin(i * .045 + ph1) * .55 + Math.sin(i * .11 + ph2) * .3);
+      var edgeIn = Math.min(1, i / 14) * Math.min(1, (n - i) / 14);
+      /* pennino largo: il tratto e' piu' sottile in un verso e piu' pieno nell'altro */
+      var wd = (.55 + 2.9 * Math.pow(Math.abs(Math.sin(ang - .75)), 1.4)) * (.3 + .7 * edgeIn) * (1 + .12 * Math.sin(i * .07 + ph2));
+      out.push({ x: pts[i][0] + inset - Math.sin(ang) * wob, y: pts[i][1] + inset + Math.cos(ang) * wob, nx: -Math.sin(ang), ny: Math.cos(ang), w: wd });
+    }
+    return out;
+  }
+  function inkD(P, k) {
+    var L = [], R = [], i, p;
+    for (i = 0; i <= k; i++) { p = P[i]; L.push((p.x + p.nx * p.w / 2).toFixed(1) + ' ' + (p.y + p.ny * p.w / 2).toFixed(1)); R.push((p.x - p.nx * p.w / 2).toFixed(1) + ' ' + (p.y - p.ny * p.w / 2).toFixed(1)); }
+    return 'M' + L.join(' L') + ' L' + R.reverse().join(' L') + 'Z';
+  }
+  /* una stilografica vera: pennino d'oro con fessura e foro, sezione laccata, anello e fusto con riflesso e clip.
+     Disegnata in verticale con la punta in (0,0); poi si inclina e si scala seguendo il tratto. */
+  var PEN = '<g class="pen"><g class="penart">' +
+    '<path d="M0 0L-4.6 -14Q0 -17.5 4.6 -14Z" fill="#C9A566"/>' +
+    '<path d="M0 0L4.6 -14Q2 -15.4 .6 -15.2Z" fill="#9C7A3C"/>' +
+    '<path d="M0 -1.6V-12.6" stroke="#2A211C" stroke-width=".7"/><circle cx="0" cy="-12.9" r="1.15" fill="#2A211C"/>' +
+    '<path d="M-5 -14.5H5L6 -28H-6Z" fill="#1F1814"/><path d="M-5 -14.5H-2.6L-3.4 -28H-6Z" fill="rgba(255,255,255,.14)"/>' +
+    '<rect x="-6.6" y="-30" width="13.2" height="2.4" fill="#C9A566"/><rect x="-6.6" y="-30" width="13.2" height=".7" fill="rgba(255,255,255,.55)"/>' +
+    '<path d="M-7 -30.4H7L7.8 -86Q0 -90.5 -7.8 -86Z" fill="var(--pen-body)"/>' +
+    '<path d="M-7 -30.4H-2.6L-3.2 -88.5Q-5.6 -88 -7.8 -86Z" fill="rgba(0,0,0,.22)"/>' +
+    '<path d="M2.4 -32V-87" stroke="rgba(255,255,255,.4)" stroke-width="1.5" stroke-linecap="round"/>' +
+    '<rect x="-7.4" y="-62" width="14.8" height="1.4" fill="#C9A566"/>' +
+    '<path d="M7.8 -70H11.4V-84" stroke="#C9A566" stroke-width="1.6" fill="none" stroke-linejoin="round"/>' +
+    '</g></g>';
+  function bindButtons() {
+    $$('.btn').forEach(function (b) {
+      var svg = document.createElementNS(NS, 'svg'); svg.setAttribute('class', 'btn__ink'); svg.setAttribute('aria-hidden', 'true'); b.appendChild(svg);
+      var tw = null, token = 0;
+      function clear() { if (tw) tw.kill(); tw = null; b.classList.remove('is-drawing', 'is-filled'); svg.innerHTML = ''; }
+      b.addEventListener('pointerenter', function (e) {
+        if (e.pointerType === 'touch') return;
+        clear();
+        var w = b.offsetWidth, h = b.offsetHeight, P = nibPath(w, h), my = ++token;
+        svg.setAttribute('width', w); svg.setAttribute('height', h); svg.setAttribute('viewBox', '0 0 ' + w + ' ' + h);
+        svg.innerHTML = '<path class="ink" d=""/>' + PEN;
+        var ink = $('.ink', svg), pen = $('.pen', svg), o = { k: 0 };
+        b.classList.add('is-drawing');
+        tw = gsap.to(o, {
+          k: 1, duration: 1.05 + w / 900, ease: 'sine.inOut',
+          onUpdate: function () {
+            var i = Math.max(2, Math.round(o.k * (P.length - 1)));
+            ink.setAttribute('d', inkD(P, i));
+            /* la mano inclina la penna secondo il verso del tratto */
+            var tilt = 30 + 9 * Math.cos(Math.atan2(P[i].ny, P[i].nx) + 1.2);
+            pen.setAttribute('transform', 'translate(' + P[i].x.toFixed(1) + ' ' + P[i].y.toFixed(1) + ') rotate(' + tilt.toFixed(1) + ') scale(.66)');
+          },
+          onComplete: function () {
+            if (my !== token) return;
+            b.classList.add('is-filled');
+            gsap.to(pen, { opacity: 0, duration: .45, ease: 'power2.in' });
+            gsap.to(ink, { opacity: 0, duration: .5, delay: .15 });
+          }
+        });
+      });
+      b.addEventListener('pointerleave', function () { token++; clear(); });
+    });
+  }
+
+  /* ---------- Servizi: pagine che scorrono da destra verso sinistra ---------- */
+  function initGallery() {
+    var gal = $('#servizi'), stage = $('#galStage'), pages = $$('.page', stage), N = pages.length;
+    var dots = $$('#galDots button'), now = $('#galNow');
+    var mq = matchMedia('(min-width: 900px) and (min-height: 520px)');
+    if (!mq.matches) return;
+    /* con "riduci movimento" la pagina scorre in orizzontale con lo scroll (e' l'utente a muoverla), senza prospettiva ne' scatti */
+    gal.classList.add('is-pinned');
+    var proxy = { p: 0 }, front = -1, spacing = 0;
+    function metrics() {
+      var pw = Math.min(1080, stage.clientWidth * .8);
+      stage.style.setProperty('--pw', pw + 'px');
+      spacing = pw + stage.clientWidth * .03;
+    }
+    function clamp(v, a, b) { return Math.max(a, Math.min(b, v)); }
+    function render() {
+      var p = proxy.p, f = Math.round(p);
+      pages.forEach(function (pg, i) {
+        var o = i - p, a = Math.min(1, Math.abs(o));
+        var x = o * spacing, ry = reduce ? 0 : clamp(-o * 16, -30, 30), z = reduce ? 0 : -a * 220, s = reduce ? 1 : 1 - .06 * a;
+        pg.style.transform = 'translate3d(' + x.toFixed(1) + 'px,0,' + z.toFixed(1) + 'px) rotateY(' + ry.toFixed(2) + 'deg) scale(' + s.toFixed(3) + ')';
+        pg.style.setProperty('--dim', (a * .5).toFixed(3));
+        pg.style.setProperty('--d', clamp(1.15 - Math.abs(o) * 1.15, 0, 1).toFixed(3));
+        pg.style.zIndex = String(10 - Math.round(Math.abs(o) * 3));
+        pg.style.visibility = Math.abs(o) > 2.2 ? 'hidden' : 'visible';
+      });
+      if (f !== front) {
+        front = f;
+        pages.forEach(function (pg, i) { if (i === f) pg.removeAttribute('inert'); else pg.setAttribute('inert', ''); });
+        dots.forEach(function (d, i) { d.classList.toggle('on', i === f); });
+        now.textContent = '0' + (f + 1);
+      }
+    }
+    metrics(); render();
+    var st = ScrollTrigger.create({
+      trigger: gal, start: 'top top', end: function () { return '+=' + Math.round((N - 1) * innerHeight * .85); },
+      pin: true, anticipatePin: 1, invalidateOnRefresh: true,
+      snap: { snapTo: 1 / (N - 1), duration: { min: .25, max: .7 }, delay: .08, ease: 'power2.inOut' },
+      onUpdate: function (self) { gsap.to(proxy, { p: self.progress * (N - 1), duration: .55, ease: 'power3.out', overwrite: true, onUpdate: render }); }
+    });
+    dots.forEach(function (d, i) {
+      d.addEventListener('click', function () { var y = st.start + (st.end - st.start) * (i / (N - 1)); window.scrollTo({ top: y, behavior: 'smooth' }); });
+    });
+    window.addEventListener('resize', function () { metrics(); render(); });
+  }
+
+  /* ---------- Il caso: il numero sale con lo scroll, da 115 a 450 ---------- */
+  function initCase() {
+    var num = $('#caseNum'), mA = $('#mA'), mB = $('#mB');
+    var o = { p: 0 };
+    function draw() { num.textContent = Math.round(115 + 335 * o.p); mB.style.setProperty('--s', o.p.toFixed(3)); }
+    mA.style.setProperty('--s', 0); mB.style.setProperty('--s', 0);
+    var tl = gsap.timeline({ defaults: { ease: 'none' }, scrollTrigger: { trigger: '.case', start: 'top top', end: 'bottom bottom', scrub: .6 } });
+    tl.to(mA, { '--s': 1, duration: .15 }, 0).to(o, { p: 1, duration: .7, onUpdate: draw }, .2).to({}, { duration: .15 });
+    draw();
+  }
+
+  /* ---------- Stimatore: quattro domande, prezzo di partenza subito ---------- */
+  /* ---------- Stimatore: quattro domande, prezzo di partenza subito ---------- */
+  (function initEstimator() {
+    var form = $('#estForm'); if (!form) return;
+    var ENDPOINT = 'https://mtdfpcwdzjweyqpgpdvp.supabase.co/functions/v1/contatto';
+    var POLICY = 'bozza-2026-10-08';
+    var steps = $$('.est__step', form), ticks = $$('#estProg i'), back = $('#estBack'), nextB = $('#estNext'), go = $('#estGo'),
+        err = $('#estErr'), res = $('#estResult'), pos = 0, t0 = performance.now();
+    var BANDS = {
+      sito: { piccola: [500, 900, 'Pagina singola', 10, 'giorni'], media: [1200, 2500, 'Sito completo', 3, 'settimane'], grande: [2500, 5000, 'Sito con funzioni', 6, 'settimane'] },
+      menu: [300, 700, 'Menu digitale', 5, 'giorni'],
+      auto: { piccola: [500, 900, 'Automazione semplice', 10, 'giorni'], media: [900, 1500, 'Automazione articolata', 10, 'giorni'], grande: [2000, 6000, 'Strumento su misura', 5, 'settimane'] },
+      check: [200, 200, 'Check-up', 3, 'giorni lavorativi']
+    };
+    function vals(name) { return $$('input[name="' + name + '"]:checked', form).map(function (i) { return i.value; }); }
+    function val(name) { return vals(name)[0] || ''; }
+    function fld(name) { return (form.elements[name].value || '').trim(); }
+    function needsSize() { var s = vals('servizi'); return s.indexOf('sito') > -1 || s.indexOf('auto') > -1; }
+    function seq() { return needsSize() ? [0, 1, 2, 3, 4] : [0, 1, 2, 4]; }
+    function eur(n) { return String(n).replace(/\B(?=(\d{3})+(?!\d))/g, '.'); }
+    function days(b) { return b[4] === 'settimane' ? b[3] * 7 : b[3]; }
+
+    /* "Non lo so" esclude le altre scelte, e viceversa */
+    $$('input[name="servizi"]', form).forEach(function (i) {
+      i.addEventListener('change', function () {
+        if (!i.checked) return;
+        $$('input[name="servizi"]', form).forEach(function (o) {
+          if (o !== i && ((i.value === 'nonso') || o.value === 'nonso')) o.checked = false;
+        });
+      });
+    });
+
+    function show(p) {
+      var s = seq(); pos = Math.max(0, Math.min(p, s.length - 1));
+      steps.forEach(function (st) { st.classList.remove('is-on'); });
+      steps[s[pos]].classList.add('is-on');
+      ticks.forEach(function (t, i) { t.classList.toggle('off', i >= s.length); t.classList.toggle('on', i <= pos); });
+      var last = pos === s.length - 1;
+      back.hidden = pos === 0; nextB.hidden = last; go.hidden = !last;
+      err.textContent = '';
+    }
+    function check() {
+      var s = seq()[pos];
+      if (s === 0 && !val('tipo')) return 'Scegli il tipo di attività.';
+      if (s === 1 && !vals('servizi').length) return 'Scegli almeno una cosa.';
+      if (s === 2 && !val('presenza')) return 'Scegli come sei messo oggi.';
+      if (s === 3 && !val('size')) return 'Scegli la dimensione del lavoro.';
+      if (s === 4) {
+        if (!fld('nome')) return 'Scrivi il tuo nome.';
+        if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(fld('email'))) return 'Scrivi un indirizzo email valido.';
+        if (!form.elements.privacy.checked) return 'Per vedere il prezzo serve spuntare l\'informativa privacy.';
+      }
+      return '';
+    }
+    nextB.addEventListener('click', function () { var e = check(); if (e) { err.textContent = e; return; } show(pos + 1); });
+    back.addEventListener('click', function () { show(pos - 1); });
+    form.addEventListener('keydown', function (e) { if (e.key === 'Enter' && e.target.tagName === 'INPUT' && e.target.type !== 'checkbox') { e.preventDefault(); (go.hidden ? nextB : go).click(); } });
+
+    function compute() {
+      var s = vals('servizi'), size = val('size') || 'media', lines = [], lo = 0, hi = 0, longest = null;
+      function add(b) { lines.push(b); lo += b[0]; hi += b[1]; if (!longest || days(b) > days(longest)) longest = b; }
+      if (s.indexOf('nonso') > -1) add(BANDS.check);
+      else {
+        if (s.indexOf('sito') > -1) add(BANDS.sito[size]);
+        if (s.indexOf('menu') > -1) add(BANDS.menu);
+        if (s.indexOf('auto') > -1) add(BANDS.auto[size]);
+      }
+      return { lines: lines, lo: lo, hi: hi, longest: longest, cura: s.indexOf('assistenza') > -1, check: s.indexOf('nonso') > -1 };
+    }
+    /* si mostra solo il prezzo di partenza: il tetto resta nel preventivo */
+    function da(b) { return b[0] === b[1] ? eur(b[0]) + ' euro' : 'da ' + eur(b[0]) + ' euro'; }
+    function status(msg) { $('#estStatus').textContent = msg; }
+
+    go.addEventListener('click', function () {
+      var e = check(); if (e) { err.textContent = e; return; }
+      var r = compute(), listEl = $('#estLines'), notes = [];
+      listEl.innerHTML = '';
+      if (!r.lines.length) {
+        $('#estRange').textContent = 'Cura continua';
+        $('#estTime').textContent = '';
+        notes.push('Il primo mese è a forfait e senza limite di ore, per assistenza, ricerca e idee. Dal secondo mese si decide insieme quanto serve, in base all\'uso reale. La cifra te la indico nel preventivo, dopo il primo incontro.');
+      } else {
+        $('#estRange').textContent = r.check ? 'Il check-up: ' + eur(r.lo) + ' euro' : 'Da ' + eur(r.lo) + ' euro';
+        r.lines.forEach(function (b) { var li = document.createElement('li'); li.innerHTML = '<span></span><span class="m"></span>'; li.firstChild.textContent = b[2]; li.lastChild.textContent = da(b); listEl.appendChild(li); });
+        $('#estTime').textContent = 'Tempo di consegna: circa ' + r.longest[3] + ' ' + r.longest[4] + ', scritto nel preventivo.';
+        if (r.check) notes.push('Non sai da dove partire? Il check-up serve a questo: guardo cosa hai e ti dico cosa conviene fare per primo. Il costo viene scalato dal lavoro, se decidi di proseguire.');
+        else notes.push('È il prezzo di partenza per il lavoro che hai descritto: la cifra finale dipende da quanto è articolato.');
+        if (r.cura) notes.push('A questo si aggiunge la cura continua: il primo mese è a forfait e senza limite di ore, poi si decide insieme.');
+      }
+      notes.push('Non è un preventivo: il prezzo vero lo scrivo io, dopo il primo incontro, e non cambia in corsa. IVA se dovuta.');
+      $('#estNote').textContent = notes.join(' ');
+      var nomi = r.lines.map(function (b) { return b[2]; }).join(', ') || 'cura continua';
+      var riepilogo = 'Ciao Matia, ho visto dal sito un prezzo di partenza (' + $('#estRange').textContent + ') per: ' + nomi + '. Attività: ' + val('tipo') + '. Vorrei parlarne.';
+      $('#estWa').href = 'https://wa.me/393339580381?text=' + encodeURIComponent(riepilogo);
+
+      var payload = {
+        nome: fld('nome'), email: fld('email'), telefono: fld('tel'), tipo_attivita: val('tipo'), servizi: vals('servizi'),
+        presenza: val('presenza'), dimensione: needsSize() ? val('size') : null, prezzo_da: r.lo || null, prezzo_fino_a: r.hi || null,
+        consenso_privacy: true, consenso_comunicazioni: !!form.elements.comunicazioni.checked, versione_informativa: POLICY,
+        sito_web: fld('sito_web'), tempo_compilazione_ms: Math.round(performance.now() - t0)
+      };
+      form.hidden = true; $('#estProg').hidden = true; res.hidden = false; res.focus({ preventScroll: true });
+      status('Sto registrando la tua richiesta...');
+      fetch(ENDPOINT, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(payload), keepalive: true })
+        .then(function (x) { return x.json().catch(function () { return {}; }).then(function (j) { return { ok: x.ok && j.ok, j: j }; }); })
+        .then(function (x) {
+          if (x.ok) status('Ho ricevuto la tua richiesta. Ti rispondo entro un giorno lavorativo.');
+          else status('Non sono riuscito a registrare la richiesta. Scrivimi su WhatsApp o per email e ti rispondo comunque.');
+        })
+        .catch(function () { status('Non sono riuscito a registrare la richiesta. Scrivimi su WhatsApp o per email e ti rispondo comunque.'); });
+    });
+    $('#estAgain').addEventListener('click', function () {
+      form.reset(); form.hidden = false; $('#estProg').hidden = false; res.hidden = true; status(''); show(0);
+    });
+    show(0);
+  })();
+
+  /* ---------- Animazioni (GSAP) ---------- */
+  function ready() { root.classList.remove('pending'); }
+  function start() {
+    if (!window.gsap || !window.ScrollTrigger || !window.SplitText) { ready(); return; }
+    gsap.registerPlugin(ScrollTrigger, SplitText);
+
+    /* percorso: la riga che sta al centro si accende */
+    if ('IntersectionObserver' in window) {
+      var rows = $$('#steps li');
+      var sio = new IntersectionObserver(function (es) { es.forEach(function (e) { e.target.classList.toggle('is-on', e.isIntersecting); }); }, { rootMargin: '-42% 0px -42% 0px' });
+      rows.forEach(function (li) { sio.observe(li); });
+    }
+
+    if (reduce) {
+      ready(); initGallery();
+      ScrollTrigger.create({ trigger: '#night', start: 'top 60px', end: 'bottom 60px', onToggle: function (s) { site.classList.toggle('on-dark', s.isActive); } });
+      return;
+    }
+    if (fine) bindButtons();
+
+    /* hero: il disegno si traccia a penna, poi il titolo sale */
+    var sk = $$('.hero__sketch .dr');
+    gsap.set(sk, { '--d': 0 });
+    var h1 = $('.hero h1');
+    var hs = SplitText.create(h1, { type: 'words', wordsClass: 'w' });
+    gsap.set(hs.words, { yPercent: 105, opacity: 0 });
+    gsap.set('.hero [data-in]', { opacity: 0, y: 24 });
+    ready();
+    var tl = gsap.timeline({ defaults: { ease: 'expo.out' } });
+    tl.to(hs.words, { yPercent: 0, opacity: 1, duration: 1.3, stagger: .12 })
+      .to('.hero [data-in]', { opacity: 1, y: 0, duration: 1, stagger: .1 }, '-=.9')
+      .to(sk, { '--d': 1, duration: 2.2, stagger: .06, ease: 'power2.inOut' }, 0.1)
+      .add(function () { hs.revert(); });
+
+    /* titoli: salgono una parola alla volta */
+    $$('[data-split]').forEach(function (h) {
+      var s1 = SplitText.create(h, { type: 'words', wordsClass: 'w' });
+      gsap.from(s1.words, { yPercent: 100, opacity: 0, duration: 1.2, ease: 'expo.out', stagger: .07, scrollTrigger: { trigger: h, start: 'top 88%' } });
+    });
+    $$('[data-reveal]').forEach(function (el, i) {
+      gsap.from(el, { y: 36, opacity: 0, duration: 1.1, ease: 'expo.out', scrollTrigger: { trigger: el, start: 'top 92%' } });
+    });
+
+    initGallery();
+    initCase();
+
+    /* testata scura sopra le sezioni scure (creata dopo il blocco fermo dei servizi, che sposta tutto cio' che segue) */
+    ScrollTrigger.create({ trigger: '#night', start: 'top 60px', end: 'bottom 60px', onToggle: function (s) { site.classList.toggle('on-dark', s.isActive); } });
+
+    function refresh() { ScrollTrigger.refresh(); }
+    window.addEventListener('load', refresh);
+    if (document.fonts && document.fonts.ready) document.fonts.ready.then(refresh);
+  }
+
+  document.addEventListener('DOMContentLoaded', function () {
+    var go = function () { try { start(); } catch (err) { console.warn(err); ready(); } };
+    if (document.fonts && document.fonts.ready) document.fonts.ready.then(go); else go();
+  });
+})();
+</script>
+</body>
+</html>

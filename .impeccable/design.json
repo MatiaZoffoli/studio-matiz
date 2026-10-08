@@ -1,0 +1,170 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-10-08T12:00:00Z",
+  "title": "Design System: Studio Zoffoli (nome provvisorio, non confermato)",
+  "extensions": {
+    "colorMeta": {
+      "ivory": { "role": "neutral", "displayName": "Avorio", "canonical": "#FAF6EE", "tonalRamp": ["#2B2924", "#4A463E", "#6E685C", "#948D7E", "#B8B2A2", "#D6D0C1", "#EBE5D7", "#FAF6EE"] },
+      "ivory-deep": { "role": "neutral", "displayName": "Avorio Profondo", "canonical": "#F2EBDD", "tonalRamp": ["#2B261D", "#4A4234", "#6E624D", "#948568", "#B8A988", "#D4C8AB", "#E6DCC5", "#F2EBDD"] },
+      "espresso": { "role": "neutral", "displayName": "Espresso", "canonical": "#2B1D16", "tonalRamp": ["#2B1D16", "#4A362C", "#6A5144", "#8A6F60", "#AB907F", "#C7B0A1", "#E0CFC4", "#F3EAE4"] },
+      "ink-soft": { "role": "neutral", "displayName": "Inchiostro Tenue", "canonical": "#5E4C40", "tonalRamp": ["#2B211A", "#43342A", "#5E4C40", "#7D685A", "#9E8A7C", "#BCAB9F", "#D8CCC3", "#EFE9E4"] },
+      "petrol": { "role": "primary", "displayName": "Verde Petrolio", "canonical": "#1F4D4A", "tonalRamp": ["#0F2725", "#173B39", "#1F4D4A", "#2E6C67", "#4C8D87", "#79B0AB", "#A9CFCB", "#DCEEEC"] },
+      "petrol-deep": { "role": "primary", "displayName": "Petrolio Profondo", "canonical": "#173B39", "tonalRamp": ["#0A1A19", "#0F2725", "#173B39", "#1F4D4A", "#2E6C67", "#4C8D87", "#79B0AB", "#DCEEEC"] },
+      "brass": { "role": "secondary", "displayName": "Ottone Antico", "canonical": "#B8913A", "tonalRamp": ["#3A2D0F", "#5C4818", "#7F6525", "#9E7F2F", "#B8913A", "#D0B068", "#E4CF9B", "#F5EBCF"] },
+      "amber": { "role": "tertiary", "displayName": "Ambra", "canonical": "#E9A23B", "tonalRamp": ["#47290A", "#6E4010", "#99591A", "#C47C28", "#E9A23B", "#F0B657", "#F6D08E", "#FBEBCD"] },
+      "amber-light": { "role": "tertiary", "displayName": "Ambra Chiara", "canonical": "#F0B657", "tonalRamp": ["#47290A", "#6E4010", "#99591A", "#C47C28", "#E9A23B", "#F0B657", "#F6D08E", "#FBEBCD"] },
+      "amber-glow": { "role": "tertiary", "displayName": "Ambra Bagliore", "canonical": "#FFD58A", "tonalRamp": ["#5C3A0C", "#8A5A18", "#B97C2A", "#E3A24B", "#F5BE6A", "#FFD58A", "#FFE6B5", "#FFF4DE"] },
+      "night": { "role": "neutral", "displayName": "Notte", "canonical": "#221712", "tonalRamp": ["#120C09", "#221712", "#382A22", "#54443A", "#7A675A", "#A39284", "#D9CCB6", "#F6EEDF"] },
+      "night-soft": { "role": "neutral", "displayName": "Notte Soft", "canonical": "#D9CCB6", "tonalRamp": ["#382A22", "#54443A", "#7A675A", "#A39284", "#C2B49C", "#D9CCB6", "#EAE1D1", "#F6EEDF"] }
+    },
+    "typographyMeta": {
+      "display": { "displayName": "Display", "purpose": "H1 dell'hero; corsivo con evidenziatore che si traccia solo su 'su misura'." },
+      "headline": { "displayName": "Headline", "purpose": "H2 di sezione, petrolio sul chiaro, Testo Notte sullo scuro." },
+      "title": { "displayName": "Title", "purpose": "H3 di problemi e passi; etichette serif del registro." },
+      "body": { "displayName": "Body", "purpose": "Testo corrente in Manrope." },
+      "lede": { "displayName": "Lede", "purpose": "Descrittore sotto il righello, max 34ch." },
+      "label": { "displayName": "Label", "purpose": "Testo dei pulsanti." },
+      "figure": { "displayName": "Figure", "purpose": "Cifre del registro scuro, in JetBrains Mono ambra." },
+      "figure-large": { "displayName": "Figure large", "purpose": "Numero del metro del caso, da 115 a 450." },
+      "mono-small": { "displayName": "Mono Small", "purpose": "Etichette e letture dei righelli in cm." }
+    },
+    "shadows": [
+      { "name": "button-petrol", "value": "inset 0 1px 0 rgba(255,255,255,.22), 0 10px 22px -10px rgba(23,59,57,.6)", "purpose": "Pulsante primario a riposo; hover: 0 16px 28px -10px rgba(23,59,57,.7)." },
+      { "name": "button-amber", "value": "inset 0 1px 0 rgba(255,255,255,.5), 0 12px 30px -10px rgba(233,162,59,.65)", "purpose": "Pulsante ambra; hover: 0 18px 38px -10px rgba(233,162,59,.85)." },
+      { "name": "print", "value": "0 1px 1px rgba(43,29,22,.14), 0 22px 44px -20px rgba(43,29,22,.5)", "purpose": "Ritratto come stampa appoggiata." },
+      { "name": "tape-glow", "value": "drop-shadow(0 8px 14px rgba(233,162,59,.45))", "purpose": "Barra ambra del metro del caso." }
+    ],
+    "motion": [
+      { "name": "ease", "value": "cubic-bezier(.16, 1, .3, 1)", "purpose": "Curva unica dei CSS: hover, sottolineature, colori della testata (.35-.5s)." },
+      { "name": "expo.out", "value": "gsap expo.out", "purpose": "Entrate: lettere, parole, testi, righe del registro." },
+      { "name": "expo.inOut", "value": "gsap expo.inOut", "purpose": "Righello che si srotola (1.6s) e ritratto che si apre (1.5s)." },
+      { "name": "power3.inOut", "value": "gsap power3.inOut", "purpose": "Evidenziatore, fili che si tracciano, righe del percorso." },
+      { "name": "power3", "value": "gsap power3 (quickTo, 0.6s)", "purpose": "Pulsanti magnetici e inclinazione 3D del ritratto." },
+      { "name": "power2.out", "value": "gsap power2.out", "purpose": "Conteggio della cifra 200." },
+      { "name": "scrub", "value": "ease none, scrub true o .6", "purpose": "Metro del caso, parole di 'chi sono', scorrimento lento del titolo." },
+      { "name": "sheen", "value": "7s infinite, soft-light", "purpose": "Riflesso sull'ottone del righello dell'hero (solo senza reduced motion)." },
+      { "name": "amber-shader-ceiling", "value": "k <= 0.34", "purpose": "Tetto della miscela notte-ambra nello shader, per il contrasto di Notte Soft." }
+    ],
+    "breakpoints": [
+      { "name": "spine", "value": "1100px" },
+      { "name": "tablet", "value": "900px" },
+      { "name": "no-webgl", "value": "760px" },
+      { "name": "phone", "value": "480px" },
+      { "name": "short-viewport", "value": "max-height 700px" }
+    ]
+  },
+  "components": [
+    {
+      "name": "Primary Button",
+      "kind": "button",
+      "refersTo": "button-primary",
+      "description": "Azione principale: petrolio a gradiente, luce interna e ombra a offset, freccia.",
+      "html": "<a class=\"ds-btn\" href=\"#\">Prenota il primo incontro</a>",
+      "css": ".ds-btn { display: inline-flex; align-items: center; gap: .6rem; padding: .95rem 1.5rem; font: 600 .9375rem/1 Manrope, system-ui, sans-serif; letter-spacing: .01em; text-decoration: none; color: #FAF6EE; background: linear-gradient(180deg, #2A6360 0%, #1F4D4A 55%); border: 1.5px solid #1F4D4A; border-radius: 2px; box-shadow: inset 0 1px 0 rgba(255,255,255,.22), 0 10px 22px -10px rgba(23,59,57,.6); transition: transform .5s cubic-bezier(.16,1,.3,1), box-shadow .5s cubic-bezier(.16,1,.3,1); } .ds-btn:hover { transform: translateY(-2px); box-shadow: inset 0 1px 0 rgba(255,255,255,.26), 0 16px 28px -10px rgba(23,59,57,.7); } .ds-btn:focus-visible { outline: 2px solid #1F4D4A; outline-offset: 3px; }"
+    },
+    {
+      "name": "Amber Button",
+      "kind": "button",
+      "refersTo": "button-amber",
+      "description": "Azione nella fascia scura: ambra con riflesso e ombra calda.",
+      "html": "<div class=\"ds-night\"><a class=\"ds-btn-amber\" href=\"#\">Prenota il primo incontro</a></div>",
+      "css": ".ds-night { background: #221712; padding: 2rem; } .ds-btn-amber { display: inline-flex; padding: .95rem 1.5rem; font: 600 .9375rem/1 Manrope, system-ui, sans-serif; text-decoration: none; color: #221712; background: linear-gradient(180deg, #FFD58A 0%, #E9A23B 60%); border: 1.5px solid #E9A23B; border-radius: 2px; box-shadow: inset 0 1px 0 rgba(255,255,255,.5), 0 12px 30px -10px rgba(233,162,59,.65); transition: transform .5s cubic-bezier(.16,1,.3,1), box-shadow .5s cubic-bezier(.16,1,.3,1); } .ds-btn-amber:hover { transform: translateY(-2px); box-shadow: inset 0 1px 0 rgba(255,255,255,.6), 0 18px 38px -10px rgba(233,162,59,.85); } .ds-btn-amber:focus-visible { outline: 2px solid #E9A23B; outline-offset: 3px; }"
+    },
+    {
+      "name": "Navigation Link",
+      "kind": "nav",
+      "refersTo": "button-primary",
+      "description": "Link di testata con sottolineatura ottone che si disegna da sinistra.",
+      "html": "<nav class=\"ds-nav\"><a href=\"#\">Il percorso</a><a href=\"#\">Condizioni</a></nav>",
+      "css": ".ds-nav { display: flex; gap: 2rem; background: #FAF6EE; padding: 1rem; } .ds-nav a { font: 500 .9375rem Manrope, system-ui, sans-serif; color: #2B1D16; text-decoration: none; padding-block: .4rem; background: linear-gradient(#B8913A, #B8913A) left bottom / 0% 1.5px no-repeat; transition: background-size .4s cubic-bezier(.16,1,.3,1); } .ds-nav a:hover { background-size: 100% 1.5px; } .ds-nav a:focus-visible { outline: 2px solid #1F4D4A; outline-offset: 3px; }"
+    },
+    {
+      "name": "Righello",
+      "kind": "custom",
+      "refersTo": "ruler-read",
+      "description": "Scala a tacche d'ottone con lettura in cm; firma della pagina.",
+      "html": "<div class=\"ds-ruler\"><span class=\"ds-read\">3,5 cm</span></div>",
+      "css": ".ds-ruler { position: relative; height: 4.75rem; margin-top: 2.5rem; border-top: 1px solid #B8913A; background: repeating-linear-gradient(90deg, #B8913A 0 1px, transparent 1px 8px) 0 0 / 100% 8px no-repeat, repeating-linear-gradient(90deg, #B8913A 0 1px, transparent 1px 40px) 0 0 / 100% 16px no-repeat, repeating-linear-gradient(90deg, #B8913A 0 2px, transparent 2px 80px) 0 0 / 100% 28px no-repeat; } .ds-read { position: absolute; bottom: calc(100% + .35rem); left: 140px; padding: .3rem .5rem; background: #1F4D4A; color: #FAF6EE; font: 500 .75rem/1 'JetBrains Mono', ui-monospace, monospace; border-radius: 2px; white-space: nowrap; }"
+    },
+    {
+      "name": "Riga del registro (passo)",
+      "kind": "custom",
+      "refersTo": "button-primary",
+      "description": "Riga a filetto: indice mono, titolo serif, testo; barra in alto che si accende.",
+      "html": "<div class=\"ds-step\"><span class=\"ds-n\">1</span><h3>Primo incontro</h3><p>Ascolto, faccio domande, capisco il mestiere.</p></div>",
+      "css": ".ds-step { position: relative; display: grid; grid-template-columns: 2rem 1fr 2fr; gap: 1rem 2rem; align-items: baseline; padding-block: 2rem; border-top: 1px solid rgba(184,145,58,.85); background: #F2EBDD; color: #2B1D16; font-family: Manrope, system-ui, sans-serif; } .ds-step::before { content: ''; position: absolute; top: -1px; left: 0; width: 100%; height: 3px; background: #1F4D4A; } .ds-step h3 { margin: 0; font: 400 1.8rem/1.2 'Instrument Serif', Georgia, serif; } .ds-step p { margin: 0; } .ds-n { font: 500 1rem/1 'JetBrains Mono', ui-monospace, monospace; color: #1F4D4A; }"
+    },
+    {
+      "name": "Riga del registro scuro (condizione)",
+      "kind": "custom",
+      "refersTo": "band",
+      "description": "Cifra mono ambra, etichetta serif, testo su fondo notte.",
+      "html": "<div class=\"ds-term\"><span class=\"ds-fig\">200 euro</span><span class=\"ds-lab\">Check-up</span><span class=\"ds-txt\">Scalati dal lavoro se confermi in tempo.</span></div>",
+      "css": ".ds-term { display: grid; grid-template-columns: 1fr 1fr 2fr; gap: .75rem 2rem; align-items: baseline; padding: 1.6rem 1rem; background: #221712; color: #F6EEDF; border-top: 1px solid rgba(205,191,168,.22); } .ds-fig { font: 500 1.8rem/1.3 'JetBrains Mono', ui-monospace, monospace; color: #E9A23B; letter-spacing: -.02em; } .ds-lab { font: 400 1.6rem/1.2 'Instrument Serif', Georgia, serif; } .ds-txt { color: #D9CCB6; font-family: Manrope, system-ui, sans-serif; }"
+    },
+    {
+      "name": "Fascia a luce d'ambra con bordo a zig zag",
+      "kind": "custom",
+      "refersTo": "band",
+      "description": "Fondo Notte con luce d'ambra (qui in alternativa CSS), tacche d'ottone accese dal puntatore e bordo dentato in cima.",
+      "html": "<div class=\"ds-band\"><div class=\"ds-fx\"></div><div class=\"ds-ticks\"></div><span class=\"ds-bandtxt\">Condizioni chiare, scritte prima.</span></div>",
+      "css": ".ds-band { position: relative; margin-top: 14px; height: 9rem; overflow: hidden; background: #221712; color: #F6EEDF; display: grid; align-items: center; padding-inline: 1.5rem; font: 400 1.8rem/1.1 'Instrument Serif', Georgia, serif; } .ds-band::before { content: ''; position: absolute; left: 0; right: 0; top: 0; height: 12px; background: url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='12' viewBox='0 0 24 12'%3E%3Cpath d='M0 12 12 0 24 12Z' fill='%23221712'/%3E%3C/svg%3E\") 0 0 / 24px 12px repeat-x; transform: translateY(-11px); z-index: 2; } .ds-fx { position: absolute; inset: -20%; background: radial-gradient(closest-side at 24% 30%, rgba(233,162,59,.26), transparent 70%), radial-gradient(closest-side at 78% 70%, rgba(240,182,87,.16), transparent 70%); } .ds-ticks { position: absolute; inset: 0; background: repeating-linear-gradient(90deg, rgba(240,182,87,.9) 0 1px, transparent 1px 40px); -webkit-mask-image: radial-gradient(300px circle at 50% 40%, #000 0, transparent 72%); mask-image: radial-gradient(300px circle at 50% 40%, #000 0, transparent 72%); } .ds-bandtxt { position: relative; z-index: 1; }"
+    },
+    {
+      "name": "Ritratto come stampa",
+      "kind": "card",
+      "refersTo": "portrait",
+      "description": "Stampa appoggiata e inclinata, con ombra a offset; qui segnaposto.",
+      "html": "<div class=\"ds-portrait\">Foto di Matia<br>da inserire</div>",
+      "css": ".ds-portrait { width: 14rem; aspect-ratio: 4 / 5; display: grid; place-items: end start; padding: 1rem; border: 1px solid #B8913A; background-color: #F2EBDD; font: 500 .75rem/1.4 'JetBrains Mono', ui-monospace, monospace; color: #5E4C40; box-shadow: 0 1px 1px rgba(43,29,22,.14), 0 22px 44px -20px rgba(43,29,22,.5); transform: rotate(-1.2deg); transition: transform .6s cubic-bezier(.16,1,.3,1); } .ds-portrait:hover { transform: rotate(-1.2deg) perspective(900px) rotateX(-4deg) rotateY(6deg); }"
+    },
+    {
+      "name": "Metro del caso",
+      "kind": "custom",
+      "refersTo": "tape-number",
+      "description": "Scala su Notte, barra ambra che emette luce, numero mono grande che cresce da 115 a 450.",
+      "html": "<div class=\"ds-tape\"><div class=\"ds-bar\"></div><span class=\"ds-num\">450</span></div>",
+      "css": ".ds-tape { position: relative; width: 22rem; height: 6.5rem; background: #221712; border-bottom: 1px solid rgba(205,191,168,.5); } .ds-bar { position: absolute; left: 4%; width: 84%; bottom: 1.2rem; height: 10px; background: linear-gradient(90deg, rgba(233,162,59,.55), #E9A23B 70%, #FFD58A); filter: drop-shadow(0 8px 14px rgba(233,162,59,.45)); border-radius: 1px; } .ds-num { position: absolute; right: 1rem; top: .5rem; font: 500 3rem/1 'JetBrains Mono', ui-monospace, monospace; color: #FFD58A; letter-spacing: -.03em; }"
+    }
+  ],
+  "narrative": {
+    "northStar": "Il righello da sarto",
+    "overview": "\"Su misura\" preso alla lettera: la pagina e' un foglio avorio su cui qualcuno prende le misure, e la misura segue il lettore. Un righello con tacche d'ottone corre sotto il titolo e un indicatore petrolio legge i cm al passaggio del puntatore; un secondo righello, laterale, scorre con la pagina e legge la posizione. Dove un sito comune metterebbe contenitori, qui ci sono righe a filetto: registro, non vetrina.\n\nDopo l'overdrive l'ambra non e' piu' un colore da dosare ma una luce: nella fascia scura un fondo WebGL a luce d'ambra respira e segue il puntatore, le tacche d'ottone si accendono dove passa, in alto a destra nell'hero un bagliore caldo scalda il foglio. Su tutto una grana di carta fissa. Gli oggetti hanno peso concreto: pulsanti con ombra a offset e luce interna, il ritratto come stampa fotografica appoggiata e inclinata. Il movimento e' ricco ma ha un lessico per sezione, sempre con curve esponenziali, senza rimbalzi.",
+    "keyCharacteristics": [
+      "Fogli avorio, inchiostro espresso, azioni in petrolio; ottone solo come segno.",
+      "Ambra come luce: shader nella fascia scura, bagliore dell'hero, riflesso sul pulsante, evidenziatore che si traccia.",
+      "Grana di carta fissa su tutta la pagina.",
+      "Rilievi concreti: ombre a offset sui pulsanti, ritratto come stampa con ombra e inclinazione 3D.",
+      "Bordo a zig zag da forbici dentate in cima alla fascia scura.",
+      "Righe a filetto al posto di card e riquadri per i contenuti.",
+      "Monospazio solo per cifre, indici e misure; angoli a 2px."
+    ],
+    "rules": [
+      { "name": "The Brass Is A Mark Rule", "body": "L'ottone disegna linee, tacche e bordi; non compare mai come colore di testo (non ha contrasto sufficiente sull'avorio).", "section": "colors" },
+      { "name": "The Amber Is Light Rule", "body": "L'ambra e' luce, non testo corrente: vive come bagliore su avorio, come shader, tacche e cifre su Notte, come evidenziatore dietro testo espresso, come pulsante con testo Notte. Mai come colore di testo su avorio.", "section": "colors" },
+      { "name": "The Amber Ceiling Rule", "body": "Nello shader la miscela notte-ambra non supera k = 0,34: e' il limite che tiene Notte Soft leggibile sopra la luce. Un aumento della luce va ricontrollato sul contrasto, non fatto a occhio.", "section": "colors" },
+      { "name": "The Petrol Acts Rule", "body": "Ogni cosa cliccabile o attiva e' petrolio sul chiaro, ambra sullo scuro.", "section": "colors" },
+      { "name": "The Numbers Are Mono Rule", "body": "Solo cifre, indici e misure usano JetBrains Mono; nessun testo discorsivo.", "section": "typography" },
+      { "name": "The Serif Speaks Rule", "body": "I titoli sono sempre Instrument Serif a peso 400, e soltanto i titoli; il grassetto non entra nei titoli.", "section": "typography" },
+      { "name": "The Weight Is Offset Rule", "body": "Le ombre sono sempre a offset verticale con raggio negativo, mai un alone uniforme grigio; sono calde, tinte del colore dell'oggetto o dell'espresso.", "section": "elevation" },
+      { "name": "The Raised Means Touchable Rule", "body": "Rilievo solo su cio' che si preme (pulsanti) o che e' un oggetto fisico (ritratto). Righe, titoli e sezioni restano piatti.", "section": "elevation" }
+    ],
+    "dos": [
+      "Do tenere l'ottone (#B8913A) a linee, tacche e bordi, e il petrolio (#1F4D4A) a pulsanti, h2 e indici.",
+      "Do trattare l'ambra come luce: sfondo, riflesso, evidenziatore, cifre su Notte.",
+      "Do tenere k dello shader a 0,34 al massimo e ricontrollare il contrasto di Notte Soft se la luce cresce.",
+      "Do costruire elenchi come righe a filetto in colonne fisse della griglia a 12.",
+      "Do usare JetBrains Mono per ogni cifra o misura mostrata come dato.",
+      "Do mantenere angoli a 2px, ombre calde a offset sui pulsanti e curve esponenziali.",
+      "Do dare a ogni nuova sezione un movimento proprio dal lessico sopra e prevedere reduced motion, telefono e assenza di JavaScript."
+    ],
+    "donts": [
+      "Don't usare ottone o ambra come colore di testo su avorio.",
+      "Don't raggruppare contenuti in card arrotondate o riquadri: le righe a filetto sono la forma; rilievo solo per pulsanti e oggetti fisici (stampe).",
+      "Don't usare il monospazio per frasi o titoli.",
+      "Don't usare Instrument Serif in grassetto o per testo corrente.",
+      "Don't animare con rimbalzi o elasticita'; non eseguire effetti che non abbiano una versione ferma per reduced motion.",
+      "Don't usare il trattino lungo nei testi: solo il corto (-)."
+    ]
+  }
+}

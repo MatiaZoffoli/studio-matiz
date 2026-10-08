@@ -1,0 +1,90 @@
+# Registro delle decisioni
+
+Ogni scelta presa da Matia, con la data e il motivo. Si aggiorna nel momento in cui la scelta viene fatta. Le decisioni ancora aperte stanno in `docs/BACKLOG.md`.
+
+| Data | Decisione | Motivo |
+|------|-----------|--------|
+| 2026-10-07 | Si parte dalla definizione dell'idea prima di operare | Matia vuole studiare e perfezionare prima di cominciare |
+| 2026-10-07 | Mercato iniziale: Italia, lingua italiana | Dove opera gia' Matia |
+| 2026-10-07 | Il business e' un'attivita' parallela al lavoro a tempo pieno | Matia mantiene il lavoro attuale |
+| 2026-10-07 | Contratto di lavoro attuale: nessuna clausola, non e' un vincolo | Dichiarazione di Matia |
+| 2026-10-07 | Obiettivo a 12 mesi: reddito extra, ricorrente (supporto mensile) piu' progetti una tantum | Risposta di Matia |
+| 2026-10-07 | Avvio a basso costo, reinvestendo i primi ricavi | Risposta di Matia |
+| 2026-10-07 | Posizionamento: rapporto umano e soluzioni su misura, non clienti-numero | Matia: e' il suo valore aggiunto |
+| 2026-10-07 | Nessun settore escluso in partenza | Risposta di Matia |
+| 2026-10-07 | Raggio di lavoro non limitato alla Romagna | Matia puo' allargarsi |
+| 2026-10-07 | Piano: settore di partenza balneare e ristorazione romagnola, offerte confezionate, ricerca di mercato | Proposta di Claude approvata da Matia ("Mi piace il piano") |
+| 2026-10-07 | Prezzi delle bozze nell'ordine giusto | Risposta di Matia |
+| 2026-10-07 | Primo incontro informale gratuito prima di ogni offerta | Matia: biglietto da visita, mostrare il lato umano |
+| 2026-10-07 | Check-up non gratuito per tutti, con sconto sul prezzo finale se il cliente conferma | Matia non vuole regalare il lavoro ne' spaventare i clienti. Formula da scegliere (vedi `docs/OFFERTE.md`) |
+| 2026-10-07 | Tempo di risposta promesso: un giorno lavorativo | Matia |
+| 2026-10-07 | Canone Base: poche ore incluse, a meno che non siano definite diversamente all'inizio. Oltre il limite si fattura a tariffa oraria trasparente | Matia: assistenza semplice non richiede molto, e vuole trasparenza |
+| 2026-10-07 | **Primo mese di canone a ore illimitate** (mese di rodaggio): serve a misurare l'uso reale e a stimare il budget ore per il resto dell'anno | Matia: non vuole essere troppo restrittivo all'inizio |
+| 2026-10-07 | Le ore incluse non usate nel mese si perdono, non si accumulano | Matia: regola semplice |
+| 2026-10-07 | La SEO locale e' parte del check-up e del perfezionamento tecnico dei siti | Matia l'ha gia' fatta per il suo cliente |
+| 2026-10-07 | Sconto del check-up: 200 euro se il cliente conferma sul momento o dopo qualche giorno, meta' se conferma entro 30 giorni, nulla oltre | Matia: spinge a decidere senza penalizzare chi ha bisogno di qualche giorno |
+| 2026-10-07 | Check-up gratuito di lancio per i primissimi clienti, in cambio di aiuto a costruire il brand | Matia: serve portfolio e referenze |
+| 2026-10-07 | Primo mese di canone: copre solo sito e menu esistenti (non nuove funzioni), con registro delle ore | Matia conferma la cautela proposta |
+| 2026-10-07 | I prospetti non si contattano ancora: prima si definiscono le cose mancanti, poi un sito proprio e qualche canale social | Matia: non siamo ancora pronti |
+| 2026-10-08 | Check-up gratuito per amici e conoscenti, per ora. A pagamento per chi arriva da un cliente gia' servito | Matia: il passaparola porta clienti piu' pronti a pagare. Si rivaluta dopo i primi casi |
+| 2026-10-08 | "Qualche giorno" per lo sconto pieno = 2-3 giorni lavorativi, giudicato da Matia caso per caso | Matia |
+| 2026-10-08 | Prezzo del check-up: 200 euro, scontabili dagli sviluppi successivi. Primo incontro gratuito di 30-45 minuti | Matia (valutato anche 199, consiglio di restare su 200) |
+| 2026-10-08 | Rapporto del check-up in due formati: PDF stampabile e pagina web riservata, entrambi generati in automatico | Matia: il PDF si porta e si annota, la pagina web e' piu' moderna |
+| 2026-10-08 | Marchio e impaginazione: semplici da leggere, molto belli e raffinati, fatti bene. Si decidono insieme a breve | Matia |
+| 2026-10-08 | I controlli prima della visita e la stesura del rapporto vanno automatizzati. Matia rivede e decide | Matia |
+| 2026-10-08 | La gestione dei clienti (scheda, ore, messaggi) si progetta insieme al sito, con un possibile pannello admin | Matia: sistema facile e rapido che non perda tracce importanti |
+| 2026-10-08 | Il nome del brand puo' essere legato alla persona di Matia | Rispecchia l'idea di essere presente e non una grande agenzia |
+| 2026-10-08 | L'AI non va nel nome del brand. Se ne parla con attenzione, senza spaventare. Messaggio: consulenza per le piccole imprese, su misura | Matia: molte persone si spaventano sentendo "AI" |
+| 2026-10-08 | Direzione di gusto: colori caldi (marroni, crema, bianchi, grigi), equilibrio, geometria e numeri ma accogliente | Matia |
+| 2026-10-08 | Lingua del nome: non decisa. Consiglio di Claude: nome personale valido in ogni lingua, con la frase scritta in italiano o inglese | Matia ha chiesto pro e contro |
+| 2026-10-08 | Gli aggettivi preciso, accogliente e concreto guidano il tono delle pagine, ma non sono parte del brand | Matia |
+| 2026-10-08 | La frase sotto il nome deve nominare automazione e progettazione/sviluppo di soluzioni, non solo "consulenza" | Matia: "consulenza" e' troppo generico |
+| 2026-10-08 | La palette deve avere piu' luce, vita e un tocco di lusso. Il carattere deve essere moderno, tagliente, alternativo ma leggibile | Matia: la prima versione era flat, pesante e noiosa |
+| 2026-10-08 | Direzione grafica: A (ottone e petrolio, Instrument Serif + Manrope) con un tocco di ambra. Si valuta se l'ambra va in una sezione separata | Matia |
+| 2026-10-08 | Payoff "Soluzioni su misura." e descrittore "Progettazione e sviluppo di siti, automazioni e strumenti digitali per piccole imprese." confermati | Matia |
+| 2026-10-08 | Il nome "Studio Zoffoli" non e' ancora confermato: Matia vuole vedere alternative | Matia |
+| 2026-10-08 | Il sito deve fare "WOW": piu' animazioni, effetti su scroll e sfondi, ingressi e uscite non ordinari, texture e profondita', un colore di spicco. La pagina di prova e' una base, non il risultato | Matia: lavora lui stesso con i siti, la bozza e' buona ma non eccellente |
+| 2026-10-08 | Direzione del WOW: combinata. Base "righello da sarto" guidata dallo scroll (titoli che si compongono, cifre che salgono con lo scroll, grana di carta, luce d'ambra che segue il puntatore) piu' fascia scura con luce d'ambra in WebGL solo li', con alternativa leggera su telefono | Matia, tra quattro direzioni proposte da Claude |
+| 2026-10-08 | Colore di spicco: l'ambra diventa una luce (bagliori, sfumature calde sul fondo scuro, riflessi sull'ottone, un accento acceso anche sul chiaro). La palette resta quella della direzione A | Matia |
+| 2026-10-08 | Nessuna skill extra installata per ora (ne' Taste ne' img2threejs). GSAP e Three.js/OGL sono le librerie previste | Matia |
+| 2026-10-08 | Il metro da sarta si modernizza: quotatura (linea di quota da disegno tecnico, fissa sul titolo e al passaggio del mouse sugli elementi chiave) piu' metro che diventa dato (nella scena del caso le tacche diventano le barre di un grafico). Il metro resta il filo conduttore, il linguaggio passa da sarto a progettista | Matia: il metro lo rappresenta ma non rappresenta pienamente siti, automazione e strumenti digitali. Scelta tra tre idee (A quotatura, B dato, C strumento): A piu' B |
+| 2026-10-08 | La quotatura funziona solo sugli elementi chiave della pagina, non su tutta | Matia |
+| 2026-10-08 | Quotatura al passaggio del mouse solo sui titoli principali e al massimo sulla foto, e mai sopra un altro elemento. Niente quote sui pulsanti | Matia: le quote finivano spesso sopra altri elementi |
+| 2026-10-08 | Effetto dei pulsanti al passaggio del puntatore: "si ricompone". Il fondo fatto di tacche collassa sul contorno e si ricostruisce, e l'etichetta si decodifica. Stile scelto da Claude, legato alle tacche del metro | Matia: un effetto in cui il pulsante comincia a riformarsi, stile a scelta di Claude |
+| 2026-10-08 | Nel grafico del caso compaiono solo i due dati reali (115 e 450), niente curve o dati giornalieri inventati | Scelta di Claude per non mostrare dati che non esistono; da confermare con Matia |
+| 2026-10-08 | La scena del caso si generalizza: il messaggio e' "qualunque sia il tuo obiettivo (piu' iscritti, prenotazioni, richieste) ho la chiave, e l'ho gia' fatto"; il caso della societa' sportiva resta come prova. Composizione centrata, etichette sotto le barre senza sovrapposizioni, quote che non cadono sui numeri | Matia: il grafico piace ma non era centrato, le quote coprivano il numero, le etichette si sovrapponevano, e il messaggio era troppo legato agli iscritti |
+| 2026-10-08 | Per contenuti, pagine e strumenti del sito si prende spunto dal sito di Patrick Battistini (struttura, servizi, contatti, showcase), non dalla sua grafica. Analisi in `docs/ANALISI-BATTISTINI.md`, cosa introdurre da decidere insieme | Matia |
+| 2026-10-08 | Candidato di nome: ZOMA (Zo da Zoffoli, Ma da Matia), con una parola accanto da scegliere. Non ancora deciso: controllo marchio e domini in corso | Idea di Matia |
+| 2026-10-08 | Sito di lancio: servizi, contatti, prenotazione, FAQ, Chi sono, privacy. Il resto (altri casi, stimatore completo, check-up automatico, guide, inglese) dopo i primi 3 o 4 clienti | Matia |
+| 2026-10-08 | Niente prezzi scritti sul sito. Il messaggio e' che i costi sono contenuti e chiari, senza ingannare ne' scoraggiare. Una fascia di prezzo si riceve lasciando i propri dati, per raccogliere contatti e far partire le automazioni | Matia. Claude consiglia: la fascia appare subito, due caselle di consenso distinte, nessuna promessa di essere "il piu' economico" |
+| 2026-10-08 | Matia propone il nome "ZOMA Studio" di Matia Zoffoli. Il controllo preliminare ha trovato un'agenzia ZOMA in Irlanda nello stesso campo (siti e branding): non confermato, in attesa di verifica ufficiale del marchio e di una decisione | Matia; esito del controllo in `docs/BRAND.md` sezione 4c |
+| 2026-10-08 | I testi del sito vanno riscritti: troppo banali e monotoni, alcune frasi non reggono, la sezione sui problemi deve essere piu' generale. Bozza v2 in `docs/TESTI-SITO.md`, da approvare prima di toccare la pagina | Matia |
+| 2026-10-08 | Mitigazione del rischio del prezzo non scritto: si usano le fasce, mostrate subito. La spiegazione dei costi contenuti senza dire "il piu' economico" va bene | Matia |
+| 2026-10-08 | Dominio e contenuti restano al cliente, che li possiede; Matia li gestisce per suo conto. Claude propone due modalita' di gestione (gestito da Matia, autonomo) con prezzi diversi ma stessa proprieta', e valutare una clausola sul riuso dei componenti | Matia. Dettagli in `docs/LISTINO-E-TEMPI.md` sezione 5 |
+| 2026-10-08 | Il primo mese di cura continua e' un forfait con assistenza senza limite di ore, ricerca e ideazione incluse, senza sviluppo di nuove funzioni. Il prezzo dal secondo mese si definisce con i dati del primo mese e non va sul sito | Matia |
+| 2026-10-08 | Calendario per prenotare l'incontro: scelta tra Google Calendar e Calendly. Entrambi gratuiti per un solo tipo di incontro | Matia (verifica piani gratuiti nella risposta del 2026-10-08) |
+| 2026-10-08 | Casi: non si inventano casi presentati come reali. Si usa il caso reale e la sezione "I numeri su cui lavoro" con stato onesto (caso reale, per i primi clienti). Esempi illustrativi solo se etichettati | Claude, con motivazione spiegata a Matia (pubblicita' ingannevole, fiducia, reputazione locale). Da confermare con Matia |
+| 2026-10-08 | Testi del sito: v2 applicata alla pagina, Matia la rivedra' in un secondo momento. Privacy: bozza della pagina in `prova/privacy.html` | Matia ("cambia come meglio pensi") |
+| 2026-10-08 | **Nome: MATIZ Studio**, di Matia Zoffoli. Verifica del marchio su TMview ancora da fare (esiste un "Matiz Studio" di interior design in Spagna, campo diverso ma stessa classe 42). Nessun acquisto di dominio prima della verifica | Matia ("MATIZ, andiamo"). Dettagli in `docs/BRAND.md` sezione 4e |
+| 2026-10-08 | Il numero WhatsApp pubblico e' +39 333 958 0381, con messaggio precompilato per pagina | Matia |
+| 2026-10-08 | Sezione "Cosa faccio": quattro card del colore dei pulsanti (verde petrolio), titolo in evidenza, il contenuto si scopre al passaggio del mouse o al focus (shutter con tacche che si apre), al tocco su telefono; dentro un link a WhatsApp con messaggio precompilato per ciascun servizio | Matia |
+| 2026-10-08 | Tempi di consegna: garantire non piu' del medio, meglio una via di mezzo tra il piu' veloce e il medio, con la promessa di seguire pochi progetti per volta (massimo due di costruzione). Sul sito i tempi non si scrivono in numeri: sono nel preventivo | Matia. Tabella in `docs/LISTINO-E-TEMPI.md` |
+| 2026-10-08 | Approvate le proposte di `docs/LISTINO-E-TEMPI.md` per forfait del primo mese, proprieta' e gestione di dominio e contenuti, clausola sul riuso dei componenti, tariffa oraria e calendario (scelta fra Google e Calendly) | Matia ("va bene tutto cio' che hai proposto") |
+| 2026-10-08 | WhatsApp: e' WhatsApp Business e va bene come numero pubblico. Calendario per prenotare: Google Calendar (confermato) | Matia |
+| 2026-10-08 | "Cosa faccio": le quattro card scorrono in orizzontale, non in verticale: binario con scorrimento, trascinamento con il mouse, frecce, righello di avanzamento con marcatore e effetto di inclinazione e opacita' sulle card lontane dal centro. Il contenuto si scopre ancora al passaggio del mouse | Matia ("troppo scrolling verticale") |
+| 2026-10-08 | Stimatore a fasce costruito sulla pagina di prova con i prezzi di `docs/LISTINO-E-TEMPI.md`, confermati "per ora" da Matia. Dettagli in `docs/STIMATORE.md`. I dati non sono ancora salvati | Matia ("vai con lo stimatore") |
+| 2026-10-08 | Ricerca marchio su TMview eseguita: nessun MATIZ attivo in Italia o UE nelle classi 9, 35, 38, 42 tra i primi risultati. Via libera pratico al nome, con conferma completa da fare prima di investire in logo e stampa | Matia e Claude. Dettagli in `docs/BRAND.md` sezione 4e |
+| 2026-10-08 | **Confermato il nome MATIZ Studio** "per adesso" | Matia |
+| 2026-10-08 | Contatti dello stimatore su Supabase in Europa: progetto `matiz-studio` a Francoforte, tabella chiusa al pubblico, funzione di raccolta con antispam e limiti di frequenza. Costo zero. Dettagli in `docs/SUPABASE-CONTATTI.md` | Matia ("collega i contatti con Supabase in Europa") |
+| 2026-10-08 | "Cosa faccio": le quattro card diventano le facce di un cilindro 3D che gira (spessore in ottone, luce, ombra a terra), non uno scorrimento orizzontale. Si ruota con frecce, nomi, trascinamento, trackpad orizzontale e tastiera; la card davanti si apre da sola | Matia |
+| 2026-10-08 | Effetto dei pulsanti cambiato: al passaggio vengono ridisegnati come uno schizzo a matita (contorni a mano libera e tratteggio) fino a riempirsi. Sostituisce l'effetto a tacche | Matia ("va d'accordo con lo stile del sito piu' del pixellato") |
+| 2026-10-08 | Calendario: link di prenotazione di Google Calendar `https://calendar.app.google/NUp3xit8MwxWQWkK6` su tutti i pulsanti "Prenota il primo incontro". Da cambiare quando Matia passera' a un account Business | Matia |
+| 2026-10-08 | Stimatore: si mostra solo il prezzo di partenza ("Da X euro"), non la fascia completa, per invogliare. Il tetto della fascia resta nei dati interni e nel preventivo | Matia ("4500-11000 troppo alti, mostriamo gli entry level") |
+| 2026-10-08 | Nuova direzione grafica "boutique" (v2): carta e crema, inchiostro scuro, un solo accento champagne, Bodoni Moda per i titoli e Manrope per il testo, molto spazio, linee sottili, numeri 01-04, una sola sezione scura con luce calda. Presa dalle immagini in `design-ideas/` e dal logo in `logo/`. Ottone, petrolio, ambra, righello e fascia WebGL sono archiviati in `archivio/index-v1-ottone-petrolio.html` | Matia ("deve traspirare eleganza, stile, prezioso, boutique-vibe") |
+| 2026-10-08 | "Cosa faccio": al posto del cilindro, quattro pagine che scorrono da destra verso sinistra con lo scroll, con leggera prospettiva e profondita', come sul sito di Patrick Battistini. La sezione resta ferma mentre le pagine passano. Su telefono diventano card impilate | Matia ("cosi non funziona") |
+| 2026-10-08 | Pulsanti: una penna stilografica ridisegna il contorno con un pennino largo (tratto piu' sottile o piu' pieno secondo la direzione), poi il pulsante si riempie d'inchiostro. Solo dove c'e' il mouse; su telefono il riempimento e' al tocco | Matia ("una penna di un certo livello, a inchiostro, artistica") |
+| 2026-10-08 | Il logo vero (`logo/Studio Matiz Luxury Monogram.png`) e' usato nella pagina, ritagliato e con sfondo trasparente in `prova/assets/`. Non e' definitivo, da' lo stile | Matia |
+| 2026-10-08 | **Nome definitivo per ora: "Studio Matiz"** (scrittura del logo). "MATIZ Studio" non si usa piu'; allineati pagina, privacy e documenti | Matia ("Tieni Studio Matiz, allinea tutto il resto") |
+| 2026-10-08 | Pulsanti: la penna diventa una stilografica d'artista (pennino d'oro con fessura, fusto laccato con riflesso, clip, inclinazione che segue il tratto) e il tratto ha un contrasto piu' marcato tra sottile e pieno | Matia |
+| 2026-10-08 | "Cosa faccio": lo scorrimento orizzontale resta attivo anche con "riduci movimento" del sistema (solo scorrimento, senza prospettiva), perche' Matia non lo vedeva; soglia di altezza minima abbassata a 520 px | Matia ("non hanno quell'effetto scorrevole") |
+| 2026-10-07 | La struttura del progetto vive nei file `.md` della cartella (CLAUDE.md, README, docs/) e va tenuta aggiornata quando emerge un'informazione | Matia: il contesto crescera' molto e serve ordine |
