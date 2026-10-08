@@ -216,19 +216,39 @@ html.pending .hero h1, html.pending .hero [data-in] { visibility: hidden; }
 .gal__dots button::after { content: ""; position: absolute; left: 0; right: 0; top: 50%; height: 1px; background: var(--line-strong); transition: height .4s var(--ease), background-color .4s; }
 .gal__dots button.on::after { height: 3px; margin-top: -1px; background: var(--ink); }
 
-/* ---------- Percorso ---------- */
-.path__head { grid-column: 1 / span 7; margin-bottom: clamp(2.5rem, 5vw, 4rem); }
+/* ---------- Percorso: un filo che si disegna da solo, passo dopo passo ---------- */
+.path__head { grid-column: 1 / span 7; margin-bottom: clamp(3.5rem, 6vw, 5.5rem); }
 .path__head p { margin-top: 1.5rem; color: var(--ink-soft); max-width: 46ch; }
-.steps { border-top: 1px solid var(--line); }
-.steps li { display: grid; grid-template-columns: repeat(12, 1fr); gap: .75rem 2rem; align-items: baseline; padding: 1.9rem 1.5rem; margin-inline: -1.5rem; border-bottom: 1px solid var(--line); transition: background-color .6s var(--ease), color .5s var(--ease); }
-.steps .n { grid-column: 1 / span 1; font: 500 .75rem/1 var(--sans); letter-spacing: .14em; color: var(--ink-soft); transition: color .5s; }
-.steps h3 { grid-column: 2 / span 4; }
-.steps p { grid-column: 7 / span 6; max-width: 52ch; color: var(--ink-soft); transition: color .5s; }
-.steps p b { font-weight: 600; color: var(--ink); transition: color .5s; }
-.steps li.is-on, .steps li:hover { background: var(--ink); color: var(--paper); }
-.steps li.is-on .n, .steps li:hover .n { color: var(--gold-light); }
-.steps li.is-on p, .steps li:hover p { color: var(--night-soft); }
-.steps li.is-on p b, .steps li:hover p b { color: var(--night-text); }
+.steps { --rail: min(34%, 26rem); position: relative; padding-left: var(--rail); border-top: 1px solid var(--line); }
+.steps__rail { position: absolute; left: 0; top: 0; overflow: visible; pointer-events: none; }
+.steps__base { fill: none; stroke: rgba(36, 30, 26, .42); stroke-width: 2; stroke-linecap: round; stroke-dasharray: .1 9; }
+.steps__glow { fill: none; stroke: var(--gold-light); stroke-width: 10; stroke-linecap: round; opacity: .32; filter: blur(5px); }
+.steps__prog { fill: none; stroke: var(--gold); stroke-width: 2.6; stroke-linecap: round; }
+.steps__start { fill: var(--gold); }
+.steps__node .c { fill: var(--paper); stroke: var(--line-strong); stroke-width: 1.5; transition: fill .6s var(--ease), stroke .6s var(--ease); }
+.steps__node text { font-family: var(--serif); font-size: 15px; font-weight: 500; text-anchor: middle; dominant-baseline: central; fill: var(--ink); transition: fill .6s var(--ease); font-variation-settings: "opsz" 14; }
+.steps__node .ring { fill: none; stroke: var(--gold); stroke-width: 1.5; opacity: 0; transform-box: fill-box; transform-origin: center; }
+.steps__node.is-reached .c { fill: var(--ink); stroke: var(--gold); }
+.steps__node.is-reached text { fill: var(--paper); }
+.steps__node.is-reached .ring { animation: stepPing 1.6s var(--ease) 1; }
+@keyframes stepPing { from { opacity: .9; transform: scale(1); } to { opacity: 0; transform: scale(2.4); } }
+.steps__trav { fill: var(--gold-light); stroke: var(--gold-deep); stroke-width: 1.5; filter: drop-shadow(0 0 7px rgba(217, 179, 108, .95)); }
+.steps__arrow { fill: none; stroke: var(--gold); stroke-width: 2.6; stroke-linecap: round; stroke-linejoin: round; }
+.steps li { display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); gap: .75rem 2rem; align-items: baseline; padding: 1.9rem 1.5rem; margin: 0; border-bottom: 1px solid var(--line); transition: background-color .6s var(--ease), color .5s var(--ease); }
+.steps .n { display: none; }
+.steps h3 { grid-column: auto; transition: color .5s var(--ease); }
+.steps p { grid-column: auto; max-width: 52ch; color: var(--ink-soft); transition: color .5s var(--ease); }
+.steps p b { font-weight: 600; color: var(--ink); transition: color .5s var(--ease); }
+/* un solo passo e' acceso: quello a cui e' arrivato il filo. Il passaggio del mouse da' solo una velatura */
+.steps li:hover { background: rgba(168, 133, 79, .1); }
+.steps li.is-on, .steps li.is-on:hover { background: var(--ink); color: var(--paper); }
+.steps li.is-on h3 { color: #FBF5E9; }
+.steps li.is-on p { color: #D8CDB9; }
+.steps li.is-on p b { color: #FFFFFF; }
+@media (max-width: 900px) {
+  .steps { --rail: 3.6rem; }
+  .steps li { grid-template-columns: 1fr; gap: .4rem; padding: 1.4rem 1rem; }
+}
 
 /* ---------- Sezioni scure ---------- */
 .night { position: relative; isolation: isolate; background: var(--night); color: var(--night-text); overflow: clip; }
@@ -377,9 +397,6 @@ html.pending .hero h1, html.pending .hero [data-in] { visibility: hidden; }
   .problems__list li, .problems__list li + li { padding: 1.75rem 0 2rem; border-left: 0; border-top: 1px solid var(--line); }
   .problems__list li:first-child { border-top: 0; }
   .problems__list .n { margin-bottom: 1.25rem; }
-  .steps li { gap: .5rem 1rem; margin-inline: -1rem; padding-inline: 1rem; }
-  .steps .n { grid-column: 1 / span 1; }
-  .steps h3, .steps p { grid-column: 2 / -1; }
   .terms .fig, .terms .lab, .terms .txt, .goals .lab, .goals .txt, .goals .st { grid-column: 1 / -1; text-align: left; }
   .goals li, .terms li { gap: .35rem; }
   .page { grid-template-columns: 1fr; }
@@ -460,7 +477,6 @@ h3, .goals .lab, .terms .fig, .meter__row b, .faq summary, .est__step legend, .e
 .terms li:hover .fig, .goals li:hover .st { color: var(--gold-deep); font-weight: 600; }
 .terms li:hover .lab, .goals li:hover .lab { color: var(--night); font-weight: 700; }
 .terms li:hover .txt, .goals li:hover .txt { color: #2F2720; }
-.steps li.is-on h3, .steps li:hover h3 { color: #FBF5E9; }
 
 /* ---------- Stimatore: sezione scura, domande grandi e risposte a righe ---------- */
 .est {
@@ -1306,19 +1322,87 @@ h3, .goals .lab, .terms .fig, .meter__row b, .faq summary, .est__step legend, .e
 
   }
 
+  /* ---------- Percorso: il filo che si disegna con lo scroll ---------- */
+  function initSteps() {
+    var ol = $('#steps'); if (!ol) return;
+    var rows = $$('li', ol), NS = 'http://www.w3.org/2000/svg';
+    var svg = document.createElementNS(NS, 'svg'); svg.setAttribute('class', 'steps__rail'); svg.setAttribute('aria-hidden', 'true');
+    ol.insertBefore(svg, ol.firstChild);
+    var base, glow, prog, trav, arrow, nodes = [], pts = [], ys = [], ls = [], Ltot = 1, cur = 0, target = 0, raf = 0, activeI = -1;
+    function mk(tag, cls, parent) { var e = document.createElementNS(NS, tag); if (cls) e.setAttribute('class', cls); (parent || svg).appendChild(e); return e; }
+    function build() {
+      var or = ol.getBoundingClientRect(), W = parseFloat(getComputedStyle(ol).paddingLeft) || 60, H = or.height;
+      svg.setAttribute('width', W); svg.setAttribute('height', H); svg.setAttribute('viewBox', '0 0 ' + W + ' ' + H);
+      svg.innerHTML = ''; nodes = [];
+      var narrow = W < 90, amp = narrow ? 7 : W * .27, cx = W / 2;
+      pts = [{ x: narrow ? cx : cx - amp * .4, y: -36 }];
+      rows.forEach(function (li, i) {
+        var h = $('h3', li).getBoundingClientRect();
+        pts.push({ x: cx + (i % 2 ? -amp : amp), y: h.top + h.height / 2 - or.top });
+      });
+      pts.push({ x: cx + (rows.length % 2 ? -amp * .5 : amp * .5), y: H + 44 });
+      var d = 'M' + pts[0].x.toFixed(1) + ' ' + pts[0].y.toFixed(1), k, a, b, dy;
+      for (k = 0; k < pts.length - 1; k++) {
+        a = pts[k]; b = pts[k + 1]; dy = b.y - a.y;
+        d += ' C' + a.x.toFixed(1) + ' ' + (a.y + dy * .56).toFixed(1) + ' ' + b.x.toFixed(1) + ' ' + (b.y - dy * .56).toFixed(1) + ' ' + b.x.toFixed(1) + ' ' + b.y.toFixed(1);
+      }
+      base = mk('path', 'steps__base'); base.setAttribute('d', d);
+      glow = mk('path', 'steps__glow'); glow.setAttribute('d', d);
+      prog = mk('path', 'steps__prog'); prog.setAttribute('d', d);
+      var s0 = mk('circle', 'steps__start'); s0.setAttribute('cx', pts[0].x); s0.setAttribute('cy', pts[0].y); s0.setAttribute('r', 4.5);
+      rows.forEach(function (li, i) {
+        var p = pts[i + 1], g = mk('g', 'steps__node'); g.setAttribute('transform', 'translate(' + p.x.toFixed(1) + ' ' + p.y.toFixed(1) + ')');
+        var rg = mk('circle', 'ring', g); rg.setAttribute('r', 16);
+        var c = mk('circle', 'c', g); c.setAttribute('r', 16);
+        var t = mk('text', '', g); t.textContent = String(i + 1);
+        nodes.push({ g: g, y: p.y });
+      });
+      arrow = mk('path', 'steps__arrow'); arrow.setAttribute('d', 'M-10 -8L0 0L-10 8');
+      trav = mk('circle', 'steps__trav'); trav.setAttribute('r', 6);
+      Ltot = prog.getTotalLength(); ys = []; ls = [];
+      for (k = 0; k <= 260; k++) { var P = prog.getPointAtLength(Ltot * k / 260); ys.push(P.y); ls.push(Ltot * k / 260); }
+      var e1 = prog.getPointAtLength(Ltot - 3), e2 = prog.getPointAtLength(Ltot);
+      arrow.setAttribute('transform', 'translate(' + e2.x.toFixed(1) + ' ' + e2.y.toFixed(1) + ') rotate(' + (Math.atan2(e2.y - e1.y, e2.x - e1.x) * 180 / Math.PI).toFixed(1) + ')');
+      prog.style.strokeDasharray = glow.style.strokeDasharray = Ltot;
+      render(cur);
+    }
+    function yToL(y) {
+      if (y <= ys[0]) return 0; if (y >= ys[ys.length - 1]) return Ltot;
+      for (var i = 1; i < ys.length; i++) if (ys[i] >= y) { var f = (y - ys[i - 1]) / ((ys[i] - ys[i - 1]) || 1); return ls[i - 1] + (ls[i] - ls[i - 1]) * f; }
+      return Ltot;
+    }
+    function render(y) {
+      var L = reduce ? Ltot : yToL(y);
+      prog.style.strokeDashoffset = glow.style.strokeDashoffset = Ltot - L;
+      var P = prog.getPointAtLength(L);
+      trav.setAttribute('cx', P.x); trav.setAttribute('cy', P.y);
+      trav.style.opacity = reduce ? 0 : (L <= 1 || L >= Ltot - 1 ? 0 : 1);
+      arrow.style.opacity = reduce ? 1 : Math.max(0, Math.min(1, (L - (Ltot - 48)) / 48));
+      var act = -1;
+      nodes.forEach(function (n, i) { var on = reduce || y >= n.y - 6; n.g.classList.toggle('is-reached', on); if (on && !reduce) act = i; });
+      if (act !== activeI) { activeI = act; rows.forEach(function (li, i) { li.classList.toggle('is-on', i === act); }); }
+    }
+    function tick() {
+      raf = 0; target = innerHeight * .62 - ol.getBoundingClientRect().top;
+      cur += (target - cur) * .16; if (Math.abs(target - cur) < .4) cur = target;
+      render(cur); if (cur !== target) raf = requestAnimationFrame(tick);
+    }
+    function kick() { if (!raf) raf = requestAnimationFrame(tick); }
+    cur = innerHeight * .62 - ol.getBoundingClientRect().top;
+    build();
+    if (reduce) return;
+    window.addEventListener('scroll', kick, { passive: true });
+    window.addEventListener('resize', function () { build(); kick(); });
+    window.addEventListener('load', function () { build(); kick(); });
+    if (document.fonts && document.fonts.ready) document.fonts.ready.then(function () { build(); kick(); });
+  }
+
 /* ---------- Animazioni (GSAP) ---------- */
   function ready() { root.classList.remove('pending'); }
   function start() {
     if (!window.gsap || !window.ScrollTrigger || !window.SplitText) { ready(); return; }
     gsap.registerPlugin(ScrollTrigger, SplitText);
     initHero();
-
-    /* percorso: la riga che sta al centro si accende */
-    if ('IntersectionObserver' in window) {
-      var rows = $$('#steps li');
-      var sio = new IntersectionObserver(function (es) { es.forEach(function (e) { e.target.classList.toggle('is-on', e.isIntersecting); }); }, { rootMargin: '-42% 0px -42% 0px' });
-      rows.forEach(function (li) { sio.observe(li); });
-    }
 
     if (reduce) {
       ready(); initGallery();
@@ -1362,7 +1446,7 @@ h3, .goals .lab, .terms .fig, .meter__row b, .faq summary, .est__step legend, .e
   }
 
   document.addEventListener('DOMContentLoaded', function () {
-    var go = function () { try { start(); } catch (err) { console.warn(err); ready(); } };
+    var go = function () { try { initSteps(); } catch (e0) { console.warn(e0); } try { start(); } catch (err) { console.warn(err); ready(); } };
     if (document.fonts && document.fonts.ready) document.fonts.ready.then(go); else go();
   });
 })();
