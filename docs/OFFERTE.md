@@ -54,10 +54,10 @@ Una visita e una conversazione sul locale. Si guardano sito, menu, scheda Google
 - **Gratuito per amici e conoscenti, per ora**, in cambio di aiuto a costruire il brand e il business. Poi si valuta come va.
 - **A pagamento (200 euro) per chi arriva da un cliente gia' servito.** Con il passaparola sono clienti piu' pronti a pagare.
 - **Anche quando e' gratuito, il rapporto riporta il valore** ("valore 200 euro, offerto"), cosi' il cliente sa cosa sta ricevendo e il prezzo di riferimento resta chiaro.
-- Cosa si chiede in cambio, da dire sempre prima (consiglio):
+- **In cambio (deciso da Matia, 2026-10-08), da dire sempre prima:**
 - una testimonianza scritta o una recensione, quando il lavoro e' finito
 - il permesso di raccontare il caso (con numeri, se il cliente e' d'accordo) sul sito e sui social
-- eventualmente un contatto di un'altra attivita' a cui presentarsi
+- il contatto di un'altra attivita' resta facoltativo, non e' una condizione
 
 Va dichiarato come offerta di lancio con scadenza, e scritto nella proposta, cosi' non diventa il prezzo di partenza per tutti.
 
@@ -117,6 +117,6 @@ Risposte di Matia (2026-10-07):
 6. **SEO:** Matia l'ha gia' fatta per il primo cliente, quindi entra nel check-up e nel perfezionamento tecnico dei siti.
 
 **Ancora aperto** (vedi anche `docs/BACKLOG.md`):
-- Cosa si chiede in cambio del check-up gratuito (testimonianza, permesso di raccontare il caso, un contatto) e se ci sono scadenze.
-- Conferma della tariffa oraria extra (proposta: 50 euro).
+- ~~Cosa si chiede in cambio del check-up gratuito~~ deciso (testimonianza e permesso di raccontare il caso). Restano da definire le scadenze dell'offerta di lancio.
+- ~~Tariffa oraria extra~~ confermata: 50 euro l'ora (2026-10-08).
 - Numero di ore incluse dopo il rodaggio: si decide con i dati del primo mese.

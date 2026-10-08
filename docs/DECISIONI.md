@@ -87,4 +87,9 @@ Ogni scelta presa da Matia, con la data e il motivo. Si aggiorna nel momento in 
 | 2026-10-08 | **Nome definitivo per ora: "Studio Matiz"** (scrittura del logo). "MATIZ Studio" non si usa piu'; allineati pagina, privacy e documenti | Matia ("Tieni Studio Matiz, allinea tutto il resto") |
 | 2026-10-08 | Pulsanti: la penna diventa una stilografica d'artista (pennino d'oro con fessura, fusto laccato con riflesso, clip, inclinazione che segue il tratto) e il tratto ha un contrasto piu' marcato tra sottile e pieno | Matia |
 | 2026-10-08 | "Cosa faccio": lo scorrimento orizzontale resta attivo anche con "riduci movimento" del sistema (solo scorrimento, senza prospettiva), perche' Matia non lo vedeva; soglia di altezza minima abbassata a 520 px | Matia ("non hanno quell'effetto scorrevole") |
+| 2026-10-08 | Git attivo con un repository dedicato nella cartella del progetto (prima la cartella cadeva nel repository vuoto della cartella utente). Primo commit fatto. Commit a fine di ogni blocco di lavoro, niente invio online | Matia ("attiva git") |
+| 2026-10-08 | In cambio del check-up gratuito si chiede: testimonianza scritta e permesso di raccontare il caso, da dire sempre prima. Il contatto di un'altra attivita' e' facoltativo | Matia |
+| 2026-10-08 | Tariffa oraria extra confermata: 50 euro l'ora | Matia |
+| 2026-10-08 | Primo cliente (societa' sportiva): lavoro gia' fatto a una tantum 500-800 euro, canone da decidere dopo. Cifra esatta e forma ancora da fissare con l'amico | Matia |
+| 2026-10-08 | Il caso 115 -> 450 iscritti puo' restare sul sito: il cliente e' d'accordo | Matia |
 | 2026-10-07 | La struttura del progetto vive nei file `.md` della cartella (CLAUDE.md, README, docs/) e va tenuta aggiornata quando emerge un'informazione | Matia: il contesto crescera' molto e serve ordine |

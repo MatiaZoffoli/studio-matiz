@@ -4,11 +4,12 @@ Cose da fare, in ordine di priorita'. Si aggiorna quando emerge una cosa nuova e
 
 ## Decisioni aperte (servono a Matia)
 
-1. **Cosa si chiede in cambio del check-up gratuito** (testimonianza, permesso di raccontare il caso, un contatto). Da dire sempre prima.
-2. **Conferma della tariffa oraria extra:** proposta di Claude 50 euro l'ora (vedi `docs/OFFERTE.md`).
+1. ~~In cambio del check-up gratuito~~ **Deciso (2026-10-08):** testimonianza scritta e permesso di raccontare il caso. Da dire sempre prima. Resta da fissare la scadenza dell'offerta di lancio.
+2. ~~Tariffa oraria extra~~ **Confermata (2026-10-08):** 50 euro l'ora.
 3. **Quante ore incluse nel Base dopo il mese di rodaggio.** Si decide con i dati del primo mese del primo cliente.
-4. **Prezzo del lavoro per il primo cliente (societa' sportiva).** Ipotesi 500-800 euro piu' canone 100-150 euro.
-5. **Cartella del progetto e git:** versionare la cartella con git oppure no. E' una scelta tua, finora non e' stata presa.
+4. **Prezzo del lavoro per il primo cliente (societa' sportiva).** Deciso l'impianto (2026-10-08): **una tantum 500-800 euro**, canone da decidere dopo. Resta da fissare la cifra esatta e la forma (fattura, quando) con l'amico, e il canone (ipotesi 100-150 euro).
+4b. **Il caso 115 -> 450:** il cliente e' d'accordo che compaia sul sito (confermato da Matia, 2026-10-08). Meglio tenerne traccia scritta (un messaggio basta).
+5. ~~Cartella del progetto e git~~ **Deciso e fatto (2026-10-08):** repository git dedicato nella cartella del progetto (prima la cartella cadeva dentro un repository vuoto della cartella utente). Primo commit fatto. Si fa un commit a fine di ogni blocco di lavoro. Nessun invio online.
 6. **Nome del brand:** scegliere tra le opzioni in `docs/BRAND.md` (Studio Zoffoli, Atelier Zoffoli, Bottega Zoffoli, Cifra, Zoffoli Bespoke, Matia Zoffoli). Provare ad alta voce e con 4-5 persone. Poi controllo marchio (UIBM, EUIPO), con attenzione a Zoffoli Mappamondi, e acquisto dei domini, che e' una spesa e va approvata da Matia.
 7. **Come tenere i clienti:** proposta di Claude in `docs/PROCEDURE.md` (file semplici ora, pannello admin insieme al sito).
 
