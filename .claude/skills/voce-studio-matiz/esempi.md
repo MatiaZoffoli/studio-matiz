@@ -71,6 +71,19 @@ Scelte di Matia: titolo e apertura nella variante sobria; problema 3 sobria; pro
 - **3. Non rende.** Le visite arrivano, le richieste molto meno, e nessuno ha mai guardato i numeri per capire in quale punto si perdono.
 - **Bocciato:** "Perde la forma" e "calza sempre meno" (abito letterale), "Un sito è un lavoro che non finisce con la consegna" (titolo-slogan).
 
+## Sezione "Il mestiere, in quattro parti" (2026-10-09)
+
+Scelte di Matia, scheda per scheda: titolo e frase sobri; scheda 1 sobria; schede 2 e 4 nella variante "ricerca e sviluppo"; scheda 3 nella variante "messa a punto"; microtesti sobri. Le etichette delle schede diventano "Il problema" e "La risposta" (impersonali).
+
+- **Titolo:** Il mestiere, in quattro parti. **Frase:** Ogni parte funziona da sola. Si può cominciare da una qualunque, o dalla prima e vedere come va.
+- **Presenza online.** Problema: Le informazioni cambiano a ogni stagione e il sito non le segue: orari, menu e offerte restano quelli dell'anno scorso. Risposta: Un sito chiaro e veloce, un menu che si aggiorna in un minuto e una scheda Google allineata. Tutto in italiano e in inglese, scritto da madrelingua.
+- **Automazioni.** Problema: Un'attività cresce e i compiti ripetuti crescono con lei, finché un giorno occupano più tempo del lavoro vero. Risposta: Si cerca dove il tempo si perde e si costruisce lo strumento che lo recupera: una risposta automatica, un promemoria, un modulo che ordina le richieste.
+- **Cura continua.** Problema: Il sito è un meccanismo vivo: invecchia, si usura, chiede piccole regolazioni. Senza qualcuno che le faccia, rallenta fino a fermarsi. Risposta: Messa a punto continua: il primo mese senza limite di ore, per capire quanto serve, poi un tempo di assistenza fissato insieme.
+- **Check-up.** Problema: Capita di intervenire a caso: si rifà il sito e il problema era altrove. Risposta: Una ricerca prima di costruire: si guardano i numeri, i percorsi dei clienti e gli strumenti in uso, e si consegna una mappa chiara delle priorità. Il costo si scala dal lavoro che segue.
+- **Microtesti:** riga sopra il titolo "01 · Sito, menu, scheda Google"; link "Un messaggio su WhatsApp"; indicazione "Scorri per vedere gli altri".
+
+Cosa si impara da queste scelte: Matia preferisce **la forma impersonale con verbo riflessivo** ("si cerca", "si costruisce", "si guardano"), il lessico di **ricerca e sviluppo** e di **messa a punto** (meccanismo), e un problema che parte da **un fatto verificabile** (orari che restano quelli dell'anno scorso, compiti che crescono con l'attività).
+
 ## Altre cose da riscrivere, per lo stesso metodo
 
 Le voci del menu ("Servizi", "Percorso", "Condizioni", "Domande"), il pulsante "Prenota il primo incontro", le tre righe del piede della testata, i titoli di sezione, i testi dei quattro servizi, le condizioni, la FAQ, "Chi sono", la chiusura "Parliamone." e tutti i microtesti dello stimatore. Si procede per sezione: tre varianti dei testi forti, scelta di Matia, poi applicazione alla pagina.

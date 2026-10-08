@@ -83,6 +83,8 @@ Matia lo ha chiesto così (2026-10-08): ispirazione da atelier, ma **capibile su
 - **"Supporto continuo", "assistenza continua"** al posto di "una persona che risponde". Rapidità e contatto diretto si dicono con parole sul servizio, non sulla persona.
 - **Niente abiti, cuciture, taglio.** Matia ha bocciato l'immagine dell'abito che "calza" per descrivere i problemi: troppo letterale. Per spiegare un problema preferisce la **situazione** o il **meccanismo**: una cosa che andava bene e che ora va curata e regolata per continuare ad andare bene. "Misura" e "mestiere" restano nel lessico, ma come parole, non come scena da sartoria.
 - **Titoli che raccontano un momento o una situazione** ("Quello che succede dopo la consegna", "Va bene, poi non più", "Nessuno lo prende in carico"): frasi vere, con un verbo, scelte nella variante sobria.
+- **Il lessico che funziona è quello di ricerca, sviluppo e messa a punto**: "si cerca dove il tempo si perde e si costruisce lo strumento che lo recupera", "un meccanismo vivo che chiede piccole regolazioni", "una ricerca prima di costruire". La forma impersonale riflessiva ("si cerca", "si guardano", "si consegna") è la sua preferita per descrivere cosa si fa.
+- **Un problema parte da un fatto verificabile**: orari rimasti quelli dell'anno scorso, compiti ripetuti che crescono con l'attività, un canone che non dice cosa copre.
 - **Il primo incontro dura un'ora**, "tra chiacchiere e caffè": il tempo suona più disteso e vero.
 - Si lavora **pezzo per pezzo**, almeno tre varianti per ciascuno, e le scelte si annotano in `esempi.md`.
 

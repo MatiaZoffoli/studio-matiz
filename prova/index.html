@@ -543,6 +543,13 @@ h3, .goals .lab, .terms .fig, .meter__row b, .faq summary, .est__step legend, .e
 .close__act .mail { color: var(--night-text); }
 .foot__mark { height: auto; width: 100%; max-width: 44rem; }
 @media (max-width: 900px) { .close__gl { opacity: .6; } }
+/* schede dei servizi: i testi nuovi sono piu' lunghi, il pannello si stringe un poco per non tagliare il link */
+.gal.is-pinned .page__info { padding: clamp(1.2rem, 2.1vw, 2.1rem); }
+.gal.is-pinned .page__info h3 { margin: .55rem 0 .95rem; font-size: clamp(1.8rem, 2.8vw, 2.5rem); }
+.gal.is-pinned .page__blk + .page__blk { margin-top: .95rem; padding-top: .95rem; }
+.gal.is-pinned .page__tags { padding-top: .9rem; }
+.gal.is-pinned .page__info .link { margin-top: .9rem; }
+.gal.is-pinned .page__info p { font-size: .96rem; line-height: 1.55; }
 </style>
 </head>
 <body>
@@ -628,8 +635,8 @@ h3, .goals .lab, .terms .fig, .meter__row b, .faq summary, .est__step legend, .e
     <div class="gal__pin">
       <div class="wrap">
         <div class="gal__head">
-          <h2 id="h-servizi" data-split>Cosa <em>faccio.</em></h2>
-          <p>Quattro servizi. Puoi sceglierne uno, o partire dal primo e vedere come va.</p>
+          <h2 id="h-servizi" data-split>Il mestiere, <em>in quattro parti.</em></h2>
+          <p>Ogni parte funziona da sola. Si può cominciare da una qualunque, o dalla prima e vedere come va.</p>
         </div>
       </div>
       <div class="wrap gal__stage" id="galStage">
@@ -651,12 +658,12 @@ h3, .goals .lab, .terms .fig, .meter__row b, .faq summary, .est__step legend, .e
             </svg>
           </div>
           <div class="page__info">
-            <p class="page__meta">Servizio 01 · Sito, menu, scheda Google</p>
+            <p class="page__meta">01 · Sito, menu, scheda Google</p>
             <h3>Presenza online</h3>
-            <div class="page__blk"><span class="page__lab">Il problema</span><p class="soft">Un sito fermo a com'era il giorno della consegna, un menu che nessuno aggiorna.</p></div>
-            <div class="page__blk"><span class="page__lab">Cosa faccio</span><p>Un sito chiaro e veloce, un menu che si aggiorna in un minuto, una scheda Google in ordine. In italiano e in inglese scritto da madrelingua.</p></div>
+            <div class="page__blk"><span class="page__lab">Il problema</span><p class="soft">Le informazioni cambiano a ogni stagione e il sito non le segue: orari, menu e offerte restano quelli dell'anno scorso.</p></div>
+            <div class="page__blk"><span class="page__lab">La risposta</span><p>Un sito chiaro e veloce, un menu che si aggiorna in un minuto e una scheda Google allineata. Tutto in italiano e in inglese, scritto da madrelingua.</p></div>
             <p class="page__tags">Sito e menu digitale · Scheda Google · Testi in inglese</p>
-            <a class="link" href="https://wa.me/393339580381?text=Ciao%20Matia%2C%20vorrei%20saperne%20di%20pi%C3%B9%20su%3A%20Presenza%20online" target="_blank" rel="noopener">Parliamone su WhatsApp
+            <a class="link" href="https://wa.me/393339580381?text=Ciao%20Matia%2C%20vorrei%20saperne%20di%20pi%C3%B9%20su%3A%20Presenza%20online" target="_blank" rel="noopener">Un messaggio su WhatsApp
               <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true"><path d="M3 13 13 3M5.5 3H13v7.5"/></svg></a>
           </div>
         </article>
@@ -679,12 +686,12 @@ h3, .goals .lab, .terms .fig, .meter__row b, .faq summary, .est__step legend, .e
             </svg>
           </div>
           <div class="page__info">
-            <p class="page__meta">Servizio 02 · Risposte, richieste, promemoria</p>
+            <p class="page__meta">02 · Risposte, richieste, promemoria</p>
             <h3>Automazioni</h3>
-            <div class="page__blk"><span class="page__lab">Il problema</span><p class="soft">Messaggi, richieste e promemoria che si accumulano e rubano le ore migliori.</p></div>
-            <div class="page__blk"><span class="page__lab">Cosa faccio</span><p>Il lavoro ripetitivo lo fanno gli strumenti: risposte alle domande più comuni, promemoria, richieste che arrivano già ordinate.</p></div>
-            <p class="page__tags">Risposte automatiche · Richieste ordinate · Strumenti interni su misura</p>
-            <a class="link" href="https://wa.me/393339580381?text=Ciao%20Matia%2C%20vorrei%20saperne%20di%20pi%C3%B9%20su%3A%20Automazioni" target="_blank" rel="noopener">Parliamone su WhatsApp
+            <div class="page__blk"><span class="page__lab">Il problema</span><p class="soft">Un'attività cresce e i compiti ripetuti crescono con lei, finché un giorno occupano più tempo del lavoro vero.</p></div>
+            <div class="page__blk"><span class="page__lab">La risposta</span><p>Si cerca dove il tempo si perde e si costruisce lo strumento che lo recupera: una risposta automatica, un promemoria, un modulo che ordina le richieste.</p></div>
+            <p class="page__tags">Risposte automatiche · Richieste ordinate · Strumenti interni</p>
+            <a class="link" href="https://wa.me/393339580381?text=Ciao%20Matia%2C%20vorrei%20saperne%20di%20pi%C3%B9%20su%3A%20Automazioni" target="_blank" rel="noopener">Un messaggio su WhatsApp
               <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true"><path d="M3 13 13 3M5.5 3H13v7.5"/></svg></a>
           </div>
         </article>
@@ -701,12 +708,12 @@ h3, .goals .lab, .terms .fig, .meter__row b, .faq summary, .est__step legend, .e
             </svg>
           </div>
           <div class="page__info">
-            <p class="page__meta">Servizio 03 · Aggiornamenti, sicurezza, backup</p>
+            <p class="page__meta">03 · Aggiornamenti, sicurezza, backup</p>
             <h3>Cura continua</h3>
-            <div class="page__blk"><span class="page__lab">Il problema</span><p class="soft">Il fornitore sparisce dopo la consegna e il canone non spiega cosa copra.</p></div>
-            <div class="page__blk"><span class="page__lab">Cosa faccio</span><p>Aggiornamenti, sicurezza, backup e modifiche. Sai cosa è incluso, quanto tempo hai a disposizione e chi chiamare.</p></div>
-            <p class="page__tags">Ore incluse · Risposta in un giorno lavorativo · Resoconto mensile</p>
-            <a class="link" href="https://wa.me/393339580381?text=Ciao%20Matia%2C%20vorrei%20saperne%20di%20pi%C3%B9%20su%3A%20Cura%20continua" target="_blank" rel="noopener">Parliamone su WhatsApp
+            <div class="page__blk"><span class="page__lab">Il problema</span><p class="soft">Il sito è un meccanismo vivo: invecchia, si usura, chiede piccole regolazioni. Senza qualcuno che le faccia, rallenta fino a fermarsi.</p></div>
+            <div class="page__blk"><span class="page__lab">La risposta</span><p>Messa a punto continua: il primo mese senza limite di ore, per capire quanto serve, poi un tempo di assistenza fissato insieme.</p></div>
+            <p class="page__tags">Primo mese senza limite · Assistenza fissata insieme · Resoconto mensile</p>
+            <a class="link" href="https://wa.me/393339580381?text=Ciao%20Matia%2C%20vorrei%20saperne%20di%20pi%C3%B9%20su%3A%20Cura%20continua" target="_blank" rel="noopener">Un messaggio su WhatsApp
               <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true"><path d="M3 13 13 3M5.5 3H13v7.5"/></svg></a>
           </div>
         </article>
@@ -724,12 +731,12 @@ h3, .goals .lab, .terms .fig, .meter__row b, .faq summary, .est__step legend, .e
             </svg>
           </div>
           <div class="page__info">
-            <p class="page__meta">Servizio 04 · Da dove cominciare</p>
+            <p class="page__meta">04 · Numeri, percorsi, priorità</p>
             <h3>Check-up</h3>
-            <div class="page__blk"><span class="page__lab">Il problema</span><p class="soft">Non sai da dove cominciare, o dove si perde il lavoro.</p></div>
-            <div class="page__blk"><span class="page__lab">Cosa faccio</span><p>Uno sguardo onesto a quello che hai: cosa funziona, dove si perde il lavoro, da dove conviene cominciare. Il costo si scala dal lavoro che segue.</p></div>
-            <p class="page__tags">Sito · Scheda Google · Menu · Prenotazioni · Social</p>
-            <a class="link" href="https://wa.me/393339580381?text=Ciao%20Matia%2C%20vorrei%20saperne%20di%20pi%C3%B9%20su%3A%20Check-up" target="_blank" rel="noopener">Parliamone su WhatsApp
+            <div class="page__blk"><span class="page__lab">Il problema</span><p class="soft">Capita di intervenire a caso: si rifà il sito e il problema era altrove.</p></div>
+            <div class="page__blk"><span class="page__lab">La risposta</span><p>Una ricerca prima di costruire: si guardano i numeri, i percorsi dei clienti e gli strumenti in uso, e si consegna una mappa chiara delle priorità. Il costo si scala dal lavoro che segue.</p></div>
+            <p class="page__tags">Numeri · Percorso dei clienti · Mappa delle priorità</p>
+            <a class="link" href="https://wa.me/393339580381?text=Ciao%20Matia%2C%20vorrei%20saperne%20di%20pi%C3%B9%20su%3A%20Check-up" target="_blank" rel="noopener">Un messaggio su WhatsApp
               <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true"><path d="M3 13 13 3M5.5 3H13v7.5"/></svg></a>
           </div>
         </article>
@@ -737,7 +744,7 @@ h3, .goals .lab, .terms .fig, .meter__row b, .faq summary, .est__step legend, .e
       <div class="wrap gal__ctl" id="galCtl">
         <span class="gal__count"><b id="galNow">01</b> / 04</span>
         <span class="gal__dots" id="galDots"><button type="button" class="on" aria-label="Presenza online"></button><button type="button" aria-label="Automazioni"></button><button type="button" aria-label="Cura continua"></button><button type="button" aria-label="Check-up"></button></span>
-        <span>Scorri per navigare</span>
+        <span>Scorri per vedere gli altri</span>
       </div>
     </div>
   </section>
