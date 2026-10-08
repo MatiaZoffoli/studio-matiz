@@ -82,26 +82,38 @@ h3 { font-size: clamp(1.6rem, 2.5vw, 2.1rem); line-height: 1.15; letter-spacing:
 .num { font-weight: 600; }
 [data-split] .w { display: inline-block; }
 
-/* ---------- Pulsanti: una penna stilografica li disegna ---------- */
+/* ---------- Pulsanti: un filo dorato percorre il contorno, l'inchiostro sale e un riflesso lo attraversa ---------- */
+@property --a { syntax: '<angle>'; inherits: false; initial-value: 0deg; }
 .btn {
-  --pen-body: #2A211C; --pen-gold: #B8935A;
-  position: relative; display: inline-flex; align-items: center; gap: .8rem;
-  padding: 1.05rem 1.9rem; border: 1px solid var(--ink); border-radius: 999px;
-  background: transparent; color: var(--ink); text-decoration: none; white-space: nowrap; cursor: pointer;
+  --b-line: var(--line-strong); --b-fill: var(--ink); --b-text: var(--ink); --b-hover: var(--paper); --b-ring: var(--gold); --b-sheen: rgba(255, 236, 190, .5);
+  position: relative; isolation: isolate; display: inline-flex; align-items: center; gap: .8rem;
+  padding: 1.05rem 1.9rem; border: 1px solid var(--b-line); border-radius: 999px;
+  color: var(--b-text); text-decoration: none; white-space: nowrap; cursor: pointer;
+  background: linear-gradient(var(--b-fill), var(--b-fill)) no-repeat left center / 0% 100%;
   font: 600 .75rem/1 var(--sans); letter-spacing: .16em; text-transform: uppercase;
-  transition: background-color .6s var(--ease), color .45s var(--ease), border-color .3s var(--ease);
+  transition: background-size .75s var(--ease), color .4s var(--ease) .12s, border-color .5s var(--ease), box-shadow .7s var(--ease), transform .5s var(--ease);
 }
-.btn.is-drawing { border-color: transparent; }
-.btn.is-filled { background: var(--ink); color: var(--paper); border-color: transparent; }
-.btn__ink { position: absolute; left: -1px; top: -1px; z-index: 3; overflow: visible; pointer-events: none; }
-.btn__ink .ink { fill: var(--ink); }
-.btn > svg:not(.btn__ink) { width: 1.1em; height: 1.1em; flex: none; transition: transform .45s var(--ease); }
-.btn:hover > svg:not(.btn__ink) { transform: translateX(3px); }
-.btn:active { transform: scale(.985); }
-.btn--light { --pen-body: #E9DEC9; border-color: rgba(243, 236, 224, .8); color: var(--night-text); }
-.btn--light .btn__ink .ink { fill: var(--night-text); }
-.btn--light.is-filled { background: var(--night-text); color: var(--night); }
-@media (hover: none) { .btn:active { background: var(--ink); color: var(--paper); } .btn--light:active { background: var(--night-text); color: var(--night); } }
+.btn::before { /* il filo dorato che disegna il contorno */
+  content: ""; position: absolute; inset: -1px; z-index: 2; border-radius: inherit; padding: 1px; pointer-events: none;
+  background: conic-gradient(from -90deg, var(--b-ring) var(--a), transparent calc(var(--a) + .4deg));
+  -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0); -webkit-mask-composite: xor;
+  mask: linear-gradient(#000 0 0) content-box exclude, linear-gradient(#000 0 0);
+  transition: --a 1s var(--ease);
+}
+.btn::after { /* il riflesso che passa sulla superficie */
+  content: ""; position: absolute; inset: 0; z-index: 1; border-radius: inherit; pointer-events: none;
+  background: linear-gradient(105deg, transparent 38%, var(--b-sheen) 50%, transparent 62%) -140% 0 / 60% 100% no-repeat;
+  transition: background-position 1s var(--ease) .1s;
+}
+.btn:hover, .btn:focus-visible { background-size: 100% 100%; color: var(--b-hover); border-color: transparent; box-shadow: 0 16px 30px -16px rgba(36, 30, 26, .6); }
+.btn:hover::before, .btn:focus-visible::before { --a: 360deg; }
+.btn:hover::after, .btn:focus-visible::after { background-position: 240% 0; }
+.btn:active { transform: translateY(1px) scale(.99); }
+.btn > svg { width: 1.1em; height: 1.1em; flex: none; transition: transform .5s var(--ease); }
+.btn:hover > svg { transform: translateX(4px); }
+.btn--light { --b-line: rgba(243, 236, 224, .55); --b-fill: var(--night-text); --b-text: var(--night-text); --b-hover: var(--night); --b-ring: var(--gold-light); --b-sheen: rgba(255, 255, 255, .85); }
+.btn--light:hover, .btn--light:focus-visible { box-shadow: 0 16px 34px -14px rgba(217, 179, 108, .55); }
+@media (prefers-reduced-motion: reduce) { .btn, .btn::before, .btn::after { transition-duration: .01s; transition-delay: 0s; } }
 .link {
   display: inline-flex; align-items: center; gap: .6rem; padding-bottom: .35rem;
   font: 600 .75rem/1.2 var(--sans); letter-spacing: .16em; text-transform: uppercase; text-decoration: none;
@@ -123,9 +135,7 @@ h3 { font-size: clamp(1.6rem, 2.5vw, 2.1rem); line-height: 1.15; letter-spacing:
 .nav a:hover { background-size: 100% 1px; }
 .top__cta { justify-self: end; }
 .top__cta .btn { padding: .8rem 1.3rem; font-size: .6875rem; }
-.site.on-dark .top__cta .btn { border-color: rgba(243, 236, 224, .8); color: var(--night-text); --pen-body: #E9DEC9; }
-.site.on-dark .top__cta .btn .btn__ink .ink { fill: var(--night-text); }
-.site.on-dark .top__cta .btn.is-filled { background: var(--night-text); color: var(--night); }
+.site.on-dark .top__cta .btn { --b-line: rgba(243, 236, 224, .55); --b-fill: var(--night-text); --b-text: var(--night-text); --b-hover: var(--night); --b-ring: var(--gold-light); --b-sheen: rgba(255, 255, 255, .85); }
 
 /* ---------- Hero: scuro, con anelli d'ottone in 3D ---------- */
 .hero {
@@ -435,6 +445,36 @@ h1 em, h2 em { font-style: normal; color: var(--gold-text); }
   .hero__gl { opacity: .6; }
   .brand img { height: 2.2rem; }
 }
+
+/* ---------- Rifinitura v2.2: stimatore con spessore, chiusura scura con anelli, logo del piede ---------- */
+.est { position: relative; isolation: isolate; background: radial-gradient(58vw 40vw at 72% 48%, rgba(217, 179, 108, .38), transparent 70%), linear-gradient(180deg, var(--paper), var(--paper-2)); }
+.est__box {
+  position: relative; border: 1px solid rgba(255, 255, 255, .95); border-radius: 4px;
+  background: linear-gradient(160deg, #FFFDF8, #F3ECDF);
+  transform: perspective(1500px) rotateX(var(--rx, 2deg)) rotateY(var(--ry, -3deg)); transition: transform .6s var(--ease);
+  box-shadow:
+    1px 1px 0 #E6DCCB, 2px 2px 0 #E0D5C2, 3px 3px 0 #DACEBA, 4px 4px 0 #D4C8B2, 5px 5px 0 #CEC1AA,
+    6px 6px 0 #C8BAA2, 7px 7px 0 #C2B39A, 8px 8px 0 #BCAC92, 9px 9px 0 #B6A58A, 10px 10px 0 #B09E83,
+    26px 36px 50px -12px rgba(36, 30, 26, .5), 60px 84px 120px -30px rgba(36, 30, 26, .5);
+}
+.est__box::before { content: ""; position: absolute; inset: 0; z-index: 0; border-radius: inherit; pointer-events: none; background: linear-gradient(115deg, rgba(255, 255, 255, .7), transparent 40%); }
+.est__box::after { content: ""; position: absolute; left: -1px; right: -1px; top: -1px; height: 3px; border-radius: 4px 4px 0 0; background: linear-gradient(90deg, var(--gold), #EAD093, var(--gold)); }
+.est__box > * { position: relative; z-index: 1; }
+.opt span { background: #fff; box-shadow: inset 0 1px 0 rgba(255, 255, 255, .9), 0 2px 0 rgba(36, 30, 26, .07), 0 10px 16px -12px rgba(36, 30, 26, .4); }
+.opt input:checked + span { box-shadow: 0 2px 0 rgba(0, 0, 0, .25), 0 12px 18px -10px rgba(36, 30, 26, .6); }
+@media (max-width: 900px) { .est__box { transform: none; box-shadow: 1px 1px 0 #E0D5C2, 3px 3px 0 #D4C8B2, 5px 5px 0 #C8BAA2, 7px 7px 0 #BCAC92, 20px 30px 40px -14px rgba(36, 30, 26, .45); } }
+@media (prefers-reduced-motion: reduce) { .est__box { transform: none; } }
+
+/* chiusura: scura, con gli anelli d'ottone */
+.close { position: relative; isolation: isolate; overflow: clip; color: var(--night-text); background: radial-gradient(56vw 40vw at 76% 40%, rgba(201, 162, 92, .28), transparent 66%), radial-gradient(46vw 34vw at 0% 100%, rgba(168, 64, 52, .2), transparent 70%), var(--night); }
+.close__gl { position: absolute; inset: 0; z-index: -1; width: 100%; height: 100%; display: none; }
+.close.is-gl .close__gl { display: block; }
+.close h2 { color: #FBF5E9; }
+.close__row { border-top-color: var(--night-line); }
+.close__lead { color: var(--night-soft); }
+.close__act .mail { color: var(--night-text); }
+.foot__mark { height: auto; width: 100%; max-width: 44rem; }
+@media (max-width: 900px) { .close__gl { opacity: .6; } }
 </style>
 </head>
 <body>
@@ -903,12 +943,13 @@ h1 em, h2 em { font-style: normal; color: var(--gold-text); }
   </section>
 
   <section class="close" id="chiusura" aria-labelledby="h-chiusura">
+    <canvas class="close__gl" id="closeGl" aria-hidden="true"></canvas>
     <div class="wrap grid">
       <h2 id="h-chiusura" data-split>Parliamone.</h2>
       <div class="close__row">
         <p class="close__lead">Scegli un momento per il primo incontro, oppure scrivimi. Rispondo entro un giorno lavorativo.</p>
         <div class="close__act">
-          <a class="btn" href="https://calendar.app.google/NUp3xit8MwxWQWkK6" target="_blank" rel="noopener">Prenota il primo incontro
+          <a class="btn btn--light" href="https://calendar.app.google/NUp3xit8MwxWQWkK6" target="_blank" rel="noopener">Prenota il primo incontro
             <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true"><path d="M2 8h11M9 3.5 13.5 8 9 12.5"/></svg>
           </a>
           <a class="mail" href="https://wa.me/393339580381?text=Ciao%20Matia%2C%20vorrei%20fissare%20un%20primo%20incontro.">Scrivimi su WhatsApp</a>
@@ -955,80 +996,6 @@ h1 em, h2 em { font-style: normal; color: var(--gold-text); }
   }
   window.addEventListener('scroll', onScroll, { passive: true });
   onScroll();
-
-  /* ---------- Pulsanti: una penna stilografica ridisegna il contorno, poi il pulsante si riempie ---------- */
-  var NS = 'http://www.w3.org/2000/svg';
-  function nibPath(w, h) {
-    var inset = .75, W = w - 2 * inset, H = h - 2 * inset, r = H / 2, step = 2.2, pts = [], i;
-    function seg(x1, y1, x2, y2) { var L = Math.hypot(x2 - x1, y2 - y1), n = Math.max(1, Math.round(L / step)); for (i = 0; i < n; i++) pts.push([x1 + (x2 - x1) * i / n, y1 + (y2 - y1) * i / n]); }
-    function arc(cx, cy, a0, a1) { var n = Math.max(2, Math.round(Math.abs(a1 - a0) * r / step)); for (i = 0; i < n; i++) { var a = a0 + (a1 - a0) * i / n; pts.push([cx + r * Math.cos(a), cy + r * Math.sin(a)]); } }
-    seg(r, 0, W - r, 0); arc(W - r, r, -Math.PI / 2, Math.PI / 2); seg(W - r, H, r, H); arc(r, r, Math.PI / 2, Math.PI * 1.5);
-    var ov = Math.min(W * .1, 28), on = Math.round(ov / step);
-    for (i = 0; i < on; i++) { var t = i / on; pts.push([r + ov * t, -3.2 * Math.sin(t * Math.PI * .6)]); }
-    var ph1 = Math.random() * 6, ph2 = Math.random() * 6, n = pts.length, out = [];
-    for (i = 0; i < n; i++) {
-      var a = pts[Math.max(0, i - 1)], b = pts[Math.min(n - 1, i + 1)];
-      var ang = Math.atan2(b[1] - a[1], b[0] - a[0]);
-      var wob = (Math.sin(i * .045 + ph1) * .55 + Math.sin(i * .11 + ph2) * .3);
-      var edgeIn = Math.min(1, i / 14) * Math.min(1, (n - i) / 14);
-      /* pennino largo: il tratto e' piu' sottile in un verso e piu' pieno nell'altro */
-      var wd = (.55 + 2.9 * Math.pow(Math.abs(Math.sin(ang - .75)), 1.4)) * (.3 + .7 * edgeIn) * (1 + .12 * Math.sin(i * .07 + ph2));
-      out.push({ x: pts[i][0] + inset - Math.sin(ang) * wob, y: pts[i][1] + inset + Math.cos(ang) * wob, nx: -Math.sin(ang), ny: Math.cos(ang), w: wd });
-    }
-    return out;
-  }
-  function inkD(P, k) {
-    var L = [], R = [], i, p;
-    for (i = 0; i <= k; i++) { p = P[i]; L.push((p.x + p.nx * p.w / 2).toFixed(1) + ' ' + (p.y + p.ny * p.w / 2).toFixed(1)); R.push((p.x - p.nx * p.w / 2).toFixed(1) + ' ' + (p.y - p.ny * p.w / 2).toFixed(1)); }
-    return 'M' + L.join(' L') + ' L' + R.reverse().join(' L') + 'Z';
-  }
-  /* una stilografica vera: pennino d'oro con fessura e foro, sezione laccata, anello e fusto con riflesso e clip.
-     Disegnata in verticale con la punta in (0,0); poi si inclina e si scala seguendo il tratto. */
-  var PEN = '<g class="pen"><g class="penart">' +
-    '<path d="M0 0L-4.6 -14Q0 -17.5 4.6 -14Z" fill="#C9A566"/>' +
-    '<path d="M0 0L4.6 -14Q2 -15.4 .6 -15.2Z" fill="#9C7A3C"/>' +
-    '<path d="M0 -1.6V-12.6" stroke="#2A211C" stroke-width=".7"/><circle cx="0" cy="-12.9" r="1.15" fill="#2A211C"/>' +
-    '<path d="M-5 -14.5H5L6 -28H-6Z" fill="#1F1814"/><path d="M-5 -14.5H-2.6L-3.4 -28H-6Z" fill="rgba(255,255,255,.14)"/>' +
-    '<rect x="-6.6" y="-30" width="13.2" height="2.4" fill="#C9A566"/><rect x="-6.6" y="-30" width="13.2" height=".7" fill="rgba(255,255,255,.55)"/>' +
-    '<path d="M-7 -30.4H7L7.8 -86Q0 -90.5 -7.8 -86Z" fill="var(--pen-body)"/>' +
-    '<path d="M-7 -30.4H-2.6L-3.2 -88.5Q-5.6 -88 -7.8 -86Z" fill="rgba(0,0,0,.22)"/>' +
-    '<path d="M2.4 -32V-87" stroke="rgba(255,255,255,.4)" stroke-width="1.5" stroke-linecap="round"/>' +
-    '<rect x="-7.4" y="-62" width="14.8" height="1.4" fill="#C9A566"/>' +
-    '<path d="M7.8 -70H11.4V-84" stroke="#C9A566" stroke-width="1.6" fill="none" stroke-linejoin="round"/>' +
-    '</g></g>';
-  function bindButtons() {
-    $$('.btn').forEach(function (b) {
-      var svg = document.createElementNS(NS, 'svg'); svg.setAttribute('class', 'btn__ink'); svg.setAttribute('aria-hidden', 'true'); b.appendChild(svg);
-      var tw = null, token = 0;
-      function clear() { if (tw) tw.kill(); tw = null; b.classList.remove('is-drawing', 'is-filled'); svg.innerHTML = ''; }
-      b.addEventListener('pointerenter', function (e) {
-        if (e.pointerType === 'touch') return;
-        clear();
-        var w = b.offsetWidth, h = b.offsetHeight, P = nibPath(w, h), my = ++token;
-        svg.setAttribute('width', w); svg.setAttribute('height', h); svg.setAttribute('viewBox', '0 0 ' + w + ' ' + h);
-        svg.innerHTML = '<path class="ink" d=""/>' + PEN;
-        var ink = $('.ink', svg), pen = $('.pen', svg), o = { k: 0 };
-        b.classList.add('is-drawing');
-        tw = gsap.to(o, {
-          k: 1, duration: 1.05 + w / 900, ease: 'sine.inOut',
-          onUpdate: function () {
-            var i = Math.max(2, Math.round(o.k * (P.length - 1)));
-            ink.setAttribute('d', inkD(P, i));
-            /* la mano inclina la penna secondo il verso del tratto */
-            var tilt = 30 + 9 * Math.cos(Math.atan2(P[i].ny, P[i].nx) + 1.2);
-            pen.setAttribute('transform', 'translate(' + P[i].x.toFixed(1) + ' ' + P[i].y.toFixed(1) + ') rotate(' + tilt.toFixed(1) + ') scale(.66)');
-          },
-          onComplete: function () {
-            if (my !== token) return;
-            b.classList.add('is-filled');
-            gsap.to(pen, { opacity: 0, duration: .45, ease: 'power2.in' });
-            gsap.to(ink, { opacity: 0, duration: .5, delay: .15 });
-          }
-        });
-      });
-      b.addEventListener('pointerleave', function () { token++; clear(); });
-    });
-  }
 
   /* ---------- Servizi: pagine che scorrono da destra verso sinistra ---------- */
   function initGallery() {
@@ -1204,18 +1171,18 @@ h1 em, h2 em { font-style: normal; color: var(--gold-text); }
     show(0);
   })();
 
-  /* ---------- Testata scura sopra hero e sezioni scure ---------- */
+    /* ---------- Testata scura sopra le sezioni scure ---------- */
   function darkTriggers() {
-    var on = { h: false, n: false };
-    function upd(k) { return function (s) { on[k] = s.isActive; site.classList.toggle('on-dark', on.h || on.n); }; }
+    var on = { h: false, n: false, c: false };
+    function upd(k) { return function (s) { on[k] = s.isActive; site.classList.toggle('on-dark', on.h || on.n || on.c); }; }
     ScrollTrigger.create({ trigger: '#hero', start: 'top 140px', end: 'bottom 70px', onToggle: upd('h') });
     ScrollTrigger.create({ trigger: '#night', start: 'top 70px', end: 'bottom 70px', onToggle: upd('n') });
+    ScrollTrigger.create({ trigger: '#chiusura', start: 'top 70px', endTrigger: '.foot', end: 'bottom bottom', onToggle: upd('c') });
   }
 
-  /* ---------- Hero: anelli d'ottone in 3D ---------- */
-  function initHero() {
-    var hero = $('#hero'), cv = $('#heroGl');
-    if (!cv || !window.THREE) return;
+  /* ---------- Anelli d'ottone in 3D (hero e chiusura) ---------- */
+  function makeRings(hero, cv, o) {
+    if (!cv || !hero || !window.THREE) return;
     var T = window.THREE, renderer;
     try { renderer = new T.WebGLRenderer({ canvas: cv, antialias: true, alpha: true, powerPreference: 'low-power' }); } catch (e) { return; }
     renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, 2));
@@ -1252,23 +1219,23 @@ h1 em, h2 em { font-style: normal; color: var(--gold-text); }
     }
     var rings = [band(2.55, .24, [.6, 0, .35], .11), band(1.7, .16, [-.5, .4, -.6], -.15), band(3.4, .09, [1.15, 0, -.25], .07)];
 
-    var W = 1, H = 1, mx = 0, my = 0, tx = 0, ty = 0, visible = true, t0 = performance.now();
+    var W = 1, H = 1, mx = 0, my = 0, tx = 0, ty = 0, visible = true, t0 = performance.now(), wide = true;
     function size() {
       W = hero.clientWidth; H = hero.clientHeight;
       renderer.setSize(W, H, false); camera.aspect = W / H; camera.updateProjectionMatrix();
-      var wide = W > 900;
-      group.position.set(wide ? 3.5 : 0, wide ? 0 : 2.1, 0); group.scale.setScalar(wide ? .86 : .62);
+      wide = W > 900;
+      group.position.set(wide ? o.x : 0, wide ? 0 : 2.1, 0); group.scale.setScalar(wide ? o.scale : .62);
       draw(performance.now());
     }
     function draw(now) {
-      var t = (now - t0) / 1000, sy = Math.min(window.scrollY || 0, 1200);
+      var t = (now - t0) / 1000, off = Math.max(-1400, Math.min(1400, -hero.getBoundingClientRect().top));
       mx += (tx - mx) * .06; my += (ty - my) * .06;
       rings.forEach(function (r, i) {
         r.rotation.y = r.userData.base[1] + (reduce ? .6 : t * r.userData.speed);
         r.rotation.x = r.userData.base[0] + Math.sin(t * .35 + i) * .05;
       });
-      group.rotation.y = mx * .35; group.rotation.x = my * .2 + sy * .0007;
-      group.position.y += ((W > 900 ? 0 : 2.1) - sy * .004 - group.position.y) * .15;
+      group.rotation.y = mx * .35; group.rotation.x = my * .2 + off * .0007;
+      group.position.y += ((wide ? 0 : 2.1) - off * .004 - group.position.y) * .15;
       renderer.render(scene, camera);
     }
     hero.addEventListener('pointermove', function (e) { var r = hero.getBoundingClientRect(); tx = (e.clientX - r.left) / r.width - .5; ty = (e.clientY - r.top) / r.height - .5; });
@@ -1280,7 +1247,25 @@ h1 em, h2 em { font-style: normal; color: var(--gold-text); }
     cv.addEventListener('webglcontextlost', function (e) { e.preventDefault(); hero.classList.remove('is-gl'); });
   }
 
-  /* ---------- Animazioni (GSAP) ---------- */
+  /* lo stimatore e' una scheda con spessore: si inclina un poco seguendo il puntatore */
+  function initTilt() {
+    var box = $('#est'), sec = $('#stima');
+    if (!box || !sec || !fine || reduce) return;
+    sec.addEventListener('pointermove', function (e) {
+      var r = box.getBoundingClientRect();
+      var px = (e.clientX - (r.left + r.width / 2)) / innerWidth, py = (e.clientY - (r.top + r.height / 2)) / innerHeight;
+      box.style.setProperty('--ry', (-3 + px * 9).toFixed(2) + 'deg'); box.style.setProperty('--rx', (2 - py * 8).toFixed(2) + 'deg');
+    });
+    sec.addEventListener('pointerleave', function () { box.style.removeProperty('--rx'); box.style.removeProperty('--ry'); });
+  }
+
+  function initHero() {
+    makeRings($('#hero'), $('#heroGl'), { x: 3.5, scale: .86 });
+    makeRings($('#chiusura'), $('#closeGl'), { x: 4.3, scale: .7 });
+    initTilt();
+  }
+
+/* ---------- Animazioni (GSAP) ---------- */
   function ready() { root.classList.remove('pending'); }
   function start() {
     if (!window.gsap || !window.ScrollTrigger || !window.SplitText) { ready(); return; }
@@ -1299,7 +1284,7 @@ h1 em, h2 em { font-style: normal; color: var(--gold-text); }
       darkTriggers();
       return;
     }
-    if (fine) bindButtons();
+    
 
         /* hero: il titolo sale una parola alla volta, poi il resto; gli anelli emergono dal buio */
     var h1 = $('.hero h1');

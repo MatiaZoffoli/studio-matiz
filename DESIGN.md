@@ -326,3 +326,9 @@ Feedback di Matia: il sito era "flat", il corsivo difficile da leggere, servono 
 - **Logo:** si usa il logo vero della suite (`logo/logo-suite-opt-1`): `prova/assets/logo-lockup.png` (scuro) e `logo-lockup-light.png` (chiaro), `logo-seal.png` e `logo-seal-light.png`. La testata passa da una versione all'altra secondo lo sfondo.
 - **Ritmo:** hero scuro, fascia a colori, pagine chiare, blocco scuro caldo.
 - **Da fare:** colori dei blocchi scuri piu' ricchi (luce calda anche nel blocco "casi" e "regole"), un possibile secondo colore profondo, immagini vere.
+
+### Rifinitura v2.2 (2026-10-08)
+
+- **Pulsanti:** nessuna penna. Un filo dorato (conic-gradient mascherato, proprieta' CSS `--a`) disegna il contorno in un secondo, l'inchiostro sale da sinistra e un riflesso attraversa il pulsante. Solo CSS, vale per ogni `.btn`; variante `.btn--light` sulle sezioni scure.
+- **Stimatore:** scheda con spessore (dieci ombre a gradino), riflesso, filo dorato in alto, inclinazione `perspective` che segue il puntatore, sfondo con luce calda.
+- **Chiusura:** sezione scura con gli stessi anelli 3D dell'hero, continua nel piede scuro; la testata resta scura fino in fondo.

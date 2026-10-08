@@ -94,4 +94,8 @@ Ogni scelta presa da Matia, con la data e il motivo. Si aggiorna nel momento in 
 | 2026-10-08 | Il caso 115 -> 450 iscritti puo' restare sul sito: il cliente e' d'accordo | Matia |
 | 2026-10-08 | Progetto spostato fuori da OneDrive, in `C:\Users\gisel\dev\studio-matiz` (con la cronologia git). La cartella in OneDrive e' una vecchia copia da cancellare dopo verifica | Matia |
 | 2026-10-08 | Grafica v2.1: hero scuro con anelli d'ottone in 3D, corsivo tolto dai titoli (parola chiave dorata in tondo), fascia a colori sulla costa (segnaposto), pagine dei servizi con arte scura e scheda chiara, logo vero della suite `logo-suite-opt-1` | Matia ("seguiamo le tue indicazioni") |
+| 2026-10-08 | Pulsanti: via la penna, ora un filo dorato percorre il contorno mentre l'inchiostro sale da sinistra e un riflesso attraversa la superficie (solo CSS, ogni pulsante). Sulle sezioni scure il riempimento e' crema | Matia (la penna non era in tono)
+| 2026-10-08 | Anelli d'ottone in 3D anche nella chiusura (sezione scura 'Parliamone'), che prosegue nel piede scuro | Matia
+| 2026-10-08 | Stimatore con spessore: scheda con bordo estruso, riflesso, filo dorato in alto e leggera inclinazione che segue il puntatore, su sfondo con luce calda | Matia
+| 2026-10-08 | Logo del piede corretto (proporzioni) | Matia
 | 2026-10-07 | La struttura del progetto vive nei file `.md` della cartella (CLAUDE.md, README, docs/) e va tenuta aggiornata quando emerge un'informazione | Matia: il contesto crescera' molto e serve ordine |
