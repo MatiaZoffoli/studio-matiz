@@ -27,7 +27,7 @@ Consulenza per piccole e medie imprese italiane: siti web, menu digitali, assist
 | [docs/BRAND.md](docs/BRAND.md) | Brief del brand, personalita', direzioni di nome (incluso ZOMA), domini, direzione visiva |
 | [docs/SUPABASE-CONTATTI.md](docs/SUPABASE-CONTATTI.md) | Archivio dei contatti dello stimatore su Supabase (Francoforte): tabella, funzione, protezioni, cosa resta da fare |
 | [docs/PREVENTIVO-E-CONTRATTO.md](docs/PREVENTIVO-E-CONTRATTO.md) | Bozza del modello di preventivo, dell'accordo di servizio (con cura continua e GDPR) e del resoconto mensile |
-| [modelli/](modelli/) | Documenti dello studio pronti da compilare e stampare: preventivo.html/.pdf (2 pagine) e ccordo-di-servizio.html/.pdf (3 pagine), con il logo e lo stile del sito. Si modificano gli .html e si rigenerano i PDF |
+| [modelli/](modelli/) | Documenti dello studio da compilare e stampare: `preventivo.html` e `.pdf` (2 pagine), `accordo-di-servizio.html` e `.pdf` (3 pagine), con il logo e lo stile del sito. Si modificano gli `.html` e si rigenerano i PDF |
 | [docs/LOGO-PROMPT.md](docs/LOGO-PROMPT.md) | Prompt per generare alternative di logo (brief comune e cinque opzioni) |
 | [docs/STIMATORE.md](docs/STIMATORE.md) | Come funziona lo stimatore a fasce del sito, come calcola, cosa manca per collegarlo ai contatti |
 | [docs/LISTINO-E-TEMPI.md](docs/LISTINO-E-TEMPI.md) | Proposta di listino a fasce, tempi di consegna, forfait del primo mese, proprieta' di dominio e contenuti |
