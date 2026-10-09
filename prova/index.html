@@ -549,7 +549,18 @@ h3, .goals .lab, .terms .fig, .meter__row b, .faq summary, .est__step legend, .e
 .gal.is-pinned .page__blk + .page__blk { margin-top: .95rem; padding-top: .95rem; }
 .gal.is-pinned .page__tags { padding-top: .9rem; }
 .gal.is-pinned .page__info .link { margin-top: .9rem; }
-.gal.is-pinned .page__info p { font-size: .96rem; line-height: 1.55; }
+/* il testo riempie la scheda: il corpo cresce con l'altezza, lo spazio libero si divide tra titolo, blocchi e link */
+.gal.is-pinned .page { container-type: size; }
+.gal.is-pinned .page__info p { font-size: clamp(.9rem, 3.05cqh, 1.14rem); line-height: 1.55; }
+.gal.is-pinned .page__info h3 { font-size: clamp(1.7rem, 6.8cqh, 2.9rem); }
+.gal.is-pinned .page__info > .page__blk:first-of-type { margin-top: auto; }
+.gal.is-pinned .page__tags { margin-top: auto; font-size: clamp(.78rem, 2.4cqh, .92rem); }
+/* i disegni si formano quando la scheda compare, poi l'oro respira piano */
+@keyframes drawIn { from { stroke-dashoffset: 1; } to { stroke-dashoffset: 0; } }
+@keyframes goldGlow { 0%, 100% { filter: drop-shadow(0 0 4px rgba(217, 179, 108, .45)); } 50% { filter: drop-shadow(0 0 13px rgba(217, 179, 108, 1)); } }
+.gal.js-draw .page__art .dr { stroke-dashoffset: 1; }
+.gal.js-draw .page.is-active .page__art .dr { animation: drawIn 1.5s cubic-bezier(.45, .05, .2, 1) both; animation-delay: calc(var(--k, 0) * 75ms + .15s); }
+.gal.js-draw .page.is-active .page__art .sk--gold { animation: drawIn 1.5s cubic-bezier(.45, .05, .2, 1) both, goldGlow 3.4s ease-in-out infinite; animation-delay: calc(var(--k, 0) * 75ms + .15s), 2.8s; }
 </style>
 </head>
 <body>
@@ -658,11 +669,11 @@ h3, .goals .lab, .terms .fig, .meter__row b, .faq summary, .est__step legend, .e
             </svg>
           </div>
           <div class="page__info">
-            <p class="page__meta">01 · Sito, menu, scheda Google</p>
+            <p class="page__meta">01 · Sito, menu, schede e profili</p>
             <h3>Presenza online</h3>
-            <div class="page__blk"><span class="page__lab">Il problema</span><p class="soft">Le informazioni cambiano a ogni stagione e il sito non le segue: orari, menu e offerte restano quelli dell'anno scorso.</p></div>
-            <div class="page__blk"><span class="page__lab">La risposta</span><p>Un sito chiaro e veloce, un menu che si aggiorna in un minuto e una scheda Google allineata. Tutto in italiano e in inglese, scritto da madrelingua.</p></div>
-            <p class="page__tags">Sito e menu digitale · Scheda Google · Testi in inglese</p>
+            <div class="page__blk"><span class="page__lab">Il problema</span><p class="soft">Orari, menu, offerte e informazioni cambiano a ogni stagione, e quello che c'è online resta fermo all'anno scorso: sul sito, sulle schede, sui profili.</p></div>
+            <div class="page__blk"><span class="page__lab">La risposta</span><p>Una presenza ordinata e allineata: sito, menu, scheda Google e profili raccontano la stessa cosa, e si aggiornano in un punto solo.</p></div>
+            <p class="page__tags">Sito · Menu digitale · Scheda Google · Profili</p>
             <a class="link" href="https://wa.me/393339580381?text=Ciao%20Matia%2C%20vorrei%20saperne%20di%20pi%C3%B9%20su%3A%20Presenza%20online" target="_blank" rel="noopener">Un messaggio su WhatsApp
               <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true"><path d="M3 13 13 3M5.5 3H13v7.5"/></svg></a>
           </div>
@@ -689,7 +700,7 @@ h3, .goals .lab, .terms .fig, .meter__row b, .faq summary, .est__step legend, .e
             <p class="page__meta">02 · Risposte, richieste, promemoria</p>
             <h3>Automazioni</h3>
             <div class="page__blk"><span class="page__lab">Il problema</span><p class="soft">Un'attività cresce e i compiti ripetuti crescono con lei, finché un giorno occupano più tempo del lavoro vero.</p></div>
-            <div class="page__blk"><span class="page__lab">La risposta</span><p>Si cerca dove il tempo si perde e si costruisce lo strumento che lo recupera: una risposta automatica, un promemoria, un modulo che ordina le richieste.</p></div>
+            <div class="page__blk"><span class="page__lab">La risposta</span><p>Si cerca dove il tempo si perde e si costruisce lo strumento che lo recupera: risposte che partono da sole, promemoria, richieste che arrivano già ordinate nel CRM o nella casella giusta.</p></div>
             <p class="page__tags">Risposte automatiche · Richieste ordinate · Strumenti interni</p>
             <a class="link" href="https://wa.me/393339580381?text=Ciao%20Matia%2C%20vorrei%20saperne%20di%20pi%C3%B9%20su%3A%20Automazioni" target="_blank" rel="noopener">Un messaggio su WhatsApp
               <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true"><path d="M3 13 13 3M5.5 3H13v7.5"/></svg></a>
@@ -710,7 +721,7 @@ h3, .goals .lab, .terms .fig, .meter__row b, .faq summary, .est__step legend, .e
           <div class="page__info">
             <p class="page__meta">03 · Aggiornamenti, sicurezza, backup</p>
             <h3>Cura continua</h3>
-            <div class="page__blk"><span class="page__lab">Il problema</span><p class="soft">Il sito è un meccanismo vivo: invecchia, si usura, chiede piccole regolazioni. Senza qualcuno che le faccia, rallenta fino a fermarsi.</p></div>
+            <div class="page__blk"><span class="page__lab">Il problema</span><p class="soft">Ogni strumento digitale, dal sito alla casella di posta, dal CRM al profilo online, invecchia e chiede piccole regolazioni. Senza qualcuno che le faccia, rallenta fino a fermarsi.</p></div>
             <div class="page__blk"><span class="page__lab">La risposta</span><p>Messa a punto continua: il primo mese senza limite di ore, per capire quanto serve, poi un tempo di assistenza fissato insieme.</p></div>
             <p class="page__tags">Primo mese senza limite · Assistenza fissata insieme · Resoconto mensile</p>
             <a class="link" href="https://wa.me/393339580381?text=Ciao%20Matia%2C%20vorrei%20saperne%20di%20pi%C3%B9%20su%3A%20Cura%20continua" target="_blank" rel="noopener">Un messaggio su WhatsApp
@@ -733,7 +744,7 @@ h3, .goals .lab, .terms .fig, .meter__row b, .faq summary, .est__step legend, .e
           <div class="page__info">
             <p class="page__meta">04 · Numeri, percorsi, priorità</p>
             <h3>Check-up</h3>
-            <div class="page__blk"><span class="page__lab">Il problema</span><p class="soft">Capita di intervenire a caso: si rifà il sito e il problema era altrove.</p></div>
+            <div class="page__blk"><span class="page__lab">Il problema</span><p class="soft">Capita di intervenire a caso: si rifà una pagina, si cambia un programma, e il problema era altrove.</p></div>
             <div class="page__blk"><span class="page__lab">La risposta</span><p>Una ricerca prima di costruire: si guardano i numeri, i percorsi dei clienti e gli strumenti in uso, e si consegna una mappa chiara delle priorità. Il costo si scala dal lavoro che segue.</p></div>
             <p class="page__tags">Numeri · Percorso dei clienti · Mappa delle priorità</p>
             <a class="link" href="https://wa.me/393339580381?text=Ciao%20Matia%2C%20vorrei%20saperne%20di%20pi%C3%B9%20su%3A%20Check-up" target="_blank" rel="noopener">Un messaggio su WhatsApp
@@ -1078,10 +1089,23 @@ h3, .goals .lab, .terms .fig, .meter__row b, .faq summary, .est__step legend, .e
     var gal = $('#servizi'), stage = $('#galStage'), pages = $$('.page', stage), N = pages.length;
     var dots = $$('#galDots button'), now = $('#galNow');
     var mq = matchMedia('(min-width: 900px) and (min-height: 520px)');
-    if (!mq.matches) return;
+    /* i disegni si formano quando la scheda compare: ogni linea parte con un piccolo ritardo */
+    if (!reduce) gal.classList.add('js-draw');
+    $$('.page__art', stage).forEach(function (art) { $$('.dr', art).forEach(function (e, i) { e.style.setProperty('--k', i); }); });
+    var inView = false, front = -1;
+    function act(i) { pages.forEach(function (pg, k) { pg.classList.toggle('is-active', k === i); }); }
+    if (!mq.matches) {
+      if ('IntersectionObserver' in window) {
+        var pio = new IntersectionObserver(function (es) { es.forEach(function (e) { e.target.closest('.page').classList.toggle('is-active', e.isIntersecting); }); }, { threshold: .3 });
+        $$('.page__art', stage).forEach(function (art) { pio.observe(art); });
+      } else act(-1), pages.forEach(function (pg) { pg.classList.add('is-active'); });
+      return;
+    }
     /* con "riduci movimento" la pagina scorre in orizzontale con lo scroll (e' l'utente a muoverla), senza prospettiva ne' scatti */
     gal.classList.add('is-pinned');
-    var proxy = { p: 0 }, front = -1, spacing = 0;
+    var proxy = { p: 0 }, spacing = 0;
+    if ('IntersectionObserver' in window) new IntersectionObserver(function (es) { inView = es[0].isIntersecting; act(inView ? Math.max(0, front) : -1); }, { threshold: .35 }).observe(gal);
+    else { inView = true; }
     function metrics() {
       var pw = Math.min(1080, stage.clientWidth * .8);
       stage.style.setProperty('--pw', pw + 'px');
@@ -1101,6 +1125,7 @@ h3, .goals .lab, .terms .fig, .meter__row b, .faq summary, .est__step legend, .e
       });
       if (f !== front) {
         front = f;
+        if (inView) act(f);
         pages.forEach(function (pg, i) { if (i === f) pg.removeAttribute('inert'); else pg.setAttribute('inert', ''); });
         dots.forEach(function (d, i) { d.classList.toggle('on', i === f); });
         now.textContent = '0' + (f + 1);

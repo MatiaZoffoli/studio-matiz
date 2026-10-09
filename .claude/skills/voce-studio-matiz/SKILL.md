@@ -85,6 +85,8 @@ Matia lo ha chiesto così (2026-10-08): ispirazione da atelier, ma **capibile su
 - **Titoli che raccontano un momento o una situazione** ("Quello che succede dopo la consegna", "Va bene, poi non più", "Nessuno lo prende in carico"): frasi vere, con un verbo, scelte nella variante sobria.
 - **Il lessico che funziona è quello di ricerca, sviluppo e messa a punto**: "si cerca dove il tempo si perde e si costruisce lo strumento che lo recupera", "un meccanismo vivo che chiede piccole regolazioni", "una ricerca prima di costruire". La forma impersonale riflessiva ("si cerca", "si guardano", "si consegna") è la sua preferita per descrivere cosa si fa.
 - **Un problema parte da un fatto verificabile**: orari rimasti quelli dell'anno scorso, compiti ripetuti che crescono con l'attività, un canone che non dice cosa copre.
+- **Parlare in generale, non solo di sito.** Studio Matiz lavora su ogni strumento digitale: sito, pagina, profilo, scheda, menu, CRM, casella di posta, moduli. "Il sito" si scrive solo dove il testo parla davvero di un sito; negli altri casi si dice "strumento", "canale", "presenza", "ogni cosa che si usa online".
+- **L'inglese da madrelingua non va nelle schede dei servizi.** Resta nelle FAQ e in "Chi sono", dove è un fatto su Matia, non una caratteristica del servizio.
 - **Il primo incontro dura un'ora**, "tra chiacchiere e caffè": il tempo suona più disteso e vero.
 - Si lavora **pezzo per pezzo**, almeno tre varianti per ciascuno, e le scelte si annotano in `esempi.md`.
 
