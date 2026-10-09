@@ -12,6 +12,8 @@ Indice: A. dal sito (automatiche) · B. scritte da Matia lungo il percorso · C.
 
 **Grafica (2026-10-09):** A1 e A2 partono come email HTML nel tema del sito (carta, inchiostro, filo d'ottone, titoli in Bodoni, testata scura con il nome dello studio), con la versione in testo semplice per i programmi di posta che non leggono l'HTML. A1 esce in italiano o in inglese secondo la pagina in cui il cliente ha compilato. Il codice e' in `supabase/functions/contatto/email.ts`; le anteprime con dati di fantasia si rigenerano con `node supabase/functions/contatto/preview.ts` e stanno in `email/anteprime/`. Il testo qui sotto resta il riferimento.
 
+**Livello grafico delle email (2026-10-09).** Le email non eseguono JavaScript e leggono poco CSS, quindi la profondita' del sito si porta con immagini e con CSS prudente, che peggiora con garbo dove non e' letto. Sono presenti: il **banner** con la scena 3D vera del sito (`prova/email/banner.jpg`, ricavata con `tools/email_assets.py` dal sito aperto con `#email-banner`), la **grana di carta** (`grain.png`), sfumatura e ombra sul riquadro del prezzo, ombra sulla scheda, filo d'ottone sfumato, piede scuro. Su Outlook per computer il banner e' reso con VML; se le immagini sono bloccate resta la testata scura con il nome. **Non si possono portare:** movimento, scorrimento, luce che segue il puntatore, effetti al passaggio del mouse, 3D in tempo reale. Le immagini sono servite dal sito (`/email/`): quando cambia il dominio basta aggiornare l'indirizzo (`SITE_URL`).
+
 ### A1. Conferma dello stimatore (al cliente, subito)
 
 **Oggetto:** Richiesta ricevuta: il prezzo di partenza per {{tipo}}

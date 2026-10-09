@@ -11,6 +11,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400..700;1,6..96,400..700&family=Manrope:wght@300;400;500;600&display=swap" rel="stylesheet">
+<script>if (location.hash === '#email-banner') document.documentElement.classList.add('email-banner');</script>
 <script id="langRedirect">
 /* Chi ha scelto l'inglese con il selettore ritrova l'inglese. */
 try { if (localStorage.getItem('lang') === 'en') location.replace('/en/' + location.hash); } catch (e) {}
@@ -722,6 +723,12 @@ html.has-swipe { scroll-snap-type: y proximity; }
   .steps li { padding-block: 1.75rem; }
   .steps p { font-size: 1rem; line-height: 1.6; }
 }
+
+/* Modo per ricavare le immagini delle email: solo la scena 3D del hero (indirizzo con #email-banner) */
+.email-banner .site, .email-banner .hero__main, .email-banner .hero > .wrap:last-child, .email-banner .hero__fallback, .email-banner .hero ~ *, .email-banner .foot { display: none !important; }
+.email-banner .hero { min-height: 100vh; }
+.email-banner .hero__gl { opacity: 1 !important; }
+.email-banner body { overflow: hidden; }
 </style>
 </head>
 <body>

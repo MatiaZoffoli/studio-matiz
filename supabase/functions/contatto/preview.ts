@@ -1,6 +1,8 @@
 // Anteprime delle email con dati di fantasia. Uso: node supabase/functions/contatto/preview.ts
 // Scrive i file in email/anteprime/ (HTML e testo semplice). Non invia nulla.
 import { writeFileSync, mkdirSync } from "node:fs";
+import { resolve } from "node:path";
+import { pathToFileURL } from "node:url";
 import { confermaCliente, avvisoStudio } from "./email.ts";
 
 const ctx = {
@@ -8,6 +10,8 @@ const ctx = {
   sito: "https://studio-matiz.vercel.app",
   whatsapp: "393339580381",
   emailStudio: "matiazoffoli@gmail.com",
+  // nelle anteprime le immagini si leggono dai file locali; online sono quelle del sito (/email/)
+  assets: pathToFileURL(resolve("prova/email")).href,
 };
 const it = { nome: "Anna", email: "anna@bagnoesempio.it", telefono: "+39 333 111 2222", tipo: "Stabilimento balneare", servizi: ["sito", "menu", "assistenza"], presenza: "Ho un sito vecchio", dimensione: "media", da: 1500, fino: 3200, lingua: "it" as const, secondi: 42 };
 const en = { ...it, nome: "Anna", tipo: "Beach club", presenza: "I have an old website", lingua: "en" as const };

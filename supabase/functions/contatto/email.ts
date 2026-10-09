@@ -23,6 +23,7 @@ export type Contesto = {
   sito: string;          // es. https://studio-matiz.vercel.app
   whatsapp: string;      // solo cifre, es. 393339580381
   emailStudio: string;
+  assets?: string;       // cartella delle immagini (predefinita: sito + /email)
 };
 
 // ---------------------------------------------------------------- colori e caratteri (gli stessi del sito)
@@ -78,10 +79,24 @@ function passo(n: string, testo: string): string {
   return `<tr><td style="padding:9px 14px 9px 0;font:600 11px/1.5 ${SANS};letter-spacing:.14em;color:${C.goldText};vertical-align:top;width:34px">${n}</td><td style="padding:9px 0;font:400 15px/1.55 ${SANS};color:${C.ink}">${testo}</td></tr>`;
 }
 
-function cornice(opts: { l: Lingua; anteprima: string; eyebrow: string; titolo: string; corpo: string; piede: string }): string {
-  const { l, anteprima, eyebrow, titolo, corpo, piede } = opts;
+function prezzoBox(etichetta: string, valore: string, nota: string): string {
+  return `<table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="margin:26px 0 8px"><tr><td bgcolor="${C.tint}" style="background:${C.tint};background-image:linear-gradient(135deg,#F7F0E1 0%,#EADFC8 100%);padding:22px 26px 22px 24px;border-left:3px solid ${C.gold};box-shadow:0 22px 34px -24px rgba(36,30,26,.55)">
+        <div style="font:600 10px/1.4 ${SANS};letter-spacing:.2em;text-transform:uppercase;color:${C.goldText}">${esc(etichetta)}</div>
+        <div style="margin-top:6px;font:450 36px/1.1 ${SERIF};letter-spacing:-.02em;color:${C.ink}">${esc(valore)}</div>
+        <div style="margin-top:10px;font:300 13px/1.6 ${SANS};color:${C.soft}">${esc(nota)}</div>
+      </td></tr></table>`;
+}
+
+function filo(): string {
+  return `<table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="margin:30px 0 0"><tr><td height="1" bgcolor="${C.line}" style="height:1px;line-height:1px;font-size:1px;background:${C.line};background-image:linear-gradient(90deg,${C.gold} 0%,rgba(168,133,79,0) 100%)">&nbsp;</td></tr></table>`;
+}
+
+function cornice(opts: { l: Lingua; anteprima: string; eyebrow: string; titolo: string; corpo: string; piede: string; assets: string }): string {
+  const { l, anteprima, eyebrow, titolo, corpo, piede, assets } = opts;
+  const banner = `${assets}/banner.jpg`;
+  const grana = `${assets}/grain.png`;
   return `<!doctype html>
-<html lang="${l}">
+<html lang="${l}" xmlns:v="urn:schemas-microsoft-com:vml">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -89,22 +104,27 @@ function cornice(opts: { l: Lingua; anteprima: string; eyebrow: string; titolo: 
 <meta name="supported-color-schemes" content="light only">
 <title>${esc(titolo.replace(/<[^>]+>/g, ""))}</title>
 <link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:opsz,wght@6..96,400..700&family=Manrope:wght@300;400;500;600&display=swap" rel="stylesheet">
-<style>@media (max-width:620px){.wrap{width:100%!important}.pad{padding-left:24px!important;padding-right:24px!important}.h1{font-size:30px!important}}</style>
+<style>@media (max-width:620px){.wrap{width:100%!important}.pad{padding-left:24px!important;padding-right:24px!important}.h1{font-size:30px!important}.ban{height:210px!important;background-position:62% center!important}}</style>
 </head>
 <body style="margin:0;padding:0;background:${C.sand}">
 <div style="display:none;max-height:0;overflow:hidden;opacity:0;color:${C.sand}">${esc(anteprima)}&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;</div>
-<table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" bgcolor="${C.sand}" style="background:${C.sand}"><tr><td align="center" style="padding:28px 12px">
-  <table role="presentation" class="wrap" width="600" cellpadding="0" cellspacing="0" border="0" style="width:600px;max-width:600px">
-    <tr><td class="pad" bgcolor="${C.night}" style="background:${C.night};padding:30px 40px 26px;border-bottom:2px solid ${C.gold}">
-      <div style="font:450 26px/1.1 ${SERIF};letter-spacing:-.01em;color:${C.cream}">Studio Matiz</div>
-      <div style="margin-top:8px;font:600 10px/1.4 ${SANS};letter-spacing:.22em;text-transform:uppercase;color:${C.goldLight}">${l === "en" ? "by Matia Zoffoli" : "di Matia Zoffoli"} &middot; Cesenatico</div>
+<table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" bgcolor="${C.sand}" style="background:${C.sand};background-image:url('${grana}')"><tr><td align="center" style="padding:30px 12px 36px">
+  <table role="presentation" class="wrap" width="600" cellpadding="0" cellspacing="0" border="0" style="width:600px;max-width:600px;box-shadow:0 46px 70px -42px rgba(22,18,16,.7)">
+    <tr><td class="ban" background="${banner}" bgcolor="${C.night}" valign="middle" height="260" style="background:${C.night} url('${banner}') center center / cover no-repeat;height:260px;border-bottom:2px solid ${C.gold}">
+      <!--[if gte mso 9]><v:rect xmlns:v="urn:schemas-microsoft-com:vml" fill="true" stroke="false" style="width:600px;height:260px"><v:fill type="frame" src="${banner}" color="${C.night}" /><v:textbox inset="0,0,0,0"><![endif]-->
+      <div class="pad" style="padding:0 40px">
+        <div style="font:450 30px/1.1 ${SERIF};letter-spacing:-.01em;color:${C.cream}">Studio Matiz</div>
+        <div style="margin-top:10px;width:34px;height:1px;background:${C.gold}">&nbsp;</div>
+        <div style="margin-top:12px;font:600 10px/1.5 ${SANS};letter-spacing:.22em;text-transform:uppercase;color:${C.goldLight}">${l === "en" ? "by Matia Zoffoli" : "di Matia Zoffoli"}<br>Cesenatico</div>
+      </div>
+      <!--[if gte mso 9]></v:textbox></v:rect><![endif]-->
     </td></tr>
-    <tr><td class="pad" bgcolor="${C.card}" style="background:${C.card};padding:40px 40px 34px">
+    <tr><td class="pad" bgcolor="${C.card}" style="background:${C.card};background-image:url('${grana}');padding:42px 40px 36px">
       <div style="font:600 10px/1.4 ${SANS};letter-spacing:.22em;text-transform:uppercase;color:${C.goldText}">&#9679;&nbsp; ${esc(eyebrow)}</div>
-      <h1 class="h1" style="margin:14px 0 18px;font:450 34px/1.08 ${SERIF};letter-spacing:-.02em;color:${C.ink}">${titolo}</h1>
+      <h1 class="h1" style="margin:14px 0 18px;font:450 36px/1.06 ${SERIF};letter-spacing:-.02em;color:${C.ink}">${titolo}</h1>
       ${corpo}
     </td></tr>
-    <tr><td class="pad" style="padding:22px 40px 8px;font:400 12px/1.7 ${SANS};color:${C.soft}">${piede}</td></tr>
+    <tr><td class="pad" bgcolor="${C.night}" style="background:${C.night};padding:26px 40px 28px;border-top:2px solid ${C.gold};font:400 12px/1.8 ${SANS};color:#CFC5B3">${piede}</td></tr>
   </table>
 </td></tr></table>
 </body>
@@ -166,21 +186,18 @@ export function confermaCliente(r: Richiesta, ctx: Contesto): { subject: string;
       <div style="font:600 10px/1.4 ${SANS};letter-spacing:.2em;text-transform:uppercase;color:${C.soft};margin:0 0 4px">${esc(T.riepilogo)}</div>
       <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="border-top:1px solid ${C.ink}">${righe}</table>
 
-      <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="margin:26px 0 8px"><tr><td bgcolor="${C.tint}" style="background:${C.tint};padding:22px 24px;border-left:3px solid ${C.gold}">
-        <div style="font:600 10px/1.4 ${SANS};letter-spacing:.2em;text-transform:uppercase;color:${C.goldText}">${esc(T.prezzoL)}</div>
-        <div style="margin-top:6px;font:450 34px/1.1 ${SERIF};letter-spacing:-.02em;color:${C.ink}">${esc(prezzoTxt)}</div>
-        <div style="margin-top:10px;font:300 13px/1.6 ${SANS};color:${C.soft}">${esc(T.nota)}</div>
-      </td></tr></table>
+      ${prezzoBox(T.prezzoL, prezzoTxt, T.nota)}
 
-      <div style="margin:30px 0 4px;font:600 10px/1.4 ${SANS};letter-spacing:.2em;text-transform:uppercase;color:${C.soft}">${esc(T.come)}</div>
+      ${filo()}
+      <div style="margin:22px 0 4px;font:600 10px/1.4 ${SANS};letter-spacing:.2em;text-transform:uppercase;color:${C.soft}">${esc(T.come)}</div>
       <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="border-top:1px solid ${C.line}">${passo("01", T.p1)}${passo("02", T.p2)}${passo("03", T.p3)}</table>
 
       <div style="margin:28px 0 10px">${btn(ctx.calendario, T.cta)}</div>
       <p style="margin:0 0 6px;font:300 14px/1.6 ${SANS};color:${C.soft}">${esc(T.alt)}</p>`;
 
-  const piede = `${esc(T.firma)}<br>Cesenatico &middot; <a href="mailto:${esc(ctx.emailStudio)}" style="color:${C.soft}">${esc(ctx.emailStudio)}</a> &middot; <a href="https://wa.me/${esc(ctx.whatsapp)}" style="color:${C.soft}">WhatsApp +39 333 958 0381</a><br><span style="color:${C.soft}">${esc(T.piede1)} <a href="${esc(privacyUrl)}" style="color:${C.soft}">${esc(T.privacy)}</a>.</span>`;
+  const piede = `<span style="font:450 16px/1.4 ${SERIF};color:${C.cream}">${esc(T.firma)}</span><br>Cesenatico &middot; <a href="mailto:${esc(ctx.emailStudio)}" style="color:${C.goldLight};text-decoration:none">${esc(ctx.emailStudio)}</a> &middot; <a href="https://wa.me/${esc(ctx.whatsapp)}" style="color:${C.goldLight};text-decoration:none">WhatsApp +39 333 958 0381</a><br><span style="font-size:11px;color:#9C9283">${esc(T.piede1)} <a href="${esc(privacyUrl)}" style="color:#9C9283">${esc(T.privacy)}</a>.</span>`;
 
-  const html = cornice({ l, anteprima: T.pre, eyebrow: T.eyebrow, titolo: T.titolo, corpo, piede });
+  const html = cornice({ l, anteprima: T.pre, eyebrow: T.eyebrow, titolo: T.titolo, corpo, piede, assets: ctx.assets ?? `${ctx.sito}/email` });
 
   const text = [
     T.hello, "", T.intro, "",
@@ -216,15 +233,11 @@ export function avvisoStudio(r: Richiesta, ctx: Contesto): { subject: string; ht
   const corpo = `
       <p style="margin:0 0 22px;font:300 16px/1.65 ${SANS};color:${C.ink}">Ha chiesto un prezzo di partenza dallo stimatore${r.secondi !== null ? `, compilato in ${r.secondi} secondi` : ""}.</p>
       <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="border-top:1px solid ${C.ink}">${righe}</table>
-      <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="margin:24px 0 6px"><tr><td bgcolor="${C.tint}" style="background:${C.tint};padding:20px 24px;border-left:3px solid ${C.gold}">
-        <div style="font:600 10px/1.4 ${SANS};letter-spacing:.2em;text-transform:uppercase;color:${C.goldText}">Prezzo mostrato</div>
-        <div style="margin-top:6px;font:450 30px/1.1 ${SERIF};letter-spacing:-.02em;color:${C.ink}">${esc(prezzoTxt)}</div>
-        <div style="margin-top:8px;font:300 13px/1.6 ${SANS};color:${C.soft}">Tetto interno: ${esc(tetto)}. Il cliente vede solo il prezzo di partenza.</div>
-      </td></tr></table>
+      ${prezzoBox("Prezzo mostrato", prezzoTxt, `Tetto interno: ${tetto}. Il cliente vede solo il prezzo di partenza.`)}
       <p style="margin:24px 0 14px;font:400 15px/1.6 ${SANS};color:${C.ink}"><b>Da fare:</b> rispondere entro un giorno lavorativo e proporre il primo incontro.</p>
       <div>${btn(`mailto:${r.email}?subject=${encodeURIComponent("Il tuo prezzo di partenza - Studio Matiz")}`, "Rispondi per email")}${wa ? btn(wa, "Scrivi su WhatsApp", false) : ""}</div>`;
-  const piede = `Avviso automatico dello stimatore del sito &middot; Studio Matiz`;
-  const html = cornice({ l, anteprima: `${r.nome}: ${prezzoTxt}`, eyebrow: "Nuova richiesta", titolo: esc(r.nome), corpo, piede });
+  const piede = `<span style="font:450 16px/1.4 ${SERIF};color:${C.cream}">Studio Matiz</span><br><span style="font-size:11px;color:#9C9283">Avviso automatico dello stimatore del sito</span>`;
+  const html = cornice({ l, anteprima: `${r.nome}: ${prezzoTxt}`, eyebrow: "Nuova richiesta", titolo: esc(r.nome), corpo, piede, assets: ctx.assets ?? `${ctx.sito}/email` });
   const text = [
     `${r.nome} ha chiesto un prezzo di partenza${r.secondi !== null ? ` (compilato in ${r.secondi} secondi)` : ""}.`, "",
     `Email: ${r.email}`, r.telefono ? `Telefono: ${r.telefono}` : "",
