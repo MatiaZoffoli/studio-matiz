@@ -9,6 +9,7 @@ import { avvisoStudio, confermaCliente } from "./email.ts";
 //   RESEND_API_KEY   chiave di Resend: senza, nessuna email parte
 //   NOTIFY_EMAIL     dove arriva l'avviso per ogni nuova richiesta (A2 in docs/EMAIL-E-RISPOSTE.md)
 //   NOTIFY_FROM      mittente dell'avviso, es. "Studio Matiz <onboarding@resend.dev>" (predefinito) o un indirizzo del dominio verificato
+//   EMAIL_LOGO       indirizzo dell'immagine del logo (chiara su fondo scuro, es. https://.../email/logo.png); senza, la testata usa il nome in carattere
 //   CONFIRM_FROM     mittente della conferma al cliente (A1), es. "Studio Matiz <ciao@studiomatiz.it>". Serve un dominio verificato su Resend:
 //                    se manca, la conferma al cliente non parte e resta solo l'avviso a Matia.
 
@@ -150,6 +151,7 @@ Deno.serve(async (req: Request) => {
       sito: Deno.env.get("SITE_URL") ?? "https://studio-matiz.vercel.app",
       whatsapp: "393339580381",
       emailStudio: "matiazoffoli@gmail.com",
+      logo: Deno.env.get("EMAIL_LOGO") ?? undefined,   // indirizzo dell'immagine del logo, quando esiste
     };
 
     // A2. Avviso a Matia (sempre in italiano). "Rispondi" va all'email del cliente.

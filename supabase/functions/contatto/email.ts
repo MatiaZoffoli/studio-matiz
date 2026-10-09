@@ -24,6 +24,7 @@ export type Contesto = {
   whatsapp: string;      // solo cifre, es. 393339580381
   emailStudio: string;
   assets?: string;       // cartella delle immagini (predefinita: sito + /email)
+  logo?: string;         // indirizzo dell'immagine del logo (chiara su fondo scuro); senza, si usa il nome in carattere
 };
 
 // ---------------------------------------------------------------- colori e caratteri (gli stessi del sito)
@@ -91,9 +92,12 @@ function filo(): string {
   return `<table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="margin:30px 0 0"><tr><td height="1" bgcolor="${C.line}" style="height:1px;line-height:1px;font-size:1px;background:${C.line};background-image:linear-gradient(90deg,${C.gold} 0%,rgba(168,133,79,0) 100%)">&nbsp;</td></tr></table>`;
 }
 
-function cornice(opts: { l: Lingua; anteprima: string; eyebrow: string; titolo: string; corpo: string; piede: string; assets: string }): string {
-  const { l, anteprima, eyebrow, titolo, corpo, piede, assets } = opts;
-  const banner = `${assets}/banner.jpg`;
+function cornice(opts: { l: Lingua; anteprima: string; eyebrow: string; titolo: string; corpo: string; piede: string; assets: string; logo?: string }): string {
+  const { l, anteprima, eyebrow, titolo, corpo, piede, assets, logo } = opts;
+  const banner = `${assets}/header.jpg`;
+  const marchio = logo
+    ? `<img src="${esc(logo)}" width="220" alt="Studio Matiz" style="display:block;margin:0 auto;border:0;height:auto">`
+    : `<div style="font:450 34px/1.1 ${SERIF};letter-spacing:-.01em;color:${C.cream}">Studio Matiz</div>`;
   const grana = `${assets}/grain.png`;
   return `<!doctype html>
 <html lang="${l}" xmlns:v="urn:schemas-microsoft-com:vml">
@@ -104,18 +108,18 @@ function cornice(opts: { l: Lingua; anteprima: string; eyebrow: string; titolo: 
 <meta name="supported-color-schemes" content="light only">
 <title>${esc(titolo.replace(/<[^>]+>/g, ""))}</title>
 <link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:opsz,wght@6..96,400..700&family=Manrope:wght@300;400;500;600&display=swap" rel="stylesheet">
-<style>@media (max-width:620px){.wrap{width:100%!important}.pad{padding-left:24px!important;padding-right:24px!important}.h1{font-size:30px!important}.ban{height:210px!important;background-position:62% center!important}}</style>
+<style>@media (max-width:620px){.wrap{width:100%!important}.pad{padding-left:24px!important;padding-right:24px!important}.h1{font-size:30px!important}.ban{height:150px!important}}</style>
 </head>
 <body style="margin:0;padding:0;background:${C.sand}">
 <div style="display:none;max-height:0;overflow:hidden;opacity:0;color:${C.sand}">${esc(anteprima)}&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;</div>
 <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" bgcolor="${C.sand}" style="background:${C.sand};background-image:url('${grana}')"><tr><td align="center" style="padding:30px 12px 36px">
   <table role="presentation" class="wrap" width="600" cellpadding="0" cellspacing="0" border="0" style="width:600px;max-width:600px;box-shadow:0 46px 70px -42px rgba(22,18,16,.7)">
-    <tr><td class="ban" background="${banner}" bgcolor="${C.night}" valign="middle" height="260" style="background:${C.night} url('${banner}') center center / cover no-repeat;height:260px;border-bottom:2px solid ${C.gold}">
-      <!--[if gte mso 9]><v:rect xmlns:v="urn:schemas-microsoft-com:vml" fill="true" stroke="false" style="width:600px;height:260px"><v:fill type="frame" src="${banner}" color="${C.night}" /><v:textbox inset="0,0,0,0"><![endif]-->
-      <div class="pad" style="padding:0 40px">
-        <div style="font:450 30px/1.1 ${SERIF};letter-spacing:-.01em;color:${C.cream}">Studio Matiz</div>
-        <div style="margin-top:10px;width:34px;height:1px;background:${C.gold}">&nbsp;</div>
-        <div style="margin-top:12px;font:600 10px/1.5 ${SANS};letter-spacing:.22em;text-transform:uppercase;color:${C.goldLight}">${l === "en" ? "by Matia Zoffoli" : "di Matia Zoffoli"}<br>Cesenatico</div>
+    <tr><td class="ban" background="${banner}" bgcolor="${C.night}" align="center" valign="middle" height="170" style="background:${C.night} url('${banner}') center center / cover no-repeat;height:170px;text-align:center;border-bottom:2px solid ${C.gold}">
+      <!--[if gte mso 9]><v:rect xmlns:v="urn:schemas-microsoft-com:vml" fill="true" stroke="false" style="width:600px;height:170px"><v:fill type="frame" src="${banner}" color="${C.night}" /><v:textbox inset="0,0,0,0"><![endif]-->
+      <div class="pad" style="padding:0 40px;text-align:center">
+        ${marchio}
+        <div style="margin:12px auto 0;width:34px;height:1px;background:${C.gold}">&nbsp;</div>
+        <div style="margin-top:12px;font:600 10px/1.5 ${SANS};letter-spacing:.24em;text-transform:uppercase;color:${C.goldLight}">${l === "en" ? "by Matia Zoffoli" : "di Matia Zoffoli"} &middot; Cesenatico</div>
       </div>
       <!--[if gte mso 9]></v:textbox></v:rect><![endif]-->
     </td></tr>
@@ -197,7 +201,7 @@ export function confermaCliente(r: Richiesta, ctx: Contesto): { subject: string;
 
   const piede = `<span style="font:450 16px/1.4 ${SERIF};color:${C.cream}">${esc(T.firma)}</span><br>Cesenatico &middot; <a href="mailto:${esc(ctx.emailStudio)}" style="color:${C.goldLight};text-decoration:none">${esc(ctx.emailStudio)}</a> &middot; <a href="https://wa.me/${esc(ctx.whatsapp)}" style="color:${C.goldLight};text-decoration:none">WhatsApp +39 333 958 0381</a><br><span style="font-size:11px;color:#9C9283">${esc(T.piede1)} <a href="${esc(privacyUrl)}" style="color:#9C9283">${esc(T.privacy)}</a>.</span>`;
 
-  const html = cornice({ l, anteprima: T.pre, eyebrow: T.eyebrow, titolo: T.titolo, corpo, piede, assets: ctx.assets ?? `${ctx.sito}/email` });
+  const html = cornice({ l, anteprima: T.pre, eyebrow: T.eyebrow, titolo: T.titolo, corpo, piede, assets: ctx.assets ?? `${ctx.sito}/email`, logo: ctx.logo });
 
   const text = [
     T.hello, "", T.intro, "",
@@ -237,7 +241,7 @@ export function avvisoStudio(r: Richiesta, ctx: Contesto): { subject: string; ht
       <p style="margin:24px 0 14px;font:400 15px/1.6 ${SANS};color:${C.ink}"><b>Da fare:</b> rispondere entro un giorno lavorativo e proporre il primo incontro.</p>
       <div>${btn(`mailto:${r.email}?subject=${encodeURIComponent("Il tuo prezzo di partenza - Studio Matiz")}`, "Rispondi per email")}${wa ? btn(wa, "Scrivi su WhatsApp", false) : ""}</div>`;
   const piede = `<span style="font:450 16px/1.4 ${SERIF};color:${C.cream}">Studio Matiz</span><br><span style="font-size:11px;color:#9C9283">Avviso automatico dello stimatore del sito</span>`;
-  const html = cornice({ l, anteprima: `${r.nome}: ${prezzoTxt}`, eyebrow: "Nuova richiesta", titolo: esc(r.nome), corpo, piede, assets: ctx.assets ?? `${ctx.sito}/email` });
+  const html = cornice({ l, anteprima: `${r.nome}: ${prezzoTxt}`, eyebrow: "Nuova richiesta", titolo: esc(r.nome), corpo, piede, assets: ctx.assets ?? `${ctx.sito}/email`, logo: ctx.logo });
   const text = [
     `${r.nome} ha chiesto un prezzo di partenza${r.secondi !== null ? ` (compilato in ${r.secondi} secondi)` : ""}.`, "",
     `Email: ${r.email}`, r.telefono ? `Telefono: ${r.telefono}` : "",
