@@ -1,5 +1,7 @@
 # Modello di preventivo e di contratto
 
+Nota del 2026-10-09: la versione in vigore dei documenti sono i file in `modelli/` (HTML e PDF, nel tono impersonale e preciso del sito). Questo testo resta come bozza di partenza.
+
 Data: 2026-10-08. Stato: **bozza di Claude, da far controllare a un professionista prima del primo uso**. Non e' consulenza legale. Le cifre vengono dalle decisioni gia' prese (`docs/DECISIONI.md`, `docs/OFFERTE.md`, `docs/LISTINO-E-TEMPI.md`). Le parti tra [parentesi quadre] sono da riempire caso per caso o da decidere. Le cose da decidere sono elencate in fondo.
 
 Due documenti separati, entrambi brevi e leggibili, in linea con la promessa del sito ("condizioni chiare, scritte prima"):
