@@ -637,6 +637,38 @@ h3, .goals .lab, .terms .fig, .meter__row b, .faq summary, .est__step legend, .e
 .gal.is-swipe .page__lab { margin-bottom: .35rem; }
 .gal.is-swipe .page__info .link { margin-top: .8rem; }
 .gal.is-swipe .gal__ctl { display: flex; align-items: center; justify-content: space-between; gap: 1rem; margin-top: .7rem; padding-top: .7rem; border-top: 1px solid var(--line); font: 500 .625rem/1 var(--sans); letter-spacing: .14em; text-transform: uppercase; color: var(--ink-soft); }
+
+/* ---------- Telefono v2.5 ---------- */
+.mb { display: none; }
+.t-short { display: none; }
+.gal__arrows { display: none; }
+.steps__rail--wide .steps__prog--ghost { opacity: .3; }
+@media (max-width: 900px) {
+  .mb { display: inline; }
+  .hero .eyebrow { line-height: 1.75; align-items: flex-start; }
+  .hero .eyebrow::before { margin-top: .55rem; }
+  .hero__meta { margin-top: 2.4rem; }
+  .hero__meta p:nth-child(2) { display: none; }
+  .hero__meta p + p { padding-top: 1.2rem; }
+  .t-long { display: none; }
+  .t-short { display: inline; }
+  .case__grid { display: block; }
+  .case__right { margin-top: 1.75rem; }
+  .case__txt { margin-top: 1.75rem; }
+  .close { padding-top: 1.25rem; }
+  .close__gl { position: relative; inset: auto; z-index: 0; width: 100%; height: min(34vh, 16rem); height: min(34svh, 16rem); opacity: 1; }
+  .gal.is-swipe .gal__arrows { display: flex; gap: .45rem; }
+  .gal.is-swipe .gal__hint { display: none; }
+  .gal__arrows button { display: grid; place-items: center; width: 2.3rem; height: 2.3rem; padding: 0; border-radius: 50%; border: 1px solid var(--line-strong); background: none; color: var(--ink); cursor: pointer; }
+  .gal__arrows button:disabled { opacity: .3; cursor: default; }
+  .gal__arrows svg { width: 1rem; height: 1rem; }
+  .gal.is-swipe .page__meta { display: none; }
+  .gal.is-swipe .page__art { flex-basis: 36%; }
+  .gal.is-swipe .page__info { padding: 1.15rem 1.25rem; }
+  .gal.is-swipe .page__info h3 { margin: 0 0 .7rem; }
+  .gal.is-swipe .page__info p { font-size: clamp(.8rem, 2.95cqh, .95rem); }
+  .gal.is-swipe .page__blk + .page__blk { margin-top: .85rem; padding-top: .85rem; }
+}
 </style>
 </head>
 <body>
@@ -661,7 +693,7 @@ h3, .goals .lab, .terms .fig, .meter__row b, .faq summary, .est__step legend, .e
     <canvas class="hero__gl" id="heroGl" aria-hidden="true"></canvas>
     <div class="hero__fallback" aria-hidden="true"><i></i><i></i></div>
     <div class="wrap hero__main">
-      <p class="eyebrow" data-in>Progettazione digitale per piccole imprese</p>
+      <p class="eyebrow" data-in><span>Progettazione digitale<br class="mb"> per piccole imprese</span></p>
       <h1>Soluzioni<br><em>su misura</em></h1>
       <div class="hero__row">
         <p class="lede" data-in>Costruzione di siti, menu digitali e automazioni per stabilimenti, ristoranti e piccole attività, con aggiornamenti, modifiche e supporto continuo.</p>
@@ -827,6 +859,7 @@ h3, .goals .lab, .terms .fig, .meter__row b, .faq summary, .est__step legend, .e
       <div class="wrap gal__ctl" id="galCtl">
         <span class="gal__count"><b id="galNow">01</b> / 04</span>
         <span class="gal__dots" id="galDots"><button type="button" class="on" aria-label="Presenza online"></button><button type="button" aria-label="Automazioni"></button><button type="button" aria-label="Cura continua"></button><button type="button" aria-label="Check-up"></button></span>
+        <span class="gal__arrows"><button type="button" id="galPrev" aria-label="Scheda precedente"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true"><path d="M10 3 5 8l5 5"/></svg></button><button type="button" id="galNext" aria-label="Scheda successiva"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true"><path d="M6 3l5 5-5 5"/></svg></button></span>
         <span class="gal__hint"><span class="h-d">Scorri per vedere gli altri</span><span class="h-m">Scorri di lato</span></span>
       </div>
     </div>
@@ -907,7 +940,7 @@ h3, .goals .lab, .terms .fig, .meter__row b, .faq summary, .est__step legend, .e
             <span class="txt">Messaggi e richieste di preventivo ricevuti, e tempo medio che passa prima di una risposta.</span>
           </li>
         </ul>
-        <p class="goals__more"><a href="https://wa.me/393339580381?text=Ciao%20Matia%2C%20ho%20un%20altro%20obiettivo%20o%20problema%20di%20cui%20vorrei%20parlare." target="_blank" rel="noopener">Un altro obiettivo, o un altro problema? Si racconta qui, e si lavora insieme per risolverlo<svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true"><path d="M3 13 13 3M5.5 3H13v7.5"/></svg></a></p>
+        <p class="goals__more"><a href="https://wa.me/393339580381?text=Ciao%20Matia%2C%20ho%20un%20altro%20obiettivo%20o%20problema%20di%20cui%20vorrei%20parlare." target="_blank" rel="noopener"><span class="t-long">Un altro obiettivo, o un altro problema? Si racconta qui, e si lavora insieme per risolverlo</span><span class="t-short">Un altro obiettivo? Si racconta qui</span><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true"><path d="M3 13 13 3M5.5 3H13v7.5"/></svg></a></p>
       </div>
     </section>
 
@@ -1102,7 +1135,7 @@ h3, .goals .lab, .terms .fig, .meter__row b, .faq summary, .est__step legend, .e
   <section class="close" id="chiusura" aria-labelledby="h-chiusura">
     <canvas class="close__gl" id="closeGl" aria-hidden="true"></canvas>
     <div class="wrap grid">
-      <h2 id="h-chiusura" data-split>Si comincia <em>da un numero.</em></h2>
+      <h2 id="h-chiusura" data-split>Si comincia <em>da un numero</em></h2>
       <div class="close__row">
         <p class="close__lead">Il primo incontro si prenota dal calendario; in alternativa basta un messaggio, con risposta entro un giorno lavorativo.</p>
         <div class="close__act">
@@ -1186,6 +1219,9 @@ h3, .goals .lab, .terms .fig, .meter__row b, .faq summary, .est__step legend, .e
           pages.forEach(function (pg, i) { if (i === f) pg.removeAttribute('inert'); else pg.setAttribute('inert', ''); });
           dots.forEach(function (d, i) { d.classList.toggle('on', i === f); });
           now.textContent = '0' + (f + 1);
+          var pb = $('#galPrev'), nb = $('#galNext');
+          if (pb) pb.disabled = f === 0;
+          if (nb) nb.disabled = f === N - 1;
         }
       }
       function go(i) { gsap.to(proxy, { p: clamp(i, 0, N - 1), duration: reduce ? .01 : .65, ease: 'power3.out', overwrite: true, onUpdate: render }); }
@@ -1207,13 +1243,16 @@ h3, .goals .lab, .terms .fig, .meter__row b, .faq summary, .est__step legend, .e
         if (!drag) return;
         var d = drag; drag = null;
         if (d.lock !== 'x') return;
-        var dx = e.clientX - d.x, step = 0;
+        var dx = d.px - d.x, step = 0;
         if (Math.abs(dx) > W * .16 || Math.abs(d.v) > .45) step = dx < 0 ? 1 : -1;
         go(Math.round(d.p0) + step);
       }
       stage.addEventListener('pointerup', end); stage.addEventListener('pointercancel', end);
       stage.addEventListener('click', function (e) { if (moved) { e.preventDefault(); e.stopPropagation(); moved = false; } }, true);
       dots.forEach(function (d, i) { d.addEventListener('click', function () { go(i); }); });
+      var pv = $('#galPrev'), nx = $('#galNext');
+      if (pv) pv.addEventListener('click', function () { go(Math.round(proxy.p) - 1); });
+      if (nx) nx.addEventListener('click', function () { go(Math.round(proxy.p) + 1); });
       window.addEventListener('resize', function () { metrics(); render(); });
       metrics(); render();
     }
@@ -1274,7 +1313,7 @@ h3, .goals .lab, .terms .fig, .meter__row b, .faq summary, .est__step legend, .e
     var o = { p: 0 };
     function draw() { num.textContent = Math.round(115 + 335 * o.p); mB.style.setProperty('--s', o.p.toFixed(3)); }
     mA.style.setProperty('--s', 0); mB.style.setProperty('--s', 0);
-    var tl = gsap.timeline({ defaults: { ease: 'none' }, scrollTrigger: matchMedia('(max-width: 900px)').matches ? { trigger: '.case', start: 'top 72%', end: 'bottom 45%', scrub: .6 } : { trigger: '.case', start: 'top top', end: 'bottom bottom', scrub: .6 } });
+    var tl = gsap.timeline({ defaults: { ease: 'none' }, scrollTrigger: matchMedia('(max-width: 900px)').matches ? { trigger: '.case__right', start: function () { var s = $('.site'); return 'top ' + ((s ? s.offsetHeight : 64) + 16); }, end: function () { return '+=' + Math.round(innerHeight * .75); }, pin: true, pinSpacing: true, anticipatePin: 1, invalidateOnRefresh: true, scrub: .6 } : { trigger: '.case', start: 'top top', end: 'bottom bottom', scrub: .6 } });
     tl.to(mA, { '--s': 1, duration: .15 }, 0).to(o, { p: 1, duration: .7, onUpdate: draw }, .2).to({}, { duration: .15 });
     draw();
   }
@@ -1525,9 +1564,9 @@ h3, .goals .lab, .terms .fig, .meter__row b, .faq summary, .est__step legend, .e
     function size() {
       W = hero.clientWidth;
       var stop = o.stopAt ? $(o.stopAt, hero) : null;
-      var inflow = !stop && W <= 900;
-      H = stop ? Math.max(260, stop.offsetTop - 8) : inflow ? Math.max(200, cv.clientHeight || 300) : hero.clientHeight;
-      if (stop) cv.style.height = H + 'px';
+      var inflow = W <= 900;
+      H = inflow ? Math.max(200, cv.clientHeight || 300) : stop ? Math.max(260, stop.offsetTop - 8) : hero.clientHeight;
+      if (stop) cv.style.height = inflow ? '' : H + 'px';
       renderer.setSize(W, H, false); camera.aspect = W / H; camera.updateProjectionMatrix();
       wide = W > 900;
       baseY = wide ? (o.y || 0) : (inflow ? 0 : 2.1);
@@ -1615,11 +1654,12 @@ h3, .goals .lab, .terms .fig, .meter__row b, .faq summary, .est__step legend, .e
     var rows = $$('li', ol), NS = 'http://www.w3.org/2000/svg';
     var svg = document.createElementNS(NS, 'svg'); svg.setAttribute('class', 'steps__rail'); svg.setAttribute('aria-hidden', 'true');
     ol.insertBefore(svg, ol.firstChild);
-    var base, glow, prog, trav, arrow, nodes = [], pts = [], ys = [], ls = [], Ltot = 1, cur = 0, target = 0, raf = 0, activeI = -1;
+    var base, glow, prog, progG, trav, arrow, wideMode = false, railW = 60, SWw = 0, nodes = [], pts = [], ys = [], ls = [], Ltot = 1, cur = 0, target = 0, raf = 0, activeI = -1;
     function mk(tag, cls, parent) { var e = document.createElementNS(NS, tag); if (cls) e.setAttribute('class', cls); (parent || svg).appendChild(e); return e; }
     function build() {
       var or = ol.getBoundingClientRect(), W = parseFloat(getComputedStyle(ol).paddingLeft) || 60, H = or.height;
       var narrow = W < 90, SW = narrow ? or.width : W;
+      wideMode = narrow; railW = W; SWw = SW;
       svg.setAttribute('class', 'steps__rail' + (narrow ? ' steps__rail--wide' : ''));
       svg.setAttribute('width', SW); svg.setAttribute('height', H); svg.setAttribute('viewBox', '0 0 ' + SW + ' ' + H);
       svg.innerHTML = ''; nodes = [];
@@ -1644,7 +1684,14 @@ h3, .goals .lab, .terms .fig, .meter__row b, .faq summary, .est__step legend, .e
       }
       base = mk('path', 'steps__base'); base.setAttribute('d', d);
       glow = mk('path', 'steps__glow'); glow.setAttribute('d', d);
+      progG = null;
+      if (narrow) { progG = mk('path', 'steps__prog steps__prog--ghost'); progG.setAttribute('d', d); }
       prog = mk('path', 'steps__prog'); prog.setAttribute('d', d);
+      if (narrow) {
+        var cp = mk('clipPath'); cp.setAttribute('id', 'stepsClip');
+        [[0, W + 2], [SW - 34, 40]].forEach(function (r) { var rc = mk('rect', '', cp); rc.setAttribute('x', r[0]); rc.setAttribute('y', -100); rc.setAttribute('width', r[1]); rc.setAttribute('height', H + 200); });
+        prog.setAttribute('clip-path', 'url(#stepsClip)'); glow.setAttribute('clip-path', 'url(#stepsClip)');
+      }
       var s0 = mk('circle', 'steps__start'); s0.setAttribute('cx', pts[0].x); s0.setAttribute('cy', pts[0].y); s0.setAttribute('r', 4.5);
       rows.forEach(function (li, i) {
         var p = pts[i + 1], g = mk('g', 'steps__node'); g.setAttribute('transform', 'translate(' + p.x.toFixed(1) + ' ' + p.y.toFixed(1) + ')');
@@ -1660,6 +1707,7 @@ h3, .goals .lab, .terms .fig, .meter__row b, .faq summary, .est__step legend, .e
       var e1 = prog.getPointAtLength(Ltot - 3), e2 = prog.getPointAtLength(Ltot);
       arrow.setAttribute('transform', 'translate(' + e2.x.toFixed(1) + ' ' + e2.y.toFixed(1) + ') rotate(' + (Math.atan2(e2.y - e1.y, e2.x - e1.x) * 180 / Math.PI).toFixed(1) + ')');
       prog.style.strokeDasharray = glow.style.strokeDasharray = Ltot;
+      if (progG) progG.style.strokeDasharray = Ltot;
       render(cur);
     }
     function yToL(y) {
@@ -1670,9 +1718,11 @@ h3, .goals .lab, .terms .fig, .meter__row b, .faq summary, .est__step legend, .e
     function render(y) {
       var L = reduce ? Ltot : yToL(y);
       prog.style.strokeDashoffset = glow.style.strokeDashoffset = Ltot - L;
+      if (progG) progG.style.strokeDashoffset = Ltot - L;
       var P = prog.getPointAtLength(L);
       trav.setAttribute('cx', P.x); trav.setAttribute('cy', P.y);
-      trav.style.opacity = reduce ? 0 : (L <= 1 || L >= Ltot - 1 ? 0 : 1);
+      var under = wideMode && P.x > railW + 2 && P.x < SWw - 34;
+      trav.style.opacity = reduce ? 0 : (L <= 1 || L >= Ltot - 1 ? 0 : (under ? .3 : 1));
       arrow.style.opacity = reduce ? 1 : Math.max(0, Math.min(1, (L - (Ltot - 48)) / 48));
       var act = -1;
       nodes.forEach(function (n, i) { var on = reduce || y >= n.y - 6; n.g.classList.toggle('is-reached', on); if (on && !reduce) act = i; });
