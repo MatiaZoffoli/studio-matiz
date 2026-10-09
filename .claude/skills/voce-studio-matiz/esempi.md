@@ -106,7 +106,7 @@ Dopo la sezione "Il metodo" Matia ha chiesto di applicare lo stesso tono a tutto
 - "Quanto costa, in concreto." -> "Il prezzo, detto prima di cominciare."
 - "Che tipo di attività hai?" -> "Tipo di attività" (domande dello stimatore come etichette)
 - "Scegli il tipo di attività." (errore) -> "Manca il tipo di attività."
-- "Parliamone." -> "Si comincia da un'ora."
+- "Parliamone." -> "Si comincia da un numero." (scelta di Matia il 2026-10-09 tra otto alternative; "da un'ora" era stata scartata; "da un numero" richiama il metodo e spiega perché il primo incontro dura un'ora)
 - "Chi trovi dall'altra parte." / "Mi chiamo Matia Zoffoli..." -> "Dalla sala ai dati." / "Matia Zoffoli. Nove anni alla direzione di locali..."
 
 **Da verificare con Matia:** in "Chi sono" si cita il Dipartimento dell'Istruzione del governo australiano senza numeri (la piattaforma per più di un milione di utenti e oltre mille scuole è nel CV ma non è stata pubblicata).
