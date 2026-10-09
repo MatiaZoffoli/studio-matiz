@@ -1,6 +1,6 @@
 # Versione inglese del sito
 
-Data: 2026-10-09. Stato: **prima traduzione fatta, da rivedere insieme a Matia.**
+Data: 2026-10-09. Stato: **revisione del 2026-10-09 applicata** (da due analisi esterne e da Matia); da rivedere ancora un po' alla volta.
 
 ## Come funziona
 
@@ -35,3 +35,11 @@ Traduzione semantica, nella voce della skill (impersonale e precisa; prima perso
 - Quando c'e' il dominio: `hreflang` e indirizzo canonico per le due lingue (oggi la pagina e' `noindex`).
 - Tradurre i modelli di `modelli/` (preventivo, accordo, resoconto), le email di `docs/EMAIL-E-RISPOSTE.md` e il testo dell'informativa quando sara' rivisto da un professionista.
 - Testi del selettore e meta descrizione sono gia' fatti; il titolo della scheda inglese e' "Studio Matiz - Made to measure".
+
+## Revisione del 2026-10-09 (cosa e' stato applicato)
+
+- **Voce:** impersonale in inglese come in italiano. Le proposte esterne in prima persona ("me", "we", "your") sono state riportate alla forma impersonale; "About" resta in prima persona.
+- **Lessico e naturalezza:** FAQ nel menu, "regular updates", "by video", "Based in Cesenatico", "replies", la frase sul mare, "beach umbrella", "Members" e "returning members", "revisions", "baseline", "credited towards", "set out upfront", "Settling in" (run-in in inglese puo' voler dire lite), "A case in numbers", "From hospitality to data", "café".
+- **Chiarimenti in italiano e in inglese:** "prima risposta" entro un giorno lavorativo; check-up in tre giorni lavorativi dalla conferma e dalla ricezione degli accessi; "in molti contratti" e canone da 50 euro legato alla domanda su cosa copre; "Il percorso si adatta al servizio scelto"; la pagina del caso e' "ad accesso riservato".
+- **Non cambiato:** i numeri del caso (115, 450); il contatore a 375 e' un fotogramma dell'animazione.
+- **Da valutare in futuro (punti dell'analisi non applicati, perche' sono regole commerciali):** cosa include l'illimitato del primo mese, due giri di correzioni e difetti, report mensile e cura, date di consegna e dipendenze, credito del check-up (scadenza). Stanno meglio nel preventivo e nell'accordo che sul sito.
