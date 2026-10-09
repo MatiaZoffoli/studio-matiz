@@ -781,6 +781,38 @@ html.modal-open { overflow: hidden; }
 .modal .est__fields .chk { margin-top: .8rem; }
 .modal .inc__mode legend { margin-bottom: .7rem; }
 @media (max-width: 600px) { .modal .est__opts, .modal .est__fields { grid-template-columns: 1fr; } }
+
+/* ---------- Selettore della lingua (menu a tendina) e ritocchi ---------- */
+.top__cta { gap: .9rem; }
+.lang { position: relative; display: block; }
+.lang__btn { display: inline-flex; align-items: center; gap: .5rem; padding: .5rem .75rem .5rem .55rem; border: 1px solid currentColor; border-color: color-mix(in srgb, currentColor 35%, transparent); border-radius: 999px; background: transparent; color: inherit; font: 600 .6875rem/1 var(--sans); letter-spacing: .14em; cursor: pointer; transition: border-color .3s var(--ease); }
+.lang__btn:hover { border-color: currentColor; }
+.lang__btn svg { width: .55rem; height: .35rem; transition: transform .3s var(--ease); }
+.lang__btn[aria-expanded="true"] svg { transform: rotate(180deg); }
+.lang__btn:focus-visible, .lang__list a:focus-visible { outline: 2px solid var(--gold-light); outline-offset: 2px; }
+.flag { flex: none; width: 1.15rem; height: 1.15rem; border-radius: 50%; background: center / cover no-repeat; box-shadow: 0 0 0 1px rgba(255, 255, 255, .22); }
+.flag--it { background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 3 2'%3E%3Crect width='1' height='2' fill='%23009246'/%3E%3Crect x='1' width='1' height='2' fill='%23fff'/%3E%3Crect x='2' width='1' height='2' fill='%23ce2b37'/%3E%3C/svg%3E"); }
+.flag--en { background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 60 30'%3E%3Crect width='60' height='30' fill='%23012169'/%3E%3Cpath d='M0 0l60 30M60 0L0 30' stroke='%23fff' stroke-width='6'/%3E%3Cpath d='M0 0l60 30M60 0L0 30' stroke='%23C8102E' stroke-width='2'/%3E%3Cpath d='M30 0v30M0 15h60' stroke='%23fff' stroke-width='10'/%3E%3Cpath d='M30 0v30M0 15h60' stroke='%23C8102E' stroke-width='6'/%3E%3C/svg%3E"); }
+.lang__list { position: absolute; right: 0; top: calc(100% + .6rem); z-index: 60; min-width: 10.5rem; margin: 0; padding: .35rem; list-style: none; background: var(--night-2); border: 1px solid var(--night-line); border-top: 2px solid var(--gold-light); box-shadow: 0 24px 40px -18px rgba(0, 0, 0, .7); }
+.lang__list[hidden] { display: none; }
+.lang__list a { display: flex; align-items: center; gap: .7rem; padding: .7rem .8rem; color: var(--night-text); opacity: 1; border: 0; font: 500 .8125rem/1 var(--sans); letter-spacing: .02em; text-decoration: none; transition: background-color .25s var(--ease); }
+.lang__list a:hover { background: rgba(243, 236, 224, .1); opacity: 1; }
+.lang__list a[aria-current] { color: var(--gold-light); border: 0; }
+@media (max-width: 900px) { .top__cta { gap: .6rem; } .lang__btn { padding: .45rem .6rem .45rem .45rem; } }
+/* finestra: respiro tra le righe dei campi; passi come elenco puntato */
+.modal .est__fields { row-gap: 1.6rem; }
+.modal .est__fields .chk { margin-top: .4rem; }
+.inc__steps li { display: flex; align-items: baseline; gap: .95rem; padding: .9rem 0; }
+.inc__steps li::before { content: ""; flex: none; width: .4rem; height: .4rem; border-radius: 50%; background: var(--gold-light); transform: translateY(-.12em); }
+.inc__steps span { margin: 0; font-weight: 400; color: var(--night-text); }
+/* barra in alto: il menu resta al centro della pagina, i due lati hanno la stessa larghezza */
+@media (min-width: 901px) {
+  .top { grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr); gap: 1rem; }
+  .nav { gap: clamp(1rem, 2.1vw, 2.5rem); }
+  .top__cta { gap: .7rem; }
+}
+@media (min-width: 901px) and (max-width: 1320px) { .lang__btn > span:not(.flag) { display: none; } .lang__btn { padding: .5rem .6rem .5rem .5rem; } }
+.lang span { opacity: 1; }
 </style>
 </head>
 <body>
@@ -796,7 +828,7 @@ html.modal-open { overflow: hidden; }
     <a href="#chi-sono">About</a>
     <a href="#faq">FAQ</a>
   </nav>
-  <div class="top__cta"><nav class="lang" aria-label="Language"><a href="/" lang="it">IT</a><span aria-hidden="true">|</span><a href="/en/" lang="en" hreflang="en" aria-current="true">EN</a></nav><a class="btn" href="#incontro"><span class="lg">Request a meeting</span><span class="sm">First meeting</span></a></div>
+  <div class="top__cta"><a class="btn" href="#incontro"><span class="lg">Request a meeting</span><span class="sm">First meeting</span></a><div class="lang" id="langMenu"><button type="button" class="lang__btn" aria-label="Language" aria-haspopup="true" aria-expanded="false" aria-controls="langList"><span class="flag flag--en"></span><span>EN</span><svg viewBox="0 0 10 6" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true"><path d="M1 1l4 4 4-4"/></svg></button><ul class="lang__list" id="langList" hidden><li><a href="/" lang="it"><span class="flag flag--it"></span>Italiano</a></li><li><a href="/en/" lang="en" hreflang="en" aria-current="true"><span class="flag flag--en"></span>English</a></li></ul></div></div>
  </div>
 </header>
 
@@ -1250,7 +1282,7 @@ html.modal-open { overflow: hidden; }
       <h2 id="h-chiusura" data-split>It starts <em>with a number</em></h2>
       <div class="close__row">
         <div class="close__lead">
-          <p>The first meeting is requested from here. Matia confirms date and time, with a first reply within one working day.</p>
+          <p>The first meeting is requested from here. Date and time are confirmed within one working day.</p>
           <p>In person is the recommended choice; a video call works too.</p>
           <div class="close__alt">
             <a class="mail" href="https://wa.me/393339580381?text=Hello%20Matia%2C%20I%20would%20like%20to%20set%20up%20a%20first%20meeting.">Message me on WhatsApp</a>
@@ -1272,7 +1304,7 @@ html.modal-open { overflow: hidden; }
     <div id="incAsk">
       <p class="est__label">First meeting</p>
       <h2 class="modal__h" id="incTitle">Request the first meeting</h2>
-      <p class="modal__p">A few details are enough. Matia confirms date and time, with a first reply within one working day.</p>
+      <p class="modal__p">A few details are enough. Date and time are confirmed within one working day.</p>
           <form class="inc" id="incForm" novalidate>
             <fieldset class="inc__mode">
               <legend>Format</legend>
@@ -1299,15 +1331,15 @@ html.modal-open { overflow: hidden; }
     </div>
     <div class="inc__ok" id="incOk" hidden tabindex="-1" aria-live="polite">
       <p class="est__label">Request received</p>
-      <h2 class="modal__h" id="incOkTitle">Matia confirms date and time.</h2>
-      <ol class="inc__steps">
-        <li><strong>A reply from Matia</strong><span>Within one working day, by email or on WhatsApp, with a date and time proposed from what you entered.</span></li>
-        <li><strong>The first meeting</strong><span>One hour over coffee and conversation, offered by the studio. In person is the recommended choice; a video call works just as well.</span></li>
-        <li><strong>Then you decide together</strong><span>A check-up or a written quote, with a fixed price. No obligation to continue.</span></li>
-      </ol>
+      <h2 class="modal__h" id="incOkTitle">Confirmation of the appointment will reach you shortly.</h2>
+      <ul class="inc__steps">
+        <li><span>Date and time confirmed within one working day, by email or WhatsApp</span></li>
+        <li><span>A one-hour first meeting, offered, in person or by video</span></li>
+        <li><span>A check-up or written quote, with a fixed price</span></li>
+      </ul>
       <div class="inc__nav">
         <button type="button" class="btn btn--light" data-close>Close and return to the site</button>
-        <a class="mail" id="incWa" href="https://wa.me/393339580381?text=Hello%20Matia%2C%20I%20have%20just%20requested%20the%20first%20meeting%20from%20the%20website." target="_blank" rel="noopener">If it is needed sooner, a WhatsApp message</a>
+        <a class="mail" id="incWa" href="https://wa.me/393339580381?text=Hello%20Matia%2C%20I%20have%20just%20requested%20the%20first%20meeting%20from%20the%20website." target="_blank" rel="noopener">Questions? Message on WhatsApp</a>
       </div>
     </div>
   </div>
@@ -1644,6 +1676,16 @@ html.modal-open { overflow: hidden; }
       form.reset(); form.hidden = false; $('#estProg').hidden = false; res.hidden = true; status(''); show(0); if (window.__estRefresh) window.__estRefresh();
     });
     show(0);
+  })();
+
+  /* ---------- Menu della lingua ---------- */
+  (function initLang() {
+    var box = $('#langMenu'); if (!box) return;
+    var btn = box.querySelector('.lang__btn'), list = $('#langList');
+    function set(open) { btn.setAttribute('aria-expanded', open ? 'true' : 'false'); list.hidden = !open; }
+    btn.addEventListener('click', function (e) { e.stopPropagation(); set(list.hidden); });
+    document.addEventListener('click', function (e) { if (!box.contains(e.target)) set(false); });
+    document.addEventListener('keydown', function (e) { if (e.key === 'Escape' && !list.hidden) { set(false); btn.focus(); } });
   })();
 
   /* ---------- Richiesta del primo incontro: finestra al centro della pagina; data e orario li conferma Matia ---------- */

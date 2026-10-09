@@ -192,6 +192,14 @@ export const IMG: Record<string, [number, number]> = {
   212,
   16
  ],
+ "t-btn-dubbi-it": [
+  214,
+  16
+ ],
+ "t-btn-dubbi-en": [
+  274,
+  16
+ ],
  "t-btn-calendario": [
   228,
   16

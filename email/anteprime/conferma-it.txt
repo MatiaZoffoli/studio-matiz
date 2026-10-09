@@ -14,7 +14,7 @@ Quanto hai indicato:
 
 Come continua:
 01 Una prima risposta di Matia, entro un giorno lavorativo.
-02 Il primo incontro: un'ora tra chiacchiere e caffè, offerta dallo studio, di persona (consigliato) o in video. Lo richiedi dal sito e data e orario li conferma Matia.
+02 Il primo incontro: un'ora tra chiacchiere e caffè, offerta dallo studio, di persona (consigliato) o in video. Lo richiedi dal sito e data e orario vengono confermati.
 03 Un preventivo scritto, con prezzo chiuso e tempo di consegna.
 
 Richiedi il primo incontro: https://studio-matiz.vercel.app/#incontro

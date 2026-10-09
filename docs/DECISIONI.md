@@ -1,4 +1,4 @@
-﻿# Registro delle decisioni
+# Registro delle decisioni
 
 Ogni scelta presa da Matia, con la data e il motivo. Si aggiorna nel momento in cui la scelta viene fatta. Le decisioni ancora aperte stanno in `docs/BACKLOG.md`.
 
@@ -133,4 +133,5 @@ Ogni scelta presa da Matia, con la data e il motivo. Si aggiorna nel momento in 
 | 2026-10-10 | Conferma di Google Calendar: per ora solo il messaggio personalizzato (A4b in `docs/EMAIL-E-RISPOSTE.md`), perche' il layout e' di Google; la conferma con la grafica del sito si valuta con il blocco del dominio (script nel Google di Matia o pagina di prenotazione propria). Resend: il piano gratuito (3.000 email al mese, 100 al giorno) basta; nessun pacchetto da comprare per ora | Matia
 | 2026-10-10 | Il primo incontro non si prenota piu' sul calendario Google ma si richiede dal modulo del sito: il cliente sceglie di persona (consigliato da Matia) o in video e indica giorni e orari preferiti; data e orario li conferma Matia entro un giorno lavorativo. Pulsanti: 'Richiedi il primo incontro' / 'Request the first meeting'. Il calendario resta lo strumento interno di Matia (link 'Crea evento' nell'avviso) | Matia
 | 2026-10-10 | La richiesta del primo incontro si compila in una finestra al centro della pagina (non piu' in fondo): alla fine un messaggio spiega i tre passi successivi e si chiude per tornare alla navigazione. Testi: 'Consigliato, a Cesenatico e dintorni', 'Dal resto del mondo', 'Giorni e orari preferiti' | Matia
+| 2026-10-10 | Dopo la prova della richiesta: conferme di data e orario in forma impersonale (niente 'Matia conferma'); messaggio finale con tre punti brevi; pulsante 'Dubbi? Scrivi su WhatsApp'; selettore lingua a tendina con bandiera accanto al pulsante 'Richiedi' (menu centrato, spazio per altre lingue); email con pulsanti piu' distanziati, titolo allineato e senza ripetizioni | Matia
 | 2026-10-07 | La struttura del progetto vive nei file `.md` della cartella (CLAUDE.md, README, docs/) e va tenuta aggiornata quando emerge un'informazione | Matia: il contesto crescera' molto e serve ordine |

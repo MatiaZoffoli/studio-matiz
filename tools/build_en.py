@@ -206,24 +206,21 @@ TEXT = [
 ("Solo quelli lasciati scrivendo o richiedendo un incontro, usati per rispondere. Il dettaglio è nell'", "Only what is left by writing or requesting a meeting, used to reply. The detail is in the "),
 # chiusura e piede
 ("Si comincia <em>da un numero</em>", "It starts <em>with a number</em>"),
-("Il primo incontro si richiede da qui. Data e orario li conferma Matia, con una prima risposta entro un giorno lavorativo.", "The first meeting is requested from here. Matia confirms date and time, with a first reply within one working day."),
 ("Di persona è la scelta consigliata; in alternativa, in video.", "In person is the recommended choice; a video call works too."),
 ("Modalità", "Format"),
+("Il primo incontro si richiede da qui. Data e orario vengono confermati entro un giorno lavorativo.", "The first meeting is requested from here. Date and time are confirmed within one working day."),
+("Bastano pochi dati. Data e orario vengono confermati entro un giorno lavorativo.", "A few details are enough. Date and time are confirmed within one working day."),
+("Ti arriverà a breve la conferma dell'appuntamento.", "Confirmation of the appointment will reach you shortly."),
+("Conferma di data e orario, entro un giorno lavorativo, per email o WhatsApp", "Date and time confirmed within one working day, by email or WhatsApp"),
+("Primo incontro di un'ora, offerto, di persona o in video", "A one-hour first meeting, offered, in person or by video"),
+("Check-up o preventivo scritto, con prezzo chiuso", "A check-up or written quote, with a fixed price"),
+("Dubbi? Scrivi su WhatsApp", "Questions? Message on WhatsApp"),
 ("Di persona", "In person"),
 ("Consigliato, a Cesenatico e dintorni", "Recommended, in Cesenatico and nearby"),
 ("In video", "By video"),
 ("Dal resto del mondo", "From anywhere in the world"),
 ("Giorni e orari preferiti (facoltativo)", "Preferred days and times (optional)"),
 ("Richiesta ricevuta", "Request received"),
-("Data e orario li conferma Matia.", "Matia confirms date and time."),
-("Se serve prima, un messaggio su WhatsApp", "If it is needed sooner, a WhatsApp message"),
-("Bastano pochi dati. Data e orario li conferma Matia, con una prima risposta entro un giorno lavorativo.", "A few details are enough. Matia confirms date and time, with a first reply within one working day."),
-("Una risposta di Matia", "A reply from Matia"),
-("Entro un giorno lavorativo, per email o su WhatsApp, con data e orario proposti sulla base di quanto hai indicato.", "Within one working day, by email or on WhatsApp, with a date and time proposed from what you entered."),
-("Il primo incontro", "The first meeting"),
-("Un'ora tra chiacchiere e caffè, offerta dallo studio. Di persona è la scelta consigliata; in video funziona altrettanto bene.", "One hour over coffee and conversation, offered by the studio. In person is the recommended choice; a video call works just as well."),
-("Poi si decide insieme", "Then you decide together"),
-("Un check-up o un preventivo scritto, con prezzo chiuso. Nessun obbligo di proseguire.", "A check-up or a written quote, with a fixed price. No obligation to continue."),
 ("Chiudi e torna al sito", "Close and return to the site"),
 ("Contatti", "Contact"),
 ("Informazioni", "Information"),
@@ -318,7 +315,7 @@ JS = [
 ]
 
 # ---------------------------------------------------------------- parole che restano uguali in inglese (non segnalate)
-SAME = {"Logo", "Studio Matiz", "Studio", "Cesenatico", "Cesenatico, Romagna", "Check-up", "Email", "Privacy",
+SAME = {"Italiano", "English", "Logo", "Studio Matiz", "Studio", "Cesenatico", "Cesenatico, Romagna", "Check-up", "Email", "Privacy",
         "matiazoffoli@gmail.com", "WhatsApp +39 333 958 0381", "115", "450", "Romagna"}
 
 def main():
@@ -359,8 +356,9 @@ def main():
          'content="Design and development of websites, automations and digital tools for small businesses. The first meeting is offered by the studio."'),
         ('src="assets/', 'src="/assets/'),
         ('href="privacy.html"', 'href="/en/privacy.html"'),
-        ('<a href="/" lang="it" aria-current="true">IT</a>', '<a href="/" lang="it">IT</a>'),
-        ('<a href="/en/" lang="en" hreflang="en">EN</a>', '<a href="/en/" lang="en" hreflang="en" aria-current="true">EN</a>'),
+        ('<span class="flag flag--it"></span><span>IT</span>', '<span class="flag flag--en"></span><span>EN</span>'),
+        ('<a href="/" lang="it" aria-current="true"><span', '<a href="/" lang="it"><span'),
+        ('<a href="/en/" lang="en" hreflang="en"><span', '<a href="/en/" lang="en" hreflang="en" aria-current="true"><span'),
         ('aria-label="Lingua"', 'aria-label="Language"'),
     ]
     for it, en in heads:

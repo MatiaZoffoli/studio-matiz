@@ -61,6 +61,8 @@ righe += [
     ("t/btn-whatsapp", "Scrivi su WhatsApp", INK, 12, "s"),
     ("t/btn-richiedi-it", "Richiedi il primo incontro", CREAM, 12, "s"),
     ("t/btn-richiedi-en", "Request the first meeting", CREAM, 12, "s"),
+    ("t/btn-dubbi-it", "Dubbi? Scrivi su WhatsApp", INK, 12, "s"),
+    ("t/btn-dubbi-en", "Questions? Message on WhatsApp", INK, 12, "s"),
     ("t/btn-calendario", "Crea evento nel calendario", INK, 12, "s"),
     ("t/h-incontro-it", em("Richiesta", "ricevuta"), INK, 36),
     ("t/h-incontro-en", em("Request", "received"), INK, 36),

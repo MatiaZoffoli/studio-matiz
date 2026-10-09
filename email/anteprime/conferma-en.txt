@@ -14,7 +14,7 @@ This is a starting point, not a quote: the real price is written after the first
 
 What happens next:
 01 A first reply from Matia, within one working day.
-02 The first meeting: one hour over coffee and conversation, offered by the studio, in person (recommended) or by video. You ask for it from the website; Matia confirms date and time.
+02 The first meeting: one hour over coffee and conversation, offered by the studio, in person (recommended) or by video. You ask for it from the website; date and time are then confirmed.
 03 A written quote, with a fixed price and the delivery time.
 
 Request the first meeting: https://studio-matiz.vercel.app/en/#incontro
