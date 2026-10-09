@@ -828,6 +828,15 @@ html.modal-open { overflow: hidden; }
 .modal .inc__ok .inc__nav { flex-direction: column; align-items: center; justify-content: center; gap: 1.3rem; }
 .close__lead p { max-width: 34ch; }
 .close__alt { flex-direction: row; flex-wrap: wrap; gap: .9rem 1.8rem; margin-top: 1.6rem; }
+/* selettore della lingua: in alto a destra, al bordo della pagina, lontano da menu e pulsante */
+.site .lang { position: absolute; right: clamp(.9rem, 2vw, 2.2rem); top: 50%; transform: translateY(-50%); }
+.top__cta { gap: 0; }
+@media (max-width: 900px) { .top__cta { padding-right: 3.3rem; } .lang__btn > span:not(.flag) { display: none; } .lang__btn { padding: .45rem .55rem .45rem .45rem; } }
+/* pulsante finale allineato alla fine della riga dorata */
+.close__act { align-items: flex-end; }
+@media (max-width: 900px) { .close__act { align-items: flex-start; } }
+.close__act { display: flex; flex-direction: column; align-items: flex-end; }
+@media (max-width: 900px) { .close__act { align-items: flex-start; } }
 </style>
 </head>
 <body>
@@ -843,8 +852,9 @@ html.modal-open { overflow: hidden; }
     <a href="#chi-sono">Chi sono</a>
     <a href="#faq">Domande</a>
   </nav>
-  <div class="top__cta"><a class="btn" href="#incontro"><span class="lg">Richiedi un incontro</span><span class="sm">Primo incontro</span></a><div class="lang" id="langMenu"><button type="button" class="lang__btn" aria-label="Lingua" aria-haspopup="true" aria-expanded="false" aria-controls="langList"><span class="flag flag--it"></span><span>IT</span><svg viewBox="0 0 10 6" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true"><path d="M1 1l4 4 4-4"/></svg></button><ul class="lang__list" id="langList" hidden><li><a href="/" lang="it" aria-current="true"><span class="flag flag--it"></span>Italiano</a></li><li><a href="/en/" lang="en" hreflang="en"><span class="flag flag--en"></span>English</a></li></ul></div></div>
+  <div class="top__cta"><a class="btn" href="#incontro"><span class="lg">Richiedi un incontro</span><span class="sm">Primo incontro</span></a></div>
  </div>
+  <div class="lang" id="langMenu"><button type="button" class="lang__btn" aria-label="Lingua" aria-haspopup="true" aria-expanded="false" aria-controls="langList"><span class="flag flag--it"></span><span>IT</span><svg viewBox="0 0 10 6" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true"><path d="M1 1l4 4 4-4"/></svg></button><ul class="lang__list" id="langList" hidden><li><a href="/" lang="it" aria-current="true"><span class="flag flag--it"></span>Italiano</a></li><li><a href="/en/" lang="en" hreflang="en"><span class="flag flag--en"></span>English</a></li></ul></div>
 </header>
 
 <main>
