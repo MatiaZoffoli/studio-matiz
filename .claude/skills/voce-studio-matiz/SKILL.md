@@ -101,6 +101,7 @@ Matia lo ha chiesto così (2026-10-08): ispirazione da atelier, ma **capibile su
 - **Parlare in generale, non solo di sito.** Studio Matiz lavora su ogni strumento digitale: sito, pagina, profilo, scheda, menu, CRM, casella di posta, moduli. "Il sito" si scrive solo dove il testo parla davvero di un sito; negli altri casi si dice "strumento", "canale", "presenza", "ogni cosa che si usa online".
 - **L'inglese da madrelingua non va nelle schede dei servizi.** Resta nelle FAQ e in "Chi sono", dove è un fatto su Matia, non una caratteristica del servizio.
 - **Il primo incontro dura un'ora**, "tra chiacchiere e caffè": il tempo suona più disteso e vero.
+- **Un numero concreto fa il problema** (2026-10-09, 'Il punto di partenza'): sceglie la variante C. Un calcolo semplice e verificabile (50 euro al mese senza modifiche = 600 euro l'anno; orari che cambiano quattro volte l'anno) vale piu' di un aggettivo. I tre titoli di una serie hanno lunghezze diverse e iniziano in modo diverso. Si parla di 'strumento' e di 'canone', non solo di 'sito'. I dati dei prospetti si usano come esempio generico, senza nome.
 - Si lavora **pezzo per pezzo**, almeno tre varianti per ciascuno, e le scelte si annotano in `esempi.md`.
 
 ## Esempi
