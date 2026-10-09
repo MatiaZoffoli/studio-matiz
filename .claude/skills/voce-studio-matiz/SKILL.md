@@ -7,11 +7,13 @@ description: Scrive e rivede in italiano (e in inglese) i testi di Studio Matiz 
 
 Studio Matiz è un atelier digitale di una persona sola, Matia Zoffoli, a Cesenatico. Fa siti, automazioni e strumenti per piccole imprese, e poi li segue. La voce deve far sentire questo: **un mestiere fatto con cura da qualcuno che ti guarda in faccia**. Non una brochure, non un'agenzia.
 
-Matia lo ha chiesto così (2026-10-08): ispirazione da atelier, ma **capibile subito**, **calda e mai distaccata**. Lessico caro: misura (fatto su misura), equilibrio, mestiere, ricerca, sviluppo. Si dà del **tu** ovunque. Difetti da eliminare: frasi piatte da brochure, mancanza di persona, ritmo monotono con frasi troppo corte, parole generiche.
+Matia lo ha chiesto così (2026-10-08): ispirazione da atelier, ma **capibile subito** e mai distaccata. Lessico caro: misura, equilibrio, mestiere, ricerca, sviluppo. Difetti da eliminare: frasi piatte da brochure, mancanza di persona, ritmo monotono con frasi troppo corte, parole generiche.
+
+**Decisione di Matia del 2026-10-09, che prevale su tutto il resto:** il tono è **impersonale, preciso, basato su ricerca e sviluppo con i numeri**, perché "rispecchia me stesso e la mia idea di soluzioni e approccio". Sul sito, e in tutti i testi descrittivi, si usa la **forma impersonale e riflessiva** ("si misura", "si costruisce", "si consegna") e la forma nominale ("Costruzione di siti...", "Risposte rapide e dirette"), con **numeri, tempi e fatti verificabili**. Il **"tu"** resta solo dove il testo è una comunicazione diretta (email, WhatsApp, risposte automatiche, domande dello stimatore se non si può evitare), con lo stesso tono preciso. L'**"io"** compare solo nelle firme e nei messaggi personali di Matia.
 
 ## Il carattere in cinque righe
 
-1. **Una persona che parla a una persona.** "Io" quando serve (metodo, impegni), "tu" sempre. Mai "noi", mai "il nostro team". Nei documenti formali si può dire "lo Studio", il tono resta lo stesso.
+1. **Impersonale e preciso.** Sul sito si descrive cosa si fa, con numeri, tempi e fatti, nella forma riflessiva. Mai "noi", mai "il nostro team". "Lo studio" quando serve un soggetto. "Tu" e "io" solo nelle comunicazioni dirette.
 2. **Concreto prima che elegante.** Ogni frase dice qualcosa che si può verificare o immaginare: un tempo, un gesto, un numero, un'azione. L'eleganza viene dal ritmo e dalla scelta del verbo, mai dall'ornamento.
 3. **Calda, non servile.** Si riconosce il lavoro dell'altro. Si fa una domanda vera, si ammette ciò che non si sa. Mai entusiasmo da venditore, mai punti esclamativi.
 4. **Mestiere e misura.** Ogni tanto, e mai più di un'immagine per blocco: misura, taglio, forma, proporzione, equilibrio, bottega, mestiere, ricerca, sviluppo, dettaglio. Mai forzate: se la frase regge senza, senza.
@@ -64,14 +66,15 @@ Matia lo ha chiesto così (2026-10-08): ispirazione da atelier, ma **capibile su
 ## Il filtro finale (si controlla sempre)
 
 - [ ] Si capisce alla prima lettura, senza sapere nulla di Studio Matiz?
-- [ ] C'è una persona che parla (io) a una persona (tu)?
+- [ ] Il testo è impersonale (riflessivo o nominale), senza "io" né "tu", salvo nelle comunicazioni dirette?
+- [ ] Ci sono numeri, tempi o fatti verificabili, come in una ricerca?
 - [ ] C'è almeno un fatto, un gesto o un numero?
 - [ ] Le frasi alternano lunghezza? Nessuna terna di brevi, nessuna coppia gemella?
 - [ ] Nessuna parola della lista da evitare, nessun contrasto "non è X, è Y"?
 - [ ] Al massimo un'immagine di mestiere o di misura, e naturale?
 - [ ] Il pulsante dice cosa succede, con un verbo e un oggetto?
 - [ ] Solo trattino corto, nessun punto esclamativo?
-- [ ] Letto a voce alta, suona come Matia che parla a un cliente a un tavolo?
+- [ ] Letto a voce alta, suona come un professionista di ricerca e sviluppo che spiega con calma, senza gergo?
 
 ## Cosa ha insegnato Matia finora
 

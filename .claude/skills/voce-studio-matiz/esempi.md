@@ -97,6 +97,20 @@ Scelta di Matia: variante C intera ("ricerca e sviluppo, con i numeri"). Prima: 
 
 Nota: nella versione scelta il passo 1 non dice più che l'incontro è offerto. La cosa resta detta nell'hero ("offerta da me") e nelle regole.
 
+## Il resto della pagina (2026-10-09)
+
+Dopo la sezione "Il metodo" Matia ha chiesto di applicare lo stesso tono a tutto il testo (impersonale, preciso, ricerca e sviluppo con i numeri), senza più giri di varianti, per non mescolare stili. Riscritti in un colpo: il caso misurato, "I numeri che contano", "Le regole", lo stimatore (domande, opzioni, errori, note del risultato, stati), "Dalla sala ai dati" (Chi sono, in terza persona), le domande frequenti, la chiusura "Si comincia da un'ora.", i testi di servizio dello stimatore. Esempi della trasformazione:
+
+- "Racconti come lavori, io ascolto e faccio domande." -> "Si ascolta come si lavora e si raccolgono i numeri di partenza."
+- "Scrivi, e entro un giorno ti risponde una persona." -> "Ogni messaggio riceve risposta entro un giorno lavorativo."
+- "Quanto costa, in concreto." -> "Il prezzo, detto prima di cominciare."
+- "Che tipo di attività hai?" -> "Tipo di attività" (domande dello stimatore come etichette)
+- "Scegli il tipo di attività." (errore) -> "Manca il tipo di attività."
+- "Parliamone." -> "Si comincia da un'ora."
+- "Chi trovi dall'altra parte." / "Mi chiamo Matia Zoffoli..." -> "Dalla sala ai dati." / "Matia Zoffoli. Nove anni alla direzione di locali..."
+
+**Da verificare con Matia:** in "Chi sono" si cita il Dipartimento dell'Istruzione del governo australiano senza numeri (la piattaforma per più di un milione di utenti e oltre mille scuole è nel CV ma non è stata pubblicata).
+
 ## Altre cose da riscrivere, per lo stesso metodo
 
 Le voci del menu ("Servizi", "Percorso", "Condizioni", "Domande"), il pulsante "Prenota il primo incontro", le tre righe del piede della testata, i titoli di sezione, i testi dei quattro servizi, le condizioni, la FAQ, "Chi sono", la chiusura "Parliamone." e tutti i microtesti dello stimatore. Si procede per sezione: tre varianti dei testi forti, scelta di Matia, poi applicazione alla pagina.
