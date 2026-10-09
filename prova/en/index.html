@@ -813,6 +813,8 @@ html.modal-open { overflow: hidden; }
 }
 @media (min-width: 901px) and (max-width: 1320px) { .lang__btn > span:not(.flag) { display: none; } .lang__btn { padding: .5rem .6rem .5rem .5rem; } }
 .lang span { opacity: 1; }
+.portrait { padding: 0; margin-inline: 0; }
+.portrait img { display: block; width: 100%; height: 100%; object-fit: cover; object-position: 50% 18%; opacity: 1; }
 </style>
 </head>
 <body>
@@ -1222,7 +1224,7 @@ html.modal-open { overflow: hidden; }
       <div class="about__head">
         <p class="eyebrow">About</p>
         <h2 id="h-chi" data-split>From hospitality <em>to data</em></h2>
-        <div class="portrait" role="img" aria-label="Space reserved for Matia's photo"><span>Matia's photo to come</span></div>
+        <figure class="portrait"><img src="/assets/matia.jpg" srcset="/assets/matia-480.jpg 480w, /assets/matia.jpg 900w" sizes="(max-width: 900px) 90vw, 22rem" width="900" height="1125" alt="Matia Zoffoli" loading="lazy" decoding="async"></figure>
       </div>
       <div class="about__body">
         <p>My first memory of numbers is in my grandmother's shop. While she worked, she would keep me busy with pages of sums to work out in my head or with pen and paper. Finding the answer gave me a sense of things falling into place that I have never stopped looking for. Even today, I approach a problem believing there is a solution. When I cannot find it, I have learned to look at things differently: perhaps the question is the wrong one.</p>
