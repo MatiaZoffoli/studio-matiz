@@ -642,7 +642,7 @@ h3, .goals .lab, .terms .fig, .meter__row b, .faq summary, .est__step legend, .e
 .mb { display: none; }
 .t-short { display: none; }
 .gal__arrows { display: none; }
-.steps__rail--wide .steps__prog--ghost { opacity: .3; }
+.steps__rail--wide .steps__prog--ghost { opacity: .2; stroke-width: 1.1; }
 @media (max-width: 900px) {
   .mb { display: inline; }
   .hero .eyebrow { line-height: 1.75; align-items: flex-start; }
@@ -669,6 +669,24 @@ h3, .goals .lab, .terms .fig, .meter__row b, .faq summary, .est__step legend, .e
   .gal.is-swipe .page__info p { font-size: clamp(.8rem, 2.95cqh, .95rem); }
   .gal.is-swipe .page__blk + .page__blk { margin-top: .85rem; padding-top: .85rem; }
 }
+
+/* ---------- Telefono v2.6: schede a due tempi (problema, risposta), fisse e sensibili al dito ---------- */
+html.has-swipe { scroll-snap-type: y proximity; }
+.gal.is-swipe { scroll-snap-align: start; }
+.gal.is-swipe .page, .gal.is-swipe .page * { touch-action: pan-y; }
+.gal.is-swipe .page__info { overflow: hidden; }
+.gal.is-swipe .page__lab { display: none; }
+.gal.is-swipe .page__art { flex-basis: 32%; }
+.gal.is-swipe .page__tabs { display: flex; gap: 1.4rem; margin: 0 0 .7rem; }
+.gal.is-swipe .page__tabs button { padding: .55rem 0 .4rem; border: 0; border-bottom: 2px solid transparent; background: none; font: 600 .625rem/1 var(--sans); letter-spacing: .2em; text-transform: uppercase; color: var(--ink-soft); cursor: pointer; }
+.gal.is-swipe .page__tabs button[aria-pressed="true"] { color: var(--ink); border-bottom-color: var(--gold); }
+.gal.is-swipe .page .page__blk { display: none; }
+.gal.is-swipe .page[data-tab="0"] .page__blk--q, .gal.is-swipe .page[data-tab="1"] .page__blk--a { display: block; }
+.gal.is-swipe .page__blk + .page__blk { margin: 0; padding: 0; border: 0; }
+.gal.is-swipe .page__info p { font-size: clamp(.9rem, 3.4cqh, 1.06rem); line-height: 1.55; }
+.gal.is-swipe .page__info p.soft { color: var(--ink); }
+.gal.is-swipe .page__info .link { margin-top: auto; }
+.gal.is-swipe .page__info > .page__blk { margin-bottom: 1rem; }
 </style>
 </head>
 <body>
@@ -1199,6 +1217,18 @@ h3, .goals .lab, .terms .fig, .meter__row b, .faq summary, .est__step legend, .e
     function act(i) { pages.forEach(function (pg, k) { pg.classList.toggle('is-active', k === i); }); }
     function swipe() {
       gal.classList.add('is-swipe');
+      document.documentElement.classList.add('has-swipe');
+      pages.forEach(function (pg) {
+        var blks = $$('.page__blk', pg); if (blks.length < 2) return;
+        blks[0].classList.add('page__blk--q'); blks[1].classList.add('page__blk--a');
+        var tabs = document.createElement('div'); tabs.className = 'page__tabs'; tabs.setAttribute('role', 'group');
+        ['Il problema', 'La risposta'].forEach(function (lab, k) {
+          var b = document.createElement('button'); b.type = 'button'; b.textContent = lab; b.setAttribute('aria-pressed', k === 0 ? 'true' : 'false');
+          b.addEventListener('click', function () { pg.dataset.tab = String(k); $$('button', tabs).forEach(function (x, j) { x.setAttribute('aria-pressed', j === k ? 'true' : 'false'); }); });
+          tabs.appendChild(b);
+        });
+        blks[0].parentNode.insertBefore(tabs, blks[0]); pg.dataset.tab = '0';
+      });
       var site = $('.site'), W = 1, drag = null, moved = false, proxy = { p: 0 };
       if ('IntersectionObserver' in window) new IntersectionObserver(function (es) { inView = es[0].isIntersecting; act(inView ? Math.max(0, front) : -1); }, { threshold: .35 }).observe(gal);
       else inView = true;
@@ -1233,7 +1263,7 @@ h3, .goals .lab, .terms .fig, .meter__row b, .faq summary, .est__step legend, .e
       stage.addEventListener('pointermove', function (e) {
         if (!drag) return;
         var dx = e.clientX - drag.x, dy = e.clientY - drag.y;
-        if (!drag.lock && (Math.abs(dx) > 8 || Math.abs(dy) > 8)) drag.lock = Math.abs(dx) > Math.abs(dy) * 1.2 ? 'x' : 'y';
+        if (!drag.lock && (Math.abs(dx) > 5 || Math.abs(dy) > 5)) drag.lock = Math.abs(dx) > Math.abs(dy) ? 'x' : 'y';
         if (drag.lock !== 'x') return;
         if (!moved) { moved = true; try { stage.setPointerCapture(e.pointerId); } catch (e1) {} }
         var tn = performance.now(); drag.v = (e.clientX - drag.px) / Math.max(1, tn - drag.t); drag.px = e.clientX; drag.t = tn;
@@ -1244,7 +1274,7 @@ h3, .goals .lab, .terms .fig, .meter__row b, .faq summary, .est__step legend, .e
         var d = drag; drag = null;
         if (d.lock !== 'x') return;
         var dx = d.px - d.x, step = 0;
-        if (Math.abs(dx) > W * .16 || Math.abs(d.v) > .45) step = dx < 0 ? 1 : -1;
+        if (Math.abs(dx) > W * .1 || Math.abs(d.v) > .3) step = dx < 0 ? 1 : -1;
         go(Math.round(d.p0) + step);
       }
       stage.addEventListener('pointerup', end); stage.addEventListener('pointercancel', end);
@@ -1722,7 +1752,8 @@ h3, .goals .lab, .terms .fig, .meter__row b, .faq summary, .est__step legend, .e
       var P = prog.getPointAtLength(L);
       trav.setAttribute('cx', P.x); trav.setAttribute('cy', P.y);
       var under = wideMode && P.x > railW + 2 && P.x < SWw - 34;
-      trav.style.opacity = reduce ? 0 : (L <= 1 || L >= Ltot - 1 ? 0 : (under ? .3 : 1));
+      trav.setAttribute('r', under ? 3.5 : 6);
+      trav.style.opacity = reduce ? 0 : (L <= 1 || L >= Ltot - 1 ? 0 : (under ? .25 : 1));
       arrow.style.opacity = reduce ? 1 : Math.max(0, Math.min(1, (L - (Ltot - 48)) / 48));
       var act = -1;
       nodes.forEach(function (n, i) { var on = reduce || y >= n.y - 6; n.g.classList.toggle('is-reached', on); if (on && !reduce) act = i; });
