@@ -64,7 +64,7 @@ I due prospetti **non si contattano ancora** (decisione di Matia). Si contattano
 - [ ] **Rivedere cilindro e pulsanti su telefono vero** (rotazione col dito, apertura delle card, prestazioni): il pannello di anteprima non permette di misurare i fotogrammi al secondo
 
 - [x] Nome deciso da Matia: **Studio Matiz** (2026-10-08), allineato su pagina, privacy e documenti. Resta da allineare quando esistono: WhatsApp Business (nome profilo), dominio, profili social, partita IVA
-- [ ] (P) **Logo definitivo in vettoriale** (SVG), con versione chiara e scura: ora si usa un ritaglio del PNG
+- [ ] (P) **Logo definitivo in vettoriale** (SVG), con versione chiara e scura: **tolto dal sito e dai documenti** (2026-10-09), al suo posto un segnaposto tratteggiato. Quando e' pronto: rimetterlo in testata, nel piede, nei PDF di `modelli/` e come icona della scheda
 - [ ] (P) **Fotografie e immagini vere:** ritratto di Matia, Cesenatico e la costa, schermate o mockup di siti reali (anche del caso della societa' sportiva, con il permesso del cliente). La grafica boutique vive di immagini: oggi usa disegni al tratto
 - [ ] **Rivedere la pagina con occhi veri** su desktop e telefono: prestazioni, scorrimento delle pagine dei servizi, penna dei pulsanti, lettura dei testi in Bodoni (il pannello di anteprima non misura i fotogrammi)
 - [ ] **Aggiornare `DESIGN.md` e `PRODUCT.md`** al sistema v2 (ora solo una sezione in fondo a `DESIGN.md`)

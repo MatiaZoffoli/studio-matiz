@@ -7,7 +7,7 @@
 <meta name="description" content="Progettazione e sviluppo di siti, automazioni e strumenti digitali per piccole imprese. Prenota un primo incontro gratuito.">
 <meta name="robots" content="noindex">
 <meta name="theme-color" content="#F7F3EC">
-<link rel="icon" href="assets/logo-seal.png" type="image/png">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ccircle cx='16' cy='16' r='13' fill='none' stroke='%23A8854F' stroke-width='2.5'/%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400..700;1,6..96,400..700&family=Manrope:wght@300;400;500;600&display=swap" rel="stylesheet">
@@ -543,9 +543,15 @@ h3, .goals .lab, .terms .fig, .meter__row b, .faq summary, .est__step legend, .e
 .close__act .mail { color: var(--night-text); }
 .foot__mark { height: auto; width: 100%; max-width: 44rem; }
 .close h2 { font-size: clamp(3rem, 8.4vw, 7.4rem); max-width: 12ch; }
-.close__lead { grid-column: 1 / span 6; }
-.close__act { grid-column: 1 / span 7; gap: 1.6rem; }
+.terms li, .goals li { align-items: center; }
+.close__lead { grid-column: 1 / span 5; }
+.close__act { grid-column: 7 / span 6; gap: 1.5rem; }
+.close__act .btn { margin-bottom: .75rem; }
 .close__act .mail { padding-bottom: .4rem; line-height: 1.2; }
+@media (max-width: 900px) { .close__lead, .close__act { grid-column: 1 / -1; } }
+/* segnaposto del logo, finche' non e' definito */
+.logo-ph { display: inline-flex; align-items: center; justify-content: center; height: 2.3rem; min-width: 8.5rem; padding: 0 1.1rem; border: 1px dashed currentColor; opacity: .75; font: 600 .625rem/1 var(--sans); letter-spacing: .26em; text-transform: uppercase; }
+.logo-ph--big { display: flex; width: 100%; max-width: 44rem; height: clamp(6rem, 14vw, 11rem); margin: 0 auto 1.75rem; color: var(--night-soft); font-size: .75rem; }
 .goals__more { margin-top: 1.75rem; font: 600 .6875rem/1.7 var(--sans); letter-spacing: .2em; text-transform: uppercase; }
 .goals__more a { display: inline-flex; align-items: center; gap: .7rem; color: var(--gold-light); text-decoration: none; padding-bottom: .35rem; background: linear-gradient(currentColor, currentColor) left bottom / 100% 1px no-repeat; transition: background-size .5s var(--ease); }
 .goals__more a:hover { background-size: 40% 1px; }
@@ -576,7 +582,7 @@ h3, .goals .lab, .terms .fig, .meter__row b, .faq summary, .est__step legend, .e
 
 <header class="site on-dark" id="site">
  <div class="wrap top">
-  <a class="brand" href="#" aria-label="Studio Matiz, inizio pagina"><img class="dk" src="assets/logo-lockup.png" alt="Studio Matiz" width="1986" height="452"><img class="lt" src="assets/logo-lockup-light.png" alt="" width="1986" height="452"></a>
+  <a class="brand" href="#" aria-label="Studio Matiz, inizio pagina"><span class="logo-ph" role="img" aria-label="Studio Matiz">Logo</span></a>
   <nav class="nav" aria-label="Principale">
     <a href="#servizi">Il mestiere</a>
     <a href="#percorso">Il metodo</a>
@@ -964,7 +970,7 @@ h3, .goals .lab, .terms .fig, .meter__row b, .faq summary, .est__step legend, .e
           <p class="est__note" id="estNote"></p>
           <div class="est__cta">
             <a class="btn" id="estBook" href="https://calendar.app.google/NUp3xit8MwxWQWkK6" target="_blank" rel="noopener">Prenota il primo incontro</a>
-            <a class="mail" id="estWa" href="https://wa.me/393339580381">Scrivere su WhatsApp</a>
+            <a class="mail" id="estWa" href="https://wa.me/393339580381">Contattami su WhatsApp</a>
           </div>
           <button type="button" class="est__back est__again" id="estAgain">Ricomincia</button>
           <p class="est__status" id="estStatus" role="status"></p>
@@ -978,7 +984,7 @@ h3, .goals .lab, .terms .fig, .meter__row b, .faq summary, .est__step legend, .e
       <div class="about__head">
         <p class="eyebrow">Chi sono</p>
         <h2 id="h-chi" data-split>Dalla sala <em>ai dati.</em></h2>
-        <div class="portrait" role="img" aria-label="Spazio riservato alla foto di Matia"><img src="assets/logo-seal-light.png" alt=""><span>Foto di Matia da inserire</span></div>
+        <div class="portrait" role="img" aria-label="Spazio riservato alla foto di Matia"><span>Foto di Matia da inserire</span></div>
       </div>
       <div class="about__body">
         <p>Matia Zoffoli. Nove anni alla direzione di locali di ospitalità in Australia, fino a quattro sedi e centoventi persone: margini stretti, poco tempo, problemi da risolvere ogni giorno.</p>
@@ -1041,7 +1047,7 @@ h3, .goals .lab, .terms .fig, .meter__row b, .faq summary, .est__step legend, .e
           <a class="btn btn--light" href="https://calendar.app.google/NUp3xit8MwxWQWkK6" target="_blank" rel="noopener">Prenota il primo incontro
             <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true"><path d="M2 8h11M9 3.5 13.5 8 9 12.5"/></svg>
           </a>
-          <a class="mail" href="https://wa.me/393339580381?text=Ciao%20Matia%2C%20vorrei%20fissare%20un%20primo%20incontro.">Scrivere su WhatsApp</a>
+          <a class="mail" href="https://wa.me/393339580381?text=Ciao%20Matia%2C%20vorrei%20fissare%20un%20primo%20incontro.">Contattami su WhatsApp</a>
           <a class="mail" href="mailto:matiazoffoli@gmail.com">matiazoffoli@gmail.com</a>
         </div>
       </div>
@@ -1056,7 +1062,7 @@ h3, .goals .lab, .terms .fig, .meter__row b, .faq summary, .est__step legend, .e
       <div><h4>Contatti</h4><p><a href="mailto:matiazoffoli@gmail.com">matiazoffoli@gmail.com</a><br><a href="https://wa.me/393339580381">WhatsApp +39 333 958 0381</a></p></div>
       <div><h4>Informazioni</h4><p><a href="privacy.html" target="_blank" rel="noopener">Privacy</a><br><a href="#faq">Domande frequenti</a></p></div>
     </div>
-    <img class="foot__mark" src="assets/logo-lockup-light.png" alt="" width="1986" height="452">
+    <div class="logo-ph logo-ph--big" role="img" aria-label="Studio Matiz">Logo in definizione</div>
     <div class="foot__legal">
       <span>Pagina di prova: nome, testi e condizioni sono in bozza.</span>
       <span>Studio Matiz di Matia Zoffoli, Cesenatico.</span>
@@ -1398,13 +1404,18 @@ h3, .goals .lab, .terms .fig, .meter__row b, .faq summary, .est__step legend, .e
     pulse.mat.uniforms.uColor.value.set(0xfff0cf);
     for (i = 0; i < PN; i++) pulse.sz[i] = .26;
 
-    var W = 1, H = 1, ptr = { x: 9, y: 9, on: false }, sm = { x: 9, y: 9 }, mx = 0, my = 0, visible = true, t0 = performance.now(), wide = true, glowAmt = 0;
+    var W = 1, H = 1, baseY = 0, ptr = { x: 9, y: 9, on: false }, sm = { x: 9, y: 9 }, mx = 0, my = 0, visible = true, t0 = performance.now(), wide = true, glowAmt = 0;
     var tmp = new T.Vector3(), c0 = new T.Color(0xd2a85f), c1 = new T.Color(0xfff2cf), col = new T.Color();
     function size() {
-      W = hero.clientWidth; H = hero.clientHeight;
+      W = hero.clientWidth;
+      var stop = o.stopAt ? $(o.stopAt, hero) : null;
+      H = stop ? Math.max(260, stop.offsetTop - 8) : hero.clientHeight;
+      if (stop) cv.style.height = H + 'px';
       renderer.setSize(W, H, false); camera.aspect = W / H; camera.updateProjectionMatrix();
       wide = W > 900;
-      root.position.set(wide ? o.x : 0, wide ? 0 : 2.1, 0); root.scale.setScalar(wide ? o.scale : .56);
+      baseY = wide ? (o.y || 0) : 2.1;
+      var px = o.xf ? (o.xf - .5) * 2 * Math.tan(camera.fov * Math.PI / 360) * 10 * camera.aspect : o.x;
+      root.position.set(wide ? px : 0, baseY, 0); root.scale.setScalar(wide ? o.scale : .56);
       var u = renderer.domElement.height / (2 * Math.tan(camera.fov * Math.PI / 360));
       halo.mat.uniforms.uScale.value = u; pulse.mat.uniforms.uScale.value = u;
       draw(performance.now(), 0);
@@ -1425,7 +1436,7 @@ h3, .goals .lab, .terms .fig, .meter__row b, .faq summary, .est__step legend, .e
       gC.rotation.x = -t * .29;
       core.rotation.y = -t * .12; core.rotation.x = Math.sin(t * .3) * .25;
       root.rotation.y = mx * .55; root.rotation.x = -my * .3 + off * .0007;
-      root.position.y += ((wide ? 0 : 2.1) - off * .004 - root.position.y) * .15;
+      root.position.y += (baseY - off * (o.par == null ? .004 : o.par) - root.position.y) * .15;
       root.updateMatrixWorld(true);
       /* luce del puntatore, nello spazio */
       tmp.set(sm.x, sm.y, .5).unproject(camera).sub(camera.position).normalize();
@@ -1477,7 +1488,7 @@ h3, .goals .lab, .terms .fig, .meter__row b, .faq summary, .est__step legend, .e
 
   function initHero() {
     makeRings($('#hero'), $('#heroGl'), { x: 2.1, scale: .76 });
-    makeRings($('#chiusura'), $('#closeGl'), { x: 2.9, scale: .62 });
+    makeRings($('#chiusura'), $('#closeGl'), { xf: .76, y: -.1, scale: .86, par: .0012, stopAt: '.close__row' });
 
   }
 
