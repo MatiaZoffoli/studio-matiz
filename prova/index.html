@@ -711,6 +711,17 @@ html.has-swipe { scroll-snap-type: y proximity; }
   .lang { gap: .3rem; letter-spacing: .1em; font-size: .625rem; }
   .logo-ph { min-width: 0; width: 5.2rem; padding-inline: .4rem; }
 }
+
+/* ---------- Come si lavora: quattro righe di uguale altezza, titolo e descrizione centrati sulla stessa linea ---------- */
+@media (min-width: 901px) {
+  .steps { --rail: min(28%, 22rem); }
+  .steps li { grid-template-columns: minmax(0, 4fr) minmax(0, 8fr); gap: .75rem 3rem; align-items: center; min-height: 10rem; padding-block: 1.6rem; }
+  .steps p { font-size: 1.0625rem; line-height: 1.6; max-width: 54ch; }
+}
+@media (max-width: 900px) {
+  .steps li { padding-block: 1.75rem; }
+  .steps p { font-size: 1rem; line-height: 1.6; }
+}
 </style>
 </head>
 <body>
