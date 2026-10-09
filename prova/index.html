@@ -542,7 +542,14 @@ h3, .goals .lab, .terms .fig, .meter__row b, .faq summary, .est__step legend, .e
 .close__lead { color: var(--night-soft); }
 .close__act .mail { color: var(--night-text); }
 .foot__mark { height: auto; width: 100%; max-width: 44rem; }
-.close h2 { font-size: clamp(3rem, 8.4vw, 7.4rem); }
+.close h2 { font-size: clamp(3rem, 8.4vw, 7.4rem); max-width: 12ch; }
+.close__lead { grid-column: 1 / span 6; }
+.close__act { grid-column: 1 / span 7; gap: 1.6rem; }
+.close__act .mail { padding-bottom: .4rem; line-height: 1.2; }
+.goals__more { margin-top: 1.75rem; font: 600 .6875rem/1.7 var(--sans); letter-spacing: .2em; text-transform: uppercase; }
+.goals__more a { display: inline-flex; align-items: center; gap: .7rem; color: var(--gold-light); text-decoration: none; padding-bottom: .35rem; background: linear-gradient(currentColor, currentColor) left bottom / 100% 1px no-repeat; transition: background-size .5s var(--ease); }
+.goals__more a:hover { background-size: 40% 1px; }
+.goals__more svg { width: 1.1em; height: 1.1em; flex: none; }
 @media (max-width: 900px) { .close__gl { opacity: .6; } }
 /* schede dei servizi: i testi nuovi sono piu' lunghi, il pannello si stringe un poco per non tagliare il link */
 .gal.is-pinned .page__info { padding: clamp(1.2rem, 2.1vw, 2.1rem); }
@@ -807,7 +814,7 @@ h3, .goals .lab, .terms .fig, .meter__row b, .faq summary, .est__step legend, .e
               <div class="meter__row meter__row--b" id="mB"><span>Dopo una settimana</span><b>450</b><i class="meter__bar"></i></div>
             </div>
           </div>
-          <p class="case__txt">Il primo caso misurato: una società sportiva, da 115 a 450 iscritti in una settimana. Le leve sono state tre: un sito rifatto, una campagna sulle nuove card e un ingresso alle partite legato alla card. Per ora è l'unico caso, e viene riportato come tale.</p>
+          <p class="case__txt">Il primo caso misurato: una società sportiva, da 115 a 450 iscritti in una settimana. Tre gli interventi: correzione nel sito di errori e logiche ormai superate, ricerca e sviluppo di un nuovo metodo di accesso ai palazzetti, traffico online riportato su una pagina privata al posto di servizi di terze parti.</p>
         </div>
       </div>
     </section>
@@ -817,25 +824,23 @@ h3, .goals .lab, .terms .fig, .meter__row b, .faq summary, .est__step legend, .e
         <div class="grid"><div class="night__head">
           <p class="eyebrow">Cosa si misura</p>
           <h2 id="h-obiettivi" data-split>I numeri <em>che contano.</em></h2>
-          <p class="night__lead">Tre obiettivi che le piccole attività inseguono più spesso, e il numero con cui si misura ciascuno.</p>
+          <p class="night__lead">Tre degli obiettivi che le piccole attività inseguono più spesso, e il numero con cui si misura ciascuno.</p>
         </div></div>
         <ul class="goals">
           <li data-reveal>
             <span class="lab">Iscritti</span>
             <span class="txt">Nuove iscrizioni e ritorni nel tempo. Nel caso misurato: da 115 a 450 in una settimana.</span>
-            <span class="st">Caso misurato</span>
           </li>
           <li data-reveal>
             <span class="lab">Prenotazioni</span>
             <span class="txt">Richieste di tavolo o di ombrellone arrivate da sito, menu e schede, confrontate prima e dopo il lavoro.</span>
-            <span class="st">Per i primi clienti</span>
           </li>
           <li data-reveal>
             <span class="lab">Richieste</span>
             <span class="txt">Messaggi e richieste di preventivo ricevuti, e tempo medio che passa prima di una risposta.</span>
-            <span class="st">Per i primi clienti</span>
           </li>
         </ul>
+        <p class="goals__more"><a href="https://wa.me/393339580381?text=Ciao%20Matia%2C%20ho%20un%20altro%20obiettivo%20o%20problema%20di%20cui%20vorrei%20parlare." target="_blank" rel="noopener">Un altro obiettivo, o un altro problema? Si racconta qui, e si lavora insieme per risolverlo<svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true"><path d="M3 13 13 3M5.5 3H13v7.5"/></svg></a></p>
       </div>
     </section>
 
@@ -848,32 +853,32 @@ h3, .goals .lab, .terms .fig, .meter__row b, .faq summary, .est__step legend, .e
         </div></div>
         <ul class="terms">
           <li data-reveal>
-            <span class="fig">1 ora</span>
+            <span class="fig">Ascolto</span>
             <span class="lab">Primo incontro</span>
-            <span class="txt">Si ascolta come si lavora e si raccolgono i numeri di partenza. Nessuna proposta improvvisata.</span>
+            <span class="txt">Un'ora per ascoltare come si lavora e raccogliere i numeri di partenza. Nessuna proposta improvvisata.</span>
           </li>
           <li data-reveal>
-            <span class="fig">Per iscritto</span>
+            <span class="fig">Trasparenza</span>
             <span class="lab">Preventivo</span>
             <span class="txt">Cosa include, quanto costa e in quanto tempo si consegna, tutto scritto prima di cominciare. Il prezzo non cambia in corsa.</span>
           </li>
           <li data-reveal>
-            <span class="fig">Scalato</span>
+            <span class="fig">Equità</span>
             <span class="lab">Check-up</span>
             <span class="txt">Il costo del check-up viene scalato dal lavoro che segue, se si prosegue.</span>
           </li>
           <li data-reveal>
-            <span class="fig">1 giorno</span>
+            <span class="fig">Prontezza</span>
             <span class="lab">Risposta</span>
             <span class="txt">Ogni messaggio riceve risposta entro un giorno lavorativo.</span>
           </li>
           <li data-reveal>
-            <span class="fig">Pochi</span>
-            <span class="lab">Progetti per volta</span>
-            <span class="txt">Pochi progetti insieme, per dare a ciascuno il tempo che serve. Il tempo di consegna è scritto nel preventivo ed è quello che si rispetta.</span>
+            <span class="fig">Dedizione</span>
+            <span class="lab">Tempi di consegna</span>
+            <span class="txt">Il massimo focus su ogni lavoro è garantito: il tempo di consegna è scritto nel preventivo ed è quello che si rispetta.</span>
           </li>
           <li data-reveal>
-            <span class="fig">1 mese</span>
+            <span class="fig">Equilibrio</span>
             <span class="lab">Rodaggio</span>
             <span class="txt">Il primo mese è a forfait e senza limite di ore, per assistenza, ricerca e idee. A fine mese un resoconto con le ore reali stabilisce quante ne servono.</span>
           </li>
@@ -941,8 +946,7 @@ h3, .goals .lab, .terms .fig, .meter__row b, .faq summary, .est__step legend, .e
               <label class="field"><span>Email</span><input type="email" name="email" autocomplete="email"></label>
               <label class="field"><span>Telefono (facoltativo)</span><input type="tel" name="tel" autocomplete="tel"></label>
               <label class="hp" aria-hidden="true">Non compilare <input type="text" name="sito_web" tabindex="-1" autocomplete="off"></label>
-              <label class="chk"><input type="checkbox" name="privacy"><span>Ho letto l'<a href="privacy.html">informativa privacy</a>.</span></label>
-              <label class="chk"><input type="checkbox" name="comunicazioni"><span>Acconsento a ricevere da Studio Matiz comunicazioni su questo progetto (facoltativo).</span></label>
+              <label class="chk"><input type="checkbox" name="privacy"><span>Ho letto l'<a href="privacy.html" target="_blank" rel="noopener">informativa privacy</a>.</span></label>
             </div>
           </fieldset>
           <p class="est__err" id="estErr" role="alert"></p>
@@ -997,11 +1001,11 @@ h3, .goals .lab, .terms .fig, .meter__row b, .faq summary, .est__step legend, .e
         </details>
         <details>
           <summary>Cosa succede dopo la consegna?</summary>
-          <p>Comincia la cura continua: aggiornamenti, correzioni e risposta entro un giorno lavorativo. Ogni mese un resoconto mostra le ore usate, le cose fatte e tre numeri di andamento.</p>
+          <p>Comincia la cura continua: aggiornamenti, correzioni e risposta entro un giorno lavorativo. Ogni mese un resoconto mostra le ore usate, le cose fatte e i numeri di andamento.</p>
         </details>
         <details>
           <summary>Quanto tempo serve?</summary>
-          <p>Da pochi giorni per un menu a qualche settimana per un sito completo. Il tempo è scritto nel preventivo e parte dal momento in cui arriva tutto il materiale. I progetti aperti insieme restano pochi, proprio per rispettarlo.</p>
+          <p>Da pochi giorni per un menu a qualche settimana per un sito completo. Il tempo è scritto nel preventivo e parte dal momento in cui arriva tutto il materiale. Il massimo focus su ogni lavoro è garantito, per una consegna nei tempi scritti.</p>
         </details>
         <details>
           <summary>A chi appartengono dominio e contenuti?</summary>
@@ -1009,7 +1013,7 @@ h3, .goals .lab, .terms .fig, .meter__row b, .faq summary, .est__step legend, .e
         </details>
         <details>
           <summary>Cosa sono le ore incluse nella cura continua?</summary>
-          <p>Il tempo mensile dedicato alle richieste: modifiche ai contenuti, piccoli interventi, domande. Aggiornamenti tecnici, sicurezza e backup non lo consumano. Il primo mese è a forfait e senza limite di ore, esclusi i nuovi sviluppi, e a fine mese le ore reali stabiliscono il livello.</p>
+          <p>Il tempo mensile dedicato alle richieste: modifiche ai contenuti, interventi ordinari, domande. Aggiornamenti tecnici, sicurezza e backup non lo consumano. Il primo mese è a forfait e senza limite di ore: tutto ciò che è ordinario può rientrare, e cosa includere si decide insieme in base alle esigenze. A fine mese il livello si stabilisce insieme, guardando i dati e le informazioni raccolte. I grandi sviluppi si preventivano a parte.</p>
         </details>
         <details>
           <summary>Dove si lavora?</summary>
@@ -1017,11 +1021,11 @@ h3, .goals .lab, .terms .fig, .meter__row b, .faq summary, .est__step legend, .e
         </details>
         <details>
           <summary>Si lavora anche in inglese?</summary>
-          <p>Sì. Siti, menu e carta dei vini si scrivono in inglese da madrelingua: dopo tredici anni in Australia, inglese e italiano sono allo stesso livello.</p>
+          <p>Sì, con piena disponibilità: siti, menu, carta dei vini, documenti e assistenza si realizzano in inglese come in italiano.</p>
         </details>
         <details>
           <summary>Quali dati vengono raccolti?</summary>
-          <p>Solo quelli lasciati scrivendo o prenotando, usati per rispondere. Il dettaglio è nell'<a href="privacy.html">informativa privacy</a>.</p>
+          <p>Solo quelli lasciati scrivendo o prenotando, usati per rispondere. Il dettaglio è nell'<a href="privacy.html" target="_blank" rel="noopener">informativa privacy</a>.</p>
         </details>
       </div>
     </div>
@@ -1050,7 +1054,7 @@ h3, .goals .lab, .terms .fig, .meter__row b, .faq summary, .est__step legend, .e
     <div class="foot__cols">
       <div><h4>Studio</h4><p>Studio Matiz<br>di Matia Zoffoli<br>Cesenatico</p></div>
       <div><h4>Contatti</h4><p><a href="mailto:matiazoffoli@gmail.com">matiazoffoli@gmail.com</a><br><a href="https://wa.me/393339580381">WhatsApp +39 333 958 0381</a></p></div>
-      <div><h4>Informazioni</h4><p><a href="privacy.html">Privacy</a><br><a href="#faq">Domande frequenti</a></p></div>
+      <div><h4>Informazioni</h4><p><a href="privacy.html" target="_blank" rel="noopener">Privacy</a><br><a href="#faq">Domande frequenti</a></p></div>
     </div>
     <img class="foot__mark" src="assets/logo-lockup-light.png" alt="" width="1986" height="452">
     <div class="foot__legal">
@@ -1158,7 +1162,7 @@ h3, .goals .lab, .terms .fig, .meter__row b, .faq summary, .est__step legend, .e
   (function initEstimator() {
     var form = $('#estForm'); if (!form) return;
     var ENDPOINT = 'https://mtdfpcwdzjweyqpgpdvp.supabase.co/functions/v1/contatto';
-    var POLICY = 'bozza-2026-10-08';
+    var POLICY = 'bozza-2026-10-09';
     var steps = $$('.est__step', form), ticks = $$('#estProg i'), back = $('#estBack'), nextB = $('#estNext'), go = $('#estGo'),
         err = $('#estErr'), res = $('#estResult'), pos = 0, t0 = performance.now();
     var BANDS = {
@@ -1174,6 +1178,17 @@ h3, .goals .lab, .terms .fig, .meter__row b, .faq summary, .est__step legend, .e
     function seq() { return needsSize() ? [0, 1, 2, 3, 4] : [0, 1, 2, 4]; }
     function eur(n) { return String(n).replace(/\B(?=(\d{3})+(?!\d))/g, '.'); }
     function days(b) { return b[4] === 'settimane' ? b[3] * 7 : b[3]; }
+
+    /* le risposte a scelta singola si tolgono con un secondo clic */
+    var radios = $$('input[type="radio"]', form);
+    radios.forEach(function (i) {
+      i.addEventListener('click', function () {
+        if (i.dataset.sel === '1') { i.checked = false; i.dataset.sel = ''; return; }
+        radios.forEach(function (o) { if (o.name === i.name) o.dataset.sel = ''; });
+        i.dataset.sel = '1';
+      });
+    });
+    form.addEventListener('reset', function () { radios.forEach(function (o) { o.dataset.sel = ''; }); });
 
     /* "Non lo so" esclude le altre scelte, e viceversa */
     $$('input[name="servizi"]', form).forEach(function (i) {
@@ -1251,7 +1266,7 @@ h3, .goals .lab, .terms .fig, .meter__row b, .faq summary, .est__step legend, .e
       var payload = {
         nome: fld('nome'), email: fld('email'), telefono: fld('tel'), tipo_attivita: val('tipo'), servizi: vals('servizi'),
         presenza: val('presenza'), dimensione: needsSize() ? val('size') : null, prezzo_da: r.lo || null, prezzo_fino_a: r.hi || null,
-        consenso_privacy: true, consenso_comunicazioni: !!form.elements.comunicazioni.checked, versione_informativa: POLICY,
+        consenso_privacy: true, consenso_comunicazioni: false, versione_informativa: POLICY,
         sito_web: fld('sito_web'), tempo_compilazione_ms: Math.round(performance.now() - t0)
       };
       form.hidden = true; $('#estProg').hidden = true; res.hidden = false; res.focus({ preventScroll: true });
@@ -1462,7 +1477,7 @@ h3, .goals .lab, .terms .fig, .meter__row b, .faq summary, .est__step legend, .e
 
   function initHero() {
     makeRings($('#hero'), $('#heroGl'), { x: 2.1, scale: .76 });
-    makeRings($('#chiusura'), $('#closeGl'), { x: 4.2, scale: .62 });
+    makeRings($('#chiusura'), $('#closeGl'), { x: 2.9, scale: .62 });
 
   }
 
