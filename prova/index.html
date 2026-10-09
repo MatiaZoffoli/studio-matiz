@@ -459,7 +459,6 @@ h1 em, h2 em { font-style: normal; color: var(--gold-text); }
   .hero__row .lede, .hero__act { grid-column: 1 / -1; }
   .hero__meta { grid-template-columns: 1fr; }
   .hero__meta p + p { padding-left: 0; border-left: 0; border-top: 1px solid var(--night-line); }
-  .hero__gl { opacity: .38; }
   .brand img { height: 2.2rem; }
 }
 
@@ -588,6 +587,56 @@ h3, .goals .lab, .terms .fig, .meter__row b, .faq summary, .est__step legend, .e
 .gal.js-draw .page__art .dr { stroke-dashoffset: 1; }
 .gal.js-draw .page.is-active .page__art .dr { animation: drawIn 1.5s cubic-bezier(.45, .05, .2, 1) both; animation-delay: calc(var(--k, 0) * 75ms + .15s); }
 .gal.js-draw .page.is-active .page__art .sk--gold { animation: drawIn 1.5s cubic-bezier(.45, .05, .2, 1) both, goldGlow 3.4s ease-in-out infinite; animation-delay: calc(var(--k, 0) * 75ms + .15s), 2.8s; }
+
+/* ---------- Telefono v2.4: oggetto 3D in fascia propria, schede che girano di lato, filo largo, caso senza blocco ---------- */
+.top__cta .sm { display: none; }
+.gal__hint .h-m { display: none; }
+.gal.is-swipe .gal__hint .h-d { display: none; }
+.gal.is-swipe .gal__hint .h-m { display: inline; }
+.gal.is-swipe .gal__count { white-space: nowrap; }
+.foot__cols .foot__id span { display: block; }
+.steps__rail--wide { z-index: 3; }
+.steps__rail--wide .steps__base { stroke: rgba(36, 30, 26, .5); opacity: .6; }
+.steps__rail--wide .steps__glow { opacity: .2; }
+.steps__rail--wide .steps__prog { opacity: .78; stroke-width: 2.2; }
+@media (max-width: 900px) {
+  .grid, .hero__row, .gal__head, .case__grid, .goals li, .terms li, .close__row, .foot__cols { column-gap: 0; }
+  .hero { padding-top: 0; justify-content: flex-start; }
+  .hero__gl { position: relative; inset: auto; z-index: 0; flex: none; width: 100%; height: min(40vh, 19rem); height: min(40svh, 19rem); }
+  .hero__fallback { z-index: 0; }
+  .hero__main { padding-top: .25rem; }
+  .case { height: auto; }
+  .case__pin { position: static; height: auto; padding-block: var(--section); }
+  .foot__cols .foot__id span { display: inline; }
+  .foot__cols .foot__id span:nth-child(2)::after { content: ","; }
+  .foot__cols .foot__id { white-space: nowrap; font-size: min(1rem, 4.1vw); }
+  .steps li { padding-right: 1.4rem; }
+}
+@media (max-width: 520px) {
+  .top { gap: .75rem; padding-block: .8rem; }
+  .top__cta .lg { display: none; }
+  .top__cta .sm { display: inline; }
+  .top__cta .btn { padding: .65rem 1rem; }
+}
+/* schede dei servizi su telefono: una per volta, da sfogliare di lato */
+.gal.is-swipe { padding-block: 0; overflow: clip; scroll-margin-top: var(--hdr, 5rem); }
+.gal.is-swipe .gal__pin { height: calc(100vh - var(--hdr, 5rem)); height: calc(100svh - var(--hdr, 5rem)); display: flex; flex-direction: column; padding-block: 1.1rem .8rem; }
+.gal.is-swipe .gal__head { display: block; margin-bottom: .9rem; }
+.gal.is-swipe .gal__head h2 { font-size: clamp(1.7rem, 7.4vw, 2.2rem); }
+.gal.is-swipe .gal__head p { display: none; }
+.gal.is-swipe .gal__stage { position: relative; display: block; flex: 1; min-height: 0; padding-block: 0; perspective: 1400px; perspective-origin: 50% 45%; touch-action: pan-y; }
+.gal.is-swipe .page { position: absolute; top: 0; bottom: 0; left: var(--gutter); right: var(--gutter); display: flex; flex-direction: column; container-type: size; will-change: transform; }
+.gal.is-swipe .page__art { flex: 0 1 30%; min-height: 0; padding: .8rem 1rem; display: flex; align-items: center; justify-content: center; }
+.gal.is-swipe .page__art svg { height: 100%; width: auto; max-width: 100%; }
+.gal.is-swipe .page__n { left: .7rem; top: .7rem; width: 2.2rem; height: 2.2rem; font-size: .75rem; }
+.gal.is-swipe .page__info { flex: 1 1 auto; min-height: 0; overflow-y: auto; padding: 1rem 1.1rem; }
+.gal.is-swipe .page__meta { font-size: .625rem; }
+.gal.is-swipe .page__info h3 { margin: .4rem 0 .6rem; font-size: clamp(1.5rem, 6.6cqh, 2rem); }
+.gal.is-swipe .page__info p { font-size: clamp(.82rem, 3.1cqh, 1rem); line-height: 1.5; }
+.gal.is-swipe .page__blk + .page__blk { margin-top: .7rem; padding-top: .7rem; }
+.gal.is-swipe .page__lab { margin-bottom: .35rem; }
+.gal.is-swipe .page__info .link { margin-top: .8rem; }
+.gal.is-swipe .gal__ctl { display: flex; align-items: center; justify-content: space-between; gap: 1rem; margin-top: .7rem; padding-top: .7rem; border-top: 1px solid var(--line); font: 500 .625rem/1 var(--sans); letter-spacing: .14em; text-transform: uppercase; color: var(--ink-soft); }
 </style>
 </head>
 <body>
@@ -603,7 +652,7 @@ h3, .goals .lab, .terms .fig, .meter__row b, .faq summary, .est__step legend, .e
     <a href="#chi-sono">Chi sono</a>
     <a href="#faq">Domande</a>
   </nav>
-  <div class="top__cta"><a class="btn" href="https://calendar.app.google/NUp3xit8MwxWQWkK6" target="_blank" rel="noopener">Prenota un incontro</a></div>
+  <div class="top__cta"><a class="btn" href="https://calendar.app.google/NUp3xit8MwxWQWkK6" target="_blank" rel="noopener"><span class="lg">Prenota un incontro</span><span class="sm">Primo incontro</span></a></div>
  </div>
 </header>
 
@@ -778,7 +827,7 @@ h3, .goals .lab, .terms .fig, .meter__row b, .faq summary, .est__step legend, .e
       <div class="wrap gal__ctl" id="galCtl">
         <span class="gal__count"><b id="galNow">01</b> / 04</span>
         <span class="gal__dots" id="galDots"><button type="button" class="on" aria-label="Presenza online"></button><button type="button" aria-label="Automazioni"></button><button type="button" aria-label="Cura continua"></button><button type="button" aria-label="Check-up"></button></span>
-        <span>Scorri per vedere gli altri</span>
+        <span class="gal__hint"><span class="h-d">Scorri per vedere gli altri</span><span class="h-m">Scorri di lato</span></span>
       </div>
     </div>
   </section>
@@ -1071,7 +1120,7 @@ h3, .goals .lab, .terms .fig, .meter__row b, .faq summary, .est__step legend, .e
 <footer class="foot">
   <div class="wrap">
     <div class="foot__cols">
-      <div><h4>Studio</h4><p>Studio Matiz<br>di Matia Zoffoli<br>Cesenatico</p></div>
+      <div><h4>Studio</h4><p class="foot__id"><span>Studio Matiz</span> <span>di Matia Zoffoli</span> <span>Cesenatico</span></p></div>
       <div><h4>Contatti</h4><p><a href="mailto:matiazoffoli@gmail.com">matiazoffoli@gmail.com</a><br><a href="https://wa.me/393339580381">WhatsApp +39 333 958 0381</a></p></div>
       <div><h4>Informazioni</h4><p><a href="privacy.html" target="_blank" rel="noopener">Privacy</a><br><a href="#faq">Domande frequenti</a></p></div>
     </div>
@@ -1115,6 +1164,60 @@ h3, .goals .lab, .terms .fig, .meter__row b, .faq summary, .est__step legend, .e
     $$('.page__art', stage).forEach(function (art) { $$('.dr', art).forEach(function (e, i) { e.style.setProperty('--k', i); }); });
     var inView = false, front = -1;
     function act(i) { pages.forEach(function (pg, k) { pg.classList.toggle('is-active', k === i); }); }
+    function swipe() {
+      gal.classList.add('is-swipe');
+      var site = $('.site'), W = 1, drag = null, moved = false, proxy = { p: 0 };
+      if ('IntersectionObserver' in window) new IntersectionObserver(function (es) { inView = es[0].isIntersecting; act(inView ? Math.max(0, front) : -1); }, { threshold: .35 }).observe(gal);
+      else inView = true;
+      function metrics() { gal.style.setProperty('--hdr', (site ? site.offsetHeight : 80) + 'px'); W = pages[0].offsetWidth || stage.clientWidth || 1; }
+      function render() {
+        var p = proxy.p, f = clamp(Math.round(p), 0, N - 1);
+        pages.forEach(function (pg, i) {
+          var o = i - p, a = Math.min(1, Math.abs(o));
+          var x = o * W * .94, ry = reduce ? 0 : clamp(-o * 46, -70, 70), z = reduce ? 0 : -a * 260, s = reduce ? 1 : 1 - .06 * a;
+          pg.style.transform = 'translate3d(' + x.toFixed(1) + 'px,0,' + z.toFixed(1) + 'px) rotateY(' + ry.toFixed(2) + 'deg) scale(' + s.toFixed(3) + ')';
+          pg.style.setProperty('--dim', (a * .55).toFixed(3));
+          pg.style.zIndex = String(10 - Math.round(Math.abs(o) * 3));
+          pg.style.visibility = Math.abs(o) > 1.6 ? 'hidden' : 'visible';
+        });
+        if (f !== front) {
+          front = f;
+          if (inView) act(f);
+          pages.forEach(function (pg, i) { if (i === f) pg.removeAttribute('inert'); else pg.setAttribute('inert', ''); });
+          dots.forEach(function (d, i) { d.classList.toggle('on', i === f); });
+          now.textContent = '0' + (f + 1);
+        }
+      }
+      function go(i) { gsap.to(proxy, { p: clamp(i, 0, N - 1), duration: reduce ? .01 : .65, ease: 'power3.out', overwrite: true, onUpdate: render }); }
+      stage.addEventListener('pointerdown', function (e) {
+        if (e.pointerType === 'mouse' && e.button !== 0) return;
+        gsap.killTweensOf(proxy);
+        drag = { x: e.clientX, y: e.clientY, p0: proxy.p, lock: null, t: performance.now(), px: e.clientX, v: 0 }; moved = false;
+      });
+      stage.addEventListener('pointermove', function (e) {
+        if (!drag) return;
+        var dx = e.clientX - drag.x, dy = e.clientY - drag.y;
+        if (!drag.lock && (Math.abs(dx) > 8 || Math.abs(dy) > 8)) drag.lock = Math.abs(dx) > Math.abs(dy) * 1.2 ? 'x' : 'y';
+        if (drag.lock !== 'x') return;
+        if (!moved) { moved = true; try { stage.setPointerCapture(e.pointerId); } catch (e1) {} }
+        var tn = performance.now(); drag.v = (e.clientX - drag.px) / Math.max(1, tn - drag.t); drag.px = e.clientX; drag.t = tn;
+        proxy.p = clamp(drag.p0 - dx / W, -.25, N - .75); render();
+      });
+      function end(e) {
+        if (!drag) return;
+        var d = drag; drag = null;
+        if (d.lock !== 'x') return;
+        var dx = e.clientX - d.x, step = 0;
+        if (Math.abs(dx) > W * .16 || Math.abs(d.v) > .45) step = dx < 0 ? 1 : -1;
+        go(Math.round(d.p0) + step);
+      }
+      stage.addEventListener('pointerup', end); stage.addEventListener('pointercancel', end);
+      stage.addEventListener('click', function (e) { if (moved) { e.preventDefault(); e.stopPropagation(); moved = false; } }, true);
+      dots.forEach(function (d, i) { d.addEventListener('click', function () { go(i); }); });
+      window.addEventListener('resize', function () { metrics(); render(); });
+      metrics(); render();
+    }
+    if (!mq.matches && matchMedia('(max-width: 899px)').matches) { swipe(); return; }
     if (!mq.matches) {
       if ('IntersectionObserver' in window) {
         var pio = new IntersectionObserver(function (es) { es.forEach(function (e) { e.target.closest('.page').classList.toggle('is-active', e.isIntersecting); }); }, { threshold: .3 });
@@ -1171,7 +1274,7 @@ h3, .goals .lab, .terms .fig, .meter__row b, .faq summary, .est__step legend, .e
     var o = { p: 0 };
     function draw() { num.textContent = Math.round(115 + 335 * o.p); mB.style.setProperty('--s', o.p.toFixed(3)); }
     mA.style.setProperty('--s', 0); mB.style.setProperty('--s', 0);
-    var tl = gsap.timeline({ defaults: { ease: 'none' }, scrollTrigger: { trigger: '.case', start: 'top top', end: 'bottom bottom', scrub: .6 } });
+    var tl = gsap.timeline({ defaults: { ease: 'none' }, scrollTrigger: matchMedia('(max-width: 900px)').matches ? { trigger: '.case', start: 'top 72%', end: 'bottom 45%', scrub: .6 } : { trigger: '.case', start: 'top top', end: 'bottom bottom', scrub: .6 } });
     tl.to(mA, { '--s': 1, duration: .15 }, 0).to(o, { p: 1, duration: .7, onUpdate: draw }, .2).to({}, { duration: .15 });
     draw();
   }
@@ -1422,13 +1525,14 @@ h3, .goals .lab, .terms .fig, .meter__row b, .faq summary, .est__step legend, .e
     function size() {
       W = hero.clientWidth;
       var stop = o.stopAt ? $(o.stopAt, hero) : null;
-      H = stop ? Math.max(260, stop.offsetTop - 8) : hero.clientHeight;
+      var inflow = !stop && W <= 900;
+      H = stop ? Math.max(260, stop.offsetTop - 8) : inflow ? Math.max(200, cv.clientHeight || 300) : hero.clientHeight;
       if (stop) cv.style.height = H + 'px';
       renderer.setSize(W, H, false); camera.aspect = W / H; camera.updateProjectionMatrix();
       wide = W > 900;
-      baseY = wide ? (o.y || 0) : 2.1;
+      baseY = wide ? (o.y || 0) : (inflow ? 0 : 2.1);
       var px = o.xf ? (o.xf - .5) * 2 * Math.tan(camera.fov * Math.PI / 360) * 10 * camera.aspect : o.x;
-      root.position.set(wide ? px : 0, baseY, 0); root.scale.setScalar(wide ? o.scale : .56);
+      root.position.set(wide ? px : 0, baseY, 0); root.scale.setScalar(wide ? o.scale : (inflow ? .95 : .56));
       var u = renderer.domElement.height / (2 * Math.tan(camera.fov * Math.PI / 360));
       halo.mat.uniforms.uScale.value = u; pulse.mat.uniforms.uScale.value = u;
       draw(performance.now(), 0);
@@ -1515,9 +1619,11 @@ h3, .goals .lab, .terms .fig, .meter__row b, .faq summary, .est__step legend, .e
     function mk(tag, cls, parent) { var e = document.createElementNS(NS, tag); if (cls) e.setAttribute('class', cls); (parent || svg).appendChild(e); return e; }
     function build() {
       var or = ol.getBoundingClientRect(), W = parseFloat(getComputedStyle(ol).paddingLeft) || 60, H = or.height;
-      svg.setAttribute('width', W); svg.setAttribute('height', H); svg.setAttribute('viewBox', '0 0 ' + W + ' ' + H);
+      var narrow = W < 90, SW = narrow ? or.width : W;
+      svg.setAttribute('class', 'steps__rail' + (narrow ? ' steps__rail--wide' : ''));
+      svg.setAttribute('width', SW); svg.setAttribute('height', H); svg.setAttribute('viewBox', '0 0 ' + SW + ' ' + H);
       svg.innerHTML = ''; nodes = [];
-      var narrow = W < 90, amp = narrow ? 7 : W * .27, cx = W / 2;
+      var amp = narrow ? 0 : W * .27, cx = W / 2, xr = SW - 16;
       pts = [{ x: narrow ? cx : cx - amp * .4, y: -36 }];
       rows.forEach(function (li, i) {
         var h = $('h3', li).getBoundingClientRect();
@@ -1527,7 +1633,14 @@ h3, .goals .lab, .terms .fig, .meter__row b, .faq summary, .est__step legend, .e
       var d = 'M' + pts[0].x.toFixed(1) + ' ' + pts[0].y.toFixed(1), k, a, b, dy;
       for (k = 0; k < pts.length - 1; k++) {
         a = pts[k]; b = pts[k + 1]; dy = b.y - a.y;
-        d += ' C' + a.x.toFixed(1) + ' ' + (a.y + dy * .56).toFixed(1) + ' ' + b.x.toFixed(1) + ' ' + (b.y - dy * .56).toFixed(1) + ' ' + b.x.toFixed(1) + ' ' + b.y.toFixed(1);
+        if (narrow && k > 0 && k < pts.length - 2) {
+          /* su telefono il filo esce verso il margine destro e rientra: due S che attraversano la scheda, tratteggiate e trasparenti */
+          var ym = a.y + dy / 2;
+          d += ' C' + a.x.toFixed(1) + ' ' + (a.y + dy * .25).toFixed(1) + ' ' + xr.toFixed(1) + ' ' + (a.y + dy * .25).toFixed(1) + ' ' + xr.toFixed(1) + ' ' + ym.toFixed(1);
+          d += ' C' + xr.toFixed(1) + ' ' + (ym + dy * .25).toFixed(1) + ' ' + b.x.toFixed(1) + ' ' + (ym + dy * .25).toFixed(1) + ' ' + b.x.toFixed(1) + ' ' + b.y.toFixed(1);
+        } else {
+          d += ' C' + a.x.toFixed(1) + ' ' + (a.y + dy * .56).toFixed(1) + ' ' + b.x.toFixed(1) + ' ' + (b.y - dy * .56).toFixed(1) + ' ' + b.x.toFixed(1) + ' ' + b.y.toFixed(1);
+        }
       }
       base = mk('path', 'steps__base'); base.setAttribute('d', d);
       glow = mk('path', 'steps__glow'); glow.setAttribute('d', d);
