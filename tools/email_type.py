@@ -93,7 +93,7 @@ def trim(im):
     a = np.asarray(im)[:, :, 3]
     ys, xs = np.where(a > 8)
     pad = 6
-    return im.crop((max(xs.min() - pad, 0), max(ys.min() - pad, 0), min(xs.max() + pad + 1, im.width), min(ys.max() + pad + 1, im.height)))
+    return im.crop((max(xs.min() - 1, 0), max(ys.min() - pad, 0), min(xs.max() + pad + 1, im.width), min(ys.max() + pad + 1, im.height)))
 
 sizes = {}
 with tempfile.TemporaryDirectory() as tmp:

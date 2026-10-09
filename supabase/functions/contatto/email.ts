@@ -90,7 +90,7 @@ function btn(url: string, label: string, pieno = true, assets = "", chiave = "")
 }
 
 function riga(etichetta: string, valore: string): string {
-  return `<tr><td style="padding:11px 0;border-bottom:1px solid ${C.line};font:600 10px/1.4 ${SANS};letter-spacing:.16em;text-transform:uppercase;color:${C.soft};width:38%;vertical-align:top">${esc(etichetta)}</td><td style="padding:11px 0;border-bottom:1px solid ${C.line};font:400 15px/1.5 ${SANS};color:${C.ink};vertical-align:top">${esc(valore)}</td></tr>`;
+  return `<tr><td style="padding:11px 0;border-bottom:1px solid ${C.line};font:600 10px/1.4 ${SANS};letter-spacing:.16em;text-transform:uppercase;color:${C.soft};width:38%;vertical-align:middle">${esc(etichetta)}</td><td style="padding:11px 0;border-bottom:1px solid ${C.line};font:400 15px/1.5 ${SANS};color:${C.ink};vertical-align:middle">${esc(valore)}</td></tr>`;
 }
 
 function passo(n: string, testo: string): string {
@@ -145,8 +145,8 @@ function cornice(opts: { l: Lingua; anteprima: string; eyebrow: string; titolo: 
       <!--[if gte mso 9]></v:textbox></v:rect><![endif]-->
     </td></tr>
     <tr><td class="pad" bgcolor="${C.card}" style="background:${C.card};background-image:url('${grana}');padding:42px 40px 36px">
-      <div style="font:600 10px/1.4 ${SANS};letter-spacing:.22em;text-transform:uppercase;color:${C.goldText}">&#9679;&nbsp; ${esc(eyebrow)}</div>
-      <h1 class="h1" style="margin:14px 0 18px -4px;font:450 36px/1.06 ${SERIF};letter-spacing:-.02em;color:${C.ink}">${titoloImg || titolo}</h1>
+      <div style="font:600 10px/1.4 ${SANS};letter-spacing:.22em;text-transform:uppercase;color:${C.goldText}">${esc(eyebrow)}</div>
+      <h1 class="h1" style="margin:14px 0 18px;font:450 36px/1.06 ${SERIF};letter-spacing:-.02em;color:${C.ink}">${titoloImg || titolo}</h1>
       ${corpo}
     </td></tr>
     <tr><td class="pad" bgcolor="${C.night}" style="background:${C.night} url('${assets}/footer.jpg') center bottom / cover no-repeat;padding:28px 40px 30px;border-top:2px solid ${C.gold};font:400 12px/1.8 ${SANS};color:#CFC5B3">${piede}</td></tr>
@@ -221,13 +221,13 @@ export function confermaCliente(r: Richiesta, ctx: Contesto): { subject: string;
       ${prezzoBox(T.prezzoL, prezzoTxt, T.nota, ctx.assets ?? `${ctx.sito}/email`, `${l}-${r.da ?? 0}`)}
 
       ${filo()}
-      <div style="margin:22px 0 4px;font:600 10px/1.4 ${SANS};letter-spacing:.2em;text-transform:uppercase;color:${C.soft}">${esc(T.come)}</div>
+      <div style="margin:22px 0 14px;font:600 10px/1.4 ${SANS};letter-spacing:.2em;text-transform:uppercase;color:${C.soft}">${esc(T.come)}</div>
       <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="border-top:1px solid ${C.line}">${passo("01", T.p1)}${passo("02", T.p2)}${passo("03", T.p3)}</table>
 
       <div style="margin:30px 0 10px;text-align:center">${btn(ctx.sito + (l === "en" ? "/en/#incontro" : "/#incontro"), T.cta, true, ctx.assets ?? `${ctx.sito}/email`, `t-btn-richiedi-${l}`)}</div>
       <p style="margin:0 0 6px;text-align:center;font:300 14px/1.6 ${SANS};color:${C.soft}">${esc(T.alt)}</p>`;
 
-  const piede = `<span style="font:450 16px/1.4 ${SERIF};color:${C.cream}">${esc(T.firma)}</span><br>Cesenatico &middot; <a href="mailto:${esc(ctx.emailStudio)}" style="color:${C.goldLight};text-decoration:none">${esc(ctx.emailStudio)}</a> &middot; <a href="https://wa.me/${esc(ctx.whatsapp)}" style="color:${C.goldLight};text-decoration:none">WhatsApp +39 333 958 0381</a><br><span style="font-size:11px;color:#9C9283">${esc(T.piede1)} <a href="${esc(privacyUrl)}" style="color:#9C9283">${esc(T.privacy)}</a>.</span>`;
+  const piede = `<span style="font:450 16px/1.4 ${SERIF};color:${C.cream}">${esc(T.firma)}</span><div style="height:8px;line-height:8px;font-size:0">&nbsp;</div>Cesenatico &middot; <a href="mailto:${esc(ctx.emailStudio)}" style="color:${C.goldLight};text-decoration:none">${esc(ctx.emailStudio)}</a> &middot; <a href="https://wa.me/${esc(ctx.whatsapp)}" style="color:${C.goldLight};text-decoration:none">WhatsApp +39 333 958 0381</a><div style="height:8px;line-height:8px;font-size:0">&nbsp;</div><span style="font-size:11px;color:#9C9283">${esc(T.piede1)} <a href="${esc(privacyUrl)}" style="color:#9C9283">${esc(T.privacy)}</a>.</span>`;
 
   const assets = ctx.assets ?? `${ctx.sito}/email`;
   const html = cornice({ l, anteprima: T.pre, eyebrow: T.eyebrow, titolo: T.titolo, titoloImg: immagine(assets, `t-h-conferma-${l}`, `t/h-conferma-${l}`, T.titolo.replace(/<[^>]+>/g, "")) || undefined, corpo, piede, assets, logo: ctx.logo });
@@ -269,7 +269,7 @@ export function avvisoStudio(r: Richiesta, ctx: Contesto): { subject: string; ht
       ${prezzoBox("Prezzo mostrato", prezzoTxt, `Tetto interno: ${tetto}. Il cliente vede solo il prezzo di partenza.`, ctx.assets ?? `${ctx.sito}/email`, `it-${r.da ?? 0}`)}
       <p style="margin:24px 0 30px;font:400 15px/1.6 ${SANS};color:${C.ink}"><b>Da fare:</b> rispondere entro un giorno lavorativo e proporre il primo incontro.</p>
       <div style="text-align:center">${btn(`mailto:${r.email}?subject=${encodeURIComponent("Il tuo prezzo di partenza - Studio Matiz")}`, "Rispondi per email", true, ctx.assets ?? `${ctx.sito}/email`, "t-btn-rispondi")}${wa ? btn(wa, "Scrivi su WhatsApp", false, ctx.assets ?? `${ctx.sito}/email`, "t-btn-whatsapp") : ""}</div>`;
-  const piede = `<span style="font:450 16px/1.4 ${SERIF};color:${C.cream}">Studio Matiz</span><br><span style="font-size:11px;color:#9C9283">Avviso automatico dello stimatore del sito</span>`;
+  const piede = `<span style="font:450 16px/1.4 ${SERIF};color:${C.cream}">Studio Matiz</span><div style="height:8px;line-height:8px;font-size:0">&nbsp;</div><span style="font-size:11px;color:#9C9283">Avviso automatico dello stimatore del sito</span>`;
   const assets = ctx.assets ?? `${ctx.sito}/email`;
   const html = cornice({ l, anteprima: `${r.nome}: ${prezzoTxt}`, eyebrow: "Dallo stimatore", titolo: "Nuova <em>richiesta</em>", titoloImg: immagine(assets, "t-h-avviso", "t/h-avviso", "Nuova richiesta") || undefined, corpo, piede, assets, logo: ctx.logo });
   const text = [
@@ -303,7 +303,7 @@ export function confermaIncontro(r: Richiesta, ctx: Contesto): { subject: string
         hello: `Hello ${r.nome},`,
         intro: "This is an automatic reply. Below is a summary of what you entered.",
         riepilogo: "What you entered", formato: "Format", pref: "Preferred days and times", nessuna: "Not specified", telL: "Phone",
-        boxL: "Date and time", boxN: "Within one working day, by email or WhatsApp. If the day or time you wrote does not work, another is proposed.",
+        boxL: "Date and time", boxN: "Within one working day, by email or WhatsApp. If the day or time you wrote is not available, another is proposed.",
         come: "What happens next",
         p1: "A one-hour first meeting, offered, in person or by video",
         p2: "A check-up or written quote, at a fixed price",
@@ -319,7 +319,7 @@ export function confermaIncontro(r: Richiesta, ctx: Contesto): { subject: string
         hello: `Ciao ${r.nome},`,
         intro: "Questa è una risposta automatica. Qui sotto il riepilogo di quanto hai indicato.",
         riepilogo: "Quanto hai indicato", formato: "Modalità", pref: "Giorni e orari preferiti", nessuna: "Non indicati", telL: "Telefono",
-        boxL: "Data e orario", boxN: "Entro un giorno lavorativo, per email o WhatsApp. Se il giorno o l'orario indicato non vanno bene, ne viene proposto un altro.",
+        boxL: "Data e orario", boxN: "Entro un giorno lavorativo, per email o WhatsApp. Se il giorno o l'orario indicati non sono disponibili, ne viene proposto un altro.",
         come: "Come continua",
         p1: "Primo incontro di un'ora, offerto, di persona o in video",
         p2: "Check-up o preventivo scritto, a prezzo chiuso",
@@ -341,12 +341,12 @@ export function confermaIncontro(r: Richiesta, ctx: Contesto): { subject: string
       ${prezzoBox(T.boxL, l === "en" ? "To be confirmed" : "Da confermare", T.boxN, assets, `${l}-daconfermare`)}
 
       ${filo()}
-      <div style="margin:22px 0 4px;font:600 10px/1.4 ${SANS};letter-spacing:.2em;text-transform:uppercase;color:${C.soft}">${esc(T.come)}</div>
+      <div style="margin:22px 0 14px;font:600 10px/1.4 ${SANS};letter-spacing:.2em;text-transform:uppercase;color:${C.soft}">${esc(T.come)}</div>
       <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="border-top:1px solid ${C.line}">${passo("&bull;", T.p1)}${passo("&bull;", T.p2)}</table>
 
       <div style="margin:30px 0 10px;text-align:center">${btn(waUrl, T.cta, false, assets, `t-btn-dubbi-${l}`)}</div>
       <p style="margin:0 0 6px;text-align:center;font:300 14px/1.6 ${SANS};color:${C.soft}">${esc(T.alt)}</p>`;
-  const piede = `<span style="font:450 16px/1.4 ${SERIF};color:${C.cream}">${esc(T.firma)}</span><br>Cesenatico &middot; <a href="mailto:${esc(ctx.emailStudio)}" style="color:${C.goldLight};text-decoration:none">${esc(ctx.emailStudio)}</a> &middot; <a href="https://wa.me/${esc(ctx.whatsapp)}" style="color:${C.goldLight};text-decoration:none">WhatsApp +39 333 958 0381</a><br><span style="font-size:11px;color:#9C9283">${esc(T.piede1)} <a href="${esc(privacyUrl)}" style="color:#9C9283">${esc(T.privacy)}</a>.</span>`;
+  const piede = `<span style="font:450 16px/1.4 ${SERIF};color:${C.cream}">${esc(T.firma)}</span><div style="height:8px;line-height:8px;font-size:0">&nbsp;</div>Cesenatico &middot; <a href="mailto:${esc(ctx.emailStudio)}" style="color:${C.goldLight};text-decoration:none">${esc(ctx.emailStudio)}</a> &middot; <a href="https://wa.me/${esc(ctx.whatsapp)}" style="color:${C.goldLight};text-decoration:none">WhatsApp +39 333 958 0381</a><div style="height:8px;line-height:8px;font-size:0">&nbsp;</div><span style="font-size:11px;color:#9C9283">${esc(T.piede1)} <a href="${esc(privacyUrl)}" style="color:#9C9283">${esc(T.privacy)}</a>.</span>`;
   const html = cornice({ l, anteprima: T.pre, eyebrow: T.eyebrow, titolo: T.titolo, titoloImg: immagine(assets, `t-h-incontro-${l}`, `t/h-incontro-${l}`, T.titolo.replace(/<[^>]+>/g, "")) || undefined, corpo, piede, assets, logo: ctx.logo });
   const strip = (x: string) => x.replace(/<[^>]+>/g, "");
   const text = [
@@ -381,7 +381,7 @@ export function avvisoIncontro(r: Richiesta, ctx: Contesto): { subject: string; 
       <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="border-top:1px solid ${C.ink}">${righe}</table>
       <p style="margin:24px 0 30px;font:400 15px/1.6 ${SANS};color:${C.ink}"><b>Da fare:</b> confermare data e orario entro un giorno lavorativo. Il cliente sa che li confermi tu.</p>
       <div style="text-align:center">${btn(`mailto:${r.email}?subject=${encodeURIComponent("Il primo incontro - Studio Matiz")}`, "Rispondi per email", true, assets, "t-btn-rispondi")}${wa ? btn(wa, "Scrivi su WhatsApp", false, assets, "t-btn-whatsapp") : ""}${btn(evento, "Crea evento nel calendario", false, assets, "t-btn-calendario")}</div>`;
-  const piede = `<span style="font:450 16px/1.4 ${SERIF};color:${C.cream}">Studio Matiz</span><br><span style="font-size:11px;color:#9C9283">Avviso automatico della richiesta di incontro sul sito</span>`;
+  const piede = `<span style="font:450 16px/1.4 ${SERIF};color:${C.cream}">Studio Matiz</span><div style="height:8px;line-height:8px;font-size:0">&nbsp;</div><span style="font-size:11px;color:#9C9283">Avviso automatico della richiesta di incontro sul sito</span>`;
   const html = cornice({ l, anteprima: `${r.nome}: ${modo}`, eyebrow: "Dal sito", titolo: "Nuovo <em>incontro</em>", titoloImg: immagine(assets, "t-h-avviso-incontro", "t/h-avviso-incontro", "Nuovo incontro") || undefined, corpo, piede, assets, logo: ctx.logo });
   const text = [
     `${r.nome} ha chiesto il primo incontro dal sito.`, "",
