@@ -556,6 +556,14 @@ h3, .goals .lab, .terms .fig, .meter__row b, .faq summary, .est__step legend, .e
 .goals__more a { display: inline-flex; align-items: center; gap: .7rem; color: var(--gold-light); text-decoration: none; padding-bottom: .35rem; background: linear-gradient(currentColor, currentColor) left bottom / 100% 1px no-repeat; transition: background-size .5s var(--ease); }
 .goals__more a:hover { background-size: 40% 1px; }
 .goals__more svg { width: 1.1em; height: 1.1em; flex: none; }
+/* hero: testo, pulsante, nota del caffe' (che si riferisce al pulsante), poi il link, in colonna e a riempire lo spazio */
+.hero { padding-top: clamp(2rem, 5.5vh, 4.5rem); }
+.hero__row { row-gap: clamp(1.3rem, 3.4vh, 2.2rem); margin-top: clamp(1.4rem, 3.6vh, 2.8rem); }
+.hero .lede { font-size: clamp(1.2rem, 1.7vw, 1.55rem); max-width: 40ch; }
+.hero__act { flex-direction: column; align-items: flex-start; flex-wrap: nowrap; gap: 0; }
+.hero__act small { flex-basis: auto; margin-top: 1rem; font-size: .9375rem; line-height: 1.5; }
+.hero__act .link { margin-top: clamp(1.2rem, 3vh, 2rem); }
+.hero__main { padding-bottom: clamp(1.4rem, 3.6vh, 2.8rem); }
 @media (max-width: 900px) { .close__gl { opacity: .6; } }
 /* schede dei servizi: i testi nuovi sono piu' lunghi, il pannello si stringe un poco per non tagliare il link */
 .gal.is-pinned .page__info { padding: clamp(1.2rem, 2.1vw, 2.1rem); }
@@ -608,8 +616,8 @@ h3, .goals .lab, .terms .fig, .meter__row b, .faq summary, .est__step legend, .e
           <a class="btn btn--light" href="https://calendar.app.google/NUp3xit8MwxWQWkK6" target="_blank" rel="noopener">Prenota il primo incontro
             <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true"><path d="M2 8h11M9 3.5 13.5 8 9 12.5"/></svg>
           </a>
-          <a class="link" href="#servizi">Il mestiere, in quattro parti</a>
           <small>Un'ora tra chiacchiere e caffè, offerta dallo studio. Di persona o in video.</small>
+          <a class="link" href="#servizi">Il mestiere, in quattro parti</a>
         </div>
       </div>
     </div>
