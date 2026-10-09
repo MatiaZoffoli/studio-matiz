@@ -50,3 +50,7 @@ Equilibrio, precisione, fatti, calma, dedizione, sacrificio, costanza. Lavora da
 ## La biografia scelta (2026-10-09)
 
 Blend deciso da Matia: base della versione lunga, piu' "the buck stops with you" e la "completezza" dalla media, la parte sulla ristorazione dalla media (senza il dettaglio dell'euro), e la chiusura con il conoscersi prima e il metodo dopo. Il testo vive in `prova/index.html` (sezione "Chi sono", titolo "Dalla sala ai dati."). Non cita i due datori di lavoro. Possibili aggiunte: una riga di numeri (11 anni, 20 anni di ristorazione, 9 anni alla direzione, 2 diplomi), la foto di Matia, una citazione "The buck stops with you" in un riquadro.
+
+## Versione finale della biografia (2026-10-09, sera)
+
+Matia ha scritto lui il testo definitivo, usato cosi' com'e' (e' nella sezione "Chi sono" di `prova/index.html`). Differenze di fatto rispetto alla bozza: **tredici anni alla direzione di locali a Sydney** (la bozza diceva nove, dal CV 2011-2020: il dato di Matia prevale, ma il CV e il sito vanno allineati prima di pubblicare), la frase "forse e' la domanda a essere sbagliata", il cestello di bicchieri rimesso, e la chiusura "e' da questo incontro che parto". Da questa versione la skill impara: frasi a tono riflessivo e personale insieme, un'ipotesi coraggiosa (la domanda sbagliata), il rapporto con le persone letto "anche senza parole", la regola finale dei numeri del cliente.
