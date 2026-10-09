@@ -52,3 +52,11 @@ Vedi `docs/BACKLOG.md`, sezione "Decisioni aperte".
 ## Prossimo passo
 
 Definire le cose mancanti (prezzo del check-up, check-up gratuiti di lancio, tariffe), poi nome e brand, un sito proprio anche minimo e i primi canali social. Solo dopo si contattano i due prospetti.
+
+## Aggiornamento 2026-10-09 (sera)
+
+- Sito online su Vercel (`studio-matiz.vercel.app`, collegato al repository: ogni push su `main` lo aggiorna). Pagina ancora `noindex`.
+- Testo italiano chiuso. Telefono rivisto e verificato da Matia su dispositivo vero. Stimatore con blocco breve durante lo scorrimento.
+- Versione inglese preparata (`/en/`, selettore IT | EN, `tools/build_en.py`): da rivedere frase per frase con Matia (`docs/INGLESE.md`).
+- Email automatiche: funzione pronta, non distribuita, passi in `docs/RESEND.md`. Ricerca marchio: procedura in `docs/RICERCA-MARCHIO.md`.
+- In attesa di Matia: foto, dominio (dopo TMview), account Resend e segreti, revisione dell'inglese.

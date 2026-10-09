@@ -21,6 +21,7 @@ Mappa completa dei file in [README.md](README.md). Le scelte prese stanno in `do
 - **Fase attuale:** definizione dell'idea, prima di operare. Nessun brand, partita IVA o cliente pagante ancora.
 - **Piano approvato da Matia (2026-10-07):** partire dal settore balneare e ristorazione della costa romagnola, con offerte confezionate (primo incontro gratuito, check-up, presenza su misura, cura continua).
 - **Esito principale della ricerca** (`docs/CONCORRENTI.md`, dati da verificare): il vuoto reale sono gli stabilimenti balneari; la manutenzione dei concorrenti e' vaga; pochi pubblicano i prezzi. Concorrenti piu' vicini: Marketing Gourmet (ristoranti, 250-600 euro/mese, modifiche illimitate) e Patrick Battistini (Cesenatico, vetrina 900-2.500 euro).
+- **Sito online (2026-10-09):** `https://studio-matiz.vercel.app` (Vercel, collegato al repository: un push su `main` lo aggiorna), in italiano (`/`) e in inglese (`/en/`, generato da `python tools/build_en.py`; dopo ogni modifica al testo italiano si rigenera). Dettagli in `docs/INGLESE.md`. Testo italiano chiuso da Matia.
 - **Vincolo di tempo:** il progetto procede in parallelo a un lavoro a tempo pieno, quindi serve un'offerta gestibile a poche ore a settimana.
 - **Dettaglio dello stato, del prossimo passo e delle decisioni aperte:** `docs/STATO-DEI-LAVORI.md` e `docs/BACKLOG.md`. Non si duplicano qui.
 

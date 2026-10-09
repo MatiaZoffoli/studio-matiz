@@ -103,6 +103,7 @@ Matia lo ha chiesto così (2026-10-08): ispirazione da atelier, ma **capibile su
 - **Il primo incontro dura un'ora**, "tra chiacchiere e caffè": il tempo suona più disteso e vero.
 - **Un numero concreto fa il problema** (2026-10-09, 'Il punto di partenza'): sceglie la variante C. Un calcolo semplice e verificabile (50 euro al mese senza modifiche = 600 euro l'anno; orari che cambiano quattro volte l'anno) vale piu' di un aggettivo. I tre titoli di una serie hanno lunghezze diverse e iniziano in modo diverso. Si parla di 'strumento' e di 'canone', non solo di 'sito'. I dati dei prospetti si usano come esempio generico, senza nome.
 - **Le schede dei servizi (2026-10-09): variante B, con aritmetica semplice e verificabile** (5 minuti al giorno sono piu' di 30 ore l'anno). Ogni scheda ha un fatto misurabile; niente sigle da addetti ai lavori ('CRM'); il problema si apre con un numero o una situazione, la risposta dice cosa si misura e cosa si confronta.
+- **Inglese (2026-10-09):** traduzione semantica, mai letterale: si dice come lo direbbe un madrelingua. Payoff 'Made to measure' (non 'tailor-made solutions'). La pagina inglese si genera da quella italiana con `tools/build_en.py`; le scelte da confermare sono in `docs/INGLESE.md`.
 - Si lavora **pezzo per pezzo**, almeno tre varianti per ciascuno, e le scelte si annotano in `esempi.md`.
 
 ## Esempi

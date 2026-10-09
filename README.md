@@ -34,6 +34,10 @@ Consulenza per piccole e medie imprese italiane: siti web, menu digitali, assist
 | [docs/LOGO-PROMPT.md](docs/LOGO-PROMPT.md) | Prompt per generare alternative di logo (brief comune e cinque opzioni) |
 | [docs/STIMATORE.md](docs/STIMATORE.md) | Come funziona lo stimatore a fasce del sito, come calcola, cosa manca per collegarlo ai contatti |
 | [docs/LISTINO-E-TEMPI.md](docs/LISTINO-E-TEMPI.md) | Proposta di listino a fasce, tempi di consegna, forfait del primo mese, proprieta' di dominio e contenuti |
+| [docs/INGLESE.md](docs/INGLESE.md) | Versione inglese: come si genera (`tools/build_en.py`), scelte di traduzione da confermare |
+| [docs/RESEND.md](docs/RESEND.md) | Email automatiche dal sito: passi, link e segreti per collegare Resend |
+| [docs/RICERCA-MARCHIO.md](docs/RICERCA-MARCHIO.md) | Come fare la ricerca marchio completa su TMview |
+| [supabase/functions/contatto/index.ts](supabase/functions/contatto/index.ts) | Funzione dei contatti con avviso e conferma via Resend (da distribuire) |
 | [prova/privacy.html](prova/privacy.html) | Bozza dell'informativa privacy (da completare e far controllare) |
 | [docs/TESTI-SITO.md](docs/TESTI-SITO.md) | Diagnosi dei testi, voce, struttura del sito di lancio, bozza v2 dei testi, schema della richiesta di fascia di prezzo |
 | [docs/ANALISI-BATTISTINI.md](docs/ANALISI-BATTISTINI.md) | Analisi del sito del concorrente piu' vicino e proposte per contenuti, pagine e strumenti del nostro |
