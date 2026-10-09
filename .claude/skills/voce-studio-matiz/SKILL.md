@@ -52,7 +52,7 @@ Matia lo ha chiesto così (2026-10-08): ispirazione da atelier, ma **capibile su
 - Nome: **Studio Matiz**, "di Matia Zoffoli", Cesenatico. Payoff: "Soluzioni su misura."
 - Primo incontro: **un'ora**, di persona o in video, **offerto** (era mezz'ora, cambiato da Matia il 2026-10-09). Check-up: 200 euro, scalati dal lavoro che segue. Risposta entro un giorno lavorativo. Primo mese di cura a forfait e senza limite di ore.
 - Sul sito **non si scrivono i prezzi** (solo lo stimatore, con "da X euro"). **Non si inventano casi, clienti, numeri o recensioni.** L'unico caso reale è la società sportiva, da 115 a 450 iscritti in una settimana.
-- Contatti: matiazoffoli@gmail.com, WhatsApp +39 333 958 0381, calendario con il link del sito.
+- Contatti: matiazoffoli@gmail.com, WhatsApp +39 333 958 0381, il primo incontro si richiede dal modulo del sito (di persona consigliato, o in video) e data e orario li conferma Matia.
 - Il resto dei fatti sta in `docs/OFFERTE.md`, `docs/LISTINO-E-TEMPI.md` e `docs/DECISIONI.md`. Si leggono prima di scrivere un testo che li riguarda.
 
 ## Come si lavora
@@ -81,7 +81,7 @@ Matia lo ha chiesto così (2026-10-08): ispirazione da atelier, ma **capibile su
 - **Scelta mista, non estrema.** Davanti a tre varianti (sobria, con un'immagine, diretta) preferisce un punto d'incontro tra la sobria e la diretta. L'immagine di mestiere funziona nelle etichette (menu: "Il mestiere", "Il metodo"), meno nelle frasi lunghe. Per le prossime sezioni: varianti sobria e diretta con un tocco di mestiere, e una sola più immaginosa.
 - **Una frase che presenta lo studio deve dire cosa si fa**: cosa si costruisce, per chi, cosa succede dopo la consegna. Non il metodo ("prima ascolto, poi costruisco") e non l'atmosfera.
 - **L'intelligenza artificiale non entra nelle frasi principali** del sito, per ora. Si descrive per ciò che toglie di mezzo, solo dove serve.
-- **Il pulsante principale resta chiaro**: "Prenota il primo incontro" va bene perché dice cosa succede. Si cambia ciò che gli sta intorno.
+- **Il pulsante principale resta chiaro**: "Richiedi il primo incontro" va bene perché dice cosa succede (non si prenota da soli: data e orario li conferma Matia). Si cambia ciò che gli sta intorno.
 - **Forma impersonale nei blocchi descrittivi.** Le frasi che presentano lo studio e i suoi servizi (frase dell'hero, righe informative, etichette) non dicono "io": "Costruzione di siti, menu digitali e automazioni...", "Risposte rapide e dirette". L'"io" resta dove si parla di metodo, impegni, Chi sono, email e messaggi.
 - **"Supporto continuo", "assistenza continua"** al posto di "una persona che risponde". Rapidità e contatto diretto si dicono con parole sul servizio, non sulla persona.
 - **Niente abiti, cuciture, taglio.** Matia ha bocciato l'immagine dell'abito che "calza" per descrivere i problemi: troppo letterale. Per spiegare un problema preferisce la **situazione** o il **meccanismo**: una cosa che andava bene e che ora va curata e regolata per continuare ad andare bene. "Misura" e "mestiere" restano nel lessico, ma come parole, non come scena da sartoria.

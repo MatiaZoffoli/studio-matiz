@@ -14,10 +14,10 @@ This is a starting point, not a quote: the real price is written after the first
 
 What happens next:
 01 A first reply from Matia, within one working day.
-02 The first meeting: one hour over coffee and conversation, offered by the studio, in person or by video.
+02 The first meeting: one hour over coffee and conversation, offered by the studio, in person (recommended) or by video. You ask for it from the website; Matia confirms date and time.
 03 A written quote, with a fixed price and the delivery time.
 
-Book the first meeting: https://calendar.app.google/NUp3xit8MwxWQWkK6
+Request the first meeting: https://studio-matiz.vercel.app/en/#incontro
 Or simply reply to this email.
 
 Studio Matiz, by Matia Zoffoli

@@ -1,0 +1,12 @@
+Oggetto: Primo incontro: Anna, di persona
+
+Anna ha chiesto il primo incontro dal sito.
+
+Email: anna@bagnoesempio.it
+Telefono: +39 333 111 2222
+Modalità: Di persona (consigliato)
+Giorni e orari: Martedì o giovedì pomeriggio
+Pagina: italiano
+
+Da fare: confermare data e orario entro un giorno lavorativo.
+Crea evento nel calendario: https://calendar.google.com/calendar/render?action=TEMPLATE&text=Primo%20incontro%20-%20Anna%20(di%20persona)&details=Anna%20-%20anna%40bagnoesempio.it%20-%20%2B39%20333%20111%202222%0APreferenze%3A%20Marted%C3%AC%20o%20gioved%C3%AC%20pomeriggio&add=anna%40bagnoesempio.it

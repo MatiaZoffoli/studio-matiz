@@ -1,4 +1,4 @@
-// Email dello stimatore: conferma al cliente (A1) e avviso a Matia (A2), con la grafica del sito.
+﻿// Email dello stimatore: conferma al cliente (A1) e avviso a Matia (A2), con la grafica del sito.
 // Funzioni pure: restituiscono oggetto, HTML e testo semplice. Tutto cio' che arriva dal modulo viene "escapato".
 // Le email usano tabelle e stili in linea, perche' i programmi di posta non leggono i fogli di stile del sito.
 
@@ -18,10 +18,13 @@ export type Richiesta = {
   fino: number | null;
   lingua: Lingua;
   secondi: number | null;
+  fonte?: "stimatore" | "incontro";
+  modalita?: "persona" | "video" | null;
+  preferenza?: string | null;
 };
 
 export type Contesto = {
-  calendario: string;
+  calendario?: string;   // non piu' usato: il primo incontro si richiede dal sito
   sito: string;          // es. https://studio-matiz.vercel.app
   whatsapp: string;      // solo cifre, es. 393339580381
   emailStudio: string;
@@ -168,9 +171,9 @@ export function confermaCliente(r: Richiesta, ctx: Contesto): { subject: string;
         nota: "This is a starting point, not a quote: the real price is written after the first meeting and does not change along the way. VAT if due.",
         come: "What happens next",
         p1: "<b>A first reply</b> from Matia, within one working day.",
-        p2: "<b>The first meeting</b>: one hour over coffee and conversation, offered by the studio, in person or by video.",
+        p2: "<b>The first meeting</b>: one hour over coffee and conversation, offered by the studio, in person (recommended) or by video. You ask for it from the website; Matia confirms date and time.",
         p3: "<b>A written quote</b>, with a fixed price and the delivery time.",
-        cta: "Book the first meeting", alt: "Or simply reply to this email.",
+        cta: "Request the first meeting", alt: "Or simply reply to this email.",
         piede1: "You are receiving this message because you asked for a starting price on the website.",
         privacy: "Privacy notice", firma: "Studio Matiz, by Matia Zoffoli",
       }
@@ -186,9 +189,9 @@ export function confermaCliente(r: Richiesta, ctx: Contesto): { subject: string;
         nota: "È un punto di partenza, non un preventivo: il prezzo vero viene scritto dopo il primo incontro e non cambia in corsa. IVA se dovuta.",
         come: "Come continua",
         p1: "<b>Una prima risposta</b> di Matia, entro un giorno lavorativo.",
-        p2: "<b>Il primo incontro</b>: un'ora tra chiacchiere e caffè, offerta dallo studio, di persona o in video.",
+        p2: "<b>Il primo incontro</b>: un'ora tra chiacchiere e caffè, offerta dallo studio, di persona (consigliato) o in video. Lo richiedi dal sito e data e orario li conferma Matia.",
         p3: "<b>Un preventivo scritto</b>, con prezzo chiuso e tempo di consegna.",
-        cta: "Prenota il primo incontro", alt: "In alternativa basta rispondere a questa email.",
+        cta: "Richiedi il primo incontro", alt: "In alternativa basta rispondere a questa email.",
         piede1: "Ricevi questo messaggio perché hai chiesto un prezzo di partenza sul sito.",
         privacy: "Informativa privacy", firma: "Studio Matiz, di Matia Zoffoli",
       };
@@ -220,7 +223,7 @@ export function confermaCliente(r: Richiesta, ctx: Contesto): { subject: string;
       <div style="margin:22px 0 4px;font:600 10px/1.4 ${SANS};letter-spacing:.2em;text-transform:uppercase;color:${C.soft}">${esc(T.come)}</div>
       <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="border-top:1px solid ${C.line}">${passo("01", T.p1)}${passo("02", T.p2)}${passo("03", T.p3)}</table>
 
-      <div style="margin:30px 0 10px;text-align:center">${btn(ctx.calendario, T.cta, true, ctx.assets ?? `${ctx.sito}/email`, `t-btn-prenota-${l}`)}</div>
+      <div style="margin:30px 0 10px;text-align:center">${btn(ctx.sito + (l === "en" ? "/en/#incontro" : "/#incontro"), T.cta, true, ctx.assets ?? `${ctx.sito}/email`, `t-btn-richiedi-${l}`)}</div>
       <p style="margin:0 0 6px;text-align:center;font:300 14px/1.6 ${SANS};color:${C.soft}">${esc(T.alt)}</p>`;
 
   const piede = `<span style="font:450 16px/1.4 ${SERIF};color:${C.cream}">${esc(T.firma)}</span><br>Cesenatico &middot; <a href="mailto:${esc(ctx.emailStudio)}" style="color:${C.goldLight};text-decoration:none">${esc(ctx.emailStudio)}</a> &middot; <a href="https://wa.me/${esc(ctx.whatsapp)}" style="color:${C.goldLight};text-decoration:none">WhatsApp +39 333 958 0381</a><br><span style="font-size:11px;color:#9C9283">${esc(T.piede1)} <a href="${esc(privacyUrl)}" style="color:#9C9283">${esc(T.privacy)}</a>.</span>`;
@@ -238,7 +241,7 @@ export function confermaCliente(r: Richiesta, ctx: Contesto): { subject: string;
     T.nota, "",
     T.come + ":",
     "01 " + T.p1.replace(/<[^>]+>/g, ""), "02 " + T.p2.replace(/<[^>]+>/g, ""), "03 " + T.p3.replace(/<[^>]+>/g, ""), "",
-    `${T.cta}: ${ctx.calendario}`, T.alt, "",
+    `${T.cta}: ${ctx.sito}${l === "en" ? "/en/#incontro" : "/#incontro"}`, T.alt, "",
     T.firma, `Cesenatico - ${ctx.emailStudio} - WhatsApp +39 333 958 0381`, `${T.privacy}: ${privacyUrl}`,
   ].filter((x, i, a) => !(x === "" && a[i - 1] === "")).join("\n");
 
@@ -276,6 +279,117 @@ export function avvisoStudio(r: Richiesta, ctx: Contesto): { subject: string; ht
     `Pagina: ${r.lingua === "en" ? "inglese" : "italiano"}`, "",
     `Prezzo mostrato: ${prezzoTxt} (tetto interno: ${tetto})`, "",
     "Da fare: rispondere entro un giorno lavorativo e proporre il primo incontro.",
+  ].filter((x, i, a) => !(x === "" && a[i - 1] === "")).join("\n");
+  return { subject: oggetto, html, text };
+}
+
+// ---------------------------------------------------------------- richiesta del primo incontro
+const MODO: Record<Lingua, Record<string, string>> = {
+  it: { persona: "Di persona (consigliato)", video: "In video" },
+  en: { persona: "In person (recommended)", video: "By video" },
+};
+
+// Conferma al cliente: data e orario li conferma Matia.
+export function confermaIncontro(r: Richiesta, ctx: Contesto): { subject: string; html: string; text: string } {
+  const l = r.lingua;
+  const modo = MODO[l][r.modalita ?? "persona"] ?? MODO[l].persona;
+  const T = l === "en"
+    ? {
+        subject: "Request received: the first meeting",
+        pre: "Your request has arrived. Matia confirms date and time within one working day.",
+        eyebrow: "First meeting",
+        titolo: "Request <em style=\"font-style:normal;color:" + C.goldText + "\">received</em>",
+        hello: `Hello ${r.nome},`,
+        intro: "This is an automatic reply. Matia confirms date and time personally, with a first reply within one working day.",
+        riepilogo: "What you entered", formato: "Format", pref: "Days and times that suit", nessuna: "Not specified", telL: "Phone",
+        boxL: "Date and time", boxN: "Matia confirms them once he has your request. If the day or time you wrote does not work, he proposes another.",
+        come: "What happens next",
+        p1: "<b>Date and time</b>, confirmed by Matia within one working day.",
+        p2: "<b>The first meeting</b>: one hour over coffee and conversation, offered by the studio. In person is the recommended choice, a video call works just as well.",
+        p3: "<b>A check-up or a written quote</b>, with a fixed price and the delivery time.",
+        cta: "Write on WhatsApp", alt: "Or simply reply to this email.",
+        piede1: "You are receiving this message because you asked for the first meeting on the website.",
+        privacy: "Privacy notice", firma: "Studio Matiz, by Matia Zoffoli",
+      }
+    : {
+        subject: "Richiesta ricevuta: il primo incontro",
+        pre: "La richiesta è arrivata. Data e orario li conferma Matia entro un giorno lavorativo.",
+        eyebrow: "Primo incontro",
+        titolo: "Richiesta <em style=\"font-style:normal;color:" + C.goldText + "\">ricevuta</em>",
+        hello: `Ciao ${r.nome},`,
+        intro: "Questa è una risposta automatica. Data e orario li conferma Matia di persona, con una prima risposta entro un giorno lavorativo.",
+        riepilogo: "Quanto hai indicato", formato: "Modalità", pref: "Giorni e orari che vanno bene", nessuna: "Non indicati", telL: "Telefono",
+        boxL: "Data e orario", boxN: "Li conferma Matia dopo aver ricevuto la richiesta. Se il giorno o l'orario indicato non vanno bene, ne propone un altro.",
+        come: "Come continua",
+        p1: "<b>Data e orario</b>, confermati da Matia entro un giorno lavorativo.",
+        p2: "<b>Il primo incontro</b>: un'ora tra chiacchiere e caffè, offerta dallo studio. Di persona è la scelta consigliata, in video funziona altrettanto bene.",
+        p3: "<b>Un check-up o un preventivo scritto</b>, con prezzo chiuso e tempo di consegna.",
+        cta: "Scrivi su WhatsApp", alt: "In alternativa basta rispondere a questa email.",
+        piede1: "Ricevi questo messaggio perché hai chiesto il primo incontro sul sito.",
+        privacy: "Informativa privacy", firma: "Studio Matiz, di Matia Zoffoli",
+      };
+  const assets = ctx.assets ?? `${ctx.sito}/email`;
+  const privacyUrl = ctx.sito + (l === "en" ? "/en/privacy.html" : "/privacy.html");
+  const righe = [riga(T.formato, modo), riga(T.pref, r.preferenza || T.nessuna), r.telefono ? riga(T.telL, r.telefono) : ""].join("");
+  const waUrl = `https://wa.me/${ctx.whatsapp}?text=${encodeURIComponent(l === "en" ? "Hello Matia, I have just requested the first meeting from the website." : "Ciao Matia, ho appena richiesto il primo incontro dal sito.")}`;
+  const corpo = `
+      <p style="margin:0 0 6px;font:400 16px/1.6 ${SANS};color:${C.ink}">${esc(T.hello)}</p>
+      <p style="margin:0 0 26px;font:300 16px/1.65 ${SANS};color:${C.ink}">${esc(T.intro)}</p>
+
+      <div style="font:600 10px/1.4 ${SANS};letter-spacing:.2em;text-transform:uppercase;color:${C.soft};margin:0 0 4px">${esc(T.riepilogo)}</div>
+      <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="border-top:1px solid ${C.ink}">${righe}</table>
+
+      ${prezzoBox(T.boxL, l === "en" ? "To be confirmed" : "Da confermare", T.boxN, assets, `${l}-daconfermare`)}
+
+      ${filo()}
+      <div style="margin:22px 0 4px;font:600 10px/1.4 ${SANS};letter-spacing:.2em;text-transform:uppercase;color:${C.soft}">${esc(T.come)}</div>
+      <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="border-top:1px solid ${C.line}">${passo("01", T.p1)}${passo("02", T.p2)}${passo("03", T.p3)}</table>
+
+      <div style="margin:30px 0 10px;text-align:center">${btn(waUrl, T.cta, false, assets, "t-btn-whatsapp")}</div>
+      <p style="margin:0 0 6px;text-align:center;font:300 14px/1.6 ${SANS};color:${C.soft}">${esc(T.alt)}</p>`;
+  const piede = `<span style="font:450 16px/1.4 ${SERIF};color:${C.cream}">${esc(T.firma)}</span><br>Cesenatico &middot; <a href="mailto:${esc(ctx.emailStudio)}" style="color:${C.goldLight};text-decoration:none">${esc(ctx.emailStudio)}</a> &middot; <a href="https://wa.me/${esc(ctx.whatsapp)}" style="color:${C.goldLight};text-decoration:none">WhatsApp +39 333 958 0381</a><br><span style="font-size:11px;color:#9C9283">${esc(T.piede1)} <a href="${esc(privacyUrl)}" style="color:#9C9283">${esc(T.privacy)}</a>.</span>`;
+  const html = cornice({ l, anteprima: T.pre, eyebrow: T.eyebrow, titolo: T.titolo, titoloImg: immagine(assets, `t-h-incontro-${l}`, `t/h-incontro-${l}`, T.titolo.replace(/<[^>]+>/g, "")) || undefined, corpo, piede, assets, logo: ctx.logo });
+  const strip = (x: string) => x.replace(/<[^>]+>/g, "");
+  const text = [
+    T.hello, "", T.intro, "",
+    T.riepilogo + ":", `- ${T.formato}: ${modo}`, `- ${T.pref}: ${r.preferenza || T.nessuna}`, r.telefono ? `- ${T.telL}: ${r.telefono}` : "", "",
+    `${T.boxL}: ${l === "en" ? "to be confirmed" : "da confermare"}. ${T.boxN}`, "",
+    T.come + ":", "01 " + strip(T.p1), "02 " + strip(T.p2), "03 " + strip(T.p3), "",
+    `${T.cta}: ${waUrl}`, T.alt, "",
+    T.firma, `Cesenatico - ${ctx.emailStudio} - WhatsApp +39 333 958 0381`, `${T.privacy}: ${privacyUrl}`,
+  ].filter((x, i, a) => !(x === "" && a[i - 1] === "")).join("\n");
+  return { subject: T.subject, html, text };
+}
+
+// Avviso a Matia (sempre in italiano), con il pulsante per creare l'evento nel calendario.
+export function avvisoIncontro(r: Richiesta, ctx: Contesto): { subject: string; html: string; text: string } {
+  const l: Lingua = "it";
+  const modo = MODO[l][r.modalita ?? "persona"] ?? MODO[l].persona;
+  const assets = ctx.assets ?? `${ctx.sito}/email`;
+  const cifre = (r.telefono || "").replace(/[^\d]/g, "");
+  const wa = cifre ? `https://wa.me/${cifre.length <= 10 && !cifre.startsWith("39") ? "39" + cifre : cifre}` : "";
+  const evento = "https://calendar.google.com/calendar/render?action=TEMPLATE&text=" + encodeURIComponent(`Primo incontro - ${r.nome} (${r.modalita === "video" ? "video" : "di persona"})`)
+    + "&details=" + encodeURIComponent(`${r.nome} - ${r.email}${r.telefono ? " - " + r.telefono : ""}\nPreferenze: ${r.preferenza || "non indicate"}`)
+    + "&add=" + encodeURIComponent(r.email);
+  const oggetto = `Primo incontro: ${r.nome}, ${r.modalita === "video" ? "in video" : "di persona"}`;
+  const righe = [
+    riga("Email", r.email), r.telefono ? riga("Telefono", r.telefono) : "",
+    riga("Modalità", modo), riga("Giorni e orari", r.preferenza || "non indicati"),
+    riga("Pagina", r.lingua === "en" ? "inglese (rispondere in inglese)" : "italiano"),
+  ].join("");
+  const corpo = `
+      <p style="margin:0 0 22px;font:300 16px/1.65 ${SANS};color:${C.ink}"><b style="font-weight:600">${esc(r.nome)}</b> ha chiesto il primo incontro dal sito${r.secondi !== null ? `, compilato in ${r.secondi} secondi` : ""}.</p>
+      <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="border-top:1px solid ${C.ink}">${righe}</table>
+      <p style="margin:24px 0 14px;font:400 15px/1.6 ${SANS};color:${C.ink}"><b>Da fare:</b> confermare data e orario entro un giorno lavorativo. Il cliente sa che li confermi tu.</p>
+      <div style="text-align:center">${btn(`mailto:${r.email}?subject=${encodeURIComponent("Il primo incontro - Studio Matiz")}`, "Rispondi per email", true, assets, "t-btn-rispondi")}${wa ? btn(wa, "Scrivi su WhatsApp", false, assets, "t-btn-whatsapp") : ""}${btn(evento, "Crea evento nel calendario", false, assets, "t-btn-calendario")}</div>`;
+  const piede = `<span style="font:450 16px/1.4 ${SERIF};color:${C.cream}">Studio Matiz</span><br><span style="font-size:11px;color:#9C9283">Avviso automatico della richiesta di incontro sul sito</span>`;
+  const html = cornice({ l, anteprima: `${r.nome}: ${modo}`, eyebrow: "Nuovo incontro", titolo: "Nuovo <em>incontro</em>", titoloImg: immagine(assets, "t-h-avviso-incontro", "t/h-avviso-incontro", "Nuovo incontro") || undefined, corpo, piede, assets, logo: ctx.logo });
+  const text = [
+    `${r.nome} ha chiesto il primo incontro dal sito.`, "",
+    `Email: ${r.email}`, r.telefono ? `Telefono: ${r.telefono}` : "",
+    `Modalità: ${modo}`, `Giorni e orari: ${r.preferenza || "non indicati"}`,
+    `Pagina: ${r.lingua === "en" ? "inglese (rispondere in inglese)" : "italiano"}`, "",
+    "Da fare: confermare data e orario entro un giorno lavorativo.", `Crea evento nel calendario: ${evento}`,
   ].filter((x, i, a) => !(x === "" && a[i - 1] === "")).join("\n");
   return { subject: oggetto, html, text };
 }

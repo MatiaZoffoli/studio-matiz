@@ -72,6 +72,10 @@ export const IMG: Record<string, [number, number]> = {
   146,
   36
  ],
+ "it-daconfermare": [
+  246,
+  34
+ ],
  "en-300": [
   180,
   34
@@ -144,6 +148,10 @@ export const IMG: Record<string, [number, number]> = {
   89,
   36
  ],
+ "en-daconfermare": [
+  270,
+  34
+ ],
  "t-wordmark": [
   192,
   32
@@ -175,5 +183,29 @@ export const IMG: Record<string, [number, number]> = {
  "t-btn-whatsapp": [
   159,
   16
+ ],
+ "t-btn-richiedi-it": [
+  213,
+  16
+ ],
+ "t-btn-richiedi-en": [
+  212,
+  16
+ ],
+ "t-btn-calendario": [
+  228,
+  16
+ ],
+ "t-h-incontro-it": [
+  294,
+  34
+ ],
+ "t-h-incontro-en": [
+  282,
+  42
+ ],
+ "t-h-avviso-incontro": [
+  252,
+  34
  ]
 };

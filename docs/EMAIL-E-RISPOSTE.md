@@ -265,3 +265,8 @@ La conferma delle prenotazioni la invia Google con il suo aspetto: il layout non
 - [ ] Le risposte automatiche dichiarano di essere automatiche e dicono quando risponde Matia.
 - [ ] Nessuna parola della lista da evitare (soluzioni, gratuito, contattaci, scopri, senza impegno).
 - [ ] Firma: "Matia" nelle comunicazioni personali, "Studio Matiz, di Matia Zoffoli" in quelle automatiche.
+
+### A1b. Richiesta del primo incontro (2026-10-10)
+
+Conferma al cliente (italiano o inglese, secondo la pagina) e avviso a Matia, in `supabase/functions/contatto/email.ts` (`confermaIncontro`, `avvisoIncontro`). Il cliente indica di persona (consigliato) o in video e, se vuole, giorni e orari. La conferma dice che data e orario li conferma Matia entro un giorno lavorativo e mostra un riquadro scuro 'Data e orario - Da confermare'. L'avviso a Matia riporta modalita', preferenze e tre pulsanti: Rispondi per email, Scrivi su WhatsApp, Crea evento nel calendario (modulo precompilato di Google Calendar).
+Nelle conferme dello stimatore (A1) il pulsante ora e' 'Richiedi il primo incontro' e porta al modulo del sito.

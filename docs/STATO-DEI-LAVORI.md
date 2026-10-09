@@ -60,3 +60,10 @@ Definire le cose mancanti (prezzo del check-up, check-up gratuiti di lancio, tar
 - Versione inglese preparata (`/en/`, selettore IT | EN, `tools/build_en.py`): da rivedere frase per frase con Matia (`docs/INGLESE.md`).
 - Email automatiche: funzione pronta, non distribuita, passi in `docs/RESEND.md`. Ricerca marchio: procedura in `docs/RICERCA-MARCHIO.md`.
 - In attesa di Matia: foto, dominio (dopo TMview), account Resend e segreti, revisione dell'inglese.
+
+## Aggiornamento del 2026-10-10: richiesta del primo incontro
+
+- Il sito non rimanda piu' al calendario Google: tutti i pulsanti portano al modulo `#incontro` nella chiusura (modalita' di persona o in video, nome, email, telefono facoltativo, giorni e orari facoltativi, informativa). Data e orario li conferma Matia.
+- Funzione `contatto`: nuova fonte `incontro`, nuove email (`confermaIncontro` al cliente in IT/EN, `avvisoIncontro` a Matia con pulsante 'Crea evento nel calendario'). Colonne `modalita` e `preferenza` gia' nel database.
+- Privacy IT/EN aggiornata. Docs e voce aggiornate.
+- **Da fare:** Matia fa il push; poi si distribuisce la funzione (le immagini delle email devono essere online prima).

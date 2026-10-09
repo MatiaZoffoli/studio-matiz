@@ -1,4 +1,4 @@
-# -*- coding: utf-8 -*-
+﻿# -*- coding: utf-8 -*-
 """
 Titoli e cifre delle email come immagini, con i caratteri veri del sito (Bodoni Moda).
 
@@ -46,6 +46,7 @@ for l in ("it", "en"):
         righe.append((f"p/{l}-{n}", testo, CREAM, 36))
     righe.append((f"p/{l}-200", euro(200, l), CREAM, 36))  # il check-up, senza prefisso
     righe.append((f"p/{l}-250", euro(250, l), CREAM, 36))  # forfait del primo mese di cura continua, senza prefisso
+    righe.append((f"p/{l}-daconfermare", "Da confermare" if l == "it" else "To be confirmed", CREAM, 36))  # richiesta del primo incontro
 # ---- titoli e marchio
 em = lambda a, b: f'{a} <em>{b}</em>'
 righe += [
@@ -58,6 +59,12 @@ righe += [
     ("t/btn-prenota-en", "Book the first meeting", CREAM, 12, "s"),
     ("t/btn-rispondi", "Rispondi per email", CREAM, 12, "s"),
     ("t/btn-whatsapp", "Scrivi su WhatsApp", INK, 12, "s"),
+    ("t/btn-richiedi-it", "Richiedi il primo incontro", CREAM, 12, "s"),
+    ("t/btn-richiedi-en", "Request the first meeting", CREAM, 12, "s"),
+    ("t/btn-calendario", "Crea evento nel calendario", INK, 12, "s"),
+    ("t/h-incontro-it", em("Richiesta", "ricevuta"), INK, 36),
+    ("t/h-incontro-en", em("Request", "received"), INK, 36),
+    ("t/h-avviso-incontro", em("Nuovo", "incontro"), INK, 36),
 ]
 righe = [r if len(r) == 5 else r + ("d",) for r in righe]
 

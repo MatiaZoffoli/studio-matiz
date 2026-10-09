@@ -1,5 +1,5 @@
 import { createClient } from "npm:@supabase/supabase-js@2";
-import { avvisoStudio, confermaCliente } from "./email.ts";
+import { avvisoIncontro, avvisoStudio, confermaCliente, confermaIncontro } from "./email.ts";
 
 // Riceve le richieste dallo stimatore del sito Studio Matiz e le salva nella tabella `contatti`.
 // Pubblica di proposito (nessun accesso con login): le protezioni sono nel codice qui sotto.
@@ -10,6 +10,7 @@ import { avvisoStudio, confermaCliente } from "./email.ts";
 //   NOTIFY_EMAIL     dove arriva l'avviso per ogni nuova richiesta (A2 in docs/EMAIL-E-RISPOSTE.md)
 //   NOTIFY_FROM      mittente dell'avviso, es. "Studio Matiz <onboarding@resend.dev>" (predefinito) o un indirizzo del dominio verificato
 //   EMAIL_LOGO       indirizzo dell'immagine del logo (chiara su fondo scuro, es. https://.../email/logo.png); senza, la testata usa il nome in carattere
+//   (CALENDAR_URL non serve piu': il primo incontro si richiede dal sito e lo conferma Matia)
 //   CONFIRM_FROM     mittente della conferma al cliente (A1), es. "Studio Matiz <ciao@studiomatiz.it>". Serve un dominio verificato su Resend:
 //                    se manca, la conferma al cliente non parte e resta solo l'avviso a Matia.
 
@@ -99,6 +100,9 @@ Deno.serve(async (req: Request) => {
   const servizi = Array.isArray(b.servizi) ? b.servizi.filter((s) => typeof s === "string" && SERVIZI.includes(s)).slice(0, 5) : [];
   const dimensione = typeof b.dimensione === "string" && DIMENSIONI.includes(b.dimensione) ? b.dimensione : null;
   const lingua: "it" | "en" = b.lingua === "en" ? "en" : "it";
+  // Richiesta del primo incontro dal sito: modalita' (di persona o video) e preferenze; data e orario li conferma Matia.
+  const incontro = b.fonte === "incontro";
+  const modalita: "persona" | "video" = b.modalita === "video" ? "video" : "persona";
 
   const riga = {
     nome,
@@ -113,7 +117,9 @@ Deno.serve(async (req: Request) => {
     consenso_privacy: true,
     consenso_comunicazioni: b.consenso_comunicazioni === true,
     versione_informativa: text(b.versione_informativa, 40) ?? "bozza",
-    fonte: "stimatore",
+    fonte: incontro ? "incontro" : "stimatore",
+    modalita: incontro ? modalita : null,
+    preferenza: incontro ? text(b.preferenza, 300) : null,
   };
 
   const db = createClient(Deno.env.get("SUPABASE_URL")!, Deno.env.get("SUPABASE_SERVICE_ROLE_KEY")!, {
@@ -145,9 +151,9 @@ Deno.serve(async (req: Request) => {
       nome, email, telefono: riga.telefono, tipo: riga.tipo_attivita, servizi, presenza: riga.presenza,
       dimensione, da: riga.prezzo_da, fino: riga.prezzo_fino_a, lingua,
       secondi: Number.isFinite(t) ? Math.round(t / 1000) : null,
+      fonte: riga.fonte as "stimatore" | "incontro", modalita: riga.modalita, preferenza: riga.preferenza,
     };
     const ctx = {
-      calendario: Deno.env.get("CALENDAR_URL") ?? "https://calendar.app.google/NUp3xit8MwxWQWkK6",
       sito: Deno.env.get("SITE_URL") ?? "https://studio-matiz.vercel.app",
       whatsapp: "393339580381",
       emailStudio: "matiazoffoli@gmail.com",
@@ -155,7 +161,7 @@ Deno.serve(async (req: Request) => {
     };
 
     // A2. Avviso a Matia (sempre in italiano). "Rispondi" va all'email del cliente.
-    const avviso = avvisoStudio(richiesta, ctx);
+    const avviso = incontro ? avvisoIncontro(richiesta, ctx) : avvisoStudio(richiesta, ctx);
     await invia(chiave, {
       from: Deno.env.get("NOTIFY_FROM") ?? "Studio Matiz <onboarding@resend.dev>",
       to: [a], reply_to: email, subject: avviso.subject, html: avviso.html, text: avviso.text,
@@ -164,7 +170,7 @@ Deno.serve(async (req: Request) => {
     // A1. Conferma al cliente, nella lingua della pagina. Parte solo con un mittente di un dominio verificato.
     const conferma = Deno.env.get("CONFIRM_FROM");
     if (conferma) {
-      const m = confermaCliente(richiesta, ctx);
+      const m = incontro ? confermaIncontro(richiesta, ctx) : confermaCliente(richiesta, ctx);
       await invia(chiave, { from: conferma, to: [email], reply_to: a, subject: m.subject, html: m.html, text: m.text });
     }
   }
