@@ -2,6 +2,8 @@
 // Funzioni pure: restituiscono oggetto, HTML e testo semplice. Tutto cio' che arriva dal modulo viene "escapato".
 // Le email usano tabelle e stili in linea, perche' i programmi di posta non leggono i fogli di stile del sito.
 
+import { IMG } from "./imgsizes.ts";
+
 export type Lingua = "it" | "en";
 
 export type Richiesta = {
@@ -29,8 +31,8 @@ export type Contesto = {
 
 // ---------------------------------------------------------------- colori e caratteri (gli stessi del sito)
 const C = {
-  sand: "#EFE8DB", card: "#FBF9F4", ink: "#241E1A", soft: "#6B6057", line: "#E2D9C8",
-  gold: "#A8854F", goldText: "#735522", goldLight: "#D4B27C", night: "#161210", cream: "#F5EFE3", tint: "#F1E9DA",
+  sand: "#EFE8DC", card: "#F7F3EC", ink: "#241E1A", soft: "#6B6057", line: "#DDD3C2",
+  gold: "#A8854F", goldText: "#86672F", goldLight: "#D4B27C", night: "#161210", cream: "#F3ECE0", nightSoft: "#BDB1A0", tint: "#EFE8DC",
 };
 const SERIF = "'Bodoni Moda','Bodoni 72',Didot,'Playfair Display',Georgia,'Times New Roman',serif";
 const SANS = "Manrope,'Helvetica Neue',Helvetica,Arial,sans-serif";
@@ -66,6 +68,14 @@ function servizi(r: Richiesta, l: Lingua): string {
 }
 
 // ---------------------------------------------------------------- pezzi di grafica
+// Titoli e cifre del prezzo sono immagini disegnate con i caratteri del sito (tools/email_type.py): i programmi di posta
+// non caricano i caratteri web. Se l'immagine non esiste (valore insolito), si usa il testo.
+function immagine(assets: string, chiave: string, file: string, alt: string, blocco = true): string {
+  const d = IMG[chiave];
+  if (!d) return "";
+  return `<img src="${esc(assets)}/${file}.png" width="${d[0]}" height="${d[1]}" alt="${esc(alt)}" style="${blocco ? "display:block;" : ""}border:0;width:${d[0]}px;max-width:100%;height:auto">`;
+}
+
 function btn(url: string, label: string, pieno = true): string {
   const bg = pieno ? C.ink : "transparent";
   const col = pieno ? C.cream : C.ink;
@@ -80,11 +90,13 @@ function passo(n: string, testo: string): string {
   return `<tr><td style="padding:9px 14px 9px 0;font:600 11px/1.5 ${SANS};letter-spacing:.14em;color:${C.goldText};vertical-align:top;width:34px">${n}</td><td style="padding:9px 0;font:400 15px/1.55 ${SANS};color:${C.ink}">${testo}</td></tr>`;
 }
 
-function prezzoBox(etichetta: string, valore: string, nota: string): string {
-  return `<table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="margin:26px 0 8px"><tr><td bgcolor="${C.tint}" style="background:${C.tint};background-image:linear-gradient(135deg,#F7F0E1 0%,#EADFC8 100%);padding:22px 26px 22px 24px;border-left:3px solid ${C.gold};box-shadow:0 22px 34px -24px rgba(36,30,26,.55)">
-        <div style="font:600 10px/1.4 ${SANS};letter-spacing:.2em;text-transform:uppercase;color:${C.goldText}">${esc(etichetta)}</div>
-        <div style="margin-top:6px;font:450 36px/1.1 ${SERIF};letter-spacing:-.02em;color:${C.ink}">${esc(valore)}</div>
-        <div style="margin-top:10px;font:300 13px/1.6 ${SANS};color:${C.soft}">${esc(nota)}</div>
+function prezzoBox(etichetta: string, valore: string, nota: string, assets: string, chiaveImg: string): string {
+  const num = immagine(assets, chiaveImg, "p/" + chiaveImg, valore)
+    || `<div style="font:450 36px/1.1 ${SERIF};letter-spacing:-.02em;color:${C.cream}">${esc(valore)}</div>`;
+  return `<table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="margin:26px 0 8px"><tr><td bgcolor="${C.night}" style="background:${C.night} url('${esc(assets)}/header.jpg') center center / cover no-repeat;padding:24px 28px 24px 26px;border-left:3px solid ${C.gold};box-shadow:0 24px 36px -24px rgba(22,18,16,.7)">
+        <div style="font:600 10px/1.4 ${SANS};letter-spacing:.2em;text-transform:uppercase;color:${C.goldLight}">${esc(etichetta)}</div>
+        <div style="margin-top:10px">${num}</div>
+        <div style="margin-top:12px;font:300 13px/1.6 ${SANS};color:${C.nightSoft}">${esc(nota)}</div>
       </td></tr></table>`;
 }
 
@@ -92,12 +104,13 @@ function filo(): string {
   return `<table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="margin:30px 0 0"><tr><td height="1" bgcolor="${C.line}" style="height:1px;line-height:1px;font-size:1px;background:${C.line};background-image:linear-gradient(90deg,${C.gold} 0%,rgba(168,133,79,0) 100%)">&nbsp;</td></tr></table>`;
 }
 
-function cornice(opts: { l: Lingua; anteprima: string; eyebrow: string; titolo: string; corpo: string; piede: string; assets: string; logo?: string }): string {
-  const { l, anteprima, eyebrow, titolo, corpo, piede, assets, logo } = opts;
+function cornice(opts: { l: Lingua; anteprima: string; eyebrow: string; titolo: string; titoloImg?: string; corpo: string; piede: string; assets: string; logo?: string }): string {
+  const { l, anteprima, eyebrow, titolo, titoloImg, corpo, piede, assets, logo } = opts;
   const banner = `${assets}/header.jpg`;
   const marchio = logo
     ? `<img src="${esc(logo)}" width="220" alt="Studio Matiz" style="display:block;margin:0 auto;border:0;height:auto">`
-    : `<div style="font:450 34px/1.1 ${SERIF};letter-spacing:-.01em;color:${C.cream}">Studio Matiz</div>`;
+    : immagine(assets, "t-wordmark", "t/wordmark", "Studio Matiz").replace("display:block;", "display:block;margin:0 auto;")
+      || `<div style="font:450 34px/1.1 ${SERIF};letter-spacing:-.01em;color:${C.cream}">Studio Matiz</div>`;
   const grana = `${assets}/grain.png`;
   return `<!doctype html>
 <html lang="${l}" xmlns:v="urn:schemas-microsoft-com:vml">
@@ -125,10 +138,10 @@ function cornice(opts: { l: Lingua; anteprima: string; eyebrow: string; titolo: 
     </td></tr>
     <tr><td class="pad" bgcolor="${C.card}" style="background:${C.card};background-image:url('${grana}');padding:42px 40px 36px">
       <div style="font:600 10px/1.4 ${SANS};letter-spacing:.22em;text-transform:uppercase;color:${C.goldText}">&#9679;&nbsp; ${esc(eyebrow)}</div>
-      <h1 class="h1" style="margin:14px 0 18px;font:450 36px/1.06 ${SERIF};letter-spacing:-.02em;color:${C.ink}">${titolo}</h1>
+      <h1 class="h1" style="margin:14px 0 18px;font:450 36px/1.06 ${SERIF};letter-spacing:-.02em;color:${C.ink}">${titoloImg || titolo}</h1>
       ${corpo}
     </td></tr>
-    <tr><td class="pad" bgcolor="${C.night}" style="background:${C.night};padding:26px 40px 28px;border-top:2px solid ${C.gold};font:400 12px/1.8 ${SANS};color:#CFC5B3">${piede}</td></tr>
+    <tr><td class="pad" bgcolor="${C.night}" style="background:${C.night} url('${assets}/footer.jpg') center bottom / cover no-repeat;padding:28px 40px 30px;border-top:2px solid ${C.gold};font:400 12px/1.8 ${SANS};color:#CFC5B3">${piede}</td></tr>
   </table>
 </td></tr></table>
 </body>
@@ -190,18 +203,19 @@ export function confermaCliente(r: Richiesta, ctx: Contesto): { subject: string;
       <div style="font:600 10px/1.4 ${SANS};letter-spacing:.2em;text-transform:uppercase;color:${C.soft};margin:0 0 4px">${esc(T.riepilogo)}</div>
       <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="border-top:1px solid ${C.ink}">${righe}</table>
 
-      ${prezzoBox(T.prezzoL, prezzoTxt, T.nota)}
+      ${prezzoBox(T.prezzoL, prezzoTxt, T.nota, ctx.assets ?? `${ctx.sito}/email`, `${l}-${r.da ?? 0}`)}
 
       ${filo()}
       <div style="margin:22px 0 4px;font:600 10px/1.4 ${SANS};letter-spacing:.2em;text-transform:uppercase;color:${C.soft}">${esc(T.come)}</div>
       <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="border-top:1px solid ${C.line}">${passo("01", T.p1)}${passo("02", T.p2)}${passo("03", T.p3)}</table>
 
-      <div style="margin:28px 0 10px">${btn(ctx.calendario, T.cta)}</div>
-      <p style="margin:0 0 6px;font:300 14px/1.6 ${SANS};color:${C.soft}">${esc(T.alt)}</p>`;
+      <div style="margin:30px 0 10px;text-align:center">${btn(ctx.calendario, T.cta)}</div>
+      <p style="margin:0 0 6px;text-align:center;font:300 14px/1.6 ${SANS};color:${C.soft}">${esc(T.alt)}</p>`;
 
   const piede = `<span style="font:450 16px/1.4 ${SERIF};color:${C.cream}">${esc(T.firma)}</span><br>Cesenatico &middot; <a href="mailto:${esc(ctx.emailStudio)}" style="color:${C.goldLight};text-decoration:none">${esc(ctx.emailStudio)}</a> &middot; <a href="https://wa.me/${esc(ctx.whatsapp)}" style="color:${C.goldLight};text-decoration:none">WhatsApp +39 333 958 0381</a><br><span style="font-size:11px;color:#9C9283">${esc(T.piede1)} <a href="${esc(privacyUrl)}" style="color:#9C9283">${esc(T.privacy)}</a>.</span>`;
 
-  const html = cornice({ l, anteprima: T.pre, eyebrow: T.eyebrow, titolo: T.titolo, corpo, piede, assets: ctx.assets ?? `${ctx.sito}/email`, logo: ctx.logo });
+  const assets = ctx.assets ?? `${ctx.sito}/email`;
+  const html = cornice({ l, anteprima: T.pre, eyebrow: T.eyebrow, titolo: T.titolo, titoloImg: immagine(assets, `t-h-conferma-${l}`, `t/h-conferma-${l}`, T.titolo.replace(/<[^>]+>/g, "")) || undefined, corpo, piede, assets, logo: ctx.logo });
 
   const text = [
     T.hello, "", T.intro, "",
@@ -235,13 +249,14 @@ export function avvisoStudio(r: Richiesta, ctx: Contesto): { subject: string; ht
     riga("Pagina", r.lingua === "en" ? "inglese" : "italiano"),
   ].join("");
   const corpo = `
-      <p style="margin:0 0 22px;font:300 16px/1.65 ${SANS};color:${C.ink}">Ha chiesto un prezzo di partenza dallo stimatore${r.secondi !== null ? `, compilato in ${r.secondi} secondi` : ""}.</p>
+      <p style="margin:0 0 22px;font:300 16px/1.65 ${SANS};color:${C.ink}"><b style="font-weight:600">${esc(r.nome)}</b> ha chiesto un prezzo di partenza dallo stimatore${r.secondi !== null ? `, compilato in ${r.secondi} secondi` : ""}.</p>
       <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="border-top:1px solid ${C.ink}">${righe}</table>
-      ${prezzoBox("Prezzo mostrato", prezzoTxt, `Tetto interno: ${tetto}. Il cliente vede solo il prezzo di partenza.`)}
+      ${prezzoBox("Prezzo mostrato", prezzoTxt, `Tetto interno: ${tetto}. Il cliente vede solo il prezzo di partenza.`, ctx.assets ?? `${ctx.sito}/email`, `it-${r.da ?? 0}`)}
       <p style="margin:24px 0 14px;font:400 15px/1.6 ${SANS};color:${C.ink}"><b>Da fare:</b> rispondere entro un giorno lavorativo e proporre il primo incontro.</p>
-      <div>${btn(`mailto:${r.email}?subject=${encodeURIComponent("Il tuo prezzo di partenza - Studio Matiz")}`, "Rispondi per email")}${wa ? btn(wa, "Scrivi su WhatsApp", false) : ""}</div>`;
+      <div style="text-align:center">${btn(`mailto:${r.email}?subject=${encodeURIComponent("Il tuo prezzo di partenza - Studio Matiz")}`, "Rispondi per email")}${wa ? btn(wa, "Scrivi su WhatsApp", false) : ""}</div>`;
   const piede = `<span style="font:450 16px/1.4 ${SERIF};color:${C.cream}">Studio Matiz</span><br><span style="font-size:11px;color:#9C9283">Avviso automatico dello stimatore del sito</span>`;
-  const html = cornice({ l, anteprima: `${r.nome}: ${prezzoTxt}`, eyebrow: "Nuova richiesta", titolo: esc(r.nome), corpo, piede, assets: ctx.assets ?? `${ctx.sito}/email`, logo: ctx.logo });
+  const assets = ctx.assets ?? `${ctx.sito}/email`;
+  const html = cornice({ l, anteprima: `${r.nome}: ${prezzoTxt}`, eyebrow: "Nuova richiesta", titolo: "Nuova <em>richiesta</em>", titoloImg: immagine(assets, "t-h-avviso", "t/h-avviso", "Nuova richiesta") || undefined, corpo, piede, assets, logo: ctx.logo });
   const text = [
     `${r.nome} ha chiesto un prezzo di partenza${r.secondi !== null ? ` (compilato in ${r.secondi} secondi)` : ""}.`, "",
     `Email: ${r.email}`, r.telefono ? `Telefono: ${r.telefono}` : "",

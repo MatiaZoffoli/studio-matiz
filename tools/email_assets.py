@@ -33,7 +33,14 @@ def header():
     img[-3:, :, :] = np.array([168, 133, 79], np.float32)
     Image.fromarray(np.clip(img, 0, 255).astype(np.uint8)).save(os.path.join(OUT, "header.jpg"), quality=86, optimize=True, progressive=True)
 
+def footer():
+    im = Image.open(os.path.join(OUT, "header.jpg")).convert("RGB")
+    a = np.asarray(im)[:-3, :, :]                       # senza il filo d'ottone
+    a = a[::-1, :, :]                                   # bagliore in basso
+    Image.fromarray(a).resize((1200, 240)).save(os.path.join(OUT, "footer.jpg"), quality=86, optimize=True, progressive=True)
+
 header()
+footer()
 if len(sys.argv) < 2:
     sys.exit(0)
 
