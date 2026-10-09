@@ -85,6 +85,18 @@ Scelte di Matia, scheda per scheda: titolo e frase sobri; scheda 1 sobria; sched
 
 Cosa si impara da queste scelte: Matia preferisce **la forma impersonale con verbo riflessivo** ("si cerca", "si costruisce", "si guardano"), il lessico di **ricerca e sviluppo** e di **messa a punto** (meccanismo), e un problema che parte da **un fatto verificabile** (orari che restano quelli dell'anno scorso, compiti che crescono con l'attività).
 
+## Sezione "Il metodo" (2026-10-09)
+
+Scelta di Matia: variante C intera ("ricerca e sviluppo, con i numeri"). Prima: "Si comincia con una chiacchierata." Alternative scartate: A (impersonale, "Dalla conversazione allo strumento che funziona") e B (diretta con l'io, "Un percorso da fare insieme").
+
+- **Titolo:** Si misura prima di costruire. **Apertura:** Un metodo in quattro tempi, con un risultato chiuso a ogni passo e un numero da cui partire.
+- **1. Primo incontro.** Un'ora per capire come si lavora e dove si perde tempo. Si decide insieme quale numero conta (richieste, prenotazioni, iscritti) e da quanto si parte.
+- **2. Check-up.** Ricerca su ciò che esiste: sito, profili, posta, gestionale, dati. In tre giorni lavorativi un rapporto con la mappa delle priorità e il costo di ciascuna.
+- **3. Costruzione.** Sviluppo a tappe, con due giri di correzioni e un prezzo chiuso. A ogni tappa si vede qualcosa che funziona.
+- **4. Cura.** Messa a punto nel tempo: si aggiorna, si regola e si rimisura. Ogni mese un resoconto confronta i numeri con il punto di partenza.
+
+Nota: nella versione scelta il passo 1 non dice più che l'incontro è offerto. La cosa resta detta nell'hero ("offerta da me") e nelle regole.
+
 ## Altre cose da riscrivere, per lo stesso metodo
 
 Le voci del menu ("Servizi", "Percorso", "Condizioni", "Domande"), il pulsante "Prenota il primo incontro", le tre righe del piede della testata, i titoli di sezione, i testi dei quattro servizi, le condizioni, la FAQ, "Chi sono", la chiusura "Parliamone." e tutti i microtesti dello stimatore. Si procede per sezione: tre varianti dei testi forti, scelta di Matia, poi applicazione alla pagina.

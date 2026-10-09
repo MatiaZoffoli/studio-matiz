@@ -56,7 +56,7 @@ Matia lo ha chiesto così (2026-10-08): ispirazione da atelier, ma **capibile su
 ## Come si lavora
 
 1. **Capire.** A chi parla il testo, in quale momento, cosa deve fare dopo averlo letto. Se manca uno dei tre, si chiede.
-2. **Tre varianti per i testi che contano** (titolo, apertura, pulsante principale): una più sobria, una più immaginosa, una più diretta. Per ciascuna una riga sul perché. Se Matia ne sceglie una, si adegua il resto.
+2. **Tre varianti per i testi che contano** (titolo, apertura, pulsante principale), **scritte per intero in chat**, non descritte con etichette: Matia vuole leggere i testi veri per ispirarsi e magari farne un blend, che scrive lui nel box libero. Le tre versioni cambiano tono (per esempio impersonale e precisa, personale e calda, ricerca e sviluppo con i numeri) ma non i fatti. Se Matia ne sceglie una, si adegua il resto.
 3. **Scrivere con un fatto dentro:** un tempo, un gesto, un numero vero.
 4. **Il filtro finale.** Prima di consegnare un testo si controlla ogni punto qui sotto. Se ne manca uno, si riscrive.
 5. **Una sola fonte.** Se un testo nuovo cambia la voce, si aggiorna questo file e `esempi.md`, non si crea una regola nuova altrove.
@@ -85,6 +85,7 @@ Matia lo ha chiesto così (2026-10-08): ispirazione da atelier, ma **capibile su
 - **Titoli che raccontano un momento o una situazione** ("Quello che succede dopo la consegna", "Va bene, poi non più", "Nessuno lo prende in carico"): frasi vere, con un verbo, scelte nella variante sobria.
 - **Il lessico che funziona è quello di ricerca, sviluppo e messa a punto**: "si cerca dove il tempo si perde e si costruisce lo strumento che lo recupera", "un meccanismo vivo che chiede piccole regolazioni", "una ricerca prima di costruire". La forma impersonale riflessiva ("si cerca", "si guardano", "si consegna") è la sua preferita per descrivere cosa si fa.
 - **Un problema parte da un fatto verificabile**: orari rimasti quelli dell'anno scorso, compiti ripetuti che crescono con l'attività, un canone che non dice cosa copre.
+- **Sceglie il registro "ricerca e sviluppo con numeri"** quando descrive il metodo: "Si misura prima di costruire", un numero da cui partire, un risultato chiuso a ogni passo, un resoconto che confronta con il punto di partenza. Lo preferisce alla versione personale con l'"io" e a quella solo impersonale.
 - **Parlare in generale, non solo di sito.** Studio Matiz lavora su ogni strumento digitale: sito, pagina, profilo, scheda, menu, CRM, casella di posta, moduli. "Il sito" si scrive solo dove il testo parla davvero di un sito; negli altri casi si dice "strumento", "canale", "presenza", "ogni cosa che si usa online".
 - **L'inglese da madrelingua non va nelle schede dei servizi.** Resta nelle FAQ e in "Chi sono", dove è un fatto su Matia, non una caratteristica del servizio.
 - **Il primo incontro dura un'ora**, "tra chiacchiere e caffè": il tempo suona più disteso e vero.
