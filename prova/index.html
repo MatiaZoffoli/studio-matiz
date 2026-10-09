@@ -556,6 +556,10 @@ h3, .goals .lab, .terms .fig, .meter__row b, .faq summary, .est__step legend, .e
 .goals__more a { display: inline-flex; align-items: center; gap: .7rem; color: var(--gold-light); text-decoration: none; padding-bottom: .35rem; background: linear-gradient(currentColor, currentColor) left bottom / 100% 1px no-repeat; transition: background-size .5s var(--ease); }
 .goals__more a:hover { background-size: 40% 1px; }
 .goals__more svg { width: 1.1em; height: 1.1em; flex: none; }
+/* biografia lunga: corpo un po' piu' piccolo e interlinea comoda */
+.about__body p { font-size: clamp(1.05rem, 1.3vw, 1.22rem); line-height: 1.7; }
+.about__body p + p { margin-top: 1.4rem; }
+.about__body em { font-style: italic; font-family: var(--serif); font-variation-settings: "opsz" 14; font-weight: 500; }
 /* hero: testo, pulsante, nota del caffe' (che si riferisce al pulsante), poi il link, in colonna e a riempire lo spazio */
 .hero { padding-top: clamp(1.6rem, 3.6vh, 4rem); }
 .hero__row { row-gap: clamp(2rem, 5vh, 3.2rem); margin-top: clamp(1.4rem, 3.6vh, 2.8rem); }
@@ -995,9 +999,10 @@ h3, .goals .lab, .terms .fig, .meter__row b, .faq summary, .est__step legend, .e
         <div class="portrait" role="img" aria-label="Spazio riservato alla foto di Matia"><span>Foto di Matia da inserire</span></div>
       </div>
       <div class="about__body">
-        <p>Matia Zoffoli. Nove anni alla direzione di locali di ospitalità in Australia, fino a quattro sedi e centoventi persone: margini stretti, poco tempo, problemi da risolvere ogni giorno.</p>
-        <p>Poi i dati e l'intelligenza artificiale, per organizzazioni molto più grandi di una piccola attività, tra cui il Dipartimento dell'Istruzione del governo australiano. Lo stesso metodo oggi si applica a chi ha un'attività propria, con l'intelligenza artificiale usata solo dove toglie lavoro.</p>
-        <p>Tredici anni in Australia: italiano e inglese allo stesso livello.</p>
+        <p>Il mio primo ricordo con i numeri è nel negozio di mia nonna: lei lavorava, e per tenermi occupato mi dava pagine di operazioni da fare a mente, carta e penna. Mi davano una sensazione di completezza che non ho mai smesso di cercare. Ancora oggi, davanti a un problema, ho la sensazione che la soluzione esista e vada trovata; quando la sensazione manca, ho imparato che conviene girarci intorno, perché forse la soluzione a quel problema preciso non c'è.</p>
+        <p>A undici anni facevo caffè in un bar di Cesenatico, e i miei genitori gestivano attività: il lavoro, in casa, era così. Da lì vent'anni nella ristorazione, gli ultimi nove alla direzione di locali a Sydney. Là ho imparato che un problema si risolve quando arriva, perché dopo di te non c'è nessuno: <em>the buck stops with you</em>. E ho imparato a leggere i numeri per capire cosa funziona, cosa no e dove vale la pena cambiare.</p>
+        <p>Con il Covid ho deciso di esserci di più per la famiglia e per le mie figlie. Sono tornato a studiare, finanza prima, poi matematica e statistica, con due diplomi, mentre continuavo a gestire il lavoro. Sono entrato nel mondo dei dati, per enti pubblici e grandi aziende, e ho dovuto reinventarmi: da vent'anni di esperienza a novellino. Mi sono portato dietro il rapporto con le persone, che davanti a uno schermo non si impara.</p>
+        <p>Oggi lavoro con le piccole attività, quelle che faticano ogni giorno su cose che nel 2026 si risolvono in modo più veloce, per restituire tempo alle persone, alle famiglie, ai loro hobby. Si parte dal conoscersi: solo capendo le persone si capisce dove sta davvero il problema. Poi il metodo, sempre lo stesso: analizzare, esplorare le possibilità, scegliere e costruire. Con un'attenzione: i numeri che contano sono quelli del cliente, altrimenti la soluzione sarebbe la mia e non la sua.</p>
       </div>
     </div>
   </section>

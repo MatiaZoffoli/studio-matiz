@@ -46,3 +46,7 @@ Equilibrio, precisione, fatti, calma, dedizione, sacrificio, costanza. Lavora da
 - Non mostrare i numeri degli enti dove lavora senza il suo permesso.
 - Frasi da evitare: "passione" ripetuta, "con dedizione e sacrificio" come slogan, e qualsiasi cosa che suoni vantata. Meglio un fatto (il cestello di bicchieri, i turni di cento persone) di un aggettivo.
 - La bio e il metodo del sito devono dire la stessa cosa: analizzare, esplorare, scegliere e costruire; il perché prima del come; il numero del cliente, non quello di Matia.
+
+## La biografia scelta (2026-10-09)
+
+Blend deciso da Matia: base della versione lunga, piu' "the buck stops with you" e la "completezza" dalla media, la parte sulla ristorazione dalla media (senza il dettaglio dell'euro), e la chiusura con il conoscersi prima e il metodo dopo. Il testo vive in `prova/index.html` (sezione "Chi sono", titolo "Dalla sala ai dati."). Non cita i due datori di lavoro. Possibili aggiunte: una riga di numeri (11 anni, 20 anni di ristorazione, 9 anni alla direzione, 2 diplomi), la foto di Matia, una citazione "The buck stops with you" in un riquadro.
