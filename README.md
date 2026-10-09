@@ -35,6 +35,9 @@ Consulenza per piccole e medie imprese italiane: siti web, menu digitali, assist
 | [docs/STIMATORE.md](docs/STIMATORE.md) | Come funziona lo stimatore a fasce del sito, come calcola, cosa manca per collegarlo ai contatti |
 | [docs/LISTINO-E-TEMPI.md](docs/LISTINO-E-TEMPI.md) | Proposta di listino a fasce, tempi di consegna, forfait del primo mese, proprieta' di dominio e contenuti |
 | [docs/INGLESE.md](docs/INGLESE.md) | Versione inglese: come si genera (`tools/build_en.py`), scelte di traduzione da confermare |
+| [modelli/en/](modelli/en/) | Documenti dello studio in inglese: `quote`, `service-agreement`, `monthly-report` e gli esempi compilati (`example-quote`, `example-monthly-report`), in `.html` e `.pdf`; traduzione degli originali italiani, che fanno fede |
+| [email/](email/) | Anteprime delle email automatiche (`anteprime/`, con dati di fantasia) e firme di Matia in HTML (`firma-it.html`, `firma-en.html`) |
+| [docs/EMAIL-AND-REPLIES-EN.md](docs/EMAIL-AND-REPLIES-EN.md) | Email e messaggi in inglese (A3-A5, B1-B10, C1-C3) |
 | [docs/RESEND.md](docs/RESEND.md) | Email automatiche dal sito: passi, link e segreti per collegare Resend |
 | [docs/RICERCA-MARCHIO.md](docs/RICERCA-MARCHIO.md) | Come fare la ricerca marchio completa su TMview, e l'esito della ricerca del 2026-10-09 |
 | [docs/CONSULENTE-MARCHIO.md](docs/CONSULENTE-MARCHIO.md) | Elenco per il consulente in proprieta' industriale: cosa portare, domande, chi contattare in zona, bozza di messaggio |

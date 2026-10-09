@@ -1,4 +1,5 @@
 import { createClient } from "npm:@supabase/supabase-js@2";
+import { avvisoStudio, confermaCliente } from "./email.ts";
 
 // Riceve le richieste dallo stimatore del sito Studio Matiz e le salva nella tabella `contatti`.
 // Pubblica di proposito (nessun accesso con login): le protezioni sono nel codice qui sotto.
@@ -43,10 +44,6 @@ function text(v: unknown, max: number): string | null {
 function int(v: unknown): number | null {
   const n = Number(v);
   return Number.isFinite(n) && n >= 0 && n <= 1000000 ? Math.round(n) : null;
-}
-
-function migliaia(n: number, lingua: "it" | "en"): string {
-  return String(n).replace(/\B(?=(\d{3})+(?!\d))/g, lingua === "en" ? "," : ".");
 }
 
 // Invia una email con Resend. Non scrive mai dati personali nei log.
@@ -139,79 +136,34 @@ Deno.serve(async (req: Request) => {
     return reply({ ok: false, errore: "non sono riuscito a salvare la richiesta" }, 500, origin);
   }
 
-  // Email, solo se Resend e' configurato.
+  // Email, solo se Resend e' configurato. La grafica e i testi stanno in email.ts.
   const chiave = Deno.env.get("RESEND_API_KEY");
   const a = Deno.env.get("NOTIFY_EMAIL");
   if (chiave && a) {
-    const da = riga.prezzo_da;
-    const serviziTxt = servizi.join(", ") || "-";
-    const secondi = Number.isFinite(t) ? Math.round(t / 1000) : null;
+    const richiesta = {
+      nome, email, telefono: riga.telefono, tipo: riga.tipo_attivita, servizi, presenza: riga.presenza,
+      dimensione, da: riga.prezzo_da, fino: riga.prezzo_fino_a, lingua,
+      secondi: Number.isFinite(t) ? Math.round(t / 1000) : null,
+    };
+    const ctx = {
+      calendario: Deno.env.get("CALENDAR_URL") ?? "https://calendar.app.google/NUp3xit8MwxWQWkK6",
+      sito: Deno.env.get("SITE_URL") ?? "https://studio-matiz.vercel.app",
+      whatsapp: "393339580381",
+      emailStudio: "matiazoffoli@gmail.com",
+    };
 
-    // A2. Avviso a Matia (sempre in italiano, con la lingua della pagina indicata).
+    // A2. Avviso a Matia (sempre in italiano). "Rispondi" va all'email del cliente.
+    const avviso = avvisoStudio(richiesta, ctx);
     await invia(chiave, {
       from: Deno.env.get("NOTIFY_FROM") ?? "Studio Matiz <onboarding@resend.dev>",
-      to: [a],
-      reply_to: email,
-      subject: `Nuova richiesta: ${riga.tipo_attivita ?? "attivita'"}${da ? `, da ${migliaia(da, "it")} euro` : ""}`,
-      text: [
-        `${nome} ha chiesto un prezzo di partenza.`,
-        "",
-        `Email: ${email} - Telefono: ${riga.telefono ?? "-"}`,
-        `Attivita': ${riga.tipo_attivita ?? "-"} - Presenza online oggi: ${riga.presenza ?? "-"}`,
-        `Cosa serve: ${serviziTxt} - Dimensione: ${dimensione ?? "-"}`,
-        `Prezzo di partenza mostrato: ${da ? `da ${migliaia(da, "it")} euro` : "-"} (tetto interno: ${riga.prezzo_fino_a ?? "-"} euro)`,
-        `Lingua della pagina: ${lingua === "en" ? "inglese" : "italiano"}${secondi !== null ? ` - compilata in ${secondi} secondi` : ""}`,
-        "",
-        "Da fare: rispondere entro un giorno lavorativo e proporre il primo incontro.",
-      ].join("\n"),
+      to: [a], reply_to: email, subject: avviso.subject, html: avviso.html, text: avviso.text,
     });
 
     // A1. Conferma al cliente, nella lingua della pagina. Parte solo con un mittente di un dominio verificato.
     const conferma = Deno.env.get("CONFIRM_FROM");
     if (conferma) {
-      const link = Deno.env.get("CALENDAR_URL") ?? "https://calendar.app.google/NUp3xit8MwxWQWkK6";
-      const it = {
-        subject: `Richiesta ricevuta: il prezzo di partenza${riga.tipo_attivita ? ` per ${riga.tipo_attivita}` : ""}`,
-        body: [
-          `Ciao ${nome},`,
-          "",
-          "questa e' una risposta automatica: la richiesta e' arrivata, e Matia risponde di persona entro un giorno lavorativo.",
-          "",
-          "Il riepilogo di quanto indicato:",
-          `- Attivita': ${riga.tipo_attivita ?? "-"}`,
-          `- Cosa serve: ${serviziTxt}`,
-          `- Prezzo di partenza: ${da ? `da ${migliaia(da, "it")} euro` : "-"}`,
-          "",
-          "E' un punto di partenza, non un preventivo: il prezzo vero viene scritto dopo il primo incontro e non cambia in corsa. IVA se dovuta.",
-          "",
-          `Il primo incontro dura un'ora, di persona o in video, ed e' offerto dallo studio. Si prenota da qui: ${link}. In alternativa basta rispondere a questa email.`,
-          "",
-          "Studio Matiz, di Matia Zoffoli",
-          "Cesenatico - +39 333 958 0381",
-        ].join("\n"),
-      };
-      const en = {
-        subject: `Request received: your starting price${riga.tipo_attivita ? ` for ${riga.tipo_attivita}` : ""}`,
-        body: [
-          `Hello ${nome},`,
-          "",
-          "this is an automatic reply: your request has arrived, and Matia will reply personally within one working day.",
-          "",
-          "A summary of what you entered:",
-          `- Business: ${riga.tipo_attivita ?? "-"}`,
-          `- What is needed: ${serviziTxt}`,
-          `- Starting price: ${da ? `from €${migliaia(da, "en")}` : "-"}`,
-          "",
-          "This is a starting point, not a quote: the real price is written after the first meeting and does not change along the way. VAT if due.",
-          "",
-          `The first meeting lasts one hour, in person or on video, and is offered by the studio. It can be booked here: ${link}. Alternatively, just reply to this email.`,
-          "",
-          "Studio Matiz, by Matia Zoffoli",
-          "Cesenatico - +39 333 958 0381",
-        ].join("\n"),
-      };
-      const m = lingua === "en" ? en : it;
-      await invia(chiave, { from: conferma, to: [email], reply_to: a, subject: m.subject, text: m.body });
+      const m = confermaCliente(richiesta, ctx);
+      await invia(chiave, { from: conferma, to: [email], reply_to: a, subject: m.subject, html: m.html, text: m.text });
     }
   }
 

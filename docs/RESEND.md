@@ -34,6 +34,10 @@ Resend invia a indirizzi qualunque solo da un **dominio verificato**. Quando Mat
 - **A4 (conferma del primo incontro):** la manda Google Calendar quando qualcuno prenota dalla pagina di appuntamenti; il testo personalizzato si inserisce nelle impostazioni della pagina di prenotazione.
 - **B e C:** testi che Matia invia di persona.
 
+## Le email (aggiornamento del 2026-10-09)
+
+Avviso a Matia e conferma al cliente sono email HTML con la grafica del sito, e portano anche la versione in testo semplice. Codice in `supabase/functions/contatto/email.ts`; anteprime con dati di fantasia in `email/anteprime/` (si rigenerano con `node supabase/functions/contatto/preview.ts`). La versione con la nuova grafica **non e' ancora distribuita**: dopo il via di Matia si pubblica insieme a `index.ts` (la funzione ora e' formata da due file).
+
 ## Cosa fa la funzione, in breve
 
 - Salva ogni richiesta nella tabella `contatti` (come prima), con le stesse protezioni (campo trappola, tempo minimo, limite di frequenza).

@@ -95,3 +95,6 @@ I due prospetti **non si contattano ancora** (decisione di Matia). Si contattano
 
 - Intervista iniziale, ricerca di mercato, mappatura concorrenti, bozza delle offerte, scaletta del primo incontro, modello del check-up (2026-10-07)
 - [x] Stimatore con blocco temporaneo durante lo scorrimento, come elemento a se' (2026-10-09)
+- [x] Documenti dello studio tradotti in inglese: `modelli/en/` (2026-10-09)
+- [x] Email di conferma e di avviso in HTML nel tema del sito, in italiano e in inglese; testi inglesi dei messaggi; firme in HTML (2026-10-09). Da fare: distribuire la funzione aggiornata dopo l'ok di Matia sulla grafica
+- [ ] **In attesa della conferma del nome** (decisione di Matia, 2026-10-09): dominio, account Google Business, mittenti Resend, indirizzi canonici e `hreflang`, logo, foto. Si fanno tutti in sequenza, a cascata, una volta confermato il nome

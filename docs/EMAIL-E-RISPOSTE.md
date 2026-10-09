@@ -10,13 +10,15 @@ Indice: A. dal sito (automatiche) · B. scritte da Matia lungo il percorso · C.
 
 ## A. Dal sito (automatiche)
 
+**Grafica (2026-10-09):** A1 e A2 partono come email HTML nel tema del sito (carta, inchiostro, filo d'ottone, titoli in Bodoni, testata scura con il nome dello studio), con la versione in testo semplice per i programmi di posta che non leggono l'HTML. A1 esce in italiano o in inglese secondo la pagina in cui il cliente ha compilato. Il codice e' in `supabase/functions/contatto/email.ts`; le anteprime con dati di fantasia si rigenerano con `node supabase/functions/contatto/preview.ts` e stanno in `email/anteprime/`. Il testo qui sotto resta il riferimento.
+
 ### A1. Conferma dello stimatore (al cliente, subito)
 
 **Oggetto:** Richiesta ricevuta: il prezzo di partenza per {{tipo}}
 
 > Ciao {{nome}},
 >
-> questa è una risposta automatica: la richiesta è arrivata, e Matia risponde di persona entro un giorno lavorativo.
+> questa è una risposta automatica: la richiesta è arrivata, e Matia risponde di persona, con una prima risposta entro un giorno lavorativo.
 >
 > Il riepilogo di quanto indicato:
 > - Attività: {{tipo}}
@@ -51,7 +53,7 @@ Indice: A. dal sito (automatiche) · B. scritte da Matia lungo il percorso · C.
 
 > Ciao,
 >
-> questa è una risposta automatica. Il messaggio è arrivato e Matia risponde entro un giorno lavorativo. Nei giorni di chiusura la risposta arriva il primo giorno utile.
+> questa è una risposta automatica. Il messaggio è arrivato e Matia dà una prima risposta entro un giorno lavorativo. Nei giorni di chiusura la risposta arriva il primo giorno utile.
 >
 > Se la richiesta non può aspettare, un messaggio su WhatsApp (+39 333 958 0381) è il canale più rapido.
 >
@@ -94,7 +96,7 @@ Indice: A. dal sito (automatiche) · B. scritte da Matia lungo il percorso · C.
 > - Il numero da misurare: {{numero}}, da cui si parte oggi con {{valore_di_partenza}}
 > - Cosa conviene fare per primo: {{priorita}}
 >
-> Il passo successivo può essere un check-up (200 euro, scalati dal lavoro che segue; rapporto in tre giorni lavorativi) oppure direttamente un preventivo scritto, se la direzione è già chiara. Dimmi quale preferisci.
+> Il passo successivo può essere un check-up (200 euro, scalati dal lavoro che segue; rapporto in tre giorni lavorativi dalla conferma e dagli accessi) oppure direttamente un preventivo scritto, se la direzione è già chiara. Dimmi quale preferisci.
 >
 > Matia
 
@@ -130,7 +132,7 @@ Indice: A. dal sito (automatiche) · B. scritte da Matia lungo il percorso · C.
 
 > Ciao {{nome}},
 >
-> un promemoria sul preventivo n. {{numero}}, valido fino al {{scadenza}}. Se qualcosa non torna, un dubbio sul prezzo o sui tempi, la risposta arriva entro un giorno lavorativo. Se il momento non è questo, nessun problema: il materiale resta, e si riprende quando serve.
+> un promemoria sul preventivo n. {{numero}}, valido fino al {{scadenza}}. Se qualcosa non torna, un dubbio sul prezzo o sui tempi, una prima risposta arriva entro un giorno lavorativo. Se il momento non è questo, nessun problema: il materiale resta, e si riprende quando serve.
 >
 > Matia
 
@@ -145,7 +147,7 @@ Indice: A. dal sito (automatiche) · B. scritte da Matia lungo il percorso · C.
 > - Da quando arriva tutto: {{tempo}} per la consegna, con un aggiornamento a metà lavoro.
 > - Alla consegna: due giri di correzioni, e subito dopo parte il mese di rodaggio.
 >
-> Per qualsiasi dubbio, WhatsApp o questa email: la risposta arriva entro un giorno lavorativo.
+> Per qualsiasi dubbio, WhatsApp o questa email: una prima risposta arriva entro un giorno lavorativo.
 >
 > Matia
 
@@ -211,7 +213,7 @@ Indice: A. dal sito (automatiche) · B. scritte da Matia lungo il percorso · C.
 
 ### C1. Messaggio di benvenuto (automatico, alla prima scrittura)
 
-> Ciao, questo è Studio Matiz, di Matia Zoffoli. Il messaggio è arrivato e la risposta arriva entro un giorno lavorativo. Per un primo incontro di un'ora, offerto, il calendario è qui: {{link_calendario}}.
+> Ciao, questo è Studio Matiz, di Matia Zoffoli. Il messaggio è arrivato e una prima risposta arriva entro un giorno lavorativo. Per un primo incontro di un'ora, offerto, il calendario è qui: {{link_calendario}}.
 
 ### C2. Messaggio di assenza (fuori orario)
 
@@ -222,7 +224,7 @@ Indice: A. dal sito (automatiche) · B. scritte da Matia lungo il percorso · C.
 - **/incontro** - Il primo incontro dura un'ora, di persona o in video, ed è offerto. Si prenota qui: {{link_calendario}}. Non serve preparare niente.
 - **/prezzo** - Il prezzo viene scritto dopo il primo incontro e non cambia in corsa. Per una stima subito, lo stimatore sul sito dà un prezzo di partenza in quattro domande: {{link_sito}}.
 - **/tempi** - I tempi sono scritti nel preventivo e partono dal momento in cui arriva tutto il materiale: da pochi giorni per un menu a qualche settimana per un sito completo.
-- **/checkup** - Il check-up è una ricerca su ciò che esiste già: rapporto in tre giorni lavorativi con le tre priorità e il costo di ciascuna. Il costo viene scalato dal lavoro che segue.
+- **/checkup** - Il check-up è una ricerca su ciò che esiste già: rapporto in tre giorni lavorativi dalla conferma e dagli accessi, con le tre priorità e il costo di ciascuna. Il costo viene scalato dal lavoro che segue.
 - **/cura** - La cura continua comprende aggiornamenti, sicurezza, backup e modifiche, con un tempo di assistenza ogni mese. Il primo mese è a forfait e senza limite di ore, per capire quanto serve davvero.
 
 ---

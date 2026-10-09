@@ -43,3 +43,8 @@ Traduzione semantica, nella voce della skill (impersonale e precisa; prima perso
 - **Chiarimenti in italiano e in inglese:** "prima risposta" entro un giorno lavorativo; check-up in tre giorni lavorativi dalla conferma e dalla ricezione degli accessi; "in molti contratti" e canone da 50 euro legato alla domanda su cosa copre; "Il percorso si adatta al servizio scelto"; la pagina del caso e' "ad accesso riservato".
 - **Non cambiato:** i numeri del caso (115, 450); il contatore a 375 e' un fotogramma dell'animazione.
 - **Da valutare in futuro (punti dell'analisi non applicati, perche' sono regole commerciali):** cosa include l'illimitato del primo mese, due giri di correzioni e difetti, report mensile e cura, date di consegna e dipendenze, credito del check-up (scadenza). Stanno meglio nel preventivo e nell'accordo che sul sito.
+
+## Documenti e email in inglese (2026-10-09)
+
+- **Documenti:** `modelli/en/` contiene preventivo (`quote`), accordo di servizio (`service-agreement`), resoconto mensile (`monthly-report`) e i due esempi compilati, in HTML e PDF. Sono la traduzione degli originali in `modelli/`, che fanno fede ("the Italian text prevails" nel piede dell'accordo). Gli esempi usano un cliente di fantasia ("Esempio Beach Club"); le cifre sono scritte all'inglese (€1,750; 9 Oct 2026). Se un documento italiano cambia, va aggiornato anche l'inglese a mano.
+- **Email:** conferma al cliente e avviso a Matia in HTML (italiano e inglese) in `supabase/functions/contatto/email.ts`; i testi degli altri messaggi (A3-A5, B1-B10, C1-C3) in `docs/EMAIL-AND-REPLIES-EN.md`; firme in `email/`.
