@@ -77,6 +77,20 @@ Indice: A. dal sito (automatiche) · B. scritte da Matia lungo il percorso · C.
 >
 > Studio Matiz, di Matia Zoffoli
 
+### A4b. Messaggio personalizzato nella conferma di Google Calendar (2026-10-10)
+
+La conferma delle prenotazioni la invia Google con il suo aspetto: il layout non si cambia, solo questo messaggio di testo nelle impostazioni della pagina di appuntamenti. Italiano e inglese insieme, perche' la pagina e' una sola.
+
+> Il primo incontro dura un'ora, tra chiacchiere e caffè, ed è offerto dallo studio. Non serve preparare niente. Aiuta avere sotto mano tre cose: l'indirizzo del sito o dei profili che già esistono, un esempio di giornata tipica di lavoro e un numero che si vorrebbe migliorare (richieste, prenotazioni, iscritti, ore perse).
+> Per spostare l'incontro basta rispondere a questa email o scrivere su WhatsApp, +39 333 958 0381.
+>
+> The first meeting lasts one hour over coffee and conversation, and is offered by the studio. There is nothing to prepare. It helps to have three things to hand: the address of the website or profiles that already exist, an example of a typical working day, and one number you would like to improve (enquiries, bookings, members, hours lost).
+> To move the meeting, just reply to this email or message on WhatsApp, +39 333 958 0381.
+>
+> Studio Matiz, di Matia Zoffoli
+
+**Per il futuro:** una conferma con la grafica del sito si puo' ottenere con uno script nel Google di Matia (Apps Script, dal suo Gmail, senza dominio) o con una pagina di prenotazione propria collegata al calendario; la conferma di Google resta comunque. Da decidere insieme al resto del blocco del dominio.
+
 ### A5. Promemoria del giorno prima (automatico)
 
 **Oggetto:** Domani alle {{ora}}: primo incontro
