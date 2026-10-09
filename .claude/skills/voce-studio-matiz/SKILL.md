@@ -102,6 +102,7 @@ Matia lo ha chiesto così (2026-10-08): ispirazione da atelier, ma **capibile su
 - **L'inglese da madrelingua non va nelle schede dei servizi.** Resta nelle FAQ e in "Chi sono", dove è un fatto su Matia, non una caratteristica del servizio.
 - **Il primo incontro dura un'ora**, "tra chiacchiere e caffè": il tempo suona più disteso e vero.
 - **Un numero concreto fa il problema** (2026-10-09, 'Il punto di partenza'): sceglie la variante C. Un calcolo semplice e verificabile (50 euro al mese senza modifiche = 600 euro l'anno; orari che cambiano quattro volte l'anno) vale piu' di un aggettivo. I tre titoli di una serie hanno lunghezze diverse e iniziano in modo diverso. Si parla di 'strumento' e di 'canone', non solo di 'sito'. I dati dei prospetti si usano come esempio generico, senza nome.
+- **Le schede dei servizi (2026-10-09): variante B, con aritmetica semplice e verificabile** (5 minuti al giorno sono piu' di 30 ore l'anno). Ogni scheda ha un fatto misurabile; niente sigle da addetti ai lavori ('CRM'); il problema si apre con un numero o una situazione, la risposta dice cosa si misura e cosa si confronta.
 - Si lavora **pezzo per pezzo**, almeno tre varianti per ciascuno, e le scelte si annotano in `esempi.md`.
 
 ## Esempi
