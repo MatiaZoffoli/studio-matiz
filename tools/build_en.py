@@ -45,16 +45,16 @@ TEXT = [
 ("Il mare cambia a ogni stagione, e una presenza online ben tenuta cambia con lui.", "The sea changes with the seasons. A well-maintained online presence keeps pace with them."),
 # punto di partenza
 ("Il punto di partenza", "The starting point"),
-("Quello che succede <em>dopo la consegna.</em>", "What happens <em>after delivery.</em>"),
+("Quello che succede <em>dopo la consegna</em>", "What happens <em>after delivery</em>"),
 ("Costruire richiede settimane. Mantenere richiede anni, ed è la parte che in molti contratti non ha un responsabile.", "Building takes weeks. Maintaining takes years, and in many contracts it is the part nobody is responsible for."),
-("Ferma al giorno della consegna.", "Frozen at the moment of delivery."),
+("Ferma al giorno della consegna", "Frozen at the moment of delivery"),
 ("Orari, prezzi e offerte cambiano a ogni stagione, quattro volte l'anno, e uno strumento che non cambia con loro smette di dire la verità.", "Opening hours, prices and offers change with each season, four times a year, and a website or menu that stays the same soon gives people outdated information."),
-("Un canone che non dice cosa copre.", "A fee that does not say what it covers."),
+("Un canone che non dice cosa copre", "A fee that does not say what it covers"),
 ("Cinquanta euro al mese senza modifiche incluse fanno 600 euro l'anno: conviene sapere con precisione cosa coprono.", "Fifty euros a month with no edits included comes to 600 euros a year: worth knowing exactly what that covers."),
-("Visite che non diventano richieste.", "Visits that don't become enquiries."),
+("Visite che non diventano richieste", "Visits that don't become enquiries"),
 ("Si conta quante persone arrivano, quasi mai quante scrivono, telefonano o prenotano, né dove si fermano le altre.", "Visits get counted. Enquiries, calls and bookings seldom do, and neither do the points where people leave."),
 # mestiere
-("Il mestiere, <em>in quattro parti.</em>", "The craft, <em>in four parts.</em>"),
+("Il mestiere, <em>in quattro parti</em>", "The craft, <em>in four parts</em>"),
 ("Ogni parte funziona da sola. Si può cominciare da una qualunque, o dalla prima e vedere come va.", "Each service stands on its own. Start with any of them, or with the first and see how it goes."),
 ("01 · Sito, menu, schede e profili", "01 · Website, menu, listings and profiles"),
 ("Presenza online", "Online presence"),
@@ -82,7 +82,7 @@ TEXT = [
 ("Scorri di lato", "Swipe sideways"),
 # metodo
 ("Come si lavora", "How it works"),
-("Si misura prima <em>di costruire.</em>", "Measure first, <em>then build.</em>"),
+("Si misura prima <em>di costruire</em>", "Measure first, <em>then build</em>"),
 ("Un metodo in quattro tempi, con un risultato chiuso a ogni passo e un numero da cui partire. Il percorso si adatta al servizio scelto.", "A four-step process, with a clear outcome at each stage and a baseline number to start from. The path adapts to the service chosen."),
 ("Un'ora per capire come si lavora e dove si perde tempo. Si decide insieme quale numero conta (richieste, prenotazioni, iscritti) e da quanto si parte.", "One hour to understand the work and where time is lost. Together, the number that matters is chosen (enquiries, bookings, members) and the baseline is set."),
 ("Ricerca su ciò che esiste: sito, profili, posta, gestionale, dati. In tre giorni lavorativi dalla conferma e dalla ricezione degli accessi un rapporto con la mappa delle priorità e il costo di ciascuna.", "A review of what already exists: website, profiles, email, business software, data. Within three working days of confirmation and receipt of access, a report with the map of priorities and the cost of each."),
@@ -92,7 +92,7 @@ TEXT = [
 ("Messa a punto nel tempo: si aggiorna, si regola e si rimisura. Ogni mese un resoconto confronta i numeri con il punto di partenza.", "Ongoing fine-tuning: updates, adjustments and fresh measurements. Each month a report compares the numbers with the starting point."),
 # caso
 ("Un caso misurato", "A case in numbers"),
-("Ogni obiettivo ha un numero. <em>Si parte da lì.</em>", "Every goal has a number. <em>That is where to start.</em>"),
+("Ogni obiettivo ha un numero. <em>Si parte da lì</em>", "Every goal has a number. <em>That is where to start</em>"),
 ("Iscritti, prenotazioni, richieste, ordini: qualunque obiettivo si voglia far crescere, si misura il punto di partenza, si costruisce, si misura di nuovo.", "Members, bookings, enquiries, orders: whatever goal needs to grow, the starting point is measured, something is built, then it is measured again."),
 ("Iscritti a una società sportiva", "Members of a sports club"),
 ("Primi due anni", "First two years"),
@@ -100,7 +100,7 @@ TEXT = [
 ("Il primo caso misurato: una società sportiva, da 115 a 450 iscritti in una settimana. Tre gli interventi: correzione nel sito di errori e logiche ormai superate, ricerca e sviluppo di un nuovo metodo di accesso ai palazzetti, traffico online riportato su una pagina ad accesso riservato al posto di servizi di terze parti.", "The first case study: a sports club, from 115 to 450 members in one week. Three changes: errors and outdated logic fixed on the website, a new way into the sports halls researched and built, and online traffic moved to a restricted-access page in place of third-party services."),
 # obiettivi
 ("Cosa si misura", "What gets measured"),
-("I numeri <em>che contano.</em>", "The numbers <em>that matter.</em>"),
+("I numeri <em>che contano</em>", "The numbers <em>that matter</em>"),
 ("Tre degli obiettivi che le piccole attività inseguono più spesso, e il numero con cui si misura ciascuno.", "Three of the goals small businesses pursue most often, and the number that measures each one."),
 ("Iscritti", "Members"),
 ("Nuove iscrizioni e ritorni nel tempo. Nel caso misurato: da 115 a 450 in una settimana.", "New and returning members over time. In the case study: from 115 to 450 in one week."),
@@ -111,7 +111,7 @@ TEXT = [
 ("Un altro obiettivo, o un altro problema? Si racconta qui, e si lavora insieme per risolverlo", "Another goal, or another problem? Share it here, and work on it together"),
 ("Un altro obiettivo? Si racconta qui", "Another goal? Share it here"),
 # regole
-("Condizioni chiare, <em>scritte prima.</em>", "Clear terms, <em>set out upfront.</em>"),
+("Condizioni chiare, <em>scritte prima</em>", "Clear terms, <em>set out upfront</em>"),
 ("Ciò che è incluso è scritto prima di cominciare.", "What is included is set out before work begins."),
 ("Ascolto", "Listening"),
 ("Un'ora per ascoltare come si lavora e raccogliere i numeri di partenza. Nessuna proposta improvvisata.", "One hour to understand the work and record the starting numbers. No on-the-spot proposals."),
@@ -131,7 +131,7 @@ TEXT = [
 ("Il primo mese è a forfait e senza limite di ore, per assistenza, ricerca e idee. A fine mese un resoconto con le ore reali stabilisce quante ne servono.", "The first month is a fixed fee with no cap on hours, for support, research and ideas. At the end of the month, a report of the hours actually used shows how many are needed."),
 # stimatore
 ("Il prezzo di partenza", "The starting price"),
-("Il prezzo, <em>detto prima di cominciare.</em>", "The price, <em>stated before starting.</em>"),
+("Il prezzo, <em>detto prima di cominciare</em>", "The price, <em>stated before starting</em>"),
 ("Lo studio lavora da solo e usa strumenti che automatizzano le parti ripetitive: per questo i costi restano contenuti senza ridurre la cura. Il prezzo è scritto prima di decidere.", "One person runs the studio, and tools automate the repetitive parts: costs stay contained without cutting corners. The price is put in writing before any decision is made."),
 ("Quattro domande bastano per un prezzo di partenza, subito e senza telefonate.", "Four questions give an instant starting price, with no phone calls."),
 ("Tipo di attività", "Type of business"),
@@ -175,7 +175,7 @@ TEXT = [
 ("Contattami su WhatsApp", "Message me on WhatsApp"),
 ("Ricomincia", "Start over"),
 # chi sono
-("Dalla sala <em>ai dati.</em>", "From hospitality <em>to data.</em>"),
+("Dalla sala <em>ai dati</em>", "From hospitality <em>to data</em>"),
 ("Foto di Matia da inserire", "Matia's photo to come"),
 ("Il mio primo ricordo dei numeri è nel negozio di mia nonna: mentre lavorava, per tenermi occupato mi dava pagine di operazioni da risolvere, a mente o con carta e penna. Trovare il risultato mi dava una sensazione di completezza che non ho mai smesso di cercare. Ancora oggi, davanti a un problema, parto dalla convinzione che una soluzione esista. E quando non la trovo, ho imparato a cambiare prospettiva: forse è la domanda a essere sbagliata.", "My first memory of numbers is in my grandmother's shop. While she worked, she would keep me busy with pages of sums to work out in my head or with pen and paper. Finding the answer gave me a sense of things falling into place that I have never stopped looking for. Even today, I approach a problem believing there is a solution. When I cannot find it, I have learned to look at things differently: perhaps the question is the wrong one."),
 ("A undici anni facevo caffè in un bar di Cesenatico: asciugare un cestello di bicchieri mi comprava dieci minuti con gli amici. I miei genitori gestivano attività e il lavoro, in casa, faceva parte della vita. Da lì vent'anni nella ristorazione, di cui tredici alla direzione di locali a Sydney. Ho imparato ad affrontare i problemi quando arrivano, perché dopo di te non c'è nessuno: <em>the buck stops with you</em>. E a leggere i numeri per capire cosa funziona, cosa no e dove vale la pena cambiare.", "At eleven, I was making coffee in a café in Cesenatico: drying a rack of glasses bought me ten minutes with my friends. My parents ran businesses, so work was simply part of family life. That led to twenty years in restaurants and hospitality, thirteen of them managing venues in Sydney. I learned to deal with problems as they came up, because there was no one else to pass them on to: <em>the buck stops with you</em>. And to read the numbers to see what works, what doesn't, and where change makes sense."),
@@ -183,7 +183,7 @@ TEXT = [
 ("Oggi aiuto le piccole attività a semplificare il lavoro attraverso dati e tecnologia, per restituire tempo alle persone, alle famiglie, alle loro passioni. Ho imparato a leggere i numeri per capire le attività, e a leggere le persone per capire cosa conta davvero. È da questo incontro che parto, prima di analizzare, esplorare le possibilità, scegliere e costruire. Con una regola: i numeri che contano sono quelli del cliente. Altrimenti la soluzione sarebbe la mia, non la sua.", "Today, I help small businesses simplify their work through data and technology, giving people more time for their families and the things they love. I have learned to read the numbers to understand a business, and to read people to understand what truly matters. Those two perspectives guide how I analyse, explore the options, choose an approach and build. With one rule: the numbers that matter are the client's. Otherwise the solution would be mine, not theirs."),
 # domande
 ("Prima di scrivere", "Before you ask"),
-("Domande <em>frequenti.</em>", "Frequently asked <em>questions.</em>"),
+("Domande <em>frequenti</em>", "Frequently<br>asked<br><em>questions</em>"),
 ("Quanto costa?", "How much does it cost?"),
 ("Dipende dal lavoro. Dopo il primo incontro arriva un prezzo scritto e chiuso, che non cambia in corsa. Il costo del check-up viene scalato dal lavoro che segue.",
  "It depends on the job. After the first meeting a written, fixed price arrives, and it does not change along the way. The cost of the check-up is deducted from the work that follows."),
