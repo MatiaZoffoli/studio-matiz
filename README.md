@@ -35,6 +35,7 @@ Consulenza per piccole e medie imprese italiane: siti web, menu digitali, assist
 | [docs/STIMATORE.md](docs/STIMATORE.md) | Come funziona lo stimatore a fasce del sito, come calcola, cosa manca per collegarlo ai contatti |
 | [docs/LISTINO-E-TEMPI.md](docs/LISTINO-E-TEMPI.md) | Proposta di listino a fasce, tempi di consegna, forfait del primo mese, proprieta' di dominio e contenuti |
 | [docs/INGLESE.md](docs/INGLESE.md) | Versione inglese: come si genera (`tools/build_en.py`), scelte di traduzione da confermare |
+- `docs/TEDESCO.md` - versione tedesca del sito (generatore `tools/build_de.py`, privacy ed email in tedesco)
 | [modelli/en/](modelli/en/) | Documenti dello studio in inglese: `quote`, `service-agreement`, `monthly-report` e gli esempi compilati (`example-quote`, `example-monthly-report`), in `.html` e `.pdf`; traduzione degli originali italiani, che fanno fede |
 | [email/](email/) | Anteprime delle email automatiche (`anteprime/`, con dati di fantasia) e firme di Matia in HTML (`firma-it.html`, `firma-en.html`) |
 | [docs/EMAIL-AND-REPLIES-EN.md](docs/EMAIL-AND-REPLIES-EN.md) | Email e messaggi in inglese (A3-A5, B1-B10, C1-C3) |

@@ -99,7 +99,7 @@ Deno.serve(async (req: Request) => {
 
   const servizi = Array.isArray(b.servizi) ? b.servizi.filter((s) => typeof s === "string" && SERVIZI.includes(s)).slice(0, 5) : [];
   const dimensione = typeof b.dimensione === "string" && DIMENSIONI.includes(b.dimensione) ? b.dimensione : null;
-  const lingua: "it" | "en" = b.lingua === "en" ? "en" : "it";
+  const lingua: "it" | "en" | "de" = b.lingua === "en" ? "en" : b.lingua === "de" ? "de" : "it";
   // Richiesta del primo incontro dal sito: modalita' (di persona o video) e preferenze; data e orario li conferma Matia.
   const incontro = b.fonte === "incontro";
   const modalita: "persona" | "video" = b.modalita === "video" ? "video" : "persona";

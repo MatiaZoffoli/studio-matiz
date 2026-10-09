@@ -31,8 +31,10 @@ SITO = {"piccola": 500, "media": 1200, "grande": 2500}
 AUTO = {"piccola": 500, "media": 900, "grande": 2000}
 MENU = 300
 def euro(n, l):
-    s = f"{n:,}".replace(",", "." if l == "it" else ",")
-    return (f"{s} euro") if l == "it" else f"\u20ac{s}"
+    s = f"{n:,}".replace(",", "." if l in ("it", "de") else ",")
+    if l == "it": return f"{s} euro"
+    if l == "de": return f"{s} \u20ac"
+    return f"\u20ac{s}"
 valori = set([200])  # check-up da solo: prezzo secco, senza "da"
 da = set()
 for size in SITO:
@@ -40,13 +42,13 @@ for size in SITO:
         if not (sito or menu or auto): continue
         da.add(sito * SITO[size] + menu * MENU + auto * AUTO[size])
 righe = []   # (nome file, html, colore)
-for l in ("it", "en"):
+for l in ("it", "en", "de"):
     for n in sorted(da):
-        testo = (f"da {euro(n, 'it')}" if l == "it" else f"from {euro(n, 'en')}")
+        testo = {"it": f"da {euro(n, 'it')}", "en": f"from {euro(n, 'en')}", "de": f"ab {euro(n, 'de')}"}[l]
         righe.append((f"p/{l}-{n}", testo, CREAM, 36))
     righe.append((f"p/{l}-200", euro(200, l), CREAM, 36))  # il check-up, senza prefisso
     righe.append((f"p/{l}-250", euro(250, l), CREAM, 36))  # forfait del primo mese di cura continua, senza prefisso
-    righe.append((f"p/{l}-daconfermare", "Da confermare" if l == "it" else "To be confirmed", CREAM, 36))  # richiesta del primo incontro
+    righe.append((f"p/{l}-daconfermare", {"it": "Da confermare", "en": "To be confirmed", "de": "Noch zu bestätigen"}[l], CREAM, 36))  # richiesta del primo incontro
 # ---- titoli e marchio
 em = lambda a, b: f'{a} <em>{b}</em>'
 righe += [
@@ -63,6 +65,10 @@ righe += [
     ("t/btn-richiedi-en", "Request the first meeting", CREAM, 12, "s"),
     ("t/btn-dubbi-it", "Dubbi? Scrivi su WhatsApp", INK, 12, "s"),
     ("t/btn-dubbi-en", "Questions? Message on WhatsApp", INK, 12, "s"),
+    ("t/h-conferma-de", em("Die Anfrage", "ist eingegangen"), INK, 36),
+    ("t/h-incontro-de", em("Anfrage", "erhalten"), INK, 36),
+    ("t/btn-richiedi-de", "Erstgespräch anfragen", CREAM, 12, "s"),
+    ("t/btn-dubbi-de", "Fragen? Per WhatsApp schreiben", INK, 12, "s"),
     ("t/btn-calendario", "Crea evento nel calendario", INK, 12, "s"),
     ("t/h-incontro-it", em("Richiesta", "ricevuta"), INK, 36),
     ("t/h-incontro-en", em("Request", "received"), INK, 36),

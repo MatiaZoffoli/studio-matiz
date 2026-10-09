@@ -25,6 +25,8 @@ const out: [string, { subject: string; html: string; text: string }][] = [
   ["incontro-it", confermaIncontro({ ...inc, lingua: "it" }, ctx)],
   ["incontro-en", confermaIncontro({ ...inc, lingua: "en", modalita: "video" }, ctx)],
   ["avviso-incontro", avvisoIncontro(inc, ctx)],
+  ["conferma-de", confermaCliente({ ...it, lingua: "de", tipo: "Strandbad", presenza: null }, ctx)],
+  ["incontro-de", confermaIncontro({ ...inc, lingua: "de" }, ctx)],
   ["avviso-cura", avvisoStudio({ ...it, servizi: ["assistenza"], dimensione: null, da: 250, fino: 250 }, ctx)],
 ];
 for (const [nome, m] of out) {

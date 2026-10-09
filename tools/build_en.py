@@ -312,10 +312,24 @@ JS = [
 ]
 
 # ---------------------------------------------------------------- parole che restano uguali in inglese (non segnalate)
-SAME = {"Italiano", "English", "Logo", "Studio Matiz", "Studio", "Cesenatico", "Cesenatico, Romagna", "Check-up", "Email", "Privacy",
+SAME = {"Italiano", "English", "Deutsch", "Logo", "Studio Matiz", "Studio", "Cesenatico", "Cesenatico, Romagna", "Check-up", "Email", "Privacy",
         "matiazoffoli@gmail.com", "WhatsApp +39 333 958 0381", "115", "450", "Romagna"}
 
-def main():
+# ---------------------------------------------------------------- testata, percorsi, lingua
+HEADS = [
+    ('<html lang="it" class="pending">', '<html lang="en" class="pending">'),
+    ("<title>Studio Matiz - Soluzioni su misura</title>", "<title>Studio Matiz - Made to measure</title>"),
+    ('content="Progettazione e sviluppo di siti, automazioni e strumenti digitali per piccole imprese. Il primo incontro è offerto dallo studio."',
+     'content="Design and development of websites, automations and digital tools for small businesses. The first meeting is offered by the studio."'),
+    ('src="assets/', 'src="/assets/'),
+    ('href="privacy.html"', 'href="/en/privacy.html"'),
+    ('<span class="flag flag--it"></span><span>IT</span>', '<span class="flag flag--en"></span><span>EN</span>'),
+    ('<a href="/" lang="it" aria-current="true"><span', '<a href="/" lang="it"><span'),
+    ('<a href="/en/" lang="en" hreflang="en"><span', '<a href="/en/" lang="en" hreflang="en" aria-current="true"><span'),
+    ('aria-label="Lingua"', 'aria-label="Language"'),
+]
+
+def build(TEXT, ATTR, WA, JS, heads, OUT):
     t = io.open(SRC, encoding="utf-8").read()
     errors = []
 
@@ -345,19 +359,7 @@ def main():
             errors.append("SCRIPT NON TROVATO: " + it[:80]); continue
         t = t.replace(it, en)
 
-    # intestazione, percorsi e lingua
-    heads = [
-        ('<html lang="it" class="pending">', '<html lang="en" class="pending">'),
-        ("<title>Studio Matiz - Soluzioni su misura</title>", "<title>Studio Matiz - Made to measure</title>"),
-        ('content="Progettazione e sviluppo di siti, automazioni e strumenti digitali per piccole imprese. Il primo incontro è offerto dallo studio."',
-         'content="Design and development of websites, automations and digital tools for small businesses. The first meeting is offered by the studio."'),
-        ('src="assets/', 'src="/assets/'),
-        ('href="privacy.html"', 'href="/en/privacy.html"'),
-        ('<span class="flag flag--it"></span><span>IT</span>', '<span class="flag flag--en"></span><span>EN</span>'),
-        ('<a href="/" lang="it" aria-current="true"><span', '<a href="/" lang="it"><span'),
-        ('<a href="/en/" lang="en" hreflang="en"><span', '<a href="/en/" lang="en" hreflang="en" aria-current="true"><span'),
-        ('aria-label="Lingua"', 'aria-label="Language"'),
-    ]
+    # intestazione, percorsi e lingua (elenco in HEADS)
     for it, en in heads:
         if it not in t:
             errors.append("TESTATA NON TROVATA: " + it[:80]); continue
@@ -374,7 +376,7 @@ def main():
     left = []
     for m in re.finditer(r">([^<>]*[A-Za-zÀ-ÿ][^<>]*)<", body):
         s = m.group(1).strip()
-        if s and s not in SAME and re.search(r"\b(il|la|le|lo|gli|di|che|per|con|un|una|uno|è|non|si|del|della|nel|alla|ogni|più|su|da|dal|dei|delle|messaggio|prima|dopo|ore|ora|sito|foto|studio a|cosa|quando)\b", s, flags=re.I):
+        if s and s not in SAME and not any(s.strip() in v for _, v in TEXT) and re.search(r"\b(il|la|le|lo|gli|di|che|per|con|un|una|uno|è|non|si|del|della|nel|alla|ogni|più|su|da|dal|dei|delle|messaggio|prima|dopo|ore|ora|sito|foto|studio a|cosa|quando)\b", s, flags=re.I):
             left.append(s)
     for s in left:
         errors.append("ITALIANO RIMASTO: " + s[:90])
@@ -385,4 +387,5 @@ def main():
     io.open(OUT, "w", encoding="utf-8", newline="").write(t)
     print("ok: scritto", os.path.relpath(OUT, ROOT))
 
-main()
+if __name__ == "__main__":
+    build(TEXT, ATTR, WA, JS, HEADS, OUT)

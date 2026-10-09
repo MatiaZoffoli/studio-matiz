@@ -4,7 +4,7 @@
 
 import { IMG } from "./imgsizes.ts";
 
-export type Lingua = "it" | "en";
+export type Lingua = "it" | "en" | "de";
 
 export type Richiesta = {
   nome: string;
@@ -52,16 +52,19 @@ export function prezzo(da: number | null, fino: number | null, l: Lingua): strin
   if (!da) return "-";
   const uguale = fino !== null && fino === da;
   if (l === "en") return (uguale ? "" : "from ") + "€" + migliaia(da, l);
+  if (l === "de") return (uguale ? "" : "ab ") + migliaia(da, l) + " €";
   return (uguale ? "" : "da ") + migliaia(da, l) + " euro";
 }
 
 const SERVIZI: Record<Lingua, Record<string, string>> = {
   it: { sito: "Un sito", menu: "Un menu digitale", auto: "Automatizzare una parte del lavoro", assistenza: "Assistenza continua", nonso: "Da capire: serve un check-up" },
   en: { sito: "A website", menu: "A digital menu", auto: "Automating part of the work", assistenza: "Ongoing support", nonso: "Not sure yet: a check-up is needed" },
+  de: { sito: "Eine Website", menu: "Eine digitale Speisekarte", auto: "Einen Teil der Arbeit automatisieren", assistenza: "Laufender Support", nonso: "Noch unklar: ein Check-up ist nötig" },
 };
 const DIM: Record<Lingua, Record<string, string>> = {
   it: { piccola: "Essenziale", media: "Completo", grande: "Con funzioni" },
   en: { piccola: "Essential", media: "Complete", grande: "With features" },
+  de: { piccola: "Grundlegend", media: "Umfassend", grande: "Mit Funktionen" },
 };
 function servizi(r: Richiesta, l: Lingua): string {
   return r.servizi.map((s, i) => {
@@ -140,7 +143,7 @@ function cornice(opts: { l: Lingua; anteprima: string; eyebrow: string; titolo: 
       <div class="pad" style="padding:0 40px;text-align:center">
         ${marchio}
         <div style="margin:12px auto 0;width:34px;height:1px;background:${C.gold}">&nbsp;</div>
-        <div style="margin-top:12px;font:600 10px/1.5 ${SANS};letter-spacing:.24em;text-transform:uppercase;color:${C.goldLight}">${l === "en" ? "by Matia Zoffoli" : "di Matia Zoffoli"} &middot; Cesenatico</div>
+        <div style="margin-top:12px;font:600 10px/1.5 ${SANS};letter-spacing:.24em;text-transform:uppercase;color:${C.goldLight}">${l === "en" ? "by Matia Zoffoli" : l === "de" ? "von Matia Zoffoli" : "di Matia Zoffoli"} &middot; Cesenatico</div>
       </div>
       <!--[if gte mso 9]></v:textbox></v:rect><![endif]-->
     </td></tr>
@@ -178,6 +181,24 @@ export function confermaCliente(r: Richiesta, ctx: Contesto): { subject: string;
         piede1: "You are receiving this message because you asked for a starting price on the website.",
         privacy: "Privacy notice", firma: "Studio Matiz, by Matia Zoffoli",
       }
+    : l === "de" ? {
+        subject: `Anfrage erhalten: der Startpreis${r.tipo ? ` für ${r.tipo}` : ""}`,
+        pre: "Die Anfrage ist eingegangen. Eine erste Antwort innerhalb eines Werktags.",
+        eyebrow: "Anfrage erhalten",
+        titolo: "Die Anfrage <em style=\"font-style:normal;color:" + C.goldText + "\">ist eingegangen</em>",
+        hello: `Hallo ${r.nome},`,
+        intro: "Dies ist eine automatische Antwort. Matia antwortet persönlich, mit einer ersten Antwort innerhalb eines Werktags.",
+        riepilogo: "Ihre Angaben",
+        attivita: "Betrieb", serve: "Was benötigt wird", dim: "Umfang der Arbeit", prezzoL: "Startpreis",
+        nota: "Das ist ein Ausgangspunkt, kein Angebot: Der echte Preis wird nach dem Erstgespräch schriftlich festgehalten und ändert sich unterwegs nicht. MwSt., falls fällig.",
+        come: "Wie es weitergeht",
+        p1: "<b>Eine erste Antwort</b> von Matia, innerhalb eines Werktags.",
+        p2: "<b>Das Erstgespräch</b>: eine Stunde bei Kaffee und Gespräch, vom Studio angeboten, persönlich (empfohlen) oder per Video. Es wird über die Website angefragt, Datum und Uhrzeit werden dann bestätigt.",
+        p3: "<b>Ein schriftliches Angebot</b>, mit Festpreis und Lieferzeit.",
+        cta: "Erstgespräch anfragen", alt: "Oder einfach auf diese E-Mail antworten.",
+        piede1: "Sie erhalten diese Nachricht, weil auf der Website ein Startpreis angefragt wurde.",
+        privacy: "Datenschutzerklärung", firma: "Studio Matiz, von Matia Zoffoli",
+      }
     : {
         subject: `Richiesta ricevuta: il prezzo di partenza${r.tipo ? ` per ${r.tipo}` : ""}`,
         pre: "La richiesta è arrivata. Una prima risposta entro un giorno lavorativo.",
@@ -199,12 +220,14 @@ export function confermaCliente(r: Richiesta, ctx: Contesto): { subject: string;
   const prezzoTxt = prezzo(r.da, r.fino, l);
   const soloCura = r.servizi.length === 1 && r.servizi[0] === "assistenza";
   if (soloCura) {
-    T.prezzoL = l === "en" ? "First month of ongoing care" : "Primo mese di cura continua";
+    T.prezzoL = l === "en" ? "First month of ongoing care" : l === "de" ? "Erster Monat laufende Betreuung" : "Primo mese di cura continua";
     T.nota = l === "en"
       ? "A flat fee with no cap on hours, for support, research and ideas (new developments excluded). From the second month, from \u20ac100 a month: the level is set by the report at the end of the month."
+      : l === "de"
+      ? "Eine Pauschale ohne Stundenbegrenzung, für Support, Recherche und Ideen (ohne neue Entwicklungen). Ab dem zweiten Monat ab 100 \u20ac im Monat: Das Niveau legt der Bericht am Monatsende fest."
       : "Forfait senza limite di ore, per assistenza, ricerca e idee (esclusi i nuovi sviluppi). Dal secondo mese, da 100 euro al mese: il livello lo stabilisce il resoconto di fine mese.";
   }
-  const privacyUrl = ctx.sito + (l === "en" ? "/en/privacy.html" : "/privacy.html");
+  const privacyUrl = ctx.sito + (l === "it" ? "/privacy.html" : `/${l}/privacy.html`);
   const righe = [
     r.tipo ? riga(T.attivita, r.tipo) : "",
     riga(T.serve, servizi(r, l)),
@@ -224,7 +247,7 @@ export function confermaCliente(r: Richiesta, ctx: Contesto): { subject: string;
       <div style="margin:22px 0 14px;font:600 10px/1.4 ${SANS};letter-spacing:.2em;text-transform:uppercase;color:${C.soft}">${esc(T.come)}</div>
       <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="border-top:1px solid ${C.line}">${passo("01", T.p1)}${passo("02", T.p2)}${passo("03", T.p3)}</table>
 
-      <div style="margin:30px 0 10px;text-align:center">${btn(ctx.sito + (l === "en" ? "/en/#incontro" : "/#incontro"), T.cta, true, ctx.assets ?? `${ctx.sito}/email`, `t-btn-richiedi-${l}`)}</div>
+      <div style="margin:30px 0 10px;text-align:center">${btn(ctx.sito + (l === "it" ? "/#incontro" : `/${l}/#incontro`), T.cta, true, ctx.assets ?? `${ctx.sito}/email`, `t-btn-richiedi-${l}`)}</div>
       <p style="margin:0 0 6px;text-align:center;font:300 14px/1.6 ${SANS};color:${C.soft}">${esc(T.alt)}</p>`;
 
   const piede = `<span style="font:450 16px/1.4 ${SERIF};color:${C.cream}">${esc(T.firma)}</span><div style="height:8px;line-height:8px;font-size:0">&nbsp;</div>Cesenatico &middot; <a href="mailto:${esc(ctx.emailStudio)}" style="color:${C.goldLight};text-decoration:none">${esc(ctx.emailStudio)}</a> &middot; <a href="https://wa.me/${esc(ctx.whatsapp)}" style="color:${C.goldLight};text-decoration:none">WhatsApp +39 333 958 0381</a><div style="height:8px;line-height:8px;font-size:0">&nbsp;</div><span style="font-size:11px;color:#9C9283">${esc(T.piede1)} <a href="${esc(privacyUrl)}" style="color:#9C9283">${esc(T.privacy)}</a>.</span>`;
@@ -242,7 +265,7 @@ export function confermaCliente(r: Richiesta, ctx: Contesto): { subject: string;
     T.nota, "",
     T.come + ":",
     "01 " + T.p1.replace(/<[^>]+>/g, ""), "02 " + T.p2.replace(/<[^>]+>/g, ""), "03 " + T.p3.replace(/<[^>]+>/g, ""), "",
-    `${T.cta}: ${ctx.sito}${l === "en" ? "/en/#incontro" : "/#incontro"}`, T.alt, "",
+    `${T.cta}: ${ctx.sito}${l === "it" ? "/#incontro" : `/${l}/#incontro`}`, T.alt, "",
     T.firma, `Cesenatico - ${ctx.emailStudio} - WhatsApp +39 333 958 0381`, `${T.privacy}: ${privacyUrl}`,
   ].filter((x, i, a) => !(x === "" && a[i - 1] === "")).join("\n");
 
@@ -261,7 +284,7 @@ export function avvisoStudio(r: Richiesta, ctx: Contesto): { subject: string; ht
     riga("Email", r.email), r.telefono ? riga("Telefono", r.telefono) : "",
     r.tipo ? riga("Attività", r.tipo) : "", r.presenza ? riga("Presenza online oggi", r.presenza) : "",
     riga("Cosa serve", servizi(r, l)), r.dimensione && DIM[l][r.dimensione] ? riga("Dimensione", DIM[l][r.dimensione]) : "",
-    riga("Pagina", r.lingua === "en" ? "inglese" : "italiano"),
+    riga("Pagina", r.lingua === "en" ? "inglese" : r.lingua === "de" ? "tedesco" : "italiano"),
   ].join("");
   const corpo = `
       <p style="margin:0 0 22px;font:300 16px/1.65 ${SANS};color:${C.ink}"><b style="font-weight:600">${esc(r.nome)}</b> ha chiesto un prezzo di partenza dallo stimatore${r.secondi !== null ? `, compilato in ${r.secondi} secondi` : ""}.</p>
@@ -277,7 +300,7 @@ export function avvisoStudio(r: Richiesta, ctx: Contesto): { subject: string; ht
     `Email: ${r.email}`, r.telefono ? `Telefono: ${r.telefono}` : "",
     r.tipo ? `Attività: ${r.tipo}` : "", r.presenza ? `Presenza online oggi: ${r.presenza}` : "",
     `Cosa serve: ${servizi(r, l)}`, r.dimensione && DIM[l][r.dimensione] ? `Dimensione: ${DIM[l][r.dimensione]}` : "",
-    `Pagina: ${r.lingua === "en" ? "inglese" : "italiano"}`, "",
+    `Pagina: ${r.lingua === "en" ? "inglese" : r.lingua === "de" ? "tedesco" : "italiano"}`, "",
     `Prezzo mostrato: ${prezzoTxt} (tetto interno: ${tetto})`, "",
     "Da fare: rispondere entro un giorno lavorativo e proporre il primo incontro.",
   ].filter((x, i, a) => !(x === "" && a[i - 1] === "")).join("\n");
@@ -288,6 +311,7 @@ export function avvisoStudio(r: Richiesta, ctx: Contesto): { subject: string; ht
 const MODO: Record<Lingua, Record<string, string>> = {
   it: { persona: "Di persona (consigliato)", video: "In video" },
   en: { persona: "In person (recommended)", video: "By video" },
+  de: { persona: "Persönlich (empfohlen)", video: "Per Video" },
 };
 
 // Conferma al cliente: data e orario li conferma Matia.
@@ -311,6 +335,22 @@ export function confermaIncontro(r: Richiesta, ctx: Contesto): { subject: string
         piede1: "You are receiving this message because you asked for the first meeting on the website.",
         privacy: "Privacy notice", firma: "Studio Matiz, by Matia Zoffoli",
       }
+    : l === "de" ? {
+        subject: "Anfrage erhalten: das Erstgespräch",
+        pre: "Anfrage erhalten. Datum und Uhrzeit werden noch bestätigt.",
+        eyebrow: "Erstgespräch",
+        titolo: "Anfrage <em style=\"font-style:normal;color:" + C.goldText + "\">erhalten</em>",
+        hello: `Hallo ${r.nome},`,
+        intro: "Dies ist eine automatische Antwort. Unten die Zusammenfassung Ihrer Angaben.",
+        riepilogo: "Ihre Angaben", formato: "Format", pref: "Bevorzugte Tage und Uhrzeiten", nessuna: "Nicht angegeben", telL: "Telefon",
+        boxL: "Datum und Uhrzeit", boxN: "Innerhalb eines Werktags, per E-Mail oder WhatsApp. Wenn der angegebene Tag oder die Uhrzeit nicht verfügbar ist, wird ein anderer vorgeschlagen.",
+        come: "Wie es weitergeht",
+        p1: "Einstündiges Erstgespräch, vom Studio angeboten, persönlich oder per Video",
+        p2: "Check-up oder schriftliches Angebot zum Festpreis",
+        cta: "Fragen? Per WhatsApp schreiben", alt: "Oder einfach auf diese E-Mail antworten.",
+        piede1: "Sie erhalten diese Nachricht, weil auf der Website das Erstgespräch angefragt wurde.",
+        privacy: "Datenschutzerklärung", firma: "Studio Matiz, von Matia Zoffoli",
+      }
     : {
         subject: "Richiesta ricevuta: il primo incontro",
         pre: "Richiesta ricevuta. Data e orario da confermare.",
@@ -328,9 +368,9 @@ export function confermaIncontro(r: Richiesta, ctx: Contesto): { subject: string
         privacy: "Informativa privacy", firma: "Studio Matiz, di Matia Zoffoli",
       };
   const assets = ctx.assets ?? `${ctx.sito}/email`;
-  const privacyUrl = ctx.sito + (l === "en" ? "/en/privacy.html" : "/privacy.html");
+  const privacyUrl = ctx.sito + (l === "it" ? "/privacy.html" : `/${l}/privacy.html`);
   const righe = [riga(T.formato, modo), riga(T.pref, r.preferenza || T.nessuna), r.telefono ? riga(T.telL, r.telefono) : ""].join("");
-  const waUrl = `https://wa.me/${ctx.whatsapp}?text=${encodeURIComponent(l === "en" ? "Hello Matia, I have just requested the first meeting from the website." : "Ciao Matia, ho appena richiesto il primo incontro dal sito.")}`;
+  const waUrl = `https://wa.me/${ctx.whatsapp}?text=${encodeURIComponent(l === "en" ? "Hello Matia, I have just requested the first meeting from the website." : l === "de" ? "Hallo Matia, ich habe soeben das Erstgespräch über die Website angefragt." : "Ciao Matia, ho appena richiesto il primo incontro dal sito.")}`;
   const corpo = `
       <p style="margin:0 0 6px;font:400 16px/1.6 ${SANS};color:${C.ink}">${esc(T.hello)}</p>
       <p style="margin:0 0 26px;font:300 16px/1.65 ${SANS};color:${C.ink}">${esc(T.intro)}</p>
@@ -338,7 +378,7 @@ export function confermaIncontro(r: Richiesta, ctx: Contesto): { subject: string
       <div style="font:600 10px/1.4 ${SANS};letter-spacing:.2em;text-transform:uppercase;color:${C.soft};margin:0 0 4px">${esc(T.riepilogo)}</div>
       <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="border-top:1px solid ${C.ink}">${righe}</table>
 
-      ${prezzoBox(T.boxL, l === "en" ? "To be confirmed" : "Da confermare", T.boxN, assets, `${l}-daconfermare`)}
+      ${prezzoBox(T.boxL, l === "en" ? "To be confirmed" : l === "de" ? "Noch zu bestätigen" : "Da confermare", T.boxN, assets, `${l}-daconfermare`)}
 
       ${filo()}
       <div style="margin:22px 0 14px;font:600 10px/1.4 ${SANS};letter-spacing:.2em;text-transform:uppercase;color:${C.soft}">${esc(T.come)}</div>
@@ -352,7 +392,7 @@ export function confermaIncontro(r: Richiesta, ctx: Contesto): { subject: string
   const text = [
     T.hello, "", T.intro, "",
     T.riepilogo + ":", `- ${T.formato}: ${modo}`, `- ${T.pref}: ${r.preferenza || T.nessuna}`, r.telefono ? `- ${T.telL}: ${r.telefono}` : "", "",
-    `${T.boxL}: ${l === "en" ? "to be confirmed" : "da confermare"}. ${T.boxN}`, "",
+    `${T.boxL}: ${l === "en" ? "to be confirmed" : l === "de" ? "noch zu bestätigen" : "da confermare"}. ${T.boxN}`, "",
     T.come + ":", "- " + strip(T.p1), "- " + strip(T.p2), "",
     `${T.cta}: ${waUrl}`, T.alt, "",
     T.firma, `Cesenatico - ${ctx.emailStudio} - WhatsApp +39 333 958 0381`, `${T.privacy}: ${privacyUrl}`,
@@ -374,7 +414,7 @@ export function avvisoIncontro(r: Richiesta, ctx: Contesto): { subject: string; 
   const righe = [
     riga("Email", r.email), r.telefono ? riga("Telefono", r.telefono) : "",
     riga("Modalità", modo), riga("Giorni e orari", r.preferenza || "non indicati"),
-    riga("Pagina", r.lingua === "en" ? "inglese (rispondere in inglese)" : "italiano"),
+    riga("Pagina", r.lingua === "en" ? "inglese (rispondere in inglese)" : r.lingua === "de" ? "tedesco (rispondere in inglese o tedesco)" : "italiano"),
   ].join("");
   const corpo = `
       <p style="margin:0 0 22px;font:300 16px/1.65 ${SANS};color:${C.ink}"><b style="font-weight:600">${esc(r.nome)}</b> ha chiesto il primo incontro dal sito${r.secondi !== null ? `, compilato in ${r.secondi} secondi` : ""}.</p>
@@ -387,7 +427,7 @@ export function avvisoIncontro(r: Richiesta, ctx: Contesto): { subject: string; 
     `${r.nome} ha chiesto il primo incontro dal sito.`, "",
     `Email: ${r.email}`, r.telefono ? `Telefono: ${r.telefono}` : "",
     `Modalità: ${modo}`, `Giorni e orari: ${r.preferenza || "non indicati"}`,
-    `Pagina: ${r.lingua === "en" ? "inglese (rispondere in inglese)" : "italiano"}`, "",
+    `Pagina: ${r.lingua === "en" ? "inglese (rispondere in inglese)" : r.lingua === "de" ? "tedesco (rispondere in inglese o tedesco)" : "italiano"}`, "",
     "Da fare: confermare data e orario entro un giorno lavorativo.", `Crea evento nel calendario: ${evento}`,
   ].filter((x, i, a) => !(x === "" && a[i - 1] === "")).join("\n");
   return { subject: oggetto, html, text };

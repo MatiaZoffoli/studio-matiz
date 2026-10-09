@@ -105,3 +105,6 @@ I due prospetti **non si contattano ancora** (decisione di Matia). Si contattano
 - [x] Richiesta del primo incontro dal sito con scelta di persona o in video, data e orario confermati da Matia (2026-10-10): modulo nella chiusura, email di conferma al cliente (IT/EN) e avviso a Matia con 'Crea evento nel calendario'. Da distribuire: funzione `contatto` (dopo il push di sito e immagini)
 - [ ] (P) Quando c'e' il dominio: la conferma al cliente della richiesta parte solo con CONFIRM_FROM di un dominio verificato; fino ad allora solo l'avviso a Matia. Il link del calendario Google non serve piu' sul sito (si puo' ritirare)
 - [x] Ritratto di Matia nella sezione Chi sono (2026-10-10): scelta la foto a sfondo scuro (si fonde con la cornice scura e oro del ritratto). Originali in `foto/`, versioni per il sito in `prova/assets/matia.jpg` e `matia-480.jpg`. La foto a sfondo chiaro resta disponibile per altri usi (LinkedIn, Google Business)
+- [x] Versione tedesca del sito, dell'informativa privacy e delle email (2026-10-10): `/de/`, `tools/build_de.py`, dettagli in `docs/TEDESCO.md`
+- [ ] (P) **Rilettura della versione tedesca da madrelingua** prima di mostrarla ai clienti (traduzione non ancora rivista da una persona), e decidere se il tedesco e' lingua di lavoro (oggi non e' promesso)
+- [ ] Con il dominio: `hreflang` tra italiano, inglese e tedesco
