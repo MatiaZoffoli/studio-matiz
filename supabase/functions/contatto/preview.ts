@@ -21,6 +21,8 @@ const out: [string, { subject: string; html: string; text: string }][] = [
   ["conferma-it", confermaCliente(it, ctx)],
   ["conferma-en", confermaCliente(en, ctx)],
   ["avviso-studio", avvisoStudio(it, ctx)],
+  ["conferma-cura-it", confermaCliente({ ...it, servizi: ["assistenza"], dimensione: null, da: 250, fino: 250 }, ctx)],
+  ["avviso-cura", avvisoStudio({ ...it, servizi: ["assistenza"], dimensione: null, da: 250, fino: 250 }, ctx)],
 ];
 for (const [nome, m] of out) {
   writeFileSync(`email/anteprime/${nome}.html`, m.html);

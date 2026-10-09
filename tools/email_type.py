@@ -45,6 +45,7 @@ for l in ("it", "en"):
         testo = (f"da {euro(n, 'it')}" if l == "it" else f"from {euro(n, 'en')}")
         righe.append((f"p/{l}-{n}", testo, CREAM, 36))
     righe.append((f"p/{l}-200", euro(200, l), CREAM, 36))  # il check-up, senza prefisso
+    righe.append((f"p/{l}-250", euro(250, l), CREAM, 36))  # forfait del primo mese di cura continua, senza prefisso
 # ---- titoli e marchio
 em = lambda a, b: f'{a} <em>{b}</em>'
 righe += [
@@ -52,18 +53,26 @@ righe += [
     ("t/h-conferma-it", em("La richiesta", "è arrivata"), INK, 36),
     ("t/h-conferma-en", em("Your request", "has arrived"), INK, 36),
     ("t/h-avviso", em("Nuova", "richiesta"), INK, 36),
+    # etichette dei bottoni, in Manrope come sul sito (una riga con la sigla 's' nel quarto campo)
+    ("t/btn-prenota-it", "Prenota il primo incontro", CREAM, 12, "s"),
+    ("t/btn-prenota-en", "Book the first meeting", CREAM, 12, "s"),
+    ("t/btn-rispondi", "Rispondi per email", CREAM, 12, "s"),
+    ("t/btn-whatsapp", "Scrivi su WhatsApp", INK, 12, "s"),
 ]
+righe = [r if len(r) == 5 else r + ("d",) for r in righe]
 
 CSS = """
 html,body{margin:0;background:transparent}
 .r{height:150px;display:flex;align-items:center;padding:0 30px}
-span{font-family:"Bodoni Moda",Georgia,serif;font-weight:450;font-optical-sizing:none;font-variation-settings:"opsz" 40;letter-spacing:-.02em;line-height:1.1;white-space:nowrap}
+span{font-family:"Bodoni Moda",Georgia,serif;font-weight:500;font-optical-sizing:none;font-variation-settings:"opsz" 18;letter-spacing:-.02em;line-height:1.1;white-space:nowrap}
+span.p{font-variation-settings:"opsz" 14}
+span.s{font-family:Manrope,Arial,sans-serif;font-weight:600;font-variation-settings:normal;letter-spacing:.14em;text-transform:uppercase;line-height:1.1}
 em{font-style:normal;color:%s}
 """ % GOLD
-HEAD = '<meta charset="utf-8"><link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:opsz,wght@6..96,400..700&display=swap" rel="stylesheet"><style>' + CSS + "</style>"
+HEAD = '<meta charset="utf-8"><link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:opsz,wght@6..96,400..700&family=Manrope:wght@600&display=swap" rel="stylesheet"><style>' + CSS + "</style>"
 
 def render(batch, tmp):
-    rows = "".join(f'<div class="r"><span style="font-size:{px}px;color:{col}">{txt}</span></div>' for _, txt, col, px in batch)
+    rows = "".join(f'<div class="r"><span class="{"s" if k == "s" else ("p" if n.startswith("p/") else "d")}" style="font-size:{px}px;color:{col}">{txt}</span></div>' for n, txt, col, px, k in batch)
     html = os.path.join(tmp, "r.html"); png = os.path.join(tmp, "r.png")
     io.open(html, "w", encoding="utf-8").write(f"<!doctype html><html><head>{HEAD}</head><body>{rows}</body></html>")
     subprocess.run([CHROME, "--headless=new", "--disable-gpu", "--hide-scrollbars", "--default-background-color=00000000",
@@ -82,7 +91,7 @@ with tempfile.TemporaryDirectory() as tmp:
     for i in range(0, len(righe), 10):
         batch = righe[i:i + 10]
         sheet = render(batch, tmp)
-        for k, (nome, _, _, _) in enumerate(batch):
+        for k, (nome, _, _, _, _) in enumerate(batch):
             row = sheet.crop((0, k * 300, sheet.width, (k + 1) * 300))   # 150 px css = 300 px a doppia risoluzione
             im = trim(row)
             im.save(os.path.join(ROOT, "prova", "email", nome + ".png"), optimize=True)

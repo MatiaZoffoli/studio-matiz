@@ -725,6 +725,10 @@ html.has-swipe { scroll-snap-type: y proximity; }
 .email-banner .hero { min-height: 100vh; }
 .email-banner .hero__gl { opacity: 1 !important; }
 .email-banner body { overflow: hidden; }
+
+/* ---------- Risultato dello stimatore: respiro sopra l'etichetta, testi piu' piccoli delle cifre ---------- */
+.est__result { padding-top: 1.9rem; }
+.est__range.is-text { font-size: clamp(1.7rem, 3.2vw, 2.4rem); line-height: 1.12; }
 </style>
 </head>
 <body>
@@ -1412,6 +1416,7 @@ html.has-swipe { scroll-snap-type: y proximity; }
       auto: { piccola: [500, 900, 'Simple automation', 10, 'days'], media: [900, 1500, 'Complex automation', 10, 'days'], grande: [2000, 6000, 'Custom tool', 5, 'weeks'] },
       check: [200, 200, 'Check-up', 3, 'working days']
     };
+    var CURA = [250, 100];   /* forfait del primo mese e canone Base di partenza, al mese (docs/LISTINO-E-TEMPI.md) */
     function vals(name) { return $$('input[name="' + name + '"]:checked', form).map(function (i) { return i.value; }); }
     function val(name) { return vals(name)[0] || ''; }
     function fld(name) { return (form.elements[name].value || '').trim(); }
@@ -1487,18 +1492,28 @@ html.has-swipe { scroll-snap-type: y proximity; }
       var e = check(); if (e) { err.textContent = e; return; }
       var r = compute(), listEl = $('#estLines'), notes = [];
       listEl.innerHTML = '';
-      if (!r.lines.length) {
-        $('#estRange').textContent = 'Ongoing care';
+      function addLine(a, b) { var li = document.createElement('li'); li.innerHTML = '<span></span><span class="m"></span>'; li.firstChild.textContent = a; li.lastChild.textContent = b; listEl.appendChild(li); }
+      var soloCura = !r.lines.length;
+      if (soloCura) {
+        r.lo = r.hi = CURA[0];
+        $('#estRange').textContent = '€' + eur(CURA[0]) + ' for the first month';
+        addLine('Ongoing care, first month flat fee', '€' + eur(CURA[0]));
+        addLine('From the second month', 'from €' + eur(CURA[1]) + ' a month');
         $('#estTime').textContent = '';
-        notes.push("The first month is a flat fee with unlimited hours, for support, research and ideas. From the second month it is decided on real usage. The figure is given in the quote, after the first meeting.");
+        notes.push("The flat fee covers support, research and ideas with no cap on hours, new developments excluded. At the end of the month a report with the real hours sets the level from the second month, with extra hours at 50 euro an hour.");
       } else {
         $('#estRange').textContent = r.check ? 'The check-up: €' + eur(r.lo) : 'From €' + eur(r.lo);
-        r.lines.forEach(function (b) { var li = document.createElement('li'); li.innerHTML = '<span></span><span class="m"></span>'; li.firstChild.textContent = b[2]; li.lastChild.textContent = da(b); listEl.appendChild(li); });
+        r.lines.forEach(function (b) { addLine(b[2], da(b)); });
         $('#estTime').textContent = 'Delivery time: about ' + r.longest[3] + ' ' + r.longest[4] + ', written in the quote.';
         if (r.check) notes.push("Where to start? The check-up is for that: it looks at what already exists and says what is best to do first. The cost is deducted from the work that follows.");
         else notes.push("This is the starting price for the work described: the final figure depends on how complex it is.");
-        if (r.cura) notes.push("Ongoing care comes on top: the first month is a flat fee with unlimited hours, then the level is decided on the real hours.");
+        if (r.cura) {
+          addLine('Ongoing care, first month flat fee', '€' + eur(CURA[0]));
+          addLine('From the second month', 'from €' + eur(CURA[1]) + ' a month');
+          notes.push("Ongoing care comes on top of the price of the work: the first month is a flat fee with unlimited hours, then the level is decided on the real hours.");
+        }
       }
+      $('#estRange').classList.toggle('is-text', soloCura || !!r.check);
       notes.push("This is not a quote: the real price is written after the first meeting and does not change along the way. VAT if due.");
       $('#estNote').textContent = notes.join(' ');
       var nomi = r.lines.map(function (b) { return b[2]; }).join(', ') || 'ongoing care';

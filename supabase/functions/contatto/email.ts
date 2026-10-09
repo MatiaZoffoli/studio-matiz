@@ -76,10 +76,14 @@ function immagine(assets: string, chiave: string, file: string, alt: string, blo
   return `<img src="${esc(assets)}/${file}.png" width="${d[0]}" height="${d[1]}" alt="${esc(alt)}" style="${blocco ? "display:block;" : ""}border:0;width:${d[0]}px;max-width:100%;height:auto">`;
 }
 
-function btn(url: string, label: string, pieno = true): string {
+function btn(url: string, label: string, pieno = true, assets = "", chiave = ""): string {
   const bg = pieno ? C.ink : "transparent";
   const col = pieno ? C.cream : C.ink;
-  return `<table role="presentation" cellpadding="0" cellspacing="0" border="0" style="display:inline-table;margin:0 10px 10px 0"><tr><td bgcolor="${pieno ? C.ink : C.card}" style="background:${bg};border:1px solid ${C.ink};border-radius:999px"><a href="${esc(url)}" style="display:inline-block;padding:13px 26px;font:600 12px/1 ${SANS};letter-spacing:.14em;text-transform:uppercase;color:${col};text-decoration:none">${esc(label)}</a></td></tr></table>`;
+  const d = chiave ? IMG[chiave] : undefined;
+  const dentro = d
+    ? `<img src="${esc(assets)}/${chiave.replace("t-", "t/")}.png" width="${d[0]}" height="${d[1]}" alt="${esc(label)}" style="display:block;border:0;width:${d[0]}px;height:${d[1]}px;color:${col};font:600 12px/1 ${SANS}">`
+    : esc(label);
+  return `<table role="presentation" cellpadding="0" cellspacing="0" border="0" style="display:inline-table;margin:0 10px 10px 0"><tr><td bgcolor="${pieno ? C.ink : C.card}" style="background:${bg};border:1px solid ${C.ink};border-radius:999px"><a href="${esc(url)}" style="display:block;padding:${d ? "16px 28px" : "13px 26px"};font:600 12px/1 ${SANS};letter-spacing:.14em;text-transform:uppercase;color:${col};text-decoration:none">${dentro}</a></td></tr></table>`;
 }
 
 function riga(etichetta: string, valore: string): string {
@@ -189,6 +193,13 @@ export function confermaCliente(r: Richiesta, ctx: Contesto): { subject: string;
         privacy: "Informativa privacy", firma: "Studio Matiz, di Matia Zoffoli",
       };
   const prezzoTxt = prezzo(r.da, r.fino, l);
+  const soloCura = r.servizi.length === 1 && r.servizi[0] === "assistenza";
+  if (soloCura) {
+    T.prezzoL = l === "en" ? "First month of ongoing care" : "Primo mese di cura continua";
+    T.nota = l === "en"
+      ? "A flat fee with no cap on hours, for support, research and ideas (new developments excluded). From the second month, from \u20ac100 a month: the level is set by the report at the end of the month."
+      : "Forfait senza limite di ore, per assistenza, ricerca e idee (esclusi i nuovi sviluppi). Dal secondo mese, da 100 euro al mese: il livello lo stabilisce il resoconto di fine mese.";
+  }
   const privacyUrl = ctx.sito + (l === "en" ? "/en/privacy.html" : "/privacy.html");
   const righe = [
     r.tipo ? riga(T.attivita, r.tipo) : "",
@@ -209,7 +220,7 @@ export function confermaCliente(r: Richiesta, ctx: Contesto): { subject: string;
       <div style="margin:22px 0 4px;font:600 10px/1.4 ${SANS};letter-spacing:.2em;text-transform:uppercase;color:${C.soft}">${esc(T.come)}</div>
       <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="border-top:1px solid ${C.line}">${passo("01", T.p1)}${passo("02", T.p2)}${passo("03", T.p3)}</table>
 
-      <div style="margin:30px 0 10px;text-align:center">${btn(ctx.calendario, T.cta)}</div>
+      <div style="margin:30px 0 10px;text-align:center">${btn(ctx.calendario, T.cta, true, ctx.assets ?? `${ctx.sito}/email`, `t-btn-prenota-${l}`)}</div>
       <p style="margin:0 0 6px;text-align:center;font:300 14px/1.6 ${SANS};color:${C.soft}">${esc(T.alt)}</p>`;
 
   const piede = `<span style="font:450 16px/1.4 ${SERIF};color:${C.cream}">${esc(T.firma)}</span><br>Cesenatico &middot; <a href="mailto:${esc(ctx.emailStudio)}" style="color:${C.goldLight};text-decoration:none">${esc(ctx.emailStudio)}</a> &middot; <a href="https://wa.me/${esc(ctx.whatsapp)}" style="color:${C.goldLight};text-decoration:none">WhatsApp +39 333 958 0381</a><br><span style="font-size:11px;color:#9C9283">${esc(T.piede1)} <a href="${esc(privacyUrl)}" style="color:#9C9283">${esc(T.privacy)}</a>.</span>`;
@@ -253,7 +264,7 @@ export function avvisoStudio(r: Richiesta, ctx: Contesto): { subject: string; ht
       <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="border-top:1px solid ${C.ink}">${righe}</table>
       ${prezzoBox("Prezzo mostrato", prezzoTxt, `Tetto interno: ${tetto}. Il cliente vede solo il prezzo di partenza.`, ctx.assets ?? `${ctx.sito}/email`, `it-${r.da ?? 0}`)}
       <p style="margin:24px 0 14px;font:400 15px/1.6 ${SANS};color:${C.ink}"><b>Da fare:</b> rispondere entro un giorno lavorativo e proporre il primo incontro.</p>
-      <div style="text-align:center">${btn(`mailto:${r.email}?subject=${encodeURIComponent("Il tuo prezzo di partenza - Studio Matiz")}`, "Rispondi per email")}${wa ? btn(wa, "Scrivi su WhatsApp", false) : ""}</div>`;
+      <div style="text-align:center">${btn(`mailto:${r.email}?subject=${encodeURIComponent("Il tuo prezzo di partenza - Studio Matiz")}`, "Rispondi per email", true, ctx.assets ?? `${ctx.sito}/email`, "t-btn-rispondi")}${wa ? btn(wa, "Scrivi su WhatsApp", false, ctx.assets ?? `${ctx.sito}/email`, "t-btn-whatsapp") : ""}</div>`;
   const piede = `<span style="font:450 16px/1.4 ${SERIF};color:${C.cream}">Studio Matiz</span><br><span style="font-size:11px;color:#9C9283">Avviso automatico dello stimatore del sito</span>`;
   const assets = ctx.assets ?? `${ctx.sito}/email`;
   const html = cornice({ l, anteprima: `${r.nome}: ${prezzoTxt}`, eyebrow: "Nuova richiesta", titolo: "Nuova <em>richiesta</em>", titoloImg: immagine(assets, "t-h-avviso", "t/h-avviso", "Nuova richiesta") || undefined, corpo, piede, assets, logo: ctx.logo });

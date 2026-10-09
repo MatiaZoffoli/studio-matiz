@@ -48,3 +48,10 @@ Per cambiare prezzi o tempi basta modificare la tabella `BANDS` nello script del
 - **Prenotazione:** il pulsante usera' il link della pagina di prenotazione di Google Calendar non appena Matia la crea.
 - **Antispam:** per un modulo pubblico serve una protezione (campo nascosto o servizio di verifica) prima di collegarlo.
 - Un errore nel risultato non e' stato visto in test: i controlli di validazione (tipo, almeno un servizio, nome, email, informativa) e il calcolo delle fasce funzionano. Non e' stato provato su telefono vero.
+
+## Aggiornamento del 2026-10-10 (dopo la prova di Matia)
+
+- **La sola assistenza continua ora ha una cifra** (prima mostrava solo il testo "Cura continua", che si leggeva come gratuito): "250 euro il primo mese" (forfait) e, in lista, "Dal secondo mese, da 100 euro al mese". Costanti `CURA = [250, 100]` accanto a `BANDS` nello script; sono le cifre della proposta in `docs/LISTINO-E-TEMPI.md`, da confermare. Il prezzo del lavoro non cambia; nel salvataggio, per la sola cura, `prezzo_da` e `prezzo_fino_a` valgono 250.
+- **Cura con altri lavori:** la cura continua non si somma al totale del lavoro; compare in lista con le sue due cifre, e una frase dice che si aggiunge.
+- **Layout del risultato:** piu' respiro sopra l'etichetta, che toccava il filo sottile; i risultati che sono testo ("250 euro il primo mese", "Il check-up: 200 euro") hanno una dimensione minore delle cifre del prezzo.
+- **Da rivedere (proposte in `docs/BACKLOG.md`):** una sola dimensione per sito e automazione insieme; tempo mostrato come il piu' lungo e non come la somma; la domanda sulla presenza online non pesa sul prezzo; lavori del listino non presenti nello stimatore (testi in inglese, scheda Google).

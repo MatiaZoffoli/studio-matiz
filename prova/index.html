@@ -729,6 +729,10 @@ html.has-swipe { scroll-snap-type: y proximity; }
 .email-banner .hero { min-height: 100vh; }
 .email-banner .hero__gl { opacity: 1 !important; }
 .email-banner body { overflow: hidden; }
+
+/* ---------- Risultato dello stimatore: respiro sopra l'etichetta, testi piu' piccoli delle cifre ---------- */
+.est__result { padding-top: 1.9rem; }
+.est__range.is-text { font-size: clamp(1.7rem, 3.2vw, 2.4rem); line-height: 1.12; }
 </style>
 </head>
 <body>
@@ -1416,6 +1420,7 @@ html.has-swipe { scroll-snap-type: y proximity; }
       auto: { piccola: [500, 900, 'Automazione semplice', 10, 'giorni'], media: [900, 1500, 'Automazione articolata', 10, 'giorni'], grande: [2000, 6000, 'Strumento su misura', 5, 'settimane'] },
       check: [200, 200, 'Check-up', 3, 'giorni lavorativi']
     };
+    var CURA = [250, 100];   /* forfait del primo mese e canone Base di partenza, al mese (docs/LISTINO-E-TEMPI.md) */
     function vals(name) { return $$('input[name="' + name + '"]:checked', form).map(function (i) { return i.value; }); }
     function val(name) { return vals(name)[0] || ''; }
     function fld(name) { return (form.elements[name].value || '').trim(); }
@@ -1491,18 +1496,28 @@ html.has-swipe { scroll-snap-type: y proximity; }
       var e = check(); if (e) { err.textContent = e; return; }
       var r = compute(), listEl = $('#estLines'), notes = [];
       listEl.innerHTML = '';
-      if (!r.lines.length) {
-        $('#estRange').textContent = 'Cura continua';
+      function addLine(a, b) { var li = document.createElement('li'); li.innerHTML = '<span></span><span class="m"></span>'; li.firstChild.textContent = a; li.lastChild.textContent = b; listEl.appendChild(li); }
+      var soloCura = !r.lines.length;
+      if (soloCura) {
+        r.lo = r.hi = CURA[0];
+        $('#estRange').textContent = eur(CURA[0]) + ' euro il primo mese';
+        addLine('Cura continua, primo mese a forfait', eur(CURA[0]) + ' euro');
+        addLine('Dal secondo mese', 'da ' + eur(CURA[1]) + ' euro al mese');
         $('#estTime').textContent = '';
-        notes.push("Il primo mese è a forfait e senza limite di ore, per assistenza, ricerca e idee. Dal secondo mese si decide in base all'uso reale. La cifra viene indicata nel preventivo, dopo il primo incontro.");
+        notes.push("Il forfait copre assistenza, ricerca e idee senza limite di ore, esclusi i nuovi sviluppi. A fine mese un resoconto con le ore reali stabilisce il livello dal secondo mese, con ore extra a 50 euro l'ora.");
       } else {
         $('#estRange').textContent = r.check ? 'Il check-up: ' + eur(r.lo) + ' euro' : 'Da ' + eur(r.lo) + ' euro';
-        r.lines.forEach(function (b) { var li = document.createElement('li'); li.innerHTML = '<span></span><span class="m"></span>'; li.firstChild.textContent = b[2]; li.lastChild.textContent = da(b); listEl.appendChild(li); });
+        r.lines.forEach(function (b) { addLine(b[2], da(b)); });
         $('#estTime').textContent = 'Tempo di consegna: circa ' + r.longest[3] + ' ' + r.longest[4] + ', scritto nel preventivo.';
         if (r.check) notes.push("Da dove partire? Il check-up serve a questo: si guarda cosa c'è già e si indica cosa conviene fare per primo. Il costo viene scalato dal lavoro che segue.");
         else notes.push("È il prezzo di partenza per il lavoro descritto: la cifra finale dipende da quanto è articolato.");
-        if (r.cura) notes.push("A questo si aggiunge la cura continua: il primo mese è a forfait e senza limite di ore, poi il livello si decide sulle ore reali.");
+        if (r.cura) {
+          addLine('Cura continua, primo mese a forfait', eur(CURA[0]) + ' euro');
+          addLine('Dal secondo mese', 'da ' + eur(CURA[1]) + ' euro al mese');
+          notes.push("La cura continua si aggiunge al prezzo del lavoro: il primo mese è a forfait e senza limite di ore, poi il livello si decide sulle ore reali.");
+        }
       }
+      $('#estRange').classList.toggle('is-text', soloCura || !!r.check);
       notes.push("Non è un preventivo: il prezzo vero viene scritto dopo il primo incontro e non cambia in corsa. IVA se dovuta.");
       $('#estNote').textContent = notes.join(' ');
       var nomi = r.lines.map(function (b) { return b[2]; }).join(', ') || 'cura continua';
