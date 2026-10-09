@@ -744,6 +744,43 @@ html.has-swipe { scroll-snap-type: y proximity; }
 .inc__okh { margin: .9rem 0 1rem; font: 500 clamp(1.8rem, 3.4vw, 2.6rem)/1.12 var(--serif); font-optical-sizing: none; font-variation-settings: "opsz" 14; color: #FBF5E9; }
 .inc__ok .mail { display: inline-block; margin-top: 1rem; }
 .inc__ok:focus-visible { outline: 0; }
+
+/* ---------- Finestra della richiesta ---------- */
+.modal { padding: 0; border: 0; background: transparent; color: var(--night-text); width: min(640px, calc(100vw - 2rem)); max-width: none; max-height: calc(100dvh - 2rem); overflow: visible; margin: auto; }
+.modal::backdrop { background: rgba(14, 11, 9, .72); backdrop-filter: blur(6px); -webkit-backdrop-filter: blur(6px); }
+.modal[open] { animation: modalIn .45s var(--ease) both; }
+.modal[open]::backdrop { animation: modalBg .45s var(--ease) both; }
+@keyframes modalIn { from { opacity: 0; transform: translateY(18px) scale(.985); } to { opacity: 1; transform: none; } }
+@keyframes modalBg { from { opacity: 0; } to { opacity: 1; } }
+.modal__box { position: relative; max-height: calc(100dvh - 2rem); overflow-y: auto; overscroll-behavior: contain; padding: clamp(1.6rem, 4vw, 2.6rem); background: radial-gradient(60% 50% at 90% 0%, rgba(201, 162, 92, .22), transparent 70%), var(--night); border: 1px solid var(--night-line); border-top: 2px solid var(--gold-light); box-shadow: 0 40px 80px -30px rgba(0, 0, 0, .8); }
+.modal__x { position: absolute; top: .9rem; right: .9rem; width: 2.4rem; height: 2.4rem; display: grid; place-items: center; border: 1px solid var(--night-line); border-radius: 50%; background: transparent; color: var(--night-text); cursor: pointer; transition: background-color .3s var(--ease), color .3s var(--ease); }
+.modal__x svg { width: .9rem; height: .9rem; }
+.modal__x:hover { background: var(--night-text); color: var(--night); }
+.modal__x:focus-visible { outline: 2px solid var(--gold-light); outline-offset: 2px; }
+.modal__h { margin: .8rem 2.4rem .9rem 0; font: 500 clamp(1.9rem, 4vw, 2.6rem)/1.1 var(--serif); font-optical-sizing: none; font-variation-settings: "opsz" 14; letter-spacing: -.01em; color: #FBF5E9; }
+.modal__p { margin: 0 0 1.6rem; font-weight: 300; line-height: 1.6; color: var(--night-soft); }
+.modal .inc { gap: 1.3rem; }
+.inc__steps { list-style: none; margin: 1.4rem 0 1.8rem; padding: 0; border-top: 1px solid var(--night-line); counter-reset: s; }
+.inc__steps li { display: grid; grid-template-columns: 2.6rem 1fr; column-gap: .4rem; padding: 1rem 0; border-bottom: 1px solid var(--night-line); counter-increment: s; }
+.inc__steps li::before { content: counter(s, decimal-leading-zero); grid-row: 1 / 3; font: 600 .6875rem/1.9 var(--sans); letter-spacing: .16em; color: var(--gold-light); }
+.inc__steps strong { font-weight: 600; color: var(--night-text); }
+.inc__steps span { margin-top: .25rem; font-weight: 300; line-height: 1.55; color: var(--night-soft); }
+.modal .inc__nav { flex-wrap: wrap; align-items: center; gap: 1rem 1.6rem; }
+.modal .inc__ok .mail, .modal .mail { color: var(--night-text); font: 600 .75rem/1.3 var(--sans); letter-spacing: .14em; text-transform: uppercase; text-underline-offset: .5em; margin: 0; }
+html.modal-open { overflow: hidden; }
+@media (max-width: 600px) { .modal { width: calc(100vw - 1rem); } .modal__box { padding: 1.4rem 1.2rem 1.6rem; } }
+@media (prefers-reduced-motion: reduce) { .modal[open], .modal[open]::backdrop { animation: none; } }
+.modal .est__opts { display: grid; grid-template-columns: 1fr 1fr; gap: .6rem; }
+.modal .opt span { padding: .85rem .9rem .85rem 3rem; height: 100%; }
+.modal .opt:hover span, .modal .opt input:checked + span { padding-left: 3rem; }
+.modal .opt span::before { left: .8rem; }
+.modal .opt:hover span::before, .modal .opt input:checked + span::before { left: .8rem; }
+.modal .opt span::after { display: none; }
+.modal .est__fields { display: grid; grid-template-columns: 1fr 1fr; gap: .1rem 1.5rem; }
+.modal .est__fields .chk, .modal .est__fields .hp { grid-column: 1 / -1; }
+.modal .est__fields .chk { margin-top: .8rem; }
+.modal .inc__mode legend { margin-bottom: .7rem; }
+@media (max-width: 600px) { .modal .est__opts, .modal .est__fields { grid-template-columns: 1fr; } }
 </style>
 </head>
 <body>
@@ -1220,20 +1257,35 @@ html.has-swipe { scroll-snap-type: y proximity; }
             <a class="mail" href="mailto:matiazoffoli@gmail.com">matiazoffoli@gmail.com</a>
           </div>
         </div>
-        <div class="close__act" id="incontro">
+        <div class="close__act">
+          <a class="btn btn--light" href="#incontro">Request the first meeting
+            <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true"><path d="M2 8h11M9 3.5 13.5 8 9 12.5"/></svg>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+<dialog class="modal" id="incModal" aria-labelledby="incTitle">
+  <div class="modal__box">
+    <button type="button" class="modal__x" data-close aria-label="Close"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true"><path d="M3 3l10 10M13 3 3 13"/></svg></button>
+    <div id="incAsk">
+      <p class="est__label">First meeting</p>
+      <h2 class="modal__h" id="incTitle">Request the first meeting</h2>
+      <p class="modal__p">A few details are enough. Matia confirms date and time, with a first reply within one working day.</p>
           <form class="inc" id="incForm" novalidate>
             <fieldset class="inc__mode">
               <legend>Format</legend>
               <div class="est__opts one">
-                <label class="opt"><input type="radio" name="modo" value="persona" checked><span>In person<small>Recommended, in Cesenatico or around Romagna</small></span></label>
-                <label class="opt"><input type="radio" name="modo" value="video"><span>By video<small>From anywhere</small></span></label>
+                <label class="opt"><input type="radio" name="modo" value="persona" checked><span>In person<small>Recommended, in Cesenatico and nearby</small></span></label>
+                <label class="opt"><input type="radio" name="modo" value="video"><span>By video<small>From anywhere in the world</small></span></label>
               </div>
             </fieldset>
             <div class="est__fields">
               <label class="field"><span>Name</span><input type="text" name="nome" autocomplete="name"></label>
               <label class="field"><span>Email</span><input type="email" name="email" autocomplete="email"></label>
               <label class="field"><span>Phone (optional)</span><input type="tel" name="tel" autocomplete="tel"></label>
-              <label class="field"><span>Days and times that suit (optional)</span><input type="text" name="quando" maxlength="280"></label>
+              <label class="field"><span>Preferred days and times (optional)</span><input type="text" name="quando" maxlength="280"></label>
               <label class="hp" aria-hidden="true">Leave empty <input type="text" name="sito_web" tabindex="-1" autocomplete="off"></label>
               <label class="chk"><input type="checkbox" name="privacy"><span>I have read the <a href="/en/privacy.html" target="_blank" rel="noopener">privacy notice</a>.</span></label>
             </div>
@@ -1244,17 +1296,23 @@ html.has-swipe { scroll-snap-type: y proximity; }
               </button>
             </div>
           </form>
-          <div class="inc__ok" id="incOk" hidden tabindex="-1" aria-live="polite">
-            <p class="est__label">Request received</p>
-            <p class="inc__okh">Matia confirms date and time.</p>
-            <p class="est__status" id="incStatus" role="status"></p>
-            <a class="mail" id="incWa" href="https://wa.me/393339580381?text=Hello%20Matia%2C%20I%20have%20just%20requested%20the%20first%20meeting%20from%20the%20website.">If it is needed sooner, a WhatsApp message</a>
-          </div>
-        </div>
+    </div>
+    <div class="inc__ok" id="incOk" hidden tabindex="-1" aria-live="polite">
+      <p class="est__label">Request received</p>
+      <h2 class="modal__h" id="incOkTitle">Matia confirms date and time.</h2>
+      <ol class="inc__steps">
+        <li><strong>A reply from Matia</strong><span>Within one working day, by email or on WhatsApp, with a date and time proposed from what you entered.</span></li>
+        <li><strong>The first meeting</strong><span>One hour over coffee and conversation, offered by the studio. In person is the recommended choice; a video call works just as well.</span></li>
+        <li><strong>Then you decide together</strong><span>A check-up or a written quote, with a fixed price. No obligation to continue.</span></li>
+      </ol>
+      <div class="inc__nav">
+        <button type="button" class="btn btn--light" data-close>Close and return to the site</button>
+        <a class="mail" id="incWa" href="https://wa.me/393339580381?text=Hello%20Matia%2C%20I%20have%20just%20requested%20the%20first%20meeting%20from%20the%20website." target="_blank" rel="noopener">If it is needed sooner, a WhatsApp message</a>
       </div>
     </div>
-  </section>
-</main>
+  </div>
+</dialog>
+
 
 <footer class="foot">
   <div class="wrap">
@@ -1588,42 +1646,71 @@ html.has-swipe { scroll-snap-type: y proximity; }
     show(0);
   })();
 
-  /* ---------- Richiesta del primo incontro: data e orario li conferma Matia ---------- */
+  /* ---------- Richiesta del primo incontro: finestra al centro della pagina; data e orario li conferma Matia ---------- */
   (function initIncontro() {
-    var form = $('#incForm'); if (!form) return;
+    var dlg = $('#incModal'), form = $('#incForm'); if (!dlg || !form) return;
     var ENDPOINT = 'https://mtdfpcwdzjweyqpgpdvp.supabase.co/functions/v1/contatto';
     var POLICY = 'bozza-2026-10-09';
-    var err = $('#incErr'), ok = $('#incOk'), st = $('#incStatus'), t0 = performance.now();
+    var ask = $('#incAsk'), err = $('#incErr'), ok = $('#incOk'), send = form.querySelector('button[type=submit]');
+    var t0 = performance.now(), sent = false, busy = false, opener = null;
     function fld(n) { return (form.elements[n].value || '').trim(); }
-    /* dallo stimatore si porta con se' quanto gia' scritto */
-    var book = $('#estBook');
-    if (book) book.addEventListener('click', function () {
-      var est = $('#estForm'); if (!est) return;
-      if (est.elements.nome && !fld('nome')) form.elements.nome.value = est.elements.nome.value;
-      if (est.elements.email && !fld('email')) form.elements.email.value = est.elements.email.value;
-      if (est.elements.tel && !fld('tel')) form.elements.tel.value = est.elements.tel.value;
+    function open(from) {
+      opener = from || document.activeElement;
+      if (typeof dlg.showModal !== 'function') { location.href = 'mailto:matiazoffoli@gmail.com'; return; }
+      if (!dlg.open) dlg.showModal();
+      document.documentElement.classList.add('modal-open');
+      t0 = performance.now();
+      var first = sent ? ok : form.elements.nome; if (first) first.focus({ preventScroll: true });
+    }
+    function reset() {
+      if (sent) { form.reset(); sent = false; ask.hidden = false; ok.hidden = true; }
+      err.textContent = ''; busy = false; send.disabled = false;
+    }
+    dlg.addEventListener('close', function () {
+      document.documentElement.classList.remove('modal-open');
+      reset();
+      if (opener && opener.focus) opener.focus({ preventScroll: true });
     });
+    dlg.addEventListener('click', function (e) {
+      if (e.target.closest('[data-close]')) dlg.close();
+      else if (e.target === dlg) dlg.close();   /* clic sullo sfondo */
+    });
+    /* ogni pulsante "Richiedi" apre la finestra, senza spostare la pagina */
+    document.addEventListener('click', function (e) {
+      var a = e.target.closest && e.target.closest('a[href="#incontro"]'); if (!a) return;
+      e.preventDefault();
+      if (a.id === 'estBook') {   /* dallo stimatore si porta con se' quanto gia' scritto */
+        var est = $('#estForm');
+        if (est) ['nome', 'email', 'tel'].forEach(function (n) {
+          if (est.elements[n] && !fld(n)) form.elements[n].value = est.elements[n].value;
+        });
+      }
+      open(a);
+    });
+    /* i link delle email puntano a /#incontro */
+    if (location.hash === '#incontro') setTimeout(function () { open(null); history.replaceState(null, '', location.pathname + location.search); }, 600);
     form.addEventListener('submit', function (e) {
       e.preventDefault();
+      if (busy) return;
       if (!fld('nome')) { err.textContent = "The name is missing."; return; }
       if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(fld('email'))) { err.textContent = "The email address is not valid."; return; }
       if (!form.elements.privacy.checked) { err.textContent = "To send the request, the privacy notice needs to be ticked."; return; }
-      err.textContent = '';
       var modo = (form.querySelector('input[name="modo"]:checked') || {}).value || 'persona';
       var payload = {
         fonte: 'incontro', nome: fld('nome'), email: fld('email'), telefono: fld('tel'), modalita: modo, preferenza: fld('quando'),
         consenso_privacy: true, consenso_comunicazioni: false, versione_informativa: POLICY,
         sito_web: fld('sito_web'), lingua: 'en', tempo_compilazione_ms: Math.round(performance.now() - t0)
       };
-      form.hidden = true; ok.hidden = false; ok.focus({ preventScroll: true }); if (window.__estRefresh) window.__estRefresh();
-      st.textContent = "Sending the request...";
-      fetch(ENDPOINT, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(payload), keepalive: true })
+      busy = true; send.disabled = true; err.textContent = "Sending the request...";
+      fetch(ENDPOINT, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(payload) })
         .then(function (x) { return x.json().catch(function () { return {}; }).then(function (j) { return x.ok && j.ok; }); })
+        .catch(function () { return false; })
         .then(function (good) {
-          st.textContent = good ? "Request received. Matia confirms date and time, with a first reply within one working day."
-            : "The request was not saved. A WhatsApp message or an email will still get through.";
-        })
-        .catch(function () { st.textContent = "The request was not saved. A WhatsApp message or an email will still get through."; });
+          busy = false; send.disabled = false;
+          if (!good) { err.textContent = "The request was not saved. A WhatsApp message or an email will still get through."; return; }
+          err.textContent = ''; sent = true; ask.hidden = true; ok.hidden = false;
+          dlg.querySelector('.modal__box').scrollTop = 0; ok.focus({ preventScroll: true });
+        });
     });
   })();
 
