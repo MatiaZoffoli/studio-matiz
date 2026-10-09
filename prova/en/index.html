@@ -815,6 +815,15 @@ html.modal-open { overflow: hidden; }
 .lang span { opacity: 1; }
 .portrait { padding: 0; margin-inline: 0; }
 .portrait img { display: block; width: 100%; height: 100%; object-fit: cover; object-position: 50% 18%; opacity: 1; }
+/* barra in alto: respiro tra menu e pulsante anche su schermi molto larghi */
+@media (min-width: 901px) { .nav { gap: clamp(1rem, 1.7vw, 1.75rem); } }
+/* finestra di conferma: piu' leggera e pulsanti centrati */
+.inc__ok .modal__h { margin-bottom: .4rem; }
+.inc__steps { margin: 1.2rem 0 1.6rem; }
+.inc__steps li { padding: .75rem 0; }
+.modal .inc__ok .inc__nav { flex-direction: column; align-items: center; justify-content: center; gap: 1.3rem; }
+.close__lead p { max-width: 34ch; }
+.close__alt { flex-direction: row; flex-wrap: wrap; gap: .9rem 1.8rem; margin-top: 1.6rem; }
 </style>
 </head>
 <body>
@@ -1284,8 +1293,7 @@ html.modal-open { overflow: hidden; }
       <h2 id="h-chiusura" data-split>It starts <em>with a number</em></h2>
       <div class="close__row">
         <div class="close__lead">
-          <p>The first meeting is requested from here. Date and time are confirmed within one working day.</p>
-          <p>In person is the recommended choice; a video call works too.</p>
+          <p>The first meeting is requested from here: in person is the recommended choice, a video call works too. Date and time are confirmed within one working day.</p>
           <div class="close__alt">
             <a class="mail" href="https://wa.me/393339580381?text=Hello%20Matia%2C%20I%20would%20like%20to%20set%20up%20a%20first%20meeting.">Message me on WhatsApp</a>
             <a class="mail" href="mailto:matiazoffoli@gmail.com">matiazoffoli@gmail.com</a>
@@ -1333,11 +1341,11 @@ html.modal-open { overflow: hidden; }
     </div>
     <div class="inc__ok" id="incOk" hidden tabindex="-1" aria-live="polite">
       <p class="est__label">Request received</p>
-      <h2 class="modal__h" id="incOkTitle">Confirmation of the appointment will reach you shortly.</h2>
+      <h2 class="modal__h" id="incOkTitle">Confirmation on its way.</h2>
       <ul class="inc__steps">
-        <li><span>Date and time confirmed within one working day, by email or WhatsApp</span></li>
-        <li><span>A one-hour first meeting, offered, in person or by video</span></li>
-        <li><span>A check-up or written quote, with a fixed price</span></li>
+        <li><span>Date and time confirmed within one working day</span></li>
+        <li><span>A one-hour first meeting, offered</span></li>
+        <li><span>A check-up or written quote, at a fixed price</span></li>
       </ul>
       <div class="inc__nav">
         <button type="button" class="btn btn--light" data-close>Close and return to the site</button>

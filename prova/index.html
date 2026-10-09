@@ -819,6 +819,15 @@ html.modal-open { overflow: hidden; }
 .lang span { opacity: 1; }
 .portrait { padding: 0; margin-inline: 0; }
 .portrait img { display: block; width: 100%; height: 100%; object-fit: cover; object-position: 50% 18%; opacity: 1; }
+/* barra in alto: respiro tra menu e pulsante anche su schermi molto larghi */
+@media (min-width: 901px) { .nav { gap: clamp(1rem, 1.7vw, 1.75rem); } }
+/* finestra di conferma: piu' leggera e pulsanti centrati */
+.inc__ok .modal__h { margin-bottom: .4rem; }
+.inc__steps { margin: 1.2rem 0 1.6rem; }
+.inc__steps li { padding: .75rem 0; }
+.modal .inc__ok .inc__nav { flex-direction: column; align-items: center; justify-content: center; gap: 1.3rem; }
+.close__lead p { max-width: 34ch; }
+.close__alt { flex-direction: row; flex-wrap: wrap; gap: .9rem 1.8rem; margin-top: 1.6rem; }
 </style>
 </head>
 <body>
@@ -1288,8 +1297,7 @@ html.modal-open { overflow: hidden; }
       <h2 id="h-chiusura" data-split>Si comincia <em>da un numero</em></h2>
       <div class="close__row">
         <div class="close__lead">
-          <p>Il primo incontro si richiede da qui. Data e orario vengono confermati entro un giorno lavorativo.</p>
-          <p>Di persona è la scelta consigliata; in alternativa, in video.</p>
+          <p>Il primo incontro si richiede da qui: di persona è la scelta consigliata, in alternativa in video. Data e orario vengono confermati entro un giorno lavorativo.</p>
           <div class="close__alt">
             <a class="mail" href="https://wa.me/393339580381?text=Ciao%20Matia%2C%20vorrei%20fissare%20un%20primo%20incontro.">Contattami su WhatsApp</a>
             <a class="mail" href="mailto:matiazoffoli@gmail.com">matiazoffoli@gmail.com</a>
@@ -1337,11 +1345,11 @@ html.modal-open { overflow: hidden; }
     </div>
     <div class="inc__ok" id="incOk" hidden tabindex="-1" aria-live="polite">
       <p class="est__label">Richiesta ricevuta</p>
-      <h2 class="modal__h" id="incOkTitle">Ti arriverà a breve la conferma dell'appuntamento.</h2>
+      <h2 class="modal__h" id="incOkTitle">Conferma in arrivo.</h2>
       <ul class="inc__steps">
-        <li><span>Conferma di data e orario, entro un giorno lavorativo, per email o WhatsApp</span></li>
-        <li><span>Primo incontro di un'ora, offerto, di persona o in video</span></li>
-        <li><span>Check-up o preventivo scritto, con prezzo chiuso</span></li>
+        <li><span>Conferma di data e orario entro un giorno lavorativo</span></li>
+        <li><span>Primo incontro di un'ora, offerto</span></li>
+        <li><span>Check-up o preventivo scritto, a prezzo chiuso</span></li>
       </ul>
       <div class="inc__nav">
         <button type="button" class="btn btn--light" data-close>Chiudi e torna al sito</button>
