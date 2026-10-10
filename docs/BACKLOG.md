@@ -108,3 +108,6 @@ I due prospetti **non si contattano ancora** (decisione di Matia). Si contattano
 - [x] Versione tedesca del sito, dell'informativa privacy e delle email (2026-10-10): `/de/`, `tools/build_de.py`, dettagli in `docs/TEDESCO.md`
 - [ ] (P) **Rilettura della versione tedesca da madrelingua** prima di mostrarla ai clienti (traduzione non ancora rivista da una persona), e decidere se il tedesco e' lingua di lavoro (oggi non e' promesso)
 - [ ] Con il dominio: `hreflang` tra italiano, inglese e tedesco
+- [x] Voce 'Avvio profilo social' aggiunta al listino (2026-10-10), una tantum e non pubblica
+- [ ] Dopo il primo caso reale (profumeria): rivedere con le ore vere sito vetrina con pannello (fascia 2.500-3.000) e avvio profilo social (400-600), e decidere se tenere la voce 11 non pubblica
+- [ ] Preparare la scheda cliente e la bozza di preventivo della profumeria dopo la telefonata (`clienti/<nome>/scheda.md`, modello `modelli/preventivo.html`); la scaletta stampabile della telefonata e' in `modelli/scaletta-telefonata-profumeria.pdf`

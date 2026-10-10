@@ -33,6 +33,15 @@ I tempi sono in **giorni di calendario dal momento in cui hai tutto il materiale
 | 8 | **Testi e traduzione in inglese** | Testi scritti da madrelingua per sito, menu o carta dei vini | 3-8 | 150-400 | 2 / 4 / 7 giorni |
 | 9 | **Scheda Google e SEO locale di base** | Scheda completa, informazioni allineate, parole chiave locali | 5-9 | 200-450 | 3 / 5 / 10 giorni |
 | 10 | **Cura continua** | Aggiornamenti, sicurezza, backup, modifiche, resoconto | vedi sotto | vedi sotto | attiva dal giorno della consegna |
+| 11 | **Avvio profilo social** (voce non pubblica) | Impostazione una tantum di un profilo Instagram gia' creato: vedi sotto | 8-12 | 400-600 | 3 giorni / 1 settimana / 2 settimane dal momento in cui logo e identita' grafica sono pronti |
+
+**Voce 11, Avvio profilo social (decisa da Matia, 2026-10-10)**
+
+Nata dalla prima richiesta di preventivo (una profumeria: sito vetrina e Instagram). **E' un'impostazione una tantum, non un supporto continuo, e non e' un servizio pubblico**: non compare sul sito ne' nello stimatore, si propone solo a chi lo chiede insieme a un sito o a un lavoro di presenza online.
+- **Cosa include:** bio e link, **6-8 copertine** delle storie in evidenza, **6-8 modelli modificabili** (post e storie, in Canva o simile), **linee guida di stile** (colori, caratteri, tono, 3-4 rubriche di contenuto), guida scritta e **un'ora di formazione**.
+- **Cosa non include:** logo e identita' grafica (devono esistere prima, fatti da altri o dal cliente), foto e video, calendario dei post, **gestione dei profili**, pubblicita' a pagamento. Se il cliente chiede la gestione e' un altro lavoro, da quotare a parte e da valutare con la capacita' di 12-16 ore a settimana.
+- **Prezzo:** 8-12 ore x 50 euro = **400-600 euro**. Da rivedere con le ore vere dopo il primo caso.
+- **Coerenza col posizionamento:** Matia non e' un graphic designer: la qualita' dipende dall'identita' fornita. Si consegnano modelli e struttura, non creativita' grafica originale.
 
 **Tempi garantiti (decisione di Matia, 2026-10-08)**
 
@@ -49,6 +58,7 @@ Matia vuole garantire **non piu' del tempo medio**, e meglio ancora una **via di
 | Strumento su misura | 3 settimane | **5 settimane** | 6 settimane |
 | Testi e traduzione in inglese | 2 giorni | **3 giorni** | 4 giorni |
 | Scheda Google e SEO locale | 3 giorni | **4 giorni** | 5 giorni |
+| Avvio profilo social | 3 giorni | **5 giorni** | 1 settimana |
 
 Il "garantito" e' il tempo che compare nel preventivo. Sul sito non si scrivono numeri: si dice che il tempo e' scritto nel preventivo e che viene rispettato. **Conseguenza da tenere presente:** garantire un punto tra l'ottimale e il medio lascia poco margine. Funziona solo se i progetti aperti sono pochi (regola dei due progetti insieme) e se il cliente consegna i materiali in tempo: va scritto nel preventivo che il tempo parte dal ricevimento di tutto il materiale e che i ritardi del cliente spostano la consegna.
 
