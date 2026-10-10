@@ -1,0 +1,10 @@
+{
+  "_nota": "Dati dello Studio per i preventivi. Compilare dopo l'apertura della partita IVA e quando il logo e' definito. Finche' un campo e' vuoto compare evidenziato in giallo nel PDF. Mettere \"bozza\": false quando i testi sono stati controllati da un professionista.",
+  "indirizzo": "",
+  "partita_iva": "",
+  "iban": "",
+  "email": "matiazoffoli@gmail.com",
+  "telefono": "+39 333 958 0381",
+  "logo": "",
+  "bozza": true
+}

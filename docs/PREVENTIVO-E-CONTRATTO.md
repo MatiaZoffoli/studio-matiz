@@ -147,7 +147,7 @@ Nel **resoconto di fine rodaggio** si aggiunge: ore reali usate nel mese, ore me
 
 ## Da decidere (per Matia)
 
-1. **Acconto e saldo:** 40% e 60%? Per lavori piccoli (sotto 600 euro), 50 e 50 o tutto alla consegna?
+1. ~~Acconto e saldo~~: **deciso il 2026-10-10, 50% alla firma e 50% alla consegna** (nessuna eccezione per i lavori piccoli).
 2. **Garanzia sugli errori tecnici:** 30 giorni dalla consegna ti vanno?
 3. **Ore incluse nel Base dopo il rodaggio:** ipotesi 2, si decide col primo mese.
 4. **Canone Base:** 100-150 euro, cifra esatta per ogni cliente.

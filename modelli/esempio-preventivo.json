@@ -1,0 +1,69 @@
+{
+  "lingua": "it",
+  "numero": "2026-000",
+  "data": "2026-10-12",
+  "validita_giorni": 30,
+
+  "cliente": {
+    "nome": "Profumeria Esempio",
+    "attivita": "profumeria di nicchia",
+    "indirizzo": "Via Esempio 1, 47042 Cesenatico (FC)",
+    "piva_cf": "00000000000"
+  },
+  "referente": {
+    "nome": "Anna Esempio",
+    "ruolo": "titolare",
+    "email": "anna@profumeriaesempio.it",
+    "telefono": "+39 333 000 0000"
+  },
+
+  "capito": "Una profumeria che cura il rapporto diretto con i clienti vuole una vetrina online contemporanea e molto visiva, da cui farsi scrivere su WhatsApp, per email o per telefono, e un profilo Instagram impostato nello stesso stile. Il sito deve essere leggibile da telefono e aggiornabile in autonomia: foto, novità ed eventi.",
+
+  "lavori": [
+    {
+      "titolo": "Sito vetrina con pannello di aggiornamento",
+      "importo": 2600,
+      "include": [
+        "Sei pagine: Home, La profumeria, Marchi, Novità e prodotti, Eventi, Contatti",
+        "Pulsanti per scrivere su WhatsApp, chiamare o mandare una email, su ogni pagina",
+        "Pensato per il telefono, con immagini grandi e movimento discreto",
+        "Pannello semplice per aggiornare da sola foto, novità ed eventi",
+        "Scheda Google collegata e posizionamento locale di base",
+        "Guida scritta e un'ora di formazione"
+      ],
+      "tempi": "4-5 settimane dal momento in cui arriva tutto il materiale"
+    },
+    {
+      "titolo": "Avvio profilo Instagram",
+      "importo": 500,
+      "include": [
+        "Bio e link, struttura del profilo",
+        "6-8 copertine per le storie in evidenza",
+        "6-8 modelli modificabili per post e storie",
+        "Linee guida di stile: colori, caratteri, tono e rubriche",
+        "Guida scritta e un'ora di formazione"
+      ],
+      "tempi": "5 giorni lavorativi dal momento in cui logo e identità grafica sono pronti"
+    }
+  ],
+
+  "non_incluso": "logo e identità grafica, fotografie e video, calendario dei post e gestione dei profili, pubblicità a pagamento, vendita online.",
+
+  "opzioni": [
+    { "titolo": "Testi e traduzione in inglese", "descrizione": "Testi del sito scritti da madrelingua", "importo": "da 150 a 400 euro" }
+  ],
+
+  "tempi": { "giorni": 35, "correzioni": 2 },
+
+  "serve": [
+    "Logo, colori e identità grafica definitivi",
+    "Fotografie e testi, o indicazioni per prepararli",
+    "Accessi a dominio, scheda Google e profilo Instagram"
+  ],
+
+  "cura": { "forfait": 250, "canone": "100-150", "ore_incluse": 2 },
+
+  "hosting": "50-120",
+  "giorni_fattura": 10,
+  "giorni_consegna_dati": 10
+}

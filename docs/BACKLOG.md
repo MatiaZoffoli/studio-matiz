@@ -111,3 +111,5 @@ I due prospetti **non si contattano ancora** (decisione di Matia). Si contattano
 - [x] Voce 'Avvio profilo social' aggiunta al listino (2026-10-10), una tantum e non pubblica
 - [ ] Dopo il primo caso reale (profumeria): rivedere con le ore vere sito vetrina con pannello (fascia 2.500-3.000) e avvio profilo social (400-600), e decidere se tenere la voce 11 non pubblica
 - [ ] Preparare la scheda cliente e la bozza di preventivo della profumeria dopo la telefonata (`clienti/<nome>/scheda.md`, modello `modelli/preventivo.html`); la scaletta stampabile della telefonata e' in `modelli/scaletta-telefonata-profumeria.pdf`
+- [x] Strumento per i preventivi (2026-10-10): `tools/preventivo.py`, acconto 50-50, numero anno-numero, esempio in `modelli/preventivo-2026-000.pdf`
+- [ ] (P) Per usare i preventivi con clienti veri: compilare `modelli/dati-studio.json` (indirizzo, partita IVA, IBAN, logo), far controllare testi e Accordo di servizio, poi mettere `"bozza": false`

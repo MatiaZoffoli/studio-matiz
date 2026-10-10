@@ -9,3 +9,6 @@
 .env.*
 *.key
 secrets*
+
+# Dati dei clienti: non vanno nel repository
+clienti/
