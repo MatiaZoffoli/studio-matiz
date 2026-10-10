@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Studio Matiz - Nach Maß</title>
+<title>Studio Matiz - Maßgeschneiderte Lösungen</title>
 <meta name="description" content="Entwurf und Entwicklung von Websites, Automatisierungen und digitalen Werkzeugen für kleine Betriebe. Das Erstgespräch wird vom Studio angeboten.">
 <meta name="robots" content="noindex">
 <meta name="theme-color" content="#F7F3EC">
@@ -834,6 +834,18 @@ html.modal-open { overflow: hidden; }
 .close__act { display: flex; flex-direction: column; align-items: flex-end; }
 @media (max-width: 900px) { .close__act { align-items: flex-start; } }
 .flag--de { background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 5 3'%3E%3Crect width='5' height='1' fill='%23000'/%3E%3Crect y='1' width='5' height='1' fill='%23DD0000'/%3E%3Crect y='2' width='5' height='1' fill='%23FFCE00'/%3E%3C/svg%3E"); }
+/* ---------- Il caso: al raggiungimento di 450 compare il +335 ---------- */
+.case__hero { position: relative; display: inline-block; }
+.case__fig { transition: color .8s var(--ease), text-shadow .8s var(--ease); }
+.case__fig.is-hit { color: #FFF6E0; text-shadow: 0 0 .28em rgba(240, 200, 120, .55), 0 0 1em rgba(240, 200, 120, .22); }
+.jack { position: absolute; inset: 0; pointer-events: none; }
+.jack__ring { position: absolute; left: 50%; top: 50%; width: 100%; aspect-ratio: 1; border: 1px solid rgba(240, 200, 120, .75); border-radius: 50%; transform: translate(-50%, -50%) scale(.35); opacity: 0; box-shadow: 0 0 24px rgba(240, 200, 120, .25); }
+.jack__plus { position: absolute; left: 100%; top: 0; margin-left: clamp(.6rem, 1.6vw, 1.4rem); opacity: 0; white-space: nowrap; font: 450 clamp(2.1rem, 4.2vw, 3.6rem)/1 var(--serif); font-optical-sizing: none; font-variation-settings: "opsz" 40; letter-spacing: -.02em; color: var(--gold-light); background: linear-gradient(105deg, #C9A25C 0%, #F6DFA6 35%, #FFF6DA 50%, #E8C37A 65%, #C9A25C 100%) 0 0 / 250% 100%; -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; filter: drop-shadow(0 0 14px rgba(240, 200, 120, .35)); }
+.jack__plus small { display: block; margin-top: .55rem; font: 600 .625rem/1.2 var(--sans); letter-spacing: .2em; text-transform: uppercase; -webkit-text-fill-color: var(--gold-light); color: var(--gold-light); }
+.jack__plus.is-on { opacity: 1; }
+.jack__s { position: absolute; left: 50%; top: 50%; width: 5px; height: 5px; margin: -2.5px 0 0 -2.5px; border-radius: 50%; opacity: 0; background: radial-gradient(circle, #FFF6DA 0%, #E8C37A 60%, rgba(232, 195, 122, 0) 100%); box-shadow: 0 0 9px rgba(240, 200, 120, .85); }
+.jack__s:nth-child(3n) { width: 2px; height: 11px; margin: -5.5px 0 0 -1px; border-radius: 2px; box-shadow: 0 0 7px rgba(240, 200, 120, .7); }
+html[lang="de"] .hero h1 { font-size: clamp(2.35rem, 8.4vw, 6.6rem); }
 </style>
 </head>
 <body>
@@ -860,7 +872,7 @@ html.modal-open { overflow: hidden; }
     <div class="hero__fallback" aria-hidden="true"><i></i><i></i></div>
     <div class="wrap hero__main">
       <p class="eyebrow" data-in><span>Digitale Gestaltung<br class="mb"> für kleine Betriebe</span></p>
-      <h1>Nach<br><em>Maß</em></h1>
+      <h1>Maßgeschneiderte<br><em>Lösungen</em></h1>
       <div class="hero__row">
         <p class="lede" data-in>Websites, digitale Speisekarten und Automatisierungen für Strandbäder, Restaurants und kleine Betriebe, mit laufenden Aktualisierungen, Änderungen und dauerhafter Betreuung.</p>
         <div class="hero__act" data-in>
@@ -868,13 +880,13 @@ html.modal-open { overflow: hidden; }
             <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true"><path d="M2 8h11M9 3.5 13.5 8 9 12.5"/></svg>
           </a>
           <small>Eine Stunde bei Kaffee und Gespräch, vom Studio angeboten.<br>Persönlich (empfohlen) oder per Video.</small>
-          <a class="link" href="#servizi">Das Handwerk in vier Teilen</a>
+          <a class="link" href="#servizi">Das Handwerk in vier Abschnitten</a>
         </div>
       </div>
     </div>
     <div class="wrap">
       <div class="hero__meta" data-in>
-        <p>Studio in Cesenatico, mit Kunden<br>in der Romagna und aus der Ferne</p>
+        <p>Studio in Cesenatico, mit Kunden<br>in der Romagna und außerhalb</p>
         <p>Websites, digitale Speisekarten, Automatisierungen<br>und laufender Support</p>
         <p>Schnelle,<br>direkte Antworten</p>
       </div>
@@ -894,13 +906,13 @@ html.modal-open { overflow: hidden; }
       <div class="problems__head">
         <p class="eyebrow">Der Ausgangspunkt</p>
         <h2 id="h-problemi" data-split>Was <em>nach der Übergabe</em> geschieht</h2>
-        <p>Der Aufbau dauert Wochen. Die Pflege dauert Jahre, und in vielen Verträgen ist sie der Teil, für den niemand zuständig ist.</p>
+        <p>Der Aufbau dauert Wochen. Die Pflege dauert Jahre, und in vielen Verträgen ist sie ein Bestandteil, für den niemand zuständig ist.</p>
       </div>
       <ul class="problems__list">
         <li data-reveal>
           <span class="n">01</span>
-          <h3>Stehengeblieben am Tag der Übergabe</h3>
-          <p>Öffnungszeiten, Preise und Angebote ändern sich mit jeder Saison, viermal im Jahr, und ein Werkzeug, das sich nicht mit ihnen ändert, sagt bald nicht mehr die Wahrheit.</p>
+          <h3>Am Tag der Übergabe stehengeblieben</h3>
+          <p>Öffnungszeiten, Preise und Angebote ändern sich mit jeder Saison, viermal im Jahr, und ein Werkzeug, das sich nicht mit ihnen ändert, ist nicht mehr wahrheitsgetreu.</p>
         </li>
         <li data-reveal>
           <span class="n">02</span>
@@ -909,8 +921,8 @@ html.modal-open { overflow: hidden; }
         </li>
         <li data-reveal>
           <span class="n">03</span>
-          <h3>Besuche, die nicht zu Anfragen werden</h3>
-          <p>Gezählt wird, wie viele Menschen kommen, fast nie, wie viele schreiben, anrufen oder buchen, und auch nicht, wo die anderen abspringen.</p>
+          <h3>Website-Besuche, die nicht zu Anfragen werden</h3>
+          <p>Gezählt wird, wie viele Menschen die Seite besuchen, aber fast nie, wie viele schreiben, anrufen oder buchen, und auch nicht, wo sie die Suche abbrechen.</p>
         </li>
       </ul>
     </div>
@@ -920,8 +932,8 @@ html.modal-open { overflow: hidden; }
     <div class="gal__pin">
       <div class="wrap">
         <div class="gal__head">
-          <h2 id="h-servizi" data-split>Das Handwerk <em>in vier Teilen</em></h2>
-          <p>Jeder Teil funktioniert für sich. Man kann mit einem beliebigen beginnen, oder mit dem ersten und sehen, wie es läuft.</p>
+          <h2 id="h-servizi" data-split>Das Handwerk <em>in vier Abschnitten</em></h2>
+          <p>Jeder Abschnitt funktioniert für sich. Man kann mit einem beliebigen beginnen, oder mit dem ersten und dann sehen, wie es läuft.</p>
         </div>
       </div>
       <div class="wrap gal__stage" id="galStage">
@@ -945,7 +957,7 @@ html.modal-open { overflow: hidden; }
           <div class="page__info">
             <p class="page__meta">01 · Website, Speisekarte, Einträge und Profile</p>
             <h3>Online-Präsenz</h3>
-            <div class="page__blk"><span class="page__lab">Das Problem</span><p class="soft">Vier Jahreszeiten, vier Aktualisierungen im Jahr, jede auf Website, Google-Eintrag, Profilen und Speisekarte zu wiederholen. Jede vergessene Kopie ist eine falsche Information.</p></div>
+            <div class="page__blk"><span class="page__lab">Das Problem</span><p class="soft">Vier Jahreszeiten, vier Aktualisierungen im Jahr, jede auf Website, Google-Eintrag, Profilen und Speisekarte zu überarbeiten. Jede vergessene Kopie bleibt eine falsche Information.</p></div>
             <div class="page__blk"><span class="page__lab">Die Antwort</span><p>Ein einziger Ort, von dem aus alles aktualisiert wird, und eine erste Antwort innerhalb eines Werktags auf jede Änderungsanfrage.</p></div>
             <a class="link" href="https://wa.me/393339580381?text=Hallo%20Matia%2C%20ich%20w%C3%BCrde%20gern%20mehr%20erfahren%20%C3%BCber%3A%20Online-Pr%C3%A4senz" target="_blank" rel="noopener">Nachricht per WhatsApp
               <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true"><path d="M3 13 13 3M5.5 3H13v7.5"/></svg></a>
@@ -973,7 +985,7 @@ html.modal-open { overflow: hidden; }
             <p class="page__meta">02 · Antworten, Anfragen, Erinnerungen</p>
             <h3>Automatisierungen</h3>
             <div class="page__blk"><span class="page__lab">Das Problem</span><p class="soft">Eine von Hand geschriebene Antwort, fünf Minuten am Tag, sind mehr als 30 Stunden im Jahr.</p></div>
-            <div class="page__blk"><span class="page__lab">Die Antwort</span><p>Die am häufigsten wiederholte Aufgabe wird erkannt und gestoppt, dann wird das Werkzeug gebaut, das sie von selbst erledigt. Das Ergebnis wird mit den Ausgangsstunden verglichen.</p></div>
+            <div class="page__blk"><span class="page__lab">Die Antwort</span><p>Man identifiziert die am häufigsten wiederkehrende Aufgabe, misst den dafür benötigten Zeitaufwand und entwickelt ein Tool, das diese Aufgabe automatisch erledigt. Das Ergebnis: eine deutliche Zeit- und Kostenersparnis.</p></div>
             <a class="link" href="https://wa.me/393339580381?text=Hallo%20Matia%2C%20ich%20w%C3%BCrde%20gern%20mehr%20erfahren%20%C3%BCber%3A%20Automatisierungen" target="_blank" rel="noopener">Nachricht per WhatsApp
               <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true"><path d="M3 13 13 3M5.5 3H13v7.5"/></svg></a>
           </div>
@@ -1015,8 +1027,8 @@ html.modal-open { overflow: hidden; }
           <div class="page__info">
             <p class="page__meta">04 · Zahlen, Wege, Prioritäten</p>
             <h3>Check-up</h3>
-            <div class="page__blk"><span class="page__lab">Das Problem</span><p class="soft">Bevor in eine neue Seite investiert wird, lohnt es sich zu wissen, wo die Menschen abspringen. Ohne diese Zahl ist jeder Eingriff ein Glücksspiel.</p></div>
-            <div class="page__blk"><span class="page__lab">Die Antwort</span><p>Innerhalb von drei Werktagen nach Bestätigung und Erhalt der Zugänge ein Bericht mit der Prioritätenkarte, jede mit ihren Kosten. Die Kosten des Check-ups werden auf die anschließende Arbeit angerechnet.</p></div>
+            <div class="page__blk"><span class="page__lab">Das Problem</span><p class="soft">Bevor in eine neue Seite investiert wird, lohnt es sich zu wissen, wo die Menschen den Website-Besuch abbrechen. Ohne diese Zahl ist jeder Eingriff ein Glücksspiel.</p></div>
+            <div class="page__blk"><span class="page__lab">Die Antwort</span><p>Innerhalb von drei Werktagen nach Bestätigung und Erhalt der Zugänge wird ein Bericht mit der Prioritätenkarte erstellt, jede mit ihren Kosten. Die Kosten des Check-ups werden auf die anschließende Arbeit angerechnet.</p></div>
             <a class="link" href="https://wa.me/393339580381?text=Hallo%20Matia%2C%20ich%20w%C3%BCrde%20gern%20mehr%20erfahren%20%C3%BCber%3A%20Check-up" target="_blank" rel="noopener">Nachricht per WhatsApp
               <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true"><path d="M3 13 13 3M5.5 3H13v7.5"/></svg></a>
           </div>
@@ -1068,16 +1080,19 @@ html.modal-open { overflow: hidden; }
       <div class="case__pin">
         <div class="wrap case__grid">
           <div class="case__left">
-            <p class="eyebrow">Ein gemessener Fall</p>
+            <p class="eyebrow">Ein getestetes Beispiel</p>
             <h2 id="h-caso" data-split>Jedes Ziel hat eine Zahl. <em>Dort beginnt es</em></h2>
             <p class="night__lead">Mitglieder, Buchungen, Anfragen, Bestellungen: Welches Ziel auch wachsen soll, der Ausgangspunkt wird gemessen, es wird gebaut, dann wird erneut gemessen.</p>
           </div>
           <div class="case__right" aria-hidden="true">
-            <p class="case__fig" id="caseNum">115</p>
+            <div class="case__hero" id="caseHero">
+              <p class="case__fig" id="caseNum">115</p>
+              <div class="jack" id="jack" aria-hidden="true"><span class="jack__ring"></span><span class="jack__ring"></span><span class="jack__plus" id="jackPlus">+335<small>mehr Mitglieder</small></span></div>
+            </div>
             <p class="case__unit">Mitglieder eines Sportvereins</p>
             <div class="meter">
               <div class="meter__row meter__row--a" id="mA"><span>Erste zwei Jahre</span><b>115</b><i class="meter__bar"></i></div>
-              <div class="meter__row meter__row--b" id="mB"><span>Nach einer Woche</span><b>450</b><i class="meter__bar"></i></div>
+              <div class="meter__row meter__row--b" id="mB"><span>Danach innerhalb einer Woche</span><b>450</b><i class="meter__bar"></i></div>
             </div>
           </div>
           <p class="case__txt">Der erste gemessene Fall: ein Sportverein, von 115 auf 450 Mitglieder in einer Woche. Drei Eingriffe: Behebung überholter Fehler und Logiken auf der Website, Recherche und Entwicklung eines neuen Zugangsverfahrens für die Sporthallen, und Online-Verkehr auf eine Seite mit eingeschränktem Zugang umgeleitet, anstelle von Diensten Dritter.</p>
@@ -1538,9 +1553,34 @@ html.modal-open { overflow: hidden; }
 
   /* ---------- Il caso: il numero sale con lo scroll, da 115 a 450 ---------- */
   function initCase() {
-    var num = $('#caseNum'), mA = $('#mA'), mB = $('#mB');
+    var num = $('#caseNum'), mA = $('#mA'), mB = $('#mB'), hero = $('#caseHero'), badge = $('#jackPlus');
+    var rings = hero.querySelectorAll('.jack__ring'), sparks = [], hit = false;
+    var reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
     var o = { p: 0 };
-    function draw() { num.textContent = Math.round(115 + 335 * o.p); mB.style.setProperty('--s', o.p.toFixed(3)); }
+    if (!reduce) for (var k = 0; k < 28; k++) { var sp = document.createElement('span'); sp.className = 'jack__s'; $('#jack').appendChild(sp); sparks.push(sp); }
+    /* al raggiungimento di 450: onde dorate, scintille e il +335 che compare */
+    function fire() {
+      hit = true; num.classList.add('is-hit'); badge.classList.add('is-on');
+      if (reduce) return;
+      gsap.killTweensOf([badge, rings, sparks]);
+      gsap.fromTo(badge, { opacity: 0, y: 16, scale: .72 }, { opacity: 1, y: 0, scale: 1, duration: .95, ease: 'back.out(1.9)' });
+      gsap.fromTo(badge, { backgroundPosition: '100% 0' }, { backgroundPosition: '-60% 0', duration: 1.8, delay: .2, ease: 'power2.inOut' });
+      gsap.fromTo(rings, { opacity: .7, scale: .35 }, { opacity: 0, scale: 1.95, duration: 1.5, ease: 'power2.out', stagger: .2 });
+      sparks.forEach(function (s, i) {
+        var a = (i / sparks.length) * Math.PI * 2 + Math.random() * .45, r = 90 + Math.random() * 170;
+        gsap.fromTo(s, { x: 0, y: 0, rotation: a * 57.3 + 90, opacity: 1, scale: .6 + Math.random() * .9 },
+          { x: Math.cos(a) * r, y: Math.sin(a) * r * .85, opacity: 0, scale: 0, duration: 1.1 + Math.random() * .8, ease: 'power3.out' });
+      });
+    }
+    function reset() {
+      hit = false; num.classList.remove('is-hit'); badge.classList.remove('is-on');
+      gsap.killTweensOf([badge, rings, sparks]);
+      gsap.set([badge, rings, sparks], { clearProps: 'opacity,transform,backgroundPosition' });
+    }
+    function draw() {
+      num.textContent = Math.round(115 + 335 * o.p); mB.style.setProperty('--s', o.p.toFixed(3));
+      if (o.p >= .995 && !hit) fire(); else if (o.p < .93 && hit) reset();
+    }
     mA.style.setProperty('--s', 0); mB.style.setProperty('--s', 0);
     var tl = gsap.timeline({ defaults: { ease: 'none' }, scrollTrigger: matchMedia('(max-width: 900px)').matches ? { trigger: '.case__right', start: function () { var s = $('.site'); return 'top ' + ((s ? s.offsetHeight : 64) + 16); }, end: function () { return '+=' + Math.round(innerHeight * .75); }, pin: true, pinSpacing: true, anticipatePin: 1, invalidateOnRefresh: true, scrub: .6 } : { trigger: '.case', start: 'top top', end: 'bottom bottom', scrub: .6 } });
     tl.to(mA, { '--s': 1, duration: .15 }, 0).to(o, { p: 1, duration: .7, onUpdate: draw }, .2).to({}, { duration: .15 });

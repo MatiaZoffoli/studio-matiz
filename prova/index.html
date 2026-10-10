@@ -838,6 +838,18 @@ html.modal-open { overflow: hidden; }
 .close__act { display: flex; flex-direction: column; align-items: flex-end; }
 @media (max-width: 900px) { .close__act { align-items: flex-start; } }
 .flag--de { background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 5 3'%3E%3Crect width='5' height='1' fill='%23000'/%3E%3Crect y='1' width='5' height='1' fill='%23DD0000'/%3E%3Crect y='2' width='5' height='1' fill='%23FFCE00'/%3E%3C/svg%3E"); }
+/* ---------- Il caso: al raggiungimento di 450 compare il +335 ---------- */
+.case__hero { position: relative; display: inline-block; }
+.case__fig { transition: color .8s var(--ease), text-shadow .8s var(--ease); }
+.case__fig.is-hit { color: #FFF6E0; text-shadow: 0 0 .28em rgba(240, 200, 120, .55), 0 0 1em rgba(240, 200, 120, .22); }
+.jack { position: absolute; inset: 0; pointer-events: none; }
+.jack__ring { position: absolute; left: 50%; top: 50%; width: 100%; aspect-ratio: 1; border: 1px solid rgba(240, 200, 120, .75); border-radius: 50%; transform: translate(-50%, -50%) scale(.35); opacity: 0; box-shadow: 0 0 24px rgba(240, 200, 120, .25); }
+.jack__plus { position: absolute; left: 100%; top: 0; margin-left: clamp(.6rem, 1.6vw, 1.4rem); opacity: 0; white-space: nowrap; font: 450 clamp(2.1rem, 4.2vw, 3.6rem)/1 var(--serif); font-optical-sizing: none; font-variation-settings: "opsz" 40; letter-spacing: -.02em; color: var(--gold-light); background: linear-gradient(105deg, #C9A25C 0%, #F6DFA6 35%, #FFF6DA 50%, #E8C37A 65%, #C9A25C 100%) 0 0 / 250% 100%; -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; filter: drop-shadow(0 0 14px rgba(240, 200, 120, .35)); }
+.jack__plus small { display: block; margin-top: .55rem; font: 600 .625rem/1.2 var(--sans); letter-spacing: .2em; text-transform: uppercase; -webkit-text-fill-color: var(--gold-light); color: var(--gold-light); }
+.jack__plus.is-on { opacity: 1; }
+.jack__s { position: absolute; left: 50%; top: 50%; width: 5px; height: 5px; margin: -2.5px 0 0 -2.5px; border-radius: 50%; opacity: 0; background: radial-gradient(circle, #FFF6DA 0%, #E8C37A 60%, rgba(232, 195, 122, 0) 100%); box-shadow: 0 0 9px rgba(240, 200, 120, .85); }
+.jack__s:nth-child(3n) { width: 2px; height: 11px; margin: -5.5px 0 0 -1px; border-radius: 2px; box-shadow: 0 0 7px rgba(240, 200, 120, .7); }
+html[lang="de"] .hero h1 { font-size: clamp(2.35rem, 8.4vw, 6.6rem); }
 </style>
 </head>
 <body>
@@ -977,7 +989,7 @@ html.modal-open { overflow: hidden; }
             <p class="page__meta">02 · Risposte, richieste, promemoria</p>
             <h3>Automazioni</h3>
             <div class="page__blk"><span class="page__lab">Il problema</span><p class="soft">Una risposta scritta a mano per cinque minuti al giorno sono più di 30 ore l'anno.</p></div>
-            <div class="page__blk"><span class="page__lab">La risposta</span><p>Si individua il compito più ripetuto, lo si cronometra e si costruisce lo strumento che lo fa da solo. Il risultato si confronta con le ore di partenza.</p></div>
+            <div class="page__blk"><span class="page__lab">La risposta</span><p>Si individua il compito più ripetuto, lo si cronometra e si costruisce lo strumento che lo risolve in automatico. Il risultato si traduce in un risparmio di tempo e denaro.</p></div>
             <a class="link" href="https://wa.me/393339580381?text=Ciao%20Matia%2C%20vorrei%20saperne%20di%20pi%C3%B9%20su%3A%20Automazioni" target="_blank" rel="noopener">Un messaggio su WhatsApp
               <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true"><path d="M3 13 13 3M5.5 3H13v7.5"/></svg></a>
           </div>
@@ -1077,7 +1089,10 @@ html.modal-open { overflow: hidden; }
             <p class="night__lead">Iscritti, prenotazioni, richieste, ordini: qualunque obiettivo si voglia far crescere, si misura il punto di partenza, si costruisce, si misura di nuovo.</p>
           </div>
           <div class="case__right" aria-hidden="true">
-            <p class="case__fig" id="caseNum">115</p>
+            <div class="case__hero" id="caseHero">
+              <p class="case__fig" id="caseNum">115</p>
+              <div class="jack" id="jack" aria-hidden="true"><span class="jack__ring"></span><span class="jack__ring"></span><span class="jack__plus" id="jackPlus">+335<small>iscritti in più</small></span></div>
+            </div>
             <p class="case__unit">Iscritti a una società sportiva</p>
             <div class="meter">
               <div class="meter__row meter__row--a" id="mA"><span>Primi due anni</span><b>115</b><i class="meter__bar"></i></div>
@@ -1542,9 +1557,34 @@ html.modal-open { overflow: hidden; }
 
   /* ---------- Il caso: il numero sale con lo scroll, da 115 a 450 ---------- */
   function initCase() {
-    var num = $('#caseNum'), mA = $('#mA'), mB = $('#mB');
+    var num = $('#caseNum'), mA = $('#mA'), mB = $('#mB'), hero = $('#caseHero'), badge = $('#jackPlus');
+    var rings = hero.querySelectorAll('.jack__ring'), sparks = [], hit = false;
+    var reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
     var o = { p: 0 };
-    function draw() { num.textContent = Math.round(115 + 335 * o.p); mB.style.setProperty('--s', o.p.toFixed(3)); }
+    if (!reduce) for (var k = 0; k < 28; k++) { var sp = document.createElement('span'); sp.className = 'jack__s'; $('#jack').appendChild(sp); sparks.push(sp); }
+    /* al raggiungimento di 450: onde dorate, scintille e il +335 che compare */
+    function fire() {
+      hit = true; num.classList.add('is-hit'); badge.classList.add('is-on');
+      if (reduce) return;
+      gsap.killTweensOf([badge, rings, sparks]);
+      gsap.fromTo(badge, { opacity: 0, y: 16, scale: .72 }, { opacity: 1, y: 0, scale: 1, duration: .95, ease: 'back.out(1.9)' });
+      gsap.fromTo(badge, { backgroundPosition: '100% 0' }, { backgroundPosition: '-60% 0', duration: 1.8, delay: .2, ease: 'power2.inOut' });
+      gsap.fromTo(rings, { opacity: .7, scale: .35 }, { opacity: 0, scale: 1.95, duration: 1.5, ease: 'power2.out', stagger: .2 });
+      sparks.forEach(function (s, i) {
+        var a = (i / sparks.length) * Math.PI * 2 + Math.random() * .45, r = 90 + Math.random() * 170;
+        gsap.fromTo(s, { x: 0, y: 0, rotation: a * 57.3 + 90, opacity: 1, scale: .6 + Math.random() * .9 },
+          { x: Math.cos(a) * r, y: Math.sin(a) * r * .85, opacity: 0, scale: 0, duration: 1.1 + Math.random() * .8, ease: 'power3.out' });
+      });
+    }
+    function reset() {
+      hit = false; num.classList.remove('is-hit'); badge.classList.remove('is-on');
+      gsap.killTweensOf([badge, rings, sparks]);
+      gsap.set([badge, rings, sparks], { clearProps: 'opacity,transform,backgroundPosition' });
+    }
+    function draw() {
+      num.textContent = Math.round(115 + 335 * o.p); mB.style.setProperty('--s', o.p.toFixed(3));
+      if (o.p >= .995 && !hit) fire(); else if (o.p < .93 && hit) reset();
+    }
     mA.style.setProperty('--s', 0); mB.style.setProperty('--s', 0);
     var tl = gsap.timeline({ defaults: { ease: 'none' }, scrollTrigger: matchMedia('(max-width: 900px)').matches ? { trigger: '.case__right', start: function () { var s = $('.site'); return 'top ' + ((s ? s.offsetHeight : 64) + 16); }, end: function () { return '+=' + Math.round(innerHeight * .75); }, pin: true, pinSpacing: true, anticipatePin: 1, invalidateOnRefresh: true, scrub: .6 } : { trigger: '.case', start: 'top top', end: 'bottom bottom', scrub: .6 } });
     tl.to(mA, { '--s': 1, duration: .15 }, 0).to(o, { p: 1, duration: .7, onUpdate: draw }, .2).to({}, { duration: .15 });
